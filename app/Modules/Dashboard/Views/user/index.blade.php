@@ -38,6 +38,7 @@
                                 <table class="table table-sm table-hover mb-0">
                                     <thead>
                                         <tr>
+                                            <th>id</th>
                                             <th>Hình ảnh</th>
                                             <th>Tên</th>
                                             <th>email</th>
@@ -51,6 +52,8 @@
                                     <tbody>
                                         @foreach($data as $value)
                                         <tr>
+                                            <td>{{ $value->id }}</td>
+                                            @if (isset($value->photo))
                                             <td class="table-user">
                                                 @if (@getimagesize($value->photo))
                                                 <img src="{{$value->photo}}" class="rounded-circle"/>
@@ -58,6 +61,11 @@
                                                 <img src="/public/upload/images/users/thumb/{{$value->photo}}" class="rounded-circle"/>
                                                 @endif
                                             </td>
+                                            @else
+                                            <td class="table-user">
+                                                <img src="/public/upload/images/users/thumb/hidden-human.png" class="rounded-circle"/>
+                                            </td>
+                                            @endif
                                             <td>{{$value->fullname}}</td>
                                             <td>{{$value->email}}</td>
                                             @if ($value->gender == 1)

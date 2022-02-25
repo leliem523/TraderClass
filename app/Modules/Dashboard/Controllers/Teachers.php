@@ -21,7 +21,7 @@ class Teachers extends Controller{
         $data = null;
         if (Cookie::get('search_teacher') == "") {
             // if cookie not existed
-            $data = Teachers_Model::orderBy('id', 'desc')->paginate(15);
+            $data = Teachers_Model::orderBy('id', 'asc')->paginate(15);
         } else {
             // if cookie is existed
             $data = Teachers_Model::where("fullname", "like", '%' . Cookie::get('search_teacher') . '%')->orderBy('id', 'desc')->paginate(15);

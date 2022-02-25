@@ -13,7 +13,7 @@ Route::group(['module' => 'sites', 'middleware' => 'web', 'namespace' => "App\Mo
 
     //All Class
     Route::get("/all-class", ["as" => "sites.allClass.index", "uses" => "AllClass@index"]);
-        Route::get("/all-class/{teacher_id}", ["as" => "sites.allClass.index", "uses" => "AllClass@allClassByTeacherId"]);
+    Route::get("/all-class/{teacher_id}", ["as" => "sites.allClass.index", "uses" => "AllClass@allClassByTeacherId"]);
     Route::get("/all-teacher", ["as" => "sites.allTeacher.index", "uses" => "AllTeacher@index"]);
     //Teachers
     Route::get("/teacher/{id}", ["as" => "sites.teacher.index", "uses" => "Teacher@index"]);

@@ -10,62 +10,36 @@
                 <div class="avta">
                     <div class="avt">
                         <div class="ava">
-                            <p>M</p>
+                            <p>{{ isset($user->fullname) ? $user->fullname : '?' }}</p>
                         </div>
                     </div>
-                    <p>Pham Ngoc Minh</p>
+                    <p>{{ isset($user->fullname) ? $user->fullname : 'No name' }}</p>
                 </div>
                 <div class="profile">
                     <p style="    font-weight: 500;">PROFILE</p>
-                    <a href="account.html">
+                    <a href="account">
                         <p><i class="bi bi-person-fill"></i>&nbsp; Profile</p>
                     </a>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="list">
-                    <div class="items">
-                        <img src="/public/sites/images/a8a27a3e091785de49b2b08bd9a9a6e9.jpg" alt="">
-                        <div class="lname">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p id="lname">Brands VietNam</p>
+                    @foreach ($course as $value)
+                        <div class="items" 
+                             onclick="return window.location = 'course/{{ $value->id }}'"
+                             style="cursor: pointer">
+                            @if (isset($value->photo))
+                                <img src="/public/upload/images/course/thumb/{{ $value->photo }}" alt="">
+                            @else
+                                <img src="/public/upload/images/course/thumb/hidden-human.png" alt="">
+                            @endif
+                                <div class="lname">
+                                    <p>{{ $value->name }}</p>
+                                    <p id="lname">{{ $value->title }}</p>
+                                </div>
                         </div>
-                    </div>
-                    <div class="items">
-                        <img src="/public/sites/images/801fa697751643ce650fcdb3b7e7a86e.jpg" alt="">
-                        <div class="lname">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p id="lname">Brands VietNam</p>
-                        </div>
-                    </div>
-                    <div class="items">
-                        <img src="/public/sites/images/81dc103a38ef37182a733720fa218003.jpg" alt="">
-                        <div class="lname">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p id="lname">Brands VietNam</p>
-                        </div>
-                    </div>
-                    <div class="items">
-                        <img src="/public/sites/images/Annie Leibovitz.png" alt="">
-                        <div class="lname">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p id="lname">Brands VietNam</p>
-                        </div>
-                    </div>
-                    <div class="items">
-                        <img src="/public/sites/images/Alicia Keys.png" alt="">
-                        <div class="lname">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p id="lname">Brands VietNam</p>
-                        </div>
-                    </div>
-                    <div class="items">
-                        <img src="/public/sites/images/issa-rae.png" alt="">
-                        <div class="lname">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p id="lname">Brands VietNam</p>
-                        </div>
-                    </div>
+                    @endforeach
+                    {{ $course->onEachSide(1)->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>

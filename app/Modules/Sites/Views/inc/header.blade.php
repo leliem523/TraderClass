@@ -85,7 +85,7 @@
                             </li>
                             <li>
                                 <a style="padding-top: 0px;" class="nav-link"
-                                    href="{{ route('sites.allClass.index') }}"><i class="fas fa-users-class"></i>&nbsp;
+                                    href="/all-class"><i class="fas fa-users-class"></i>&nbsp;
                                     All Class</a>
                             </li>
                         </ul>

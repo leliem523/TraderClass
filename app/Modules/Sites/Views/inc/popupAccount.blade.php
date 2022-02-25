@@ -10,7 +10,7 @@
                     </div>
                     <form action="{{ route('account.updateinformation') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="image align-item-center">
+                        {{-- <div class="image align-item-center">
                             <div class="square align-item-center">
                                 @if (@getimagesize($user->photo))
                                 <img src="{{ $user->photo }}" width="100%" height="100%" alt="">
@@ -24,7 +24,7 @@
                                 <input type="file" id="selectedFile" name="selectedFile" style="display: none;" />
                                 <input type="button" name="selectedFile" id="upimg" value="Upload photos" onclick="document.getElementById('selectedFile').click();" />
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="list-input align-item-center">
                             <div class="input-group">
                                 <label>Name <label class="important">*</label></label>

@@ -18,3 +18,4 @@ class AllTeacher extends Controller
         return view('Sites::all_teacher.index',compact('row','data'));
     }
 }
+

@@ -239,7 +239,7 @@ function nextv() {
         return;
     }
     o++;
-    document.getElementById("video").src = vids[o];
+    document.querySelector(".video").src = vids[o];
     console.log(o)
 };
 

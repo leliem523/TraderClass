@@ -12,7 +12,7 @@ class CourseDetail extends Controller
 {
     public function index($id)
     {
-        $course = DB::table('course')->join('teachers', 'teachers.id', '=', 'course.teacher_id')->where('course.teacher_id',31)->whereIn('course.status', [0, 1])->first();
+        $course = DB::table('course')->join('teachers', 'teachers.id', '=', 'course.teacher_id')->where('course.id', $id)->whereIn('course.status', [0, 1])->first();
         $list_course = DB::table('course')->select('teachers.fullname','teachers.photo','teachers.position','course.id','course.id','course.video_id','course.teacher_id')->join('teachers', 'teachers.id', '=', 'course.teacher_id')->whereIn('course.status', [0, 1])->get();
         $list_teacher = DB::table('teachers')->whereIn('status', [0, 1])->get();
         $row = json_decode(json_encode([

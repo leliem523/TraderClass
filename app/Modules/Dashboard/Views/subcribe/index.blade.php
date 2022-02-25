@@ -73,7 +73,7 @@
                     <div class="pagin mt-2">
                         <div class="row">
                             <div class="col">
-                                <?php echo $data->render(); ?>
+                                <?php echo $data->onEachSide(1)->links("pagination::bootstrap-4"); ?>
                             </div>
                         </div>
                     </div>

@@ -3,20 +3,26 @@
 @section('content')
 @include('Sites::inc.maketting')
 <div class="main">
-    {{ var_dump($course) }}
     <div class="container">
         <p id="title">
             Detailed course
         </p>
         <!-- <p style="color: white;">View offers and select courses of interest.</p> -->
+        @if (isset($course->video_id))
         <div class="row" id="row">
             <div class="col-md-8">
-                <div class="wrappe">
+                {{-- <div class="wrappe">
                     <video class="video" id="video" controls>
-                    <source src="/public/sites/mp4/Teacher1.mp4" type="video/mp4">
+                    <source src="https://www.youtube.com/embed/{{ $course->video_id}}" type="video/mp4">
                   </video>
                     <div class="playpause" id="playpause" onclick="on()"><img src="/public/sites/images/media_play_pause_resume.png" alt=""></div>
                     <div class="offvideo" id="offvideo" onclick="off()"></div>
+                </div> --}}
+                <div class="youtube wrappe" onclick="playvideo()">
+                    {{-- <video src="" class="video"> --}}
+                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/{{ $course->video_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {{-- </video> --}}
+                    {{-- <div class="playpause"><img src="/public/sites/images/media_play_pause_resume.png" alt=""></div> --}}
                 </div>
             </div>
             <div class="col-md-4">
@@ -77,12 +83,21 @@
                 </div>
             </div>
         </div>
+        @else
+           <div class="row">
+               <div class="col-md-8">
+                <h1 class="" style="color: white; padding: 5em 0; text-align: center">
+                    No video to show
+                </h1>
+               </div>
+           </div>
+        @endif
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-9">
-                        <p id="title">Ted Nguyen</p>
-                        <p style="font-size: 20px; color: white; font-weight: 100;">Teacher Crypto Trader</p>
+                        <p id="title">{{ isset($course->name) ? $course->name : '' }}</p>
+                        <p style="font-size: 20px; color: white; font-weight: 100;">{{ isset($course->fullname) ? $course->fullname : '' }}</p>
                         <p><span style="font-size: 14px; color: #EF8D21;"> 4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>&ensp;<span style="font-size: 14px; color: white;">(940 Đánh giá) - 0 Học viên</span></p>
                     </div>
                     <div class="col-md-3" id="col-md-3">
@@ -105,13 +120,15 @@
                                 var o = 0;
 
                                 function nextv() {
-                                    if (o >= vids.length) {
-                                        alert('too far!');
-                                        return;
-                                    }
-                                    o++;
-                                    document.getElementById("video").src = vids[o];
-                                    console.log(o)
+                                    console.log('aaa')
+                                    // console.log(first)
+                                    // if (o >= vids.length) {
+                                    //     alert('too far!');
+                                    //     return;
+                                    // }
+                                    // o++;
+                                    // document.getElementById("video").src = vids[o];
+                                    // console.log(o)
                                 };
 
                                 function nvideo(name) {

@@ -16,7 +16,7 @@ class Teacher extends Controller
 {
     public function index($id)
     {
-        $list_course = DB::table('course')->select('teachers.fullname', 'teachers.position','course.id', 'teachers.photo','course.course_category_id','course.name')->join('teachers','teachers.id','=','course.teacher_id')->whereIn('course.status',[0,1])->limit(6)->get();
+        $list_course = DB::table('course')->select('teachers.fullname', 'teachers.position','course.id', 'teachers.photo','course.course_category_id','course.name', 'course.video_id')->join('teachers','teachers.id','=','course.teacher_id')->whereIn('course.status',[0,1])->where('teachers.id',$id)->limit(6)->get();
         $course = DB::table('course')->select('teachers.fullname', 'teachers.position','teachers.id', 'course.photo','course.course_category_id','course.video_id','course.created_at','course.updated_at','course.name')->join('teachers','teachers.id','=','course.teacher_id')->where('teachers.id',$id)->first();
         $faq = Faq_Model::orderBy('id', 'desc')->get();
         $list_video = DB::table('video_course')->whereIn('status',[0,1])->where('id_course',$id)->get();

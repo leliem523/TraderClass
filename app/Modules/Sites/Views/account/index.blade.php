@@ -12,12 +12,16 @@
             <div class="row">
                 <div class="col-md-4 bg-light">
                     <div class="avatar">
-                        @if (@getimagesize($user->photo))
-                            <img src="{{ $user->photo }}" class="rounded-circle" alt="">
-                        @elseif ($user->photo == NULL)
-                        @else
-                            <img src="public/upload/images/users/thumb/{{ $user->photo }}" class="rounded-circle" alt="">
-                        @endif
+                       @if(isset($user->photo))
+                            @if (@getimagesize($user->photo))
+                                <img src="{{ $user->photo }}" class="rounded-circle" alt="">
+                            @elseif ($user->photo == NULL)
+                            @else
+                                <img src="public/upload/images/users/thumb/{{ $user->photo }}" class="rounded-circle" alt="">
+                            @endif
+                       @else
+                             <img src="public/upload/images/users/thumb/hidden-human.png" class="rounded-circle" alt="" style="width: 100px; height: 100px;">
+                       @endif
                     </div>
                     <form action="">
                         <span>Email</span> <a href="" id="edit1">Edit</a>
@@ -101,6 +105,6 @@
                 </div>
             </div>
 
-        </div>
+        </div>x
     </div>
 @endsection

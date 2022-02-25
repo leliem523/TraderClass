@@ -48,8 +48,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-9">
-                            <p id="title">Ted Nguyen</p>
-                            <p style="font-size: 20px; color: white; font-weight: 100;">Teacher Crypto Trader</p>
+                            <p id="title">{{ $course->name }}</p>
+                            <p style="font-size: 20px; color: white; font-weight: 100;">{{ $course->fullname }}</p>
                             <p><span style="font-size: 14px; color: #EF8D21;"> 4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>&ensp;<span style="font-size: 14px; color: white;">(940 Đánh giá) - 0 Học viên</span></p>
                         </div>
                         <div class="col-md-3" id="col-md-3">

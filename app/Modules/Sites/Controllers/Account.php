@@ -21,7 +21,7 @@ class Account extends Controller
         $row = json_decode(json_encode([
             "title" => "Account information",
         ]));
-        return view('Sites::account.index',compact('row','user'));
+        return view('Sites::account.index',compact('user','row'));
     }
 
     public function UpdatePassword_request(Request $request)

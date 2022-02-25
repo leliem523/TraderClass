@@ -16,7 +16,7 @@ class AllClass extends Controller
     public function index()
     {
         $user = auth::user();
-        $data = DB::table('course')->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo')->join('course_category','course_category.id','=','course.course_category_id')->join('teachers', 'teachers.id', '=', 'course.teacher_id')->orderBy('course.id', 'desc')->paginate(12);
+        $data = DB::table('course')->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo')->join('course_category','course_category.id','=','course.course_category_id')->join('teachers', 'teachers.id', '=', 'course.teacher_id')->orderBy('course.id', 'asc')->paginate(12);
         $row = json_decode(json_encode([
             "title" => "All class",
         ]));
@@ -27,7 +27,7 @@ class AllClass extends Controller
     public function allClassByTeacherId($teacher_id)
     {
         $user = auth::user();
-        $data = DB::table('course')->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo')->join('course_category','course_category.id','=','course.course_category_id')->join('teachers', 'teachers.id', '=', 'course.teacher_id')->orderBy('course.id', 'desc')->where('course.teacher_id', $teacher_id)->paginate(12);
+        $data = DB::table('course')->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo')->join('course_category','course_category.id','=','course.course_category_id')->join('teachers', 'teachers.id', '=', 'course.teacher_id')->orderBy('course.id', 'asc')->where('course.teacher_id', $teacher_id)->paginate(12);
         $row = json_decode(json_encode([
             "title" => "All class",
         ]));

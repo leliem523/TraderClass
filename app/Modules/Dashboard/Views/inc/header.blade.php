@@ -21,7 +21,7 @@
     </ul>
     <!-- LOGO -->
     <div class="logo-box">
-        <a href="/admin/dashboard" class="logo text-center">
+        <a href="/dashboard" class="logo text-center">
             <span class="logo-lg">
                 <img src="/public/dashboard/assets/images/logo-luan-one.svg" alt="" height="48">
                 <!-- <span class="logo-lg-text-light">UBold</span> -->

@@ -12,9 +12,11 @@ class MyCourse extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        $course = DB::table('course')->join('user_course', 'user_course.course_id', '=', 'course.id')->join('course_category', 'course_category.id', '=', 'course.course_category_id')->select('course.id', 'course.name', 'course.photo', 'course_category.title')->paginate(8);
         $row = json_decode(json_encode([
             "title" => "My course",
         ]));
-        return view('Sites::my_course.index',compact('row'));
+        return view('Sites::my_course.index',compact('row', 'user', 'course'));
     }
 }
