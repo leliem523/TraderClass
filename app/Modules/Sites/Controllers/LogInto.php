@@ -24,12 +24,17 @@ class LogInto extends Controller
 
     public function course_selection($id)
     {
-        $teacher = Teachers_Model::find($id);
         $row = json_decode(json_encode([
             "title" => "Course Selection",
         ]));
 
-        return view('Sites::course_selection.index', compact('row','teacher'));
+        $course = DB::table('course')
+                    ->join('teachers', 'course.teacher_id', '=', 'teachers.id')
+                    ->where('course.id', $id)
+                    ->select('course.id', 'course.name', 'course.photo', 'teachers.fullname')
+                    ->first();
+    
+        return view('Sites::course_selection.index', compact('row','course'));
     }
     public function payment_bank()
     {

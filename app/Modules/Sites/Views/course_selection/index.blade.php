@@ -11,10 +11,10 @@
                             <p id="yo">Your order</p>
                             <div class="order">
                                 <div class="un">
-                                    <img src="./images/Teacher1.jpg" alt="">
+                                    <img src="/public/upload/images/course/thumb/{{ $course->photo }}" alt="">
                                     <div id="yo2">
-                                        <p>Teacher Crypto Trader</p>
-                                        <p id="cl_name">Ted Nguyen</p>
+                                        <p>{{ $course->name }}</p>
+                                        <p id="cl_name">{{ $course->fullname }}</p>
                                     </div>
                                 </div>
                                 <div class="buy">

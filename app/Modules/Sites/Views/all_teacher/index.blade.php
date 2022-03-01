@@ -28,7 +28,7 @@
                 @foreach ($data as $value)
                 <div class="col-md-4">
                     <div class="img">
-                        <img src="/public/upload/images/teachers/thumb/teacher{{$value->photo}}" alt="">
+                        <img src="/public/upload/images/teachers/thumb/{{$value->photo}}" alt="">
                         <div class="text-center">
                             <div class="cenn">
                                 <div class="text"><span class="a">{{$value->fullname}}</span>

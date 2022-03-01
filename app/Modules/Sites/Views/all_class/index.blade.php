@@ -17,17 +17,18 @@
                         <div class="topics">
                             <button id="navbarDropdown" role="button" data-toggle="dropdown"> Topics &nbsp; <i class="bi bi-caret-down-fill"></i></button>
                             <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
-                                <p class="dropdown-item">Crypto Currency</p>
-                                <p class="dropdown-item">Forex</p>
-                                <p class="dropdown-item">Stock</p>
+                                @foreach ($topics as $value)
+                                <p onclick="window.location='?topic={{ $value->id }}'" class="dropdown-item">{{ $value->title }}</p>
+                                @endforeach
                             </div>
                         </div>
                         <div class="nteacher">
                             <button id="navbarDropdown" role="button" data-toggle="dropdown">Teacher &nbsp; <i class="bi bi-caret-down-fill"></i></button>
                             <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
-                                <p class="dropdown-item">Hoang Minh Thien</p>
-                                <p class="dropdown-item">Hoang Minh Thien</p>
-                                <p class="dropdown-item">Hoang Minh Thien</p>
+                                @foreach ($teachers as $value)
+                                <p onclick="window.location='?teacher={{ $value->id }}'" class="dropdown-item">{{ $value->fullname }}</p>     
+                                @endforeach
+    
                             </div>
                         </div>
                     </div>
@@ -40,7 +41,8 @@
         <div class="container">
             <div class="row">
                 @foreach ($data as $value)
-                <div class="col-md-3">
+                <div class="col-md-4">
+                    @if (Auth::check())
                     <a href="/course/{{$value->id}}">
                         <div class="img">
                             <img src="/public/upload/images/course/thumb/{{$value->photo}}" alt="">
@@ -51,6 +53,18 @@
                             <p>{{$value->fullname}}</p>
                         </div>
                     </a> 
+                    @else
+                    <a href="#" onclick="sign_in()">
+                        <div class="img">
+                            <img src="/public/upload/images/course/thumb/{{$value->photo}}" alt="">
+                        </div>
+                        <div class="nameclass">
+                            <p>{{$value->name}}</p>
+                            <p>{{$value->title}}</p>
+                            <p>{{$value->fullname}}</p>
+                        </div>
+                    </a> 
+                    @endif
                 </div>
                 @endforeach
             </div>
@@ -65,4 +79,9 @@
         </div>
     </div>
 </div>
+<script>
+    function handleClickListener() {
+        alert('aaa');
+    }
+</script>
 @endsection

@@ -74,6 +74,10 @@ Route::group(['module' => 'sites', 'middleware' => 'web', 'namespace' => "App\Mo
     //course Detail
     Route::get("course/{course_id}", ["as" => "sites.courseIntroduction.index", "uses" => "CourseDetail@index"]);
 
+    // video course
+    Route::get("course/{course_id}/{video_id}", ["as" => "sites.courseIntroduction.index", "uses" => "CourseDetail@courseVideo"]);
+
+
     //find-my-class
     Route::get("/find-my-class", ["as" => "sites.find-my-class.index", "uses" => "FindMyClass@index"]);
      //master-class

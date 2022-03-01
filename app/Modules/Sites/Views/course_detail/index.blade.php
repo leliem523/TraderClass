@@ -20,7 +20,7 @@
                 </div> --}}
                 <div class="youtube wrappe" onclick="playvideo()">
                     {{-- <video src="" class="video"> --}}
-                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/{{ $course->video_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/{{ isset($course_video) ? $course_video->id_video : $course->video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     {{-- </video> --}}
                     {{-- <div class="playpause"><img src="/public/sites/images/media_play_pause_resume.png" alt=""></div> --}}
                 </div>
@@ -44,42 +44,14 @@
                     </div>
                 </div>
                 <div class="im">
-                    <div onclick="nextvideo(0)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(1)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(2)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(3)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(4)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(5)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(6)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(7)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(8)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(9)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(10)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(11)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
+                    @foreach ($list_video as $value)
+                    <div class="video_fields">
+                        
+                      <a href="/course/{{ $course_id }}/{{ $value->id }}">
+                        <p>{{ $value->name }}</p>
+                      </a>
+                    </div> 
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -223,4 +195,5 @@
         </div>
     </div>
 </div>
+
  @endsection

@@ -14,7 +14,7 @@
                 
                 <div class="youtube wrappe" onclick="playvideo()">
                     
-                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/<?php echo e($course->video_id); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/<?php echo e(isset($course_video) ? $course_video->id_video : $course->video_id); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     
                     
                 </div>
@@ -38,42 +38,14 @@
                     </div>
                 </div>
                 <div class="im">
-                    <div onclick="nextvideo(0)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(1)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(2)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(3)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(4)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(5)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(6)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(7)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(8)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(9)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(10)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
-                    <div onclick="nextvideo(11)">
-                        <p>1. Meet Your Instructor: Robin Arzón</p>
-                    </div>
+                    <?php $__currentLoopData = $list_video; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="video_fields">
+                        
+                      <a href="/course/<?php echo e($course_id); ?>/<?php echo e($value->id); ?>">
+                        <p><?php echo e($value->name); ?></p>
+                      </a>
+                    </div> 
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>
@@ -217,6 +189,7 @@
         </div>
     </div>
 </div>
+
  <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('Sites::courseIntroduction', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\PC\OneDrive\Máy tính\branch TraderClass\TraderClass\app\Modules/Sites/Views/course_detail/index.blade.php ENDPATH**/ ?>

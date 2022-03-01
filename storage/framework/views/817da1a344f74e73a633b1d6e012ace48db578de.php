@@ -28,7 +28,7 @@
                 <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-md-4">
                     <div class="img">
-                        <img src="/public/upload/images/teachers/thumb/teacher<?php echo e($value->photo); ?>" alt="">
+                        <img src="/public/upload/images/teachers/thumb/<?php echo e($value->photo); ?>" alt="">
                         <div class="text-center">
                             <div class="cenn">
                                 <div class="text"><span class="a"><?php echo e($value->fullname); ?></span>
