@@ -16,13 +16,31 @@ class Teacher extends Controller
 {
     public function index($id)
     {
-        $list_course = DB::table('course')->select('teachers.fullname', 'teachers.position','course.id', 'teachers.photo','course.course_category_id','course.name', 'course.video_id')->join('teachers','teachers.id','=','course.teacher_id')->whereIn('course.status',[0,1])->where('teachers.id',$id)->limit(6)->get();
-        $course = DB::table('course')->select('teachers.fullname', 'teachers.position','teachers.id', 'course.photo','course.course_category_id','course.video_id','course.created_at','course.updated_at','course.name')->join('teachers','teachers.id','=','course.teacher_id')->where('teachers.id',$id)->first();
+        $list_course = DB::table('course')
+        ->select('teachers.fullname', 'teachers.position','course.id', 'teachers.photo','course.course_category_id','course.name', 'course.video_id')
+        ->join('teachers','teachers.id','=','course.teacher_id')
+        ->whereIn('course.status',[0,1])
+        ->where('teachers.id', $id)
+        ->limit(6)
+        ->get();
+        $course = DB::table('course')
+        ->select('teachers.fullname', 'teachers.position','teachers.id', 'course.photo','course.course_category_id','course.video_id','course.created_at','course.updated_at','course.name')
+        ->join('teachers','teachers.id','=','course.teacher_id')
+        ->join('user_course', 'user_course.course_id', '=', 'course.id')
+        ->where('teachers.id', $id)
+        ->where('user_course.user_id', '<>', Auth::id())
+        ->first();
+
+        if(!isset($course)) {
+            return back();
+        }
+
         $faq = Faq_Model::orderBy('id', 'desc')->get();
         $list_video = DB::table('video_course')->whereIn('status',[0,1])->where('id_course',$id)->get();
         $row = json_decode(json_encode([
             "title" => $course->fullname,
         ]));
+
         return view('Sites::teacher.index',compact('row', 'list_course','faq','course','list_video'));
     }
 

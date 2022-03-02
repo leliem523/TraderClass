@@ -130,6 +130,7 @@ class Users extends Controller
 
         ]);
         $checkEmail = Users_Model::where('email', $request->email)->first();
+
         if ($checkEmail) {
             session()->flash('message', 'Tạo tài khoản thất bại');
             return redirect()->route("sites.home.index");

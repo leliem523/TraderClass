@@ -46,7 +46,6 @@
                 <div class="im">
                     @foreach ($list_video as $value)
                     <div class="video_fields">
-                        
                       <a href="/course/{{ $course_id }}/{{ $value->id }}">
                         <p>{{ $value->name }}</p>
                       </a>
@@ -72,10 +71,10 @@
                         <p style="font-size: 20px; color: white; font-weight: 100;">{{ isset($course->fullname) ? $course->fullname : '' }}</p>
                         <p><span style="font-size: 14px; color: #EF8D21;"> 4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>&ensp;<span style="font-size: 14px; color: white;">(940 Đánh giá) - 0 Học viên</span></p>
                     </div>
-                    <div class="col-md-3" id="col-md-3">
+                    {{-- <div class="col-md-3" id="col-md-3">
                         <button onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button>
                         <!-- <button id="but" onclick="nextvideo('/public/sites/mp4/Teacher2.mp4')"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button> -->
-                    </div>
+                    </div> --}}
                     <script>
                                 var vids = [
                                     "/public/sites/mp4/Teacher1.mp4",

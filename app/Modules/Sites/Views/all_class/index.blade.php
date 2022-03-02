@@ -40,10 +40,10 @@
     <div class="teacher">
         <div class="container">
             <div class="row">
+
                 @foreach ($data as $value)
                 <div class="col-md-4">
-                    @if (Auth::check())
-                    <a href="/course/{{$value->id}}">
+                    <a href="/teacher/{{$value->id_teacher}}">
                         <div class="img">
                             <img src="/public/upload/images/course/thumb/{{$value->photo}}" alt="">
                         </div>
@@ -53,18 +53,6 @@
                             <p>{{$value->fullname}}</p>
                         </div>
                     </a> 
-                    @else
-                    <a href="#" onclick="sign_in()">
-                        <div class="img">
-                            <img src="/public/upload/images/course/thumb/{{$value->photo}}" alt="">
-                        </div>
-                        <div class="nameclass">
-                            <p>{{$value->name}}</p>
-                            <p>{{$value->title}}</p>
-                            <p>{{$value->fullname}}</p>
-                        </div>
-                    </a> 
-                    @endif
                 </div>
                 @endforeach
             </div>

@@ -9,11 +9,11 @@
                 <div style="display: grid;"><span id="a"><?php echo e($course->fullname); ?></span> <span id="b">-</span> <span id="c"><?php echo e($course->position); ?></span></div>
                 <div class="info">
                     <div class="share">
-                        <a href="#" onclick="lightbox_open('/public/sites/mp4/Teacher1.mp4');">
+                        <a href="#" onclick="lightbox_open();">
                             <img src="/public/sites/images/tra.png" alt="">
                             <p>TRAILER</p>
                         </a>
-                        <a href="#" onclick="lightbox_open('/public/sites/mp4/Teacher2.mp4');">
+                        <a href="#" onclick="lightbox_open();">
                             <img src="/public/sites/images/sam.png" alt="">
                             <p>SAMPLE</p>
                         </a>
@@ -22,12 +22,21 @@
                             <p>SHARE</p>
                         </a>
                     </div>
+                    <?php if(Auth::check()): ?>
                     <div class="continue">
-                        <a href="<?php echo e(url('/register/'.$course->id)); ?>" style="color: white;">
+                        <a href="/course/<?php echo e($course->id); ?>" style="color: white;">
                             <p id="continue">Register now</p>
                         </a>
                         <p id="money">TraderClass is $15/month (billed annually)</p>
                     </div>
+                    <?php else: ?>
+                    <div class="continue">
+                        <a href="#" style="color: white;" onclick="sign_in()">
+                            <p id="continue">Register now</p>
+                        </a>
+                        <p id="money">TraderClass is $15/month (billed annually)</p>
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <div class="lin">
                     <a href="#money" id="1" onclick="hover(1)">Class Info</a>
@@ -52,10 +61,17 @@
                             <p style="font-size: 20px; color: white; font-weight: 100;"><?php echo e($course->fullname); ?></p>
                             <p><span style="font-size: 14px; color: #EF8D21;"> 4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>&ensp;<span style="font-size: 14px; color: white;">(940 Đánh giá) - 0 Học viên</span></p>
                         </div>
+                      <?php if(Auth::check()): ?>
                         <div class="col-md-3" id="col-md-3">
-                            <button><p> <a href="./Register.html"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
+                            <button><p> <a href="/log-into/course-selection/<?php echo e($course->id); ?>"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
                             <button id="but" onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button>
                         </div>
+                      <?php else: ?>
+                        <div class="col-md-3" id="col-md-3">
+                            <button><p> <a href="#" onclick="sign_in()"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
+                            <button id="but" onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button>
+                        </div>
+                      <?php endif; ?>
                     </div>
                     <p style="font-size: 13px; color: white;">From litigator to ultramarathoner to bestselling author to head instructor and VP at Peloton, Robin Arzón keeps proving it’s never too late to level up in your life. Now, she’s ready to teach you how building your mental strength can
                         help you see what’s possible for yourself—and see it through. Learn how to identify your dreams and apply the principles of endurance, power, and strength to help you reach your goals.
@@ -75,27 +91,8 @@
                     <div class="tit">
                         <p>Browse Lesson Plan</p>
                     </div>
-                    <div class="im">
-                        <?php $__currentLoopData = $list_video; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div onclick="nextvideo(0)">
-                            <a href=""><p><?php echo e($value->name); ?></p></a>
-                        </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
-                    <div class="upnext">
-                        <div style="margin-right: 20px">
-                            <a href="#"> <img src="/public/sites/images/girl.png" alt=""></a>
-
-                        </div>
-                        <div id="up">
-                            <a href="#">
-                                <p id="ne">Up Next</p>
-                                <p id="ma">Matthew Walker</p>
-                                <p id="tea">Teaches the Science of Better Sleep</p>
-                            </a>
-                        </div>
-                        <div id="i"><i class="fas fa-arrow-right"></i></div>
-                    </div>
+                    
+                    
                 </div>
             </div>
             <div class="row">
@@ -330,9 +327,8 @@
     </div>
     <div id="light">
         <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-        <video id="VisaChipCardVideo" controls>
-            <source src="/public/sites/mp4/Teacher1.mp4" type="video/mp4">
-          </video>
+        <iframe id="VisaChipCardVideo" src="https://www.youtube.com/embed/<?php echo e($course->video_id); ?>" frameborder="0"></iframe>
+        
     </div>
     <div id="share">
         <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>

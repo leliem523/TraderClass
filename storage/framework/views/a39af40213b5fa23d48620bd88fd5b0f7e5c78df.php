@@ -40,10 +40,10 @@
     <div class="teacher">
         <div class="container">
             <div class="row">
+
                 <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-md-4">
-                    <?php if(Auth::check()): ?>
-                    <a href="/course/<?php echo e($value->id); ?>">
+                    <a href="/teacher/<?php echo e($value->id_teacher); ?>">
                         <div class="img">
                             <img src="/public/upload/images/course/thumb/<?php echo e($value->photo); ?>" alt="">
                         </div>
@@ -53,18 +53,6 @@
                             <p><?php echo e($value->fullname); ?></p>
                         </div>
                     </a> 
-                    <?php else: ?>
-                    <a href="#" onclick="sign_in()">
-                        <div class="img">
-                            <img src="/public/upload/images/course/thumb/<?php echo e($value->photo); ?>" alt="">
-                        </div>
-                        <div class="nameclass">
-                            <p><?php echo e($value->name); ?></p>
-                            <p><?php echo e($value->title); ?></p>
-                            <p><?php echo e($value->fullname); ?></p>
-                        </div>
-                    </a> 
-                    <?php endif; ?>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>

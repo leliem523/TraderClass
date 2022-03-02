@@ -95,20 +95,26 @@ window.document.onkeydown = function(e) {
     }
 }
 
-function lightbox_open(name) {
-
+function lightbox_open(name = null) {
     var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-    var videoFile = name;
-    $('#light video source').attr('src', videoFile);
-    $("#light video")[0].load();
-    window.scrollTo(0, 0);
-    document.getElementById('light').style.display = 'block';
-    document.getElementById('fade').style.display = 'block';
-    // scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    // scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-    //     window.onscroll = function() {
-    //         window.scrollTo(scrollLeft, scrollTop);
-    //     };
+    if(name) {
+        var videoFile = name;
+        $('#light video source').attr('src', videoFile);
+        $("#light video")[0].load();
+        window.scrollTo(0, 0);
+        document.getElementById('light').style.display = 'block';
+        document.getElementById('fade').style.display = 'block';
+        // scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        // scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        //     window.onscroll = function() {
+        //         window.scrollTo(scrollLeft, scrollTop);
+        //     };
+    }
+    else {
+        window.scrollTo(0, 0);
+        document.getElementById('light').style.display = 'block';
+        document.getElementById('fade').style.display = 'block';
+    }
     lightBoxVideo.play();
 }
 
