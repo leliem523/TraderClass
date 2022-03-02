@@ -9,11 +9,11 @@
                 <div style="display: grid;"><span id="a"><?php echo e($course->fullname); ?></span> <span id="b">-</span> <span id="c"><?php echo e($course->position); ?></span></div>
                 <div class="info">
                     <div class="share">
-                        <a href="#" onclick="lightbox_open();">
+                        <a href="#" onclick="lightbox_open('https://www.youtube.com/embed/<?php echo e($course->video_id); ?>');">
                             <img src="/public/sites/images/tra.png" alt="">
                             <p>TRAILER</p>
                         </a>
-                        <a href="#" onclick="lightbox_open();">
+                        <a href="#" onclick="lightbox_open('https://www.youtube.com/embed/<?php echo e($list_video[0]->id_video); ?>');">
                             <img src="/public/sites/images/sam.png" alt="">
                             <p>SAMPLE</p>
                         </a>
@@ -81,17 +81,23 @@
                 <div class="col-md-4">
                     <div class="all">
                         <div>
-                            <div class="pla" onclick="nvideo('/public/sites/mp4/Teacher1.mp4')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">Class Trailer</div>
+                            <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/<?php echo e($course->video_id); ?>')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt=""><?php echo e($course->name); ?></div>
 
                         </div>
                         <div>
-                            <div class="pla" onclick="nvideo('/public/sites/mp4/Teacher2.mp4')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">Class Sample</div>
+                            <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/<?php echo e($list_video[0]->id_video); ?>')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt=""><?php echo e($list_video[0]->name); ?></div>
                         </div>
                     </div>
                     <div class="tit">
                         <p>Browse Lesson Plan</p>
                     </div>
-                    
+                    <div class="im">
+                        <?php $__currentLoopData = $list_video; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div onclick="nextvideo(0)">
+                            <p style="cursor: pointer"><?php echo e($value->name); ?></p>
+                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
                     
                 </div>
             </div>
@@ -327,7 +333,7 @@
     </div>
     <div id="light">
         <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-        <iframe id="VisaChipCardVideo" src="https://www.youtube.com/embed/<?php echo e($course->video_id); ?>" frameborder="0"></iframe>
+        <iframe id="VisaChipCardVideo" src="https://www.youtube.com/embed/<?php echo e($course->video_id); ?>" frameborder="0" allowfullscreen></iframe>
         
     </div>
     <div id="share">
@@ -343,7 +349,7 @@
                 <a href="https://mail.google.com/mail/u/0/"><img src="/public/sites/images/512px-Gmail_icon_(2020).svg.png" alt=""></a>
             </div>
             <div class="static">
-                <input type="text" id="copyTarget" readonly="readonly" value="https://traderclass.vn/class/TedNguyen/"> <button id="copyButton"><i class="fas fa-copy">          Copy</i></button><br><br>
+                <input type="text" id="copyTarget" readonly="readonly" value="<?php echo e(url()->full()); ?>"> <button id="copyButton"><i class="fas fa-copy">          Copy</i></button><br><br>
             </div>
         </div>
     </div>

@@ -99,8 +99,10 @@ function lightbox_open(name = null) {
     var lightBoxVideo = document.getElementById("VisaChipCardVideo");
     if(name) {
         var videoFile = name;
-        $('#light video source').attr('src', videoFile);
-        $("#light video")[0].load();
+        console.log(videoFile);
+        // $('#light video source').attr('src', videoFile);
+        // $("#light video")[0].load();
+        document.getElementById('VisaChipCardVideo').src = videoFile;
         window.scrollTo(0, 0);
         document.getElementById('light').style.display = 'block';
         document.getElementById('fade').style.display = 'block';
@@ -115,7 +117,7 @@ function lightbox_open(name = null) {
         document.getElementById('light').style.display = 'block';
         document.getElementById('fade').style.display = 'block';
     }
-    lightBoxVideo.play();
+    // lightBoxVideo.play();
 }
 
 function share_open() {
@@ -257,6 +259,19 @@ function nextvideo(mum) {
 
 function nvideo(name) {
     var videoFile = name;
-    $('.wrappe video source').attr('src', videoFile);
-    $(".wrappe video")[0].load();
+    console.log(name);
+    const wrappe = document.querySelector('.wrappe');
+    const video = document.querySelector('video');
+    const videoClass = document.querySelector('.video');
+    const source = document.querySelector('source');
+
+    const arr = [wrappe, video, videoClass, source];
+
+    // arr.forEach(e => {
+    //     e.src = videoFile;
+    // });
+    videoClass.src = videoFile;
+    $('.wrappe video .video source').attr('src', videoFile);
+    $(".wrappe video .video")[0].load();
+
 }

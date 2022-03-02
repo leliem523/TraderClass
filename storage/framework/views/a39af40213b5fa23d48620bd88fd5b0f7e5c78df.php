@@ -12,8 +12,8 @@
                 <div class="col-md-7">
                     <div class="sort">
                         <p style="color: white;">Sorted by:</p>
-                        <button>Most Popular</button>
-                        <button>Just Added</button>
+                        <button onclick="window.location='?mostPopular'">Most Popular</button>
+                        
                         <div class="topics">
                             <button id="navbarDropdown" role="button" data-toggle="dropdown"> Topics &nbsp; <i class="bi bi-caret-down-fill"></i></button>
                             <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">

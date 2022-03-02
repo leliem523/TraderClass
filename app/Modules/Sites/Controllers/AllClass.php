@@ -19,37 +19,96 @@ class AllClass extends Controller
     {
         $user = auth::user();
         $data = [];
-        if(isset($request['teacher'])) {
-            $data = DB::table('course')
-            ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-            ->join('course_category','course_category.id','=','course.course_category_id')
-            ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
-            ->join('user_course', 'user_course.course_id', '=', 'course.id')
-            ->where('course.teacher_id', $request['teacher'])
-            ->where('user_course.user_id', '<>', Auth::id())
-            ->orderBy('course.id', 'asc')->paginate(12);
-        }
-        else if(isset($request['topic'])) {
-            $data = DB::table('course')
-            ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-            ->join('course_category','course_category.id','=','course.course_category_id')
-            ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
-            ->join('user_course', 'user_course.course_id', '=', 'course.id')
-            ->where('course.course_category_id', $request['topic'])
-            ->where('user_course.user_id', '<>', Auth::id())
-            ->orderBy('course.id', 'asc')
-            ->paginate(12);
-        }
-        else {
-            $data = DB::table('course')
-            ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-            ->join('course_category','course_category.id','=','course.course_category_id')
-            ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
-            ->join('user_course', 'user_course.course_id', '=', 'course.id')
-            ->where('user_course.user_id', '<>', Auth::id())
-            ->orderBy('course.id', 'asc')
-            ->paginate(12);
-        }
+       if(Auth::check()) {
+            if(isset($request['teacher'])) {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->join('user_course', 'user_course.course_id', '=', 'course.id')
+                ->where('course.teacher_id', $request['teacher'])
+                ->where('user_course.user_id', '<>', Auth::id())
+                ->orderBy('course.id', 'asc')->paginate(12);
+            }
+            else if(isset($request['topic'])) {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->join('user_course', 'user_course.course_id', '=', 'course.id')
+                ->where('course.course_category_id', $request['topic'])
+                ->where('user_course.user_id', '<>', Auth::id())
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+            else if(isset($request['mostPopular'])) {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->join('user_course', 'user_course.course_id', '=', 'course.id')
+                ->whereExists(function($query)
+                {
+                    $query->select(DB::raw(1))
+                     ->from('user_course')
+                     ->whereColumn('user_course.course_id', 'course.id');
+                })
+                ->where('user_course.user_id', '<>', Auth::id())
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+            else {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->crossJoin('user_course', 'user_course.course_id', '=', 'course.id')
+                ->where('user_course.user_id', '<>', Auth::id())
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+       }
+       else {
+            if(isset($request['teacher'])) {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->where('course.teacher_id', $request['teacher'])
+                ->orderBy('course.id', 'asc')->paginate(12);
+            }
+            else if(isset($request['topic'])) {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->where('course.course_category_id', $request['topic'])
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+            else if(isset($request['mostPopular'])) {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->whereExists(function($query)
+                {
+                    $query->select(DB::raw(1))
+                     ->from('user_course')
+                     ->whereColumn('user_course.course_id', 'course.id');
+                })
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+            else {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+       }
 
         $topics = DB::table('course_category')
                     ->get();
