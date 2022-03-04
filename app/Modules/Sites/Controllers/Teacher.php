@@ -16,6 +16,7 @@ class Teacher extends Controller
 {
     public function index($id)
     {
+        $id = explode('-', $id)[count(explode('-', $id)) - 1];
         $list_course = DB::table('course')
         ->select('teachers.fullname', 'teachers.position','course.id', 'teachers.photo','course.course_category_id','course.name', 'course.video_id')
         ->join('teachers','teachers.id','=','course.teacher_id')
@@ -47,7 +48,6 @@ class Teacher extends Controller
         $row = json_decode(json_encode([
             "title" => $course->fullname,
         ]));
-
         return view('Sites::teacher.index',compact('row', 'list_course','faq','course','list_video', 'teacher_id'));
     }
 

@@ -26,7 +26,7 @@
                 <div class="list">
                     <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="items" 
-                             onclick="return window.location = 'course/<?php echo e($value->id); ?>'"
+                             onclick="return window.location = 'course/<?php echo e(Str::slug($value->name.'-'.$value->id)); ?>'"
                              style="cursor: pointer">
                             <?php if(isset($value->photo)): ?>
                                 <img src="/public/upload/images/course/thumb/<?php echo e($value->photo); ?>" alt="">

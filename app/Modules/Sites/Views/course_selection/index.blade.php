@@ -112,15 +112,15 @@
                                 <div class="cre">
                                     <div class="dot" onclick="currentSlide(1)">
                                         <p>CREDIT</p>
-                                        <img src="./svg/logo-mastercard-mobile.svg" alt="">
+                                        <img src="/public/sites/svg/logo-mastercard-mobile.svg" alt="">
                                     </div>
                                     <div class="dot" onclick="currentSlide(2)">
                                         <p>ATM</p>
-                                        <img id="atm" src="./images/atm.png" alt="">
+                                        <img id="atm" src="/public/sites/images/atm.png" alt="">
                                     </div>
                                     <div class="dot" onclick="currentSlide(3)">
                                         <p>MOMO</p>
-                                        <img id="momo" src="./images/momo.png" alt="">
+                                        <img id="momo" src="/public/sites/images/momo.png" alt="">
                                     </div>
                                     <div class="dot" onclick="currentSlide(4)">
                                         <p>BANK</p>
@@ -201,21 +201,21 @@
                                         <div class="col-md-4">
                                             <div onclick="tick(1)">
                                                 <i class="bi bi-check-lg" id="bi"></i>
-                                                <img src="./svg/vietcombank.svg" alt="">
+                                                <img src="/public/sites/svg/vietcombank.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic" onclick="tic()"></div>
                                         </div>
                                         <div class="col-md-4">
                                             <div onclick="tick2(1)">
                                                 <i class="bi bi-check-lg" id="bi2"></i>
-                                                <img src="./svg/acb.svg" alt="">
+                                                <img src="/public/sites/svg/acb.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic2" onclick="tic2()"></div>
                                         </div>
                                         <div class="col-md-4">
                                             <div onclick="tick3(1)">
                                                 <i class="bi bi-check-lg" id="bi3"></i>
-                                                <img src="./svg/vpbank.svg" alt="">
+                                                <img src="/public/sites/svg/vpbank.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic3" onclick="tic3()"></div>
                                         </div>
@@ -224,21 +224,21 @@
                                         <div class="col-md-4">
                                             <div onclick="tick4(1)">
                                                 <i class="bi bi-check-lg" id="bi4"></i>
-                                                <img src="./svg/sacombank.svg" alt="">
+                                                <img src="/public/sites/svg/sacombank.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic4" onclick="tic4()"></div>
                                         </div>
                                         <div class="col-md-4">
                                             <div onclick="tick5(1)">
                                                 <i class="bi bi-check-lg" id="bi5"></i>
-                                                <img src="./svg/abbank.svg" alt="">
+                                                <img src="/public/sites/svg/abbank.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic5" onclick="tic5()"></div>
                                         </div>
                                         <div class="col-md-4">
                                             <div onclick="tick6(1)">
                                                 <i class="bi bi-check-lg" id="bi6"></i>
-                                                <img src="./svg/techcombank.svg" alt="">
+                                                <img src="/public/sites/svg/techcombank.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic6" onclick="tic6()"></div>
                                         </div>
@@ -247,21 +247,21 @@
                                         <div class="col-md-4">
                                             <div onclick="tick7(1)">
                                                 <i class="bi bi-check-lg" id="bi7"></i>
-                                                <img src="./svg/aribank.svg" alt="">
+                                                <img src="/public/sites/svg/aribank.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic7" onclick="tic7()"></div>
                                         </div>
                                         <div class="col-md-4">
                                             <div onclick="tick8(1)">
                                                 <i class="bi bi-check-lg" id="bi8"></i>
-                                                <img src="./svg/hsbc.svg" alt="">
+                                                <img src="/public/sites/svg/hsbc.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic8" onclick="tic8()"></div>
                                         </div>
                                         <div class="col-md-4">
                                             <div onclick="tick9(1)">
                                                 <i class="bi bi-check-lg" id="bi9"></i>
-                                                <img src="./svg/baoviet.svg" alt="">
+                                                <img src="/public/sites/svg/baoviet.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic9" onclick="tic9()"></div>
                                         </div>
@@ -270,21 +270,21 @@
                                         <div class="col-md-4">
                                             <div onclick="tick10(1)">
                                                 <i class="bi bi-check-lg" id="bi10"></i>
-                                                <img src="./svg/lienviet.svg" alt="">
+                                                <img src="/public/sites/svg/lienviet.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic10" onclick="tic10()"></div>
                                         </div>
                                         <div class="col-md-4">
                                             <div onclick="tick11(1)">
                                                 <i class="bi bi-check-lg" id="bi11"></i>
-                                                <img src="./svg/bidv.svg" alt="">
+                                                <img src="/public/sites/svg/bidv.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic11" onclick="tic11()"></div>
                                         </div>
                                         <div class="col-md-4">
                                             <div onclick="tick12(1)">
                                                 <i class="bi bi-check-lg" id="bi12"></i>
-                                                <img src="./svg/mb.svg" alt="">
+                                                <img src="/public/sites/svg/mb.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic12" onclick="tic12()"></div>
                                         </div>
@@ -293,7 +293,7 @@
                                         <div class="col-md-4">
                                             <div onclick="tick13(1)">
                                                 <i class="bi bi-check-lg" id="bi13"></i>
-                                                <img src="./svg/shb.svg" alt="">
+                                                <img src="/public/sites/svg/shb.svg" alt="">
                                             </div>
                                             <div class="tic" id="tic13" onclick="tic13()"></div>
                                         </div>
@@ -362,8 +362,9 @@
                                 </div>
                                 <div class="be">
                                     <p id="to">By completing your order, you agree to our <span><a style="color: #EF8D21"
-                                                href="./Privacy.html">Privacy Policy</a></span> and <span><a
-                                                href="./Terms.html" style="color: #EF8D21">Terms of Service.</a> </span></p>
+                                                href="/public/sites/Privacy.html">Privacy Policy</a></span> and <span><a
+                                                href="/public/sites/Terms.html" style="color: #EF8D21">Terms of Service.</a>
+                                        </span></p>
                                 </div>
                                 <div class="pay">
                                     <div><button onclick="paymen(2)">PAYMENT</button></div>

@@ -34,7 +34,7 @@
                                 <div class="text"><span class="a">{{$value->fullname}}</span>
                                 </div>
                                 <div class="button">
-                                    <button><a href="all-class/{{ $value->id }}"><p><i class="bi bi-play-fill"></i>View all classes</p></a></button>
+                                    <button><a href="all-class/{{ Str::slug($value->fullname.'-'.$value->id) }}"><p><i class="bi bi-play-fill"></i>View all classes</p></a></button>
                                 </div>
                             </div>
                         </div>

@@ -16,6 +16,7 @@ class LogInto extends Controller
 {
     public function index($id)
     {
+        $id = explode('-', $id)[count(explode('-', $id)) - 1];
         $crypto = Crypto_Model::whereIn('status',[0,1])->orderBy('id', 'desc')->get();
         $course = DB::table('course')
                     ->join('teachers', 'course.teacher_id', '=', 'teachers.id')
@@ -42,6 +43,7 @@ class LogInto extends Controller
 
     public function course_selection($id)
     {
+        $id = explode('-', $id)[count(explode('-', $id)) - 1];
         $row = json_decode(json_encode([
             "title" => "Course Selection",
         ]));

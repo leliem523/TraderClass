@@ -55,7 +55,12 @@ class Home extends Controller
         $course_category = CourseCategory_Model::orderBy('id', 'desc')->get();
         $faq = Faq_Model::orderBy('id', 'desc')->get();
         $testimonials = Testimonials_Model::orderBy('id', 'desc')->get();
-        $teachers = Teachers_Model::orderBy('id', 'desc')->get();
+        $teachers = DB::table('teachers')
+                    ->join('course', 'course.teacher_id', '=', 'teachers.id')
+                    ->select('course.id as course_id', 'teachers.fullname', 'teachers.id', 'teachers.photo', 'teachers.position', 'teachers.type')
+                    ->orderBy('id', 'desc')
+                    ->get();
+
         return view("Sites::home.index", compact(
             "course_category",
             "teachers",

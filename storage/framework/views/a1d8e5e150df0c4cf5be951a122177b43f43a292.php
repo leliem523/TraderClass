@@ -40,7 +40,7 @@
                 <div class="im">
                     <?php $__currentLoopData = $list_video; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="video_fields">
-                      <a href="/course/<?php echo e($course_id); ?>/<?php echo e($value->id); ?>">
+                      <a href="/course/<?php echo e(Str::slug($course->name.'-'.$course->id)); ?>/<?php echo e(Str::slug($value->name.'-'.        $value->id)); ?>">
                         <p><?php echo e($value->name); ?></p>
                       </a>
                     </div> 

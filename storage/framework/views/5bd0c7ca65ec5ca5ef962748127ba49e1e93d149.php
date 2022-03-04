@@ -21,7 +21,7 @@
     <link href="/public/sites/css/animate.css" rel="stylesheet">
     
     
-    <link rel="stylesheet" href="/public/sites/css/AllTeacher.css?v=<?php echo e(time()); ?>">
+    <link rel="stylesheet" href="/public/sites/css/.css?v=<?php echo e(time()); ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/public/sites/js/js.js"></script>
     <!--Icon-->

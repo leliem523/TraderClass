@@ -10,28 +10,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
-                    <div class="sort">
-                        <p style="color: white;">Sorted by:</p>
-                        <button onclick="window.location='?mostPopular'">Most Popular</button>
-                        {{-- <button>Just Added</button> --}}
-                        <div class="topics">
-                            <button id="navbarDropdown" role="button" data-toggle="dropdown"> Topics &nbsp; <i class="bi bi-caret-down-fill"></i></button>
-                            <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
-                                @foreach ($topics as $value)
-                                <p onclick="window.location='?topic={{ $value->id }}'" class="dropdown-item">{{ $value->title }}</p>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="nteacher">
-                            <button id="navbarDropdown" role="button" data-toggle="dropdown">Teacher &nbsp; <i class="bi bi-caret-down-fill"></i></button>
-                            <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
-                                @foreach ($teachers as $value)
-                                <p onclick="window.location='?teacher={{ $value->id }}'" class="dropdown-item">{{ $value->fullname }}</p>     
-                                @endforeach
-    
-                            </div>
+                   @if (!isset($teacher_id))
+                   <div class="sort">
+                    <p style="color: white;">Sorted by:</p>
+                    <button onclick="window.location='?mostPopular'">Most Popular</button>
+                    {{-- <button>Just Added</button> --}}
+                    <div class="topics">
+                        <button id="navbarDropdown" role="button" data-toggle="dropdown"> Topics &nbsp; <i class="bi bi-caret-down-fill"></i></button>
+                        <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
+                            @foreach ($topics as $value)
+                            <p onclick="window.location='?topic={{ Str::slug($value->title.'-'.$value->id) }}'" class="dropdown-item">{{ $value->title }}</p>
+                            @endforeach
                         </div>
                     </div>
+                    <div class="nteacher">
+                        <button id="navbarDropdown" role="button" data-toggle="dropdown">Teacher &nbsp; <i class="bi bi-caret-down-fill"></i></button>
+                        <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
+                            @foreach ($teachers as $value)
+                            <p onclick="window.location='?teacher={{ Str::slug($value->fullname.'-'.$value->id) }}'" class="dropdown-item">{{ $value->fullname }}</p>     
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+                   @endif
                 </div>
                 <div class="col-md"></div>
             </div>
@@ -40,10 +42,9 @@
     <div class="teacher">
         <div class="container">
             <div class="row">
-
                 @foreach ($data as $value)
                 <div class="col-md-4">
-                    <a href="/teacher/{{$value->id_teacher}}">
+                    <a href="/teacher/{{Str::slug($value->fullname.'-'.$value->id)}}">
                         <div class="img">
                             <img src="/public/upload/images/course/thumb/{{$value->photo}}" alt="">
                         </div>

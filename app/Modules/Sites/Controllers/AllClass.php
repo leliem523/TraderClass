@@ -21,6 +21,7 @@ class AllClass extends Controller
         $data = [];
        if(Auth::check()) {
             if(isset($request['teacher'])) {
+                $request['teacher'] = explode('-', $request['teacher'])[count(explode('-', $request['teacher'])) - 1];
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
                 ->join('course_category','course_category.id','=','course.course_category_id')
@@ -36,6 +37,7 @@ class AllClass extends Controller
                 ->orderBy('course.id', 'asc')->paginate(12);
             }
             else if(isset($request['topic'])) {
+                $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
                 ->join('course_category','course_category.id','=','course.course_category_id')
@@ -85,6 +87,7 @@ class AllClass extends Controller
        }
        else {
             if(isset($request['teacher'])) {
+                $request['teacher'] = explode('-', $request['teacher'])[count(explode('-', $request['teacher'])) - 1];
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
                 ->join('course_category','course_category.id','=','course.course_category_id')
@@ -93,6 +96,7 @@ class AllClass extends Controller
                 ->orderBy('course.id', 'asc')->paginate(12);
             }
             else if(isset($request['topic'])) {
+                $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
                 ->join('course_category','course_category.id','=','course.course_category_id')
@@ -124,7 +128,6 @@ class AllClass extends Controller
                 ->paginate(12);
             }
        }
-
         $topics = DB::table('course_category')
                     ->get();
         
@@ -142,14 +145,124 @@ class AllClass extends Controller
     {
         $user = auth::user();
 
-        $data = DB::table('course')
-        ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-        ->join('course_category','course_category.id','=','course.course_category_id')
-        ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
-        ->join('user_course', 'user_course.course_id', '=', 'course.id')
-        ->where('user_course.user_id', '<>', Auth::id())
-        ->orderBy('course.id', 'asc')->where('course.teacher_id', $teacher_id)
-        ->paginate(12);
+        $teacher_id = explode('-', $teacher_id)[count(explode('-', $teacher_id)) - 1];
+
+        if(Auth::check()) {
+            if(isset($request['teacher'])) {
+                $request['teacher'] = explode('-', $request['teacher'])[count(explode('-', $request['teacher'])) - 1];
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->where('course.teacher_id', $request['teacher'])
+                ->whereNotExists(function ($query)
+                {
+                    $query->select(DB::raw(1))
+                     ->from('user_course')
+                     ->whereColumn('user_course.course_id', 'course.id')
+                     ->where('user_course.user_id', Auth::id());
+                })
+                ->orderBy('course.id', 'asc')->paginate(12);
+            }
+            else if(isset($request['topic'])) {
+                $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->where('course.teacher_id', $teacher_id)
+                ->where('course.course_category_id', $request['topic'])
+                ->whereNotExists(function ($query)
+                {
+                    $query->select(DB::raw(1))
+                     ->from('user_course')
+                     ->whereColumn('user_course.course_id', 'course.id')
+                     ->where('user_course.user_id', Auth::id());
+                })
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+            else if(isset($request['mostPopular'])) {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->join('user_course', 'user_course.course_id', '=', 'course.id')
+                ->where('course.teacher_id', $teacher_id)
+                ->whereExists(function($query)
+                {
+                    $query->select(DB::raw(1))
+                     ->from('user_course')
+                     ->whereColumn('user_course.course_id', 'course.id');
+                })
+                ->where('user_course.user_id', '<>', Auth::id())
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+            else {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->where('course.teacher_id', $teacher_id)
+                ->whereNotExists(function ($query)
+                {
+                    $query->select(DB::raw(1))
+                     ->from('user_course')
+                     ->whereColumn('user_course.course_id', 'course.id')
+                     ->where('user_course.user_id', Auth::id());
+                })
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+       }
+       else {
+            if(isset($request['teacher'])) {
+                $request['teacher'] = explode('-', $request['teacher'])[count(explode('-', $request['teacher'])) - 1];
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->where('course.teacher_id', $request['teacher'])
+                ->orderBy('course.id', 'asc')->paginate(12);
+            }
+            else if(isset($request['topic'])) {
+                $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->where('course.teacher_id', $teacher_id)
+                ->where('course.course_category_id', $request['topic'])
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+            else if(isset($request['mostPopular'])) {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->where('course.teacher_id', $teacher_id)
+                ->whereExists(function($query)
+                {
+                    $query->select(DB::raw(1))
+                     ->from('user_course')
+                     ->whereColumn('user_course.course_id', 'course.id');
+                })
+                ->orderBy('course.id', 'asc')
+                ->paginate(12);
+            }
+            else {
+                $data = DB::table('course')
+                ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
+                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->orderBy('course.id', 'asc')
+                ->where('course.teacher_id', $teacher_id)
+                ->paginate(12);
+            }
+       }
+
         $row = json_decode(json_encode([
             "title" => "All class",
         ]));
@@ -160,6 +273,14 @@ class AllClass extends Controller
         $teachers = DB::table('teachers')
                     ->get();
 
-        return view('Sites::all_class.index', compact('row','data','user', 'topics', 'teachers'));
+        return view('Sites::all_class.index', 
+                compact (
+                    'row',
+                    'data',
+                    'user', 
+                    'topics', 
+                    'teachers',
+                    'teacher_id'
+                ));
     }
 }

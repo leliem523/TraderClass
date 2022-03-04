@@ -13,10 +13,17 @@
                             <img src="/public/sites/images/tra.png" alt="">
                             <p>TRAILER</p>
                         </a>
-                        <a href="#" onclick="lightbox_open('https://www.youtube.com/embed/{{ $list_video[0]->id_video}}');">
-                            <img src="/public/sites/images/sam.png" alt="">
-                            <p>SAMPLE</p>
-                        </a>
+                       @if (Auth::check())
+                            <a href="#" onclick="lightbox_open('https://www.youtube.com/embed/{{ $list_video[0]->id_video}}');">
+                                <img src="/public/sites/images/sam.png" alt="">
+                                <p>SAMPLE</p>
+                            </a>
+                       @else
+                            <a href="#" onclick="sign_in()">
+                                <img src="/public/sites/images/sam.png" alt="">
+                                <p>SAMPLE</p>
+                            </a>
+                       @endif
                         <a href="#" onclick="share_open()">
                             <img src="/public/sites/images/share.png" alt="">
                             <p>SHARE</p>
@@ -24,7 +31,7 @@
                     </div>
                     @if (Auth::check())
                     <div class="continue">
-                        <a href="/register/{{$course->id}}" style="color: white;">
+                        <a href="/register/{{Str::slug($course->name.'-'.$course->id)}}" style="color: white;">
                             <p id="continue">Register now</p>
                         </a>
                         <p id="money">TraderClass is $15/month (billed annually)</p>
@@ -63,13 +70,12 @@
                         </div>
                       @if (Auth::check())
                         <div class="col-md-3" id="col-md-3">
-                            <button><p> <a href="/register/{{ $course->id }}"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
-                            <button id="but" onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button>
+                            <button><p> <a href="/register/{{Str::slug($course->name.'-'.$course->id)}}"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
+                            {{-- <button id="but" onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button> --}}
                         </div>
                       @else
                         <div class="col-md-3" id="col-md-3">
                             <button><p> <a href="#" onclick="sign_in()"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
-                            {{-- <button id="but" onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button> --}}
                         </div>
                       @endif
                     </div>
@@ -84,16 +90,22 @@
                             <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/{{ $course->video_id}}')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">{{ $course->name }}</div>
 
                         </div>
-                        <div>
-                            <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/{{ $list_video[0]->id_video}}')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">{{ $list_video[0]->name }}</div>
-                        </div>
+                        @if (Auth::check())
+                            <div>
+                                <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/{{ $list_video[0]->id_video}}')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">{{ $list_video[0]->name }}</div>
+                            </div>
+                        @else
+                            <div>
+                                <a href="#" class="pla" style="cursor: pointer; text-decoration: none;" onclick="sign_in()"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">{{ $list_video[0]->name }}</a>
+                            </div>
+                        @endif
                     </div>
                     <div class="tit">
                         <p>Browse Lesson Plan</p>
                     </div>
                     <div class="im">
                         @foreach ($list_video as $value)
-                        <div onclick="nextvideo(0)">
+                        <div>
                             <p style="cursor: pointer">{{$value->name}}</p>
                         </div>
                         @endforeach

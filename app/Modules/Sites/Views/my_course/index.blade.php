@@ -26,7 +26,7 @@
                 <div class="list">
                     @foreach ($course as $value)
                         <div class="items" 
-                             onclick="return window.location = 'course/{{ $value->id }}'"
+                             onclick="return window.location = 'course/{{ Str::slug($value->name.'-'.$value->id) }}'"
                              style="cursor: pointer">
                             @if (isset($value->photo))
                                 <img src="/public/upload/images/course/thumb/{{ $value->photo }}" alt="">

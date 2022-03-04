@@ -35,12 +35,12 @@
                 <td class="txt cen">
                     <p>2.000.000 ₫</p>
                     <h5>590.000 ₫</h5>
-                    <h4 class="cous"><a style="color: white;" href="{{url('/log-into/course-selection/'.$course->id)}}">BUY COURSE</a></h4>
+                    <h4 class="cous"><a style="color: white;" href="{{url('/log-into/course-selection/'.Str::slug($course->name.'-'.$course->id))}}">BUY COURSE</a></h4>
                 </td>
                 <td class="txt dif">
                     <p>4.000.000 ₫</p>
                     <h5>990.000 ₫</h5>
-                    <h4 class="pac"><a style="color: white;" href="{{url('/log-into/'.$course->id)}}">BUY ACCESS PACKAGE</a></h4>
+                    <h4 class="pac"><a style="color: white;" href="{{url('/log-into/'.Str::slug($course->name.'-'.$course->id))}}">BUY ACCESS PACKAGE</a></h4>
                 </td>
             </tr>
         </table>

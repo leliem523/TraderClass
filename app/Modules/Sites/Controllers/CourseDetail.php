@@ -14,7 +14,7 @@ class CourseDetail extends Controller
 {
     public function index($id)
     {
-        $course_id = $id;
+        $course_id = explode('-', $id)[count(explode('-', $id)) - 1];
         $row = json_decode(json_encode([
             "title" => "Course Detail",
         ]));
@@ -49,7 +49,8 @@ class CourseDetail extends Controller
 
     public function courseVideo($course_id, $video_id)
     {
-
+        $course_id = explode('-', $course_id)[count(explode('-', $course_id)) - 1];
+        $video_id = explode('-', $video_id)[count(explode('-', $video_id)) - 1];
         $row = json_decode(json_encode([
             "title" => "Course Detail",
         ]));

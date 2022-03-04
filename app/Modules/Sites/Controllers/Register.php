@@ -13,6 +13,7 @@ class Register extends Controller
 {
     public function index($id)
     {
+        $id = explode('-', $id)[count(explode('-', $id)) - 1];
         $course = DB::table('course')
                     ->where('course.id', $id)
                     ->first();

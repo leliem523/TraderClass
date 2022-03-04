@@ -46,7 +46,7 @@
                 <div class="im">
                     @foreach ($list_video as $value)
                     <div class="video_fields">
-                      <a href="/course/{{ $course_id }}/{{ $value->id }}">
+                      <a href="/course/{{ Str::slug($course->name.'-'.$course->id) }}/{{ Str::slug($value->name.'-'.        $value->id) }}">
                         <p>{{ $value->name }}</p>
                       </a>
                     </div> 
