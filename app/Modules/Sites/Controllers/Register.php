@@ -13,10 +13,12 @@ class Register extends Controller
 {
     public function index($id)
     {
-        $teacher = Teachers_Model::find($id);
+        $course = DB::table('course')
+                    ->where('course.id', $id)
+                    ->first();
         $row = json_decode(json_encode([
             "title" => "Register",
         ]));
-        return view('Sites::register.index',compact('row','teacher'));
+        return view('Sites::register.index',compact('row','course'));
     }
 }

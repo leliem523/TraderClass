@@ -10,16 +10,34 @@ use CodeItNow\BarcodeBundle\Utils\QrCode;
 use App\Modules\Sites\Models\PaymentCrypto_Model;
 use App\Modules\Sites\Models\Teachers_Model;
 use App\Modules\Sites\Models\Crypto_Model;
+use Illuminate\Support\Facades\Auth;
 
 class LogInto extends Controller
 {
-    public function index()
+    public function index($id)
     {
         $crypto = Crypto_Model::whereIn('status',[0,1])->orderBy('id', 'desc')->get();
+        $course = DB::table('course')
+                    ->join('teachers', 'course.teacher_id', '=', 'teachers.id')
+                    ->where('course.id', $id)
+                    ->whereNotExists(function($query)
+                    {
+                        $query->select(DB::raw(1))
+                        ->from('user_course')
+                        ->whereColumn('user_course.course_id', 'course.id')
+                        ->where('user_course.user_id', Auth::id());
+                    })
+                    ->select('course.id', 'course.name', 'course.photo', 'teachers.fullname')
+                    ->first();
+        // Check course was buying
+        if(!isset($course)) {
+            return back();
+        }
+
         $row = json_decode(json_encode([
             "title" => "Log Into",
         ]));
-        return view('Sites::log_into.index', compact('row', 'crypto'));
+        return view('Sites::log_into.index', compact('row', 'crypto', 'course'));
     }
 
     public function course_selection($id)
@@ -31,9 +49,19 @@ class LogInto extends Controller
         $course = DB::table('course')
                     ->join('teachers', 'course.teacher_id', '=', 'teachers.id')
                     ->where('course.id', $id)
+                    ->whereNotExists(function($query)
+                    {
+                        $query->select(DB::raw(1))
+                        ->from('user_course')
+                        ->whereColumn('user_course.course_id', 'course.id')
+                        ->where('user_course.user_id', Auth::id());
+                    })
                     ->select('course.id', 'course.name', 'course.photo', 'teachers.fullname')
                     ->first();
-    
+        
+        if(!isset($course)) {
+            return back();
+        }
         return view('Sites::course_selection.index', compact('row','course'));
     }
     public function payment_bank()

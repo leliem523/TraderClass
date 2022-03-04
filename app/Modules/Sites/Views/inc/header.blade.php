@@ -33,9 +33,9 @@
                         </button>
                         <div id="countryList"></div>
                     </div>
-                    <div class="cart">
-                        <a href="/log-into"><i class="fas fa-shopping-cart"></i></a>
-                    </div>
+                    {{-- <div class="cart">
+                        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    </div> --}}
                     <div class="right_nav">
                         <a class="nav-link" style="padding-top: 0px;" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown">

@@ -8,10 +8,14 @@
                 <div class="col-md-6">
                     <div class="whitee">
                         <div class="pan">
+                            <p id="yo">Your order</p>
                             <div class="order">
-                                <div class="uns">
-                                    <p id="yo">Your order</p>
-                                    <p id="yos2">Unlimited access all year All current and upcoming courses.</p>
+                                <div class="un">
+                                    <img src="/public/upload/images/course/thumb/{{ $course->photo }}" alt="">
+                                    <div id="yos2">
+                                        <p>{{ $course->name }}</p>
+                                        <div id="cl_name">{{ $course->fullname }}</div>
+                                    </div>
                                 </div>
                                 <div class="buy">
                                     <p id="price">990.000 đ</p>

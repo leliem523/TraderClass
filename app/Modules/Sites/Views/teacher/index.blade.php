@@ -24,7 +24,7 @@
                     </div>
                     @if (Auth::check())
                     <div class="continue">
-                        <a href="/course/{{$course->id}}" style="color: white;">
+                        <a href="/register/{{$course->id}}" style="color: white;">
                             <p id="continue">Register now</p>
                         </a>
                         <p id="money">TraderClass is $15/month (billed annually)</p>
@@ -63,13 +63,13 @@
                         </div>
                       @if (Auth::check())
                         <div class="col-md-3" id="col-md-3">
-                            <button><p> <a href="/log-into/course-selection/{{ $course->id }}"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
+                            <button><p> <a href="/register/{{ $course->id }}"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
                             <button id="but" onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button>
                         </div>
                       @else
                         <div class="col-md-3" id="col-md-3">
                             <button><p> <a href="#" onclick="sign_in()"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
-                            <button id="but" onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button>
+                            {{-- <button id="but" onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button> --}}
                         </div>
                       @endif
                     </div>

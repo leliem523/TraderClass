@@ -85,7 +85,7 @@ Route::group(['module' => 'sites', 'middleware' => 'web', 'namespace' => "App\Mo
   
     //log-into
     Route::group(["prefix" => "log-into",'middleware' => 'auth:web'], function() {
-        Route::get("/", ["as" => "sites.logInto.index", "uses" => "LogInto@index"]);
+        Route::get("/{id}", ["as" => "sites.logInto.index", "uses" => "LogInto@index"]);
         // Route::post("/ecash-bitcoin", ["as" => "sites.logInto.index", "uses" => "LogInto@ecash_bitcoin"]);
         Route::get("/course-selection/{id}", ["as" => "sites.logInto.courseSelection", "uses" => "LogInto@course_selection"]);
         Route::get("/payment-bank", ["as" => "sites.logInto.paymentbank", "uses" => "LogInto@payment_bank"]);
