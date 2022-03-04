@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th3 01, 2022 lúc 12:59 AM
--- Phiên bản máy phục vụ: 5.7.36
--- Phiên bản PHP: 8.0.13
+-- Thời gian đã tạo: Th3 04, 2022 lúc 05:38 AM
+-- Phiên bản máy phục vụ: 5.7.31
+-- Phiên bản PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1084,9 +1084,12 @@ CREATE TABLE IF NOT EXISTS `la_course` (
 --
 
 INSERT INTO `la_course` (`id`, `name`, `course_category_id`, `status`, `created_at`, `updated_at`, `teacher_id`, `photo`, `video_id`) VALUES
-(3, 'Khóa học kĩ thuật điện - điện tử', 2, 1, '2022-02-28 08:00:31', '2022-02-28 07:16:00', 3, 'dien-dien-tu-background.png', 'zh3d93SW1Gc'),
-(2, 'Khóa học lập trình Javascript căn bản', 1, 1, '2022-02-26 09:33:49', '2022-02-26 09:31:42', 2, 'javascript.png', '0SJE9dYdpps'),
-(1, 'Khóa học lập trình Python cơ bản', 1, 1, '2022-02-26 08:37:39', '2022-02-26 08:36:15', 1, 'hqdefault.jpg', 'NZj6LI5a9vc');
+(3, 'Khóa học kĩ thuật điện - điện tử', 2, 1, '2022-03-02 07:14:21', '2022-02-28 07:16:00', 3, '1-1630502009.png', 'zh3d93SW1Gc'),
+(2, 'Khóa học lập trình Javascript căn bản', 1, 1, '2022-03-02 07:13:20', '2022-02-26 09:31:42', 2, 'sddefault-6-1630549571.jpg', '0SJE9dYdpps'),
+(1, 'Khóa học lập trình Python cơ bản', 1, 1, '2022-03-02 07:14:45', '2022-02-26 08:36:15', 1, '10-tieu-chi-can-quan-tam-khi-chon-mua-man-hinh-may-tinh-pc-8-1jpg-1629865462.jpg', 'NZj6LI5a9vc'),
+(4, 'Khóa học Forex', 3, 1, '2022-03-04 02:43:29', '2022-03-04 02:38:43', 3, 'forex-là-gì.jpg', 'BVDyncLJ-6o'),
+(5, 'Khóa học chứng khoáng', 4, 1, '2022-03-04 02:45:51', '2022-03-04 02:44:29', 5, 'Hay-tim-hieu-ve-Thi-truong-chung-khoan.jpg', 'TaiZS8-i6L0'),
+(6, 'Khóa học Crypto', 5, 1, '2022-03-04 02:47:44', '2022-03-04 02:46:02', 6, 'crypto-la-gi-1.jpg', 'ge-ZBklOHjw');
 
 -- --------------------------------------------------------
 
@@ -1110,7 +1113,10 @@ CREATE TABLE IF NOT EXISTS `la_course_category` (
 
 INSERT INTO `la_course_category` (`id`, `title`, `created_at`, `updated_at`, `status`) VALUES
 (2, 'Điện', '2022-02-28 07:15:46', '2022-02-28 07:14:38', 1),
-(1, 'IT', '2022-02-26 08:54:04', '2022-02-26 08:35:07', 1);
+(1, 'IT', '2022-02-26 08:54:04', '2022-02-26 08:35:07', 1),
+(3, 'Forex', '2022-03-04 02:06:36', '2022-03-04 02:06:02', 1),
+(4, 'Chứng khoáng', '2022-03-04 02:10:44', '2022-03-04 02:09:48', 1),
+(5, 'Crypto', '2022-03-04 02:11:43', '2022-03-04 02:11:27', 1);
 
 -- --------------------------------------------------------
 
@@ -1875,7 +1881,7 @@ CREATE TABLE IF NOT EXISTS `la_subcribe` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `la_subcribe`
@@ -1918,7 +1924,8 @@ INSERT INTO `la_subcribe` (`id`, `email`, `course_category_id`, `created_at`, `u
 (48, 'meoem2712@gmail.com', '2', '2021-08-06 09:20:13', '2021-08-06 09:20:13'),
 (49, 'meoem2712@gmail.com', '5,1', '2021-09-01 08:25:32', '2021-09-01 08:25:32'),
 (50, 'raymond.lv84@gmail.com', '4', '2021-09-27 00:43:02', '2021-09-27 00:43:02'),
-(51, 'mm@gmail.com', '4,2', '2022-02-18 15:14:03', '2022-02-18 15:14:03');
+(51, 'mm@gmail.com', '4,2', '2022-02-18 15:14:03', '2022-02-18 15:14:03'),
+(52, 'liem@gmail.com', '1', '2022-03-03 02:53:24', '2022-03-03 02:53:24');
 
 -- --------------------------------------------------------
 
@@ -1944,9 +1951,12 @@ CREATE TABLE IF NOT EXISTS `la_teachers` (
 --
 
 INSERT INTO `la_teachers` (`id`, `fullname`, `photo`, `position`, `created_at`, `updated_at`, `status`, `type`) VALUES
-(3, 'Triết DK', 'trietDK.png', 'Giảng viên', '2022-02-28 07:43:51', '2022-02-28 07:19:26', 1, 1),
-(2, 'F8', 'channels4_profile.jpg', 'Thạc sĩ', '2022-02-26 09:42:50', '2022-02-26 09:34:08', 1, 1),
-(1, 'Ngô Thành Vinh', '20220102232206_1.jpeg', 'Giáo viên', '2022-02-26 08:51:11', '2022-02-26 08:48:06', 1, 1);
+(3, 'Triết DK', '801fa697751643ce650fcdb3b7e7a86e-1632210785.jpg', 'Giảng viên', '2022-03-02 07:18:50', '2022-02-28 07:19:26', 1, 1),
+(2, 'F8', 'a8a27a3e091785de49b2b08bd9a9a6e9-1632210815.jpg', 'Thạc sĩ', '2022-03-02 07:19:00', '2022-02-26 09:34:08', 1, 1),
+(1, 'Ngô Thành Vinh', 'all_class1cd5a932684f124ff9b53ad8bc6bb56f-1628568038.jpg', 'Giáo viên', '2022-03-02 07:19:09', '2022-02-26 08:48:06', 1, 1),
+(4, 'mForex', '118197480_190437035805007_5460491669922895029_n (2).jpg', 'Giảng viên', '2022-03-04 02:35:26', '2022-03-04 02:21:45', 1, 1),
+(5, 'Thái Phạm', '2034381-1616657886257-03c93f580bcd5 .jpg', 'Giảng viên', '2022-03-04 03:56:55', '2022-03-04 02:23:13', 1, 1),
+(6, 'Hoàng Minh Thiện', 'ceo-hoang-minh-thien-chia-se-bi-quyet-vuot-kho-mua-dich-a2cf874d (1).jpg', 'Giảng viên', '2022-03-04 03:54:27', '2022-03-04 02:37:19', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2011,7 +2021,7 @@ INSERT INTO `la_users` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, `
 (37, '19211tt2861@mail.tdc.edu.vn', 'Trung Nguyễn Hiếu', 'https://lh3.googleusercontent.com/a/AATXAJwrPdGXWE2qLBKRQbY37XW-n_Hf3BVtZcULW0B9=s96-c', NULL, NULL, NULL, NULL, '6Ph73kRRkfXH1RBePQeP2DotIjWiiwwSYBjVGPlOlogzRkBEF4dS0mjXP16r', NULL, 0, NULL, '2021-08-11 09:59:47', '2021-08-16 15:12:42'),
 (39, 'quanghuy9955@gmail.com', 'Quang Huy', 'https://lh3.googleusercontent.com/a-/AOh14GiBTJhxivCzXLkdLQY6VXlCCj9mEml7S3yjdYcCsdc=s96-c', NULL, NULL, NULL, NULL, 'H2DZrU8ZstsGKMzf3H9WFmWu5N9AHIQtIBeSrLMZ1APexufzV8L9iPjdgmxP', NULL, NULL, NULL, '2021-08-11 10:32:59', '2021-08-11 10:32:59'),
 (40, 'tech.onicorn@gmail.com', 'BUI QUANG HUY', '3-1630166121.jpg', 1, '0977393349', 'Điện Biên Phủ', NULL, 'VUvP7duGkd6VCRThBejz8v6Vn5jMbbNoXEWlZN2LUzzRoiNi5405cwkyRm3K', NULL, NULL, NULL, '2021-08-13 14:30:02', '2021-08-28 22:55:22'),
-(41, 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$lAHjejFrJ0ocdQ2.rE32ju2D4xMLJB4kfxKzB2ajheG9HGfHBK44q', 'FngmKriWzr7tfLbiuJiMA4UgRzgAktmJEH957vRzJtiByslxTKchCjQ67gKE', 2, 0, NULL, '2021-08-16 09:46:54', '2021-08-26 16:54:15'),
+(41, 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$lAHjejFrJ0ocdQ2.rE32ju2D4xMLJB4kfxKzB2ajheG9HGfHBK44q', 'EWGZYtDiw1ipfFAtGeV8bNKi00oKf93rZyP4GIztrFiE0U15uE4YDVdiVw4f', 2, 0, NULL, '2021-08-16 09:46:54', '2021-08-26 16:54:15'),
 (42, 'hi@quanghuy.info', 'Huy Quang', 'https://lh3.googleusercontent.com/a-/AOh14GiqdXZQ1xk0yFJg8jQuzhQJHVs5JRwhXbTvchF76dA8Klutjfoou3AmlUsBNSFIJV_aIL1a5sMeKqi8r0qP-293Wo6IzXgfCACwQLcAzwKZw8sSvoXWJdz9Uq2ABHciIBdM1dFieUHsf2FwaniHIiO0g7_8ucxeHJRYiTv0jytxyPIghLB9e8fakOYI2vDN6Y_6uArZknVWp-wExhmkGF5tpyXt0R8kCNb5pfWEgcMOagRdlUYPC52NQHPhJXNVwNJb5roaIzJa_VX2J_VHt0A_Ne4-fgEbGXxz57OisGM2hnuu2nLoVEhKAtQJJO5m2HaCvulXNcqRimYl7hAV6GqJTD-S74nSv_fZG0qkEzrwU1nwXpSrCEIAdC4IB5xzjFdtbRBGvyxkmMZmuKzz9XtgG06M3J5GEE-Rf9GwlmspZZeZtXFDLWDbvfFjYqrxV1YplREIPs7pANxBQERhRdlN2Bm8jJx2h-Mx0z8yvwgcpYwWp0ngufDP6JeQJ9BAjDby8PJyaJub1X_Qwv46Zn9uMw8f_9NQPAVZL3-jC_FJpuJ9-HrS7p-2pRKGbzRAvAOc99LEZnWEeq80vYgmpAB-maKHGlr9YonEgxP3FIGL1qGJ0fs1SSLWUCXctGi0a0AMdRhGbSN0nSnQYNfQ3IFDDAq407HZyNPQYE_Rf8H-8wPbMCGDNh62TSC4bORhcRSMDrbwhS9-iHU1qG3NRngxvvS-Jq9SlLmAW1kVKFzYshrKepFkWNWnsoB_rovbC3384g=s96-c', NULL, NULL, NULL, NULL, 'KYrddM8sz6FFMzPXAzGg2OqpYxf2A7d2hUX4sfFJh065H7IZRSGNddAssNoX', NULL, 0, NULL, '2021-08-16 09:47:09', '2021-08-17 09:23:05'),
 (43, 'meoem2712@gmail.com', 'Nghia Le', 'https://lh3.googleusercontent.com/a-/AOh14GgKCO2oA4Zqkfb7UIvuQPq23m7MV0nC8-T1TfnY=s96-c', NULL, NULL, NULL, NULL, 'ViNbyv6KRPoAu0yEPOoxlFmSQp02P3ewdstXc7y3xke4g092io28NonfApxN', 1, NULL, NULL, '2021-08-17 14:06:09', '2021-08-17 14:35:29'),
 (45, 'nguyenhieutrung0412@gmail.com', 'Nguyễn Trung', 'https://lh3.googleusercontent.com/a/AATXAJz_F_sWCtkCPvpEtQwDBkBOcPY6djwqn-gLKy6c=s96-c', NULL, NULL, NULL, NULL, 'tQtBVHZykpXsiq8AGnRmQvh9LhGmB6ArQ1e1qdrncmGYcdugIFCUL2GZ873x', 1, 0, NULL, '2021-08-26 20:10:57', '2021-08-26 20:10:57'),
@@ -2043,9 +2053,9 @@ CREATE TABLE IF NOT EXISTS `la_user_course` (
 --
 
 INSERT INTO `la_user_course` (`id`, `course_id`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 41, 1, '2022-02-26 09:28:33', '2022-02-26 09:28:33'),
-(2, 2, 1, 1, '2022-02-26 09:30:58', '2022-02-26 09:30:58'),
-(3, 3, 1, 1, '2022-02-28 07:59:09', '2022-02-28 07:59:09');
+(1, 1, 1, 1, '2022-02-26 09:28:33', '2022-02-26 09:28:33'),
+(2, 2, 2, 1, '2022-03-02 17:28:17', '2022-03-02 17:28:17'),
+(3, 3, 41, 1, '2022-02-28 07:59:09', '2022-02-28 07:59:09');
 
 -- --------------------------------------------------------
 
@@ -2063,7 +2073,7 @@ CREATE TABLE IF NOT EXISTS `la_video_course` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `la_video_course`
@@ -2081,14 +2091,45 @@ INSERT INTO `la_video_course` (`id`, `id_course`, `name`, `id_video`, `status`, 
 (9, 2, 'Khai báo biến', 'CLbx37dqYEI', 1, '2022-02-26 09:43:35', '2022-02-26 09:43:35'),
 (10, 2, 'Comments', 'xRpXBEq6TOY', 1, '2022-02-26 09:44:49', '2022-02-26 09:44:49'),
 (11, 2, 'Một số hàm built-in', 'rSV33HGotgE', 1, '2022-02-26 09:45:15', '2022-02-26 09:45:15'),
-(12, 3, '- Giới thiệu kỹ thuật điện - Điện trở, định luật Ohm', 'zh3d93SW1Gc', 1, '2022-02-28 07:20:28', '2022-02-28 07:20:28'),
+(12, 3, 'Giới thiệu kỹ thuật điện - Điện trở, định luật Ohm', 'zh3d93SW1Gc', 1, '2022-02-28 07:20:28', '2022-02-28 07:20:28'),
 (13, 3, 'Open circuit and short circuit', 'pWBohyjImVU', 1, '2022-02-28 07:27:50', '2022-02-28 07:27:50'),
 (14, 3, 'Khái niệm cơ bản về điện - Điện thế', 'Ap2Lbwe7c_c', 1, '2022-02-28 07:29:03', '2022-02-28 07:29:03'),
 (15, 3, 'Mạch phân áp', '7uX1FJepXgU', 1, '2022-02-28 07:29:42', '2022-02-28 07:29:42'),
 (16, 3, 'Định luật Kirchhoff 1 và Kirchhoff 2', '15DsdCppOsU', 1, '2022-02-28 07:30:36', '2022-02-28 07:30:36'),
 (17, 3, 'Circuit analysis methods based on KCL and KVL', 'AfICx98uU00', 1, '2022-02-28 07:31:32', '2022-02-28 07:31:32'),
 (18, 3, 'Thévenin and Norton theorem', 'tJRyuPamVM8', 1, '2022-02-28 07:32:11', '2022-02-28 07:32:11'),
-(19, 3, 'Star Delta transformation', '7kDLW-fYAIw', 1, '2022-02-28 07:32:44', '2022-02-28 07:32:44');
+(19, 3, 'Star Delta transformation', '7kDLW-fYAIw', 1, '2022-02-28 07:32:44', '2022-02-28 07:32:44'),
+(20, 4, 'Bí Mật Forex #77 | 6 Bước Hướng Dẫn Người Mới Tham Gia Forex - mForex', 'BVDyncLJ-6o', 1, '2022-03-04 09:50:37', '2022-03-04 09:50:37'),
+(21, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )', 'TaiZS8-i6L0', 1, '2022-03-04 09:54:00', '2022-03-04 09:54:00'),
+(22, 6, 'CHIA SẺ KINH NGHIỆM ĐẦU TƯ CRYPTO CHO NGƯỜI MỚI BẮT ĐẦU - HOÀNG MINH THIỆN', 'ge-ZBklOHjw', 1, '2022-03-04 09:55:07', '2022-03-04 09:55:07'),
+(23, 4, 'Tâm sự Trader | Mình Đã Sai Khi Bỏ Việc Làm Trader - mForex\r\n', 'FlG3yAYHXX0', 1, '2022-03-04 09:58:59', '2022-03-04 09:58:59'),
+(24, 4, 'Tâm sự Trader | Trader Việt Là Những Kẻ Ích Kỷ & Keo Kiệt - mForex\r\n', 'K9AJ7OwHzXQ', 1, '2022-03-04 10:02:43', '2022-03-04 10:02:43'),
+(25, 4, 'Tâm sự Trader | Để Không Cháy Tài Khoản, Hãy Nhớ 4 Điều Này - mForex\r\n', 'YnxGcVnQlfI', 1, '2022-03-04 10:03:54', '2022-03-04 10:03:54'),
+(26, 4, 'Tâm sự Trader | Kiếm Được Nhiều Tiền Hay Trở Thành Trader Thực Thụ - mForex\r\n', 'yb8k5nlR6s0', 1, '2022-03-04 10:05:08', '2022-03-04 10:05:08'),
+(27, 4, 'Tâm sự Trader | Giao Dịch Thế Nào Với Tài Khoản Nhỏ? - mForex\r\n', 'Zxt2CLPYAuI', 1, '2022-03-04 10:06:12', '2022-03-04 10:06:12'),
+(28, 4, 'Tâm sự Trader | Chơi Forex Có Nhanh Giàu? - mForex\r\n', 'U03K2qBIKKM', 1, '2022-03-04 10:07:26', '2022-03-04 10:07:26'),
+(29, 4, '5 Điều \"TỐI KỴ\" Trader Phải Biết Trước Khi Tham Gia Forex - Tâm sự Trader\r\n', 'gcvWaoSTwz0', 1, '2022-03-04 10:08:22', '2022-03-04 10:08:22'),
+(30, 4, '4 Sai Lầm \"NGHIÊM TRỌNG\" Của Trader. Lời Tri Ân Từ mForex - Tâm Sự Trader\r\n', 'VsnFMKx3QjA', 1, '2022-03-04 10:09:28', '2022-03-04 10:09:28'),
+(31, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )\r\n', 'TaiZS8-i6L0', 1, '2022-03-04 10:10:43', '2022-03-04 10:10:43'),
+(32, 5, 'P2: Các khái niệm | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'qyLOuaCveK0', 1, '2022-03-04 10:11:31', '2022-03-04 10:11:31'),
+(33, 5, 'P3: Chỉ số tài chính cơ bản | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'gD0r43wbjnE', 1, '2022-03-04 10:12:27', '2022-03-04 10:12:27'),
+(34, 5, 'P4: Các loại cổ phiếu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'qiRNtNvWPY4', 1, '2022-03-04 10:13:19', '2022-03-04 10:13:19'),
+(35, 5, 'P5: 5 LỢI THẾ CẠNH TRANH | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'nFD3tXtRpVA', 1, '2022-03-04 10:14:21', '2022-03-04 10:14:21'),
+(36, 5, 'P6 : CHỨNG KHOÁN A BỜ CỜ: ĐƯỜNG CONG LỢI SUẤT ĐẢO NGƯỢC LÀ GÌ? KHỦNG HOẢNG KINH TẾ HAY KHÔNG?\r\n', 'NKm6UtxWWUc', 1, '2022-03-04 10:15:02', '2022-03-04 10:15:02'),
+(37, 5, 'P7: TẠI SAO FED – CỤC DỰ TRỮ LIÊN BANG – LẠI LÀ “NHÀ CÁI” SỐ 1 THẾ GIỚI? | HƯỚNG DẪN ĐẦU TƯ A-BỜ-CỜ\r\n', 'IVhlYPO0ae4', 1, '2022-03-04 10:15:45', '2022-03-04 10:15:45'),
+(38, 5, 'P8: THỰC HÀNH CỔ PHIẾU 4M & CANSLIM | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'b4BJgT9o_tc', 1, '2022-03-04 10:16:32', '2022-03-04 10:16:32'),
+(39, 5, 'P9: NHẬN DIỆN CÁC CÔNG TY LỪA ĐẢO | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 't19lmKjvir0', 1, '2022-03-04 10:17:08', '2022-03-04 10:17:08'),
+(40, 5, 'P10: 6 LOẠI HÌNH DOANH NGHIỆP ĐẦU TƯ | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'F9jnuEGA7V4', 1, '2022-03-04 10:17:59', '2022-03-04 10:17:59'),
+(41, 6, '1- Giới Thiệu Về Thị Trường Cryptocurrency', 'nD3-NsRz86g', 1, '2022-03-04 10:30:29', '2022-03-04 10:30:29'),
+(42, 6, '2- Công Nghệ Blockchain, Tiền Thuật Toán Bitcoin là gì?\r\n', '5hlE5HNwNz0', 1, '2022-03-04 10:34:47', '2022-03-04 10:34:47'),
+(43, 6, '3- Có Nên Đầu Tư Vào Tiền CryptoCurrency Hay Không?\r\n', 'G_a0Ao591QI', 1, '2022-03-04 10:35:47', '2022-03-04 10:35:47'),
+(44, 6, '4- Bước Đầu Tiên Khi Tham Gia Vào Thị Trường, Tạo Tài Khoản…\r\n', 'kqVTIT4_Itc', 1, '2022-03-04 10:36:16', '2022-03-04 10:36:16'),
+(45, 6, '5- Các Kiểu Đầu Tư Ở Việt Nam\r\n', 'B_yMMGlh-D8', 1, '2022-03-04 10:36:57', '2022-03-04 10:36:57'),
+(46, 6, '6- Các Lối Chơi Thường Thấy, Bạn Nên Chơi Theo Lối Chơi Nào?\r\n', 'JsQyxece55E', 1, '2022-03-04 10:38:07', '2022-03-04 10:38:07'),
+(47, 6, '7- Cách Để Lựa Chọn Một Đồng Coin Để Đầu Tư Sinh Lãi\r\n', 'hIXimbnos88', 1, '2022-03-04 10:38:58', '2022-03-04 10:38:58'),
+(48, 6, '8- Tìm Thông Tin và Phân Tích Thông Tin Của Coin\r\n', 'SEdUlw4SmTI', 1, '2022-03-04 10:39:34', '2022-03-04 10:39:34'),
+(49, 6, '9- Phân Tích Kỹ Thuật Có Nên Học và Khó Dùng Không\r\n', '80EpEU_4HG8', 1, '2022-03-04 10:40:10', '2022-03-04 10:40:10'),
+(50, 6, '10- Các Lỗi Sai Thường Gặp Khi Tham Gia Đầu Tư\r\n', 'Ems-73Q-ON0', 1, '2022-03-04 10:40:47', '2022-03-04 10:40:47');
 
 -- --------------------------------------------------------
 
@@ -2224,8 +2265,8 @@ CREATE TABLE IF NOT EXISTS `wp_options` (
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://localhost/', 'yes'),
-(2, 'home', 'http://localhost/', 'yes'),
+(1, 'siteurl', 'a', 'yes'),
+(2, 'home', 'a', 'yes'),
 (3, 'blogname', 'Admin', 'yes'),
 (4, 'blogdescription', 'Just another WordPress site', 'yes'),
 (5, 'users_can_register', '0', 'yes'),

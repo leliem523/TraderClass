@@ -25,12 +25,17 @@ class Teacher extends Controller
         ->get();
         
         $course = DB::table('course')
-        ->select('teachers.fullname', 'teachers.position','teachers.id', 'course.photo','course.course_category_id','course.video_id','course.created_at','course.updated_at','course.name')
-        ->join('teachers','teachers.id','=','course.teacher_id')
-        ->join('user_course', 'user_course.course_id', '=', 'course.id')
-        ->where('teachers.id', $id)
-        ->where('user_course.user_id', '<>', Auth::id())
-        ->first();
+                ->select('teachers.fullname', 'teachers.position','teachers.id', 'course.photo','course.course_category_id','course.video_id','course.created_at','course.updated_at','course.name')
+                ->join('teachers','teachers.id','=','course.teacher_id')
+                ->where('teachers.id', $id)
+                ->whereNotExists(function ($query)
+                {
+                    $query->select(DB::raw(1))
+                    ->from('user_course')
+                    ->whereColumn('user_course.course_id', 'course.id')
+                    ->where('user_course.user_id', Auth::id());
+                })
+                ->first();
 
         if(!isset($course)) {
             return back();
