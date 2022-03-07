@@ -15,7 +15,7 @@ use function PHPUnit\Framework\isNull;
 
 class AllClass extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $user = auth::user();
         $data = [];
@@ -66,7 +66,7 @@ class AllClass extends Controller
                      ->whereColumn('user_course.course_id', 'course.id');
                 })
                 ->where('user_course.user_id', '<>', Auth::id())
-                ->orderBy('course.id', 'asc')
+                ->groupBy()
                 ->paginate(12);
             }
             else {
@@ -144,9 +144,7 @@ class AllClass extends Controller
     public function allClassByTeacherId($teacher_id)
     {
         $user = auth::user();
-
         $teacher_id = explode('-', $teacher_id)[count(explode('-', $teacher_id)) - 1];
-
         if(Auth::check()) {
             if(isset($request['teacher'])) {
                 $request['teacher'] = explode('-', $request['teacher'])[count(explode('-', $request['teacher'])) - 1];

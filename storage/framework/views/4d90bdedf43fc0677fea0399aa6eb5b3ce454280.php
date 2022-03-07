@@ -14,8 +14,8 @@
                 <div class="col-md-4">
                     <div class="sort">
                         <p style="color: white;">Sorted by:</p>
-                        <button>Most Popular</button>
-                        <button>Just Added</button>
+                        <button onclick="window.location='?mostPopular'">Most Popular</button>
+                        <button onclick="window.location='?justAdded'">Just Added</button>
                     </div>
                 </div>
                 <div class="col-md"></div>
