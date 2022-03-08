@@ -71,7 +71,7 @@ use Illuminate\Support\Facades\DB;
                         <p class="class_name">{{$value->position}}</p>
                         <button><a href="/all-class/{{Str::slug($value->fullname.'-'.$value->id)}}"><p><i class="bi bi-play-fill"></i>&nbsp; Watch now</p></a></button>
                     </div>
-                    <img src="/public/upload/images/teachers/thumb/{{$value->photo}}" alt="" />
+                    <img src="{{$value->photo}}" alt="" />
                 </div>
                 @endforeach
             </div>

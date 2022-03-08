@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\DB;
                                     <tbody>
                                         @foreach($data as $value)
                                         <tr>
-                                            <td class="table-user"><img src='/public/upload/images/users/large/{{$value->photo}}' class="rounded-circle"/></td>
+                                            <td class="table-user"><img src='{{$value->photo}}' class="rounded-circle"/></td>
                                             <td>{{$value->fullname}}</td>
                                             <td>{{$value->email}}</td>
                                             @if ($value->gender == 1)

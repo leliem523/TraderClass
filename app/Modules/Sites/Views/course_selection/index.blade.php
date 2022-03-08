@@ -11,7 +11,7 @@
                             <p id="yo">Your order</p>
                             <div class="order">
                                 <div class="un">
-                                    <img src="/public/upload/images/course/thumb/{{ $course->photo }}" alt="">
+                                    <img src="{{ $course->photo }}" alt="">
                                     <div id="yo2">
                                         <p>{{ $course->name }}</p>
                                         <p id="cl_name">{{ $course->fullname }}</p>

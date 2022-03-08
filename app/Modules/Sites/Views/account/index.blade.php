@@ -17,7 +17,7 @@
                                 <img src="{{ $user->photo }}" class="rounded-circle" alt="">
                             @elseif ($user->photo == NULL)
                             @else
-                                <img src="public/upload/images/users/thumb/{{ $user->photo }}" class="rounded-circle" alt="">
+                                <img src="{{ $user->photo }}" class="rounded-circle" alt="">
                             @endif
                        @else
                              <img src="public/upload/images/users/thumb/hidden-human.png" class="rounded-circle" alt="" style="width: 100px; height: 100px;"> 

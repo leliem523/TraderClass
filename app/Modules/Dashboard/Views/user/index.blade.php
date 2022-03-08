@@ -58,7 +58,7 @@
                                                 @if (@getimagesize($value->photo))
                                                 <img src="{{$value->photo}}" class="rounded-circle"/>
                                                 @else
-                                                <img src="/public/upload/images/users/thumb/{{$value->photo}}" class="rounded-circle"/>
+                                                <img src="{{$value->photo}}" class="rounded-circle"/>
                                                 @endif
                                             </td>
                                             @else
@@ -116,7 +116,7 @@
                 <div class="pagin mt-2">
                     <div class="row">
                         <div class="col">
-                            <?php echo $data->render(); ?>
+                            <?php echo $data->onEachSide(5)->links("pagination::bootstrap-4"); ?>
                         </div>
                     </div>
                 </div>

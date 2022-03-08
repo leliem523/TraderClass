@@ -35,7 +35,7 @@
                                     <tbody>
                                         @foreach($data as $value)
                                         <tr>
-                                            <td class="table-user"><img src='/public/upload/images/blog/large/{{$value->photo}}' class="rounded-circle"/></td>
+                                            <td class="table-user"><img src='{{$value->photo}}' class="rounded-circle"/></td>
                                             <td><a href="/{{Helper_backend::get_patch()}}/{{Helper_backend::get_patch(2)}}/edit/{{$value->id}}" title="chỉnh sửa {{$value->title}}">{{$value->title}}</a></td>
                                             <td>{{$value->alias}}</td>
                                             <td>

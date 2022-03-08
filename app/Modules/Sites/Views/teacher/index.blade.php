@@ -4,7 +4,7 @@
 @include('Sites::inc.maketting')
     <div class="main">
         <div class="img">
-            <img src="/public/upload/images/course/thumb/{{$course->photo}}" width="100%" alt="">
+            <img src="{{$course->photo}}" width="100%" alt="">
             <div class="text-center">
                 <div style="display: grid;"><span id="a">{{ $course->fullname }}</span> <span id="b">-</span> <span id="c">{{ $course->position }}</span></div>
                 <div class="info">

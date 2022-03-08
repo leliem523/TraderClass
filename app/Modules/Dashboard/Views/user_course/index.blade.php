@@ -60,7 +60,7 @@
                                                 @if (@getimagesize($value->photo))
                                                 <img src="{{$value->photo}}" class="rounded-circle"/>
                                                 @else
-                                                <img src="/public/upload/images/users/thumb/{{$value->photo}}" class="rounded-circle"/>
+                                                <img src="{{$value->photo}}" class="rounded-circle"/>
                                                 @endif
                                             </td>
                                             <td>{{$value->fullname}}</td>

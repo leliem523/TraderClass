@@ -61,7 +61,7 @@
                                         @if ($value->status != 2)
                                         <tr>
                                             <th scope="row"><input type="checkbox" name="check[]" value="{{$value->id}}" /></th>
-                                            <td class="table-user"><img src='/public/upload/images/crypto/thumb/{{$value->image}}' class="rounded-circle"/></td>
+                                            <td class="table-user"><img src='{{$value->image}}' class="rounded-circle"/></td>
                                             <td><a style="text-transform: capitalize;" href="/{{Helper_Dashboard::get_patch()}}/{{Helper_Dashboard::get_patch(2)}}/edit/{{$value->id}}" title="chỉnh sửa {{$value->name}}">{{$value->name}}</a></td> 
                                             <td>{{$value->symbol}}</td>
                                             <td>{{$value->address}}</td>

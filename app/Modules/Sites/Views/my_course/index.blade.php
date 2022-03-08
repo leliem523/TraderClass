@@ -29,7 +29,7 @@
                              onclick="return window.location = 'course/{{ Str::slug($value->name.'-'.$value->id) }}'"
                              style="cursor: pointer">
                             @if (isset($value->photo))
-                                <img src="/public/upload/images/course/thumb/{{ $value->photo }}" alt="">
+                                <img src="{{ $value->photo }}" alt="">
                             @else
                                 <img src="/public/upload/images/course/thumb/hidden-human.png" alt="">
                             @endif

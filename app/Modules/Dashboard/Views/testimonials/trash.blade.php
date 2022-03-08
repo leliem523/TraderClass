@@ -34,7 +34,7 @@
                                     <tbody>
                                         @foreach($data as $value)
                                         <tr>
-                                            <td class="table-user"><img src='/public/upload/images/testimonials/large/{{$value->photo}}' class="rounded-circle"/></td>
+                                            <td class="table-user"><img src='{{$value->photo}}' class="rounded-circle"/></td>
                                             <td><a href="/{{Helper_Dashboard::get_patch()}}/{{Helper_Dashboard::get_patch(2)}}/edit/{{$value->id}}" title="chỉnh sửa nội dung">{!! $value->description !!}</a></td>
                                             <td>
                                                 @if($value->status==2)

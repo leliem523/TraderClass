@@ -46,7 +46,7 @@
                 <div class="col-md-4">
                     <a href="/teacher/{{Str::slug($value->fullname.'-'.$value->id)}}">
                         <div class="img">
-                            <img src="/public/upload/images/course/thumb/{{$value->photo}}" alt="">
+                            <img src="{{$value->photo}}" alt="">
                         </div>
                         <div class="nameclass">
                             <p>{{$value->name}}</p>

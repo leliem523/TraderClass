@@ -59,7 +59,7 @@
                                         @foreach($data as $value)
                                         <tr>
                                             <th scope="row"><input type="checkbox" name="check[]" value="{{$value->id}}" /></th>
-                                            <td class="table-user"><img src='/public/upload/images/blog/thumb/{{$value->photo}}' class="rounded-circle"/></td>
+                                            <td class="table-user"><img src='{{$value->photo}}' class="rounded-circle"/></td>
                                             <td><a href="/{{Helper_Dashboard::get_patch()}}/{{Helper_Dashboard::get_patch(2)}}/edit/{{$value->id}}" title="chỉnh sửa {{$value->title}}">{{$value->title}}</a></td>
                                             <td>{{$value->alias}}</td>
                                             <td>
