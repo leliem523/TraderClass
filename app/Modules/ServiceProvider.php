@@ -7,6 +7,7 @@ use App\Modules\Dashboard\Models\Config_Model;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider as Service_Provider;
 
 class ServiceProvider extends Service_Provider

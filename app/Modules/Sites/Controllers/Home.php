@@ -15,6 +15,7 @@ use App\Modules\Sites\Models\Subcribe_Model;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class Home extends Controller
 {

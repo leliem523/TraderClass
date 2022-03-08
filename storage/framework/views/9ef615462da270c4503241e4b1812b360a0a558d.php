@@ -57,8 +57,7 @@
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            <?php echo e($data->onEachSide(1)->links("pagination::bootstrap-4")); ?>
-
+            
             
         </div>
     </div>
