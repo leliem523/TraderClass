@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,19 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
-
-Route::get('/course', function ()
-{
-    $data = DB::table('course')
-            ->first();
-    return response()->json($data);
-});
-
-Route::get('/teacher', function ()
-{
-    $data = DB::table('teachers')
-            ->get();
-    return response()->json($data);
 });
 

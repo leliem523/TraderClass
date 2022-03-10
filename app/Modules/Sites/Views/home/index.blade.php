@@ -265,7 +265,7 @@ use Illuminate\Support\Facades\DB;
                     <a href="{{route('sites.find-my-class.index')}}" class="btn btn_continute" title="Continute">CONTINUE</a>
                 </div>
                 <div class="right_content">
-                    <img src="{{ '/public/upload/images/sites_home/thumb/' . $config_banner_bottom_image->value }}" alt="" />
+                    <img src="{{ $config_banner_bottom_image->value }}" alt="" />
                 </div>
             </div>
         </div>
@@ -280,7 +280,7 @@ use Illuminate\Support\Facades\DB;
                             <div class="desc">
                                 <p>{!! $value->description !!}</p>
                             </div>
-                            <img src="{{ '/public/upload/images/testimonials/thumb/' . $value->photo }}" alt="" />
+                            <img src="{{ $value->photo }}" alt="" />
                         </div>
                     @endforeach
                 </div>

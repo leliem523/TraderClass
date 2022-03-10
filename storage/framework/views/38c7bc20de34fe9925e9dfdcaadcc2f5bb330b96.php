@@ -267,7 +267,7 @@ use Illuminate\Support\Facades\DB;
                     <a href="<?php echo e(route('sites.find-my-class.index')); ?>" class="btn btn_continute" title="Continute">CONTINUE</a>
                 </div>
                 <div class="right_content">
-                    <img src="<?php echo e('/public/upload/images/sites_home/thumb/' . $config_banner_bottom_image->value); ?>" alt="" />
+                    <img src="<?php echo e($config_banner_bottom_image->value); ?>" alt="" />
                 </div>
             </div>
         </div>
@@ -282,7 +282,7 @@ use Illuminate\Support\Facades\DB;
                             <div class="desc">
                                 <p><?php echo $value->description; ?></p>
                             </div>
-                            <img src="<?php echo e('/public/upload/images/testimonials/thumb/' . $value->photo); ?>" alt="" />
+                            <img src="<?php echo e($value->photo); ?>" alt="" />
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
