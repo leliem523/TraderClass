@@ -13,10 +13,11 @@ use App\Modules\Sites\Models\Contact_Model;
 ?>
 <div class="footer">
     <div class="text-lg-start text-muted">
+        <div class="container">
         <section class="" style="
         padding-top: 5px;
         background-color: #111319;">
-            <div class="container text-md-start mt-5">
+            <div class="text-md-start mt-5">
                 <div class="row mt-3">
                     <div class="col-md-3 ">
                         <h6 class="text-uppercase fw-bold mb-4">
@@ -70,7 +71,8 @@ use App\Modules\Sites\Models\Contact_Model;
                             <a href="/policy/terms-of-service.html" class="text-reset">Terms</a>
                         </p>
                         <p>
-                            <a href="/policy/return-and-refund-policy.html" class="text-reset">Return & Refund Policy</a>
+                            <a href="/policy/return-and-refund-policy.html" class="text-reset">Return & Refund
+                                Policy</a>
                         </p>
                     </div>
                     <div class="col-md-3 ">
@@ -82,26 +84,30 @@ use App\Modules\Sites\Models\Contact_Model;
                             <i class="fab fa-apple" style="
                             margin-left: -20px;">
                             </i>
-                            <p>Available on the <br/> <span class="big-txt">App Store</span></p>
+                            <p>Available on the <br /> <span class="big-txt">App Store</span></p>
                         </a>
 
                         <a class="app-btn blu flex vert" href="{{$config_chplay_link->value}}">
                             <i style="
                             margin-bottom: 3px;
                         "><img src="/public/sites/images/CHPlay.png" alt=""></i>
-                            <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
+                            <p>Get it on <br /> <span class="big-txt">Google Play</span></p>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="container" style="padding-bottom: 50px;">
+            <div class="" style="padding-bottom: 50px;">
                 <div class="row">
                     <div class="col-md-6">
-                        <button class="lang"><i class="bi bi-globe" style="margin-left: -10px;margin-right: 10px;"></i> ENGLISH <i class="bi bi-chevron-down" style="margin-left: 10px;margin-right: -10px;"></i></button>
+                        <button class="lang"><i class="bi bi-globe" style="margin-left: -10px;margin-right: 10px;"></i>
+                            ENGLISH <i class="bi bi-chevron-down"
+                                style="margin-left: 10px;margin-right: -10px;"></i></button>
                     </div>
                 </div>
                 <p class="trader"> © 2021 TraderClass</p>
             </div>
         </section>
+        </div>
+        
     </div>
 </div>

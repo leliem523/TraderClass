@@ -156,7 +156,7 @@ p a {
 
 .footer {
     background-color: #111319;
-    height: 330px;
+    /* height: 330px; */
     bottom: 0;
     width: 100%;
 }
@@ -334,6 +334,7 @@ a:link {
     width: 100%;
     max-width: 35%;
     justify-content: flex-end;
+    
 }
 
 .header .header_bottom .mai .menu ul {
@@ -475,7 +476,8 @@ a:link {
 
 @media screen and (max-width: 1536px) {}
 
-@media screen and (max-width: 1440px) {}
+@media screen and (max-width: 1440px) {
+}
 
 @media screen and (max-width: 1366px) {}
 
@@ -522,6 +524,18 @@ a:link {
 /*Ipad dọc(768 x 1024)*/
 
 @media screen and (max-width: 768px) {
+    .footer{
+        text-align: center;
+    }
+
+    .IconConnec{
+        justify-content: center;
+    }
+
+    .app-btn{
+        margin: 20px auto;
+    }
+
     .lang {
         width: 45%;
         margin-left: 0px;
@@ -594,10 +608,15 @@ a:link {
 }
 
 @media screen and (max-width: 375px) {
+    
     .lang {
         width: 47%;
         margin-left: 0px;
     }
+}
+
+@media screen and (max-width: 376px){
+   
 }
 
 
@@ -646,4 +665,64 @@ a:link {
     .black button {
         margin-left: 0%;
     }
+}
+header .header_bottom .main .menu ul li a ul li {
+    color: red;
+    text-decoration: none;
+}
+
+/* .header-dropdown ul li {
+    position: absolute;
+    display: block;
+} */
+.header-menu ul li:first-child{
+    position: relative;
+}
+.header-menu .parent-drop{
+    opacity: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    min-width: 180px;
+    border-radius: 16px;
+    border: 1px solid rgb(32, 32, 32);
+}
+
+.header-menu .parent-drop div
+{
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    border-bottom: 1px solid rgb(109, 109, 109);
+}
+
+.header-menu .parent-drop div:last-child{
+    border-bottom: none;
+}
+
+.header-menu .parent-drop div a
+{
+    display: block;
+    width: 100%;
+    transition: transform .2s linear;
+}
+
+.header-menu .parent-drop div a:hover
+{
+    transform: translateX(7%);
+}
+
+.header-menu .drop-header:hover .parent-drop{
+    opacity: 1;
+    z-index: 1;
+    padding: 10px;
+    font-size: 17px;
+    background: #171921;
+}
+.header-menu .drop-header{
+    position: absolute;
+}
+.header-menu .drop-header li{
+    width: 100%;
+    border-top: 1px;
 }

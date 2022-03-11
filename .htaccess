@@ -18,4 +18,7 @@ RewriteRule ^[_0-9a-zA-Z-]+/(wp-(content|admin|includes).*) $1 [L]
 RewriteRule ^[_0-9a-zA-Z-]+/(.*\.php)$ $1 [L]
 RewriteRule . index.php [L]
 
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
 # END WordPress Multisite

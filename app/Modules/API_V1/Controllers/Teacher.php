@@ -5,9 +5,11 @@ namespace App\Modules\API_V1\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Teacher extends Controller
 {
+    use HasFactory;
     // Get all teachers
     public function getTeachers()
     {

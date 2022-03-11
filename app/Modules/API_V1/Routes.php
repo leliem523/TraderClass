@@ -1,6 +1,7 @@
 <?php
 //Sites routes
 
+use App\Modules\API_V1\Controllers\Authenticate;
 use App\Modules\API_V1\Controllers\Course;
 use App\Modules\API_V1\Controllers\Teacher;
 use Facade\FlareClient\View;
@@ -12,7 +13,18 @@ use Illuminate\Http\Request;
 Route::group(['module' => 'api', 'middleware' => 'api', 'namespace' => "App\Modules\API_V1\Controllers"], function () {
     Route::group(['prefix' => 'api'], function()
     {
+ 
+        Route::group(['middleware' => ['auth:sanctum']], function () {
+            Route::get('/my-course', [Course::class, 'courseByIdUser']);
+            Route::post('/logout', [Authenticate::class, 'logout']);
+        });
+        
+        // Auth api 
+        Route::post('/register', [Authenticate::class, 'register']);
+        Route::post('/login', [Authenticate::class, 'login']);
+
         // Course api
+
         Route::get('/course', [Course::class, 'getCourses']);
 
         Route::get('/course/{id}', [Course::class, 'getCourse']);

@@ -7,9 +7,11 @@ use AWS\CRT\HTTP\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Controller
 {
+    use HasFactory;
     // Get all courses
     public function getCourses()
     {
@@ -108,6 +110,26 @@ class Course extends Controller
             'status' => true,
             'msg' => 'Search data courses successfully !!',
             'data' =>  $arr_data
+        ]);
+    }
+
+    public function courseByIdUser()
+    {
+        $data_course = DB::table('course')
+                        ->join('user_course', 'user_course.course_id', 'course.id')
+                        ->where('user_course.user_id', auth()->id())
+                        ->paginate();
+
+        $filter_data_course = array();
+
+        foreach ($data_course as $data) {
+            array_push($filter_data_course, $data);
+        }
+
+        return Response()->json([
+            'status' => true,
+            'msg' => 'Get data by user successfully !!',
+            'data' => $filter_data_course,
         ]);
     }
 
