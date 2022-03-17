@@ -73,7 +73,29 @@
 .teacher .container .row .col-md-4 {
     padding-bottom: 30px;
 }
-
+/* .teacher{
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    background-color: #e6e6e6;
+}
+.container .row .col-md-4{
+    width: 200px;
+    height: 220px;
+    display: inline-block;
+    padding: 5px;
+    margin-left: 10px;
+    vertical-align:top;
+}
+.teacher .container .row .col-md-4 .img{
+    width: 200px;
+    height: 150px;
+    background-color: #3e3e3e;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+} */
 .button {
     background-color: white;
     border: 1px solid #EF8D21;

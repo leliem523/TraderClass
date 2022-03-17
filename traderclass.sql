@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th3 08, 2022 lúc 10:14 AM
--- Phiên bản máy phục vụ: 5.7.31
--- Phiên bản PHP: 7.4.9
+-- Host: 127.0.0.1:3306
+-- Generation Time: Mar 17, 2022 at 02:04 AM
+-- Server version: 5.7.36
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `traderclass`
+-- Database: `traderclass`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_admins`
+-- Table structure for table `la_admins`
 --
 
 DROP TABLE IF EXISTS `la_admins`;
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `la_admins` (
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_admins`
+-- Dumping data for table `la_admins`
 --
 
 INSERT INTO `la_admins` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, `address`, `password`, `remember_token`, `status`, `type`, `created_at`, `updated_at`) VALUES
@@ -57,7 +57,7 @@ INSERT INTO `la_admins` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_admins_role`
+-- Table structure for table `la_admins_role`
 --
 
 DROP TABLE IF EXISTS `la_admins_role`;
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `la_admins_role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `la_admins_role`
+-- Dumping data for table `la_admins_role`
 --
 
 INSERT INTO `la_admins_role` (`id`, `admins_id`, `role_id`) VALUES
@@ -79,7 +79,7 @@ INSERT INTO `la_admins_role` (`id`, `admins_id`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_advertisement`
+-- Table structure for table `la_advertisement`
 --
 
 DROP TABLE IF EXISTS `la_advertisement`;
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `la_advertisement` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_blog`
+-- Table structure for table `la_blog`
 --
 
 DROP TABLE IF EXISTS `la_blog`;
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `la_blog` (
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_blog`
+-- Dumping data for table `la_blog`
 --
 
 INSERT INTO `la_blog` (`id`, `title`, `alias`, `blog_category_id`, `photo`, `excerpt`, `content`, `updated_at`, `created_at`, `status`, `meta_title`, `meta_keyword`, `meta_description`) VALUES
@@ -134,7 +134,7 @@ INSERT INTO `la_blog` (`id`, `title`, `alias`, `blog_category_id`, `photo`, `exc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_blog_category`
+-- Table structure for table `la_blog_category`
 --
 
 DROP TABLE IF EXISTS `la_blog_category`;
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `la_blog_category` (
 ) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_blog_category`
+-- Dumping data for table `la_blog_category`
 --
 
 INSERT INTO `la_blog_category` (`id`, `title`, `alias`, `parent_id`, `photo`, `icon`, `content`, `meta_title`, `meta_keyword`, `meta_description`, `status`, `created_at`, `updated_at`) VALUES
@@ -182,7 +182,7 @@ INSERT INTO `la_blog_category` (`id`, `title`, `alias`, `parent_id`, `photo`, `i
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_brand`
+-- Table structure for table `la_brand`
 --
 
 DROP TABLE IF EXISTS `la_brand`;
@@ -204,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `la_brand` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_brand`
+-- Dumping data for table `la_brand`
 --
 
 INSERT INTO `la_brand` (`id`, `title`, `alias`, `excerpt`, `photo`, `content`, `sort`, `updated_at`, `created_at`, `status`, `meta_title`, `meta_keyword`, `meta_description`) VALUES
@@ -213,7 +213,7 @@ INSERT INTO `la_brand` (`id`, `title`, `alias`, `excerpt`, `photo`, `content`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_city`
+-- Table structure for table `la_city`
 --
 
 DROP TABLE IF EXISTS `la_city`;
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `la_city` (
 ) ENGINE=InnoDB AUTO_INCREMENT=714 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Thành phố/quận/huyện' ROW_FORMAT=COMPACT;
 
 --
--- Đang đổ dữ liệu cho bảng `la_city`
+-- Dumping data for table `la_city`
 --
 
 INSERT INTO `la_city` (`id`, `region_id`, `title`, `updated_at`, `created_at`) VALUES
@@ -949,7 +949,7 @@ INSERT INTO `la_city` (`id`, `region_id`, `title`, `updated_at`, `created_at`) V
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_config`
+-- Table structure for table `la_config`
 --
 
 DROP TABLE IF EXISTS `la_config`;
@@ -962,7 +962,7 @@ CREATE TABLE IF NOT EXISTS `la_config` (
 ) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
--- Đang đổ dữ liệu cho bảng `la_config`
+-- Dumping data for table `la_config`
 --
 
 INSERT INTO `la_config` (`id`, `name`, `value`, `updated_at`) VALUES
@@ -1033,7 +1033,7 @@ INSERT INTO `la_config` (`id`, `name`, `value`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_contact`
+-- Table structure for table `la_contact`
 --
 
 DROP TABLE IF EXISTS `la_contact`;
@@ -1053,7 +1053,7 @@ CREATE TABLE IF NOT EXISTS `la_contact` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_contact`
+-- Dumping data for table `la_contact`
 --
 
 INSERT INTO `la_contact` (`id`, `name`, `phone`, `email`, `address`, `message`, `status`, `updated_at`, `created_at`, `founding_date`, `enterprise_code`) VALUES
@@ -1062,13 +1062,14 @@ INSERT INTO `la_contact` (`id`, `name`, `phone`, `email`, `address`, `message`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_course`
+-- Table structure for table `la_course`
 --
 
 DROP TABLE IF EXISTS `la_course`;
 CREATE TABLE IF NOT EXISTS `la_course` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
   `course_category_id` int(11) NOT NULL,
   `score` int(11) NOT NULL,
   `status` int(11) NOT NULL,
@@ -1081,21 +1082,21 @@ CREATE TABLE IF NOT EXISTS `la_course` (
 ) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_course`
+-- Dumping data for table `la_course`
 --
 
-INSERT INTO `la_course` (`id`, `name`, `course_category_id`, `score`, `status`, `created_at`, `updated_at`, `teacher_id`, `photo`, `video_id`) VALUES
-(3, 'Khóa học kĩ thuật điện - điện tử', 2, 50, 1, '2022-03-08 09:42:29', '2022-02-28 07:16:00', 3, 'https://traderclass.vn/public/upload/images/course/thumb/1-1630502009.png', 'zh3d93SW1Gc'),
-(2, 'Khóa học lập trình Javascript căn bản', 1, 50, 1, '2022-03-08 09:42:35', '2022-02-26 09:31:42', 2, 'https://traderclass.vn/public/upload/images/course/thumb/sddefault-6-1630549571.jpg', '0SJE9dYdpps'),
-(1, 'Khóa học lập trình Python cơ bản', 1, 50, 1, '2022-03-08 09:42:42', '2022-02-26 08:36:15', 1, 'https://traderclass.vn/public/upload/images/course/thumb/10-tieu-chi-can-quan-tam-khi-chon-mua-man-hinh-may-tinh-pc-8-1jpg-1629865462.jpg', 'NZj6LI5a9vc'),
-(4, 'Khóa học Forex', 3, 50, 1, '2022-03-08 09:42:48', '2022-03-04 02:38:43', 4, 'https://traderclass.vn/public/upload/images/course/thumb/forex-là-gì.jpg', 'BVDyncLJ-6o'),
-(5, 'Khóa học chứng khoáng', 4, 50, 1, '2022-03-08 09:42:53', '2022-03-04 02:44:29', 5, 'https://traderclass.vn/public/upload/images/course/thumb/Hay-tim-hieu-ve-Thi-truong-chung-khoan.jpg', 'TaiZS8-i6L0'),
-(6, 'Khóa học Crypto', 5, 50, 1, '2022-03-08 09:42:57', '2022-03-04 02:46:02', 6, 'https://traderclass.vn/public/upload/images/course/thumb/crypto-la-gi-1.jpg', 'ge-ZBklOHjw');
+INSERT INTO `la_course` (`id`, `name`, `description`, `course_category_id`, `score`, `status`, `created_at`, `updated_at`, `teacher_id`, `photo`, `video_id`) VALUES
+(3, 'Khóa học kĩ thuật điện - điện tử', NULL, 2, 50, 1, '2022-03-08 09:42:29', '2022-02-28 07:16:00', 3, 'https://traderclass.vn/public/upload/images/course/thumb/1-1630502009.png', 'zh3d93SW1Gc'),
+(2, 'Khóa học lập trình Javascript căn bản', NULL, 1, 50, 1, '2022-03-08 09:42:35', '2022-02-26 09:31:42', 2, 'https://traderclass.vn/public/upload/images/course/thumb/sddefault-6-1630549571.jpg', '0SJE9dYdpps'),
+(1, 'Khóa học lập trình Python cơ bản', '[Khóa học lập trình Python cơ bản] - Bài 1: Giới thiệu ngôn ngữ lập trình Python | HowKteam\n\nNếu các bạn thấy hay thì hãy đăng ký theo dõi kênh, like, share cho mọi người cùng tham gia nhé.\n\nMuốn ủng hộ mình các bạn có thể nhấn vào quảng cáo hiện lên và load xong để mình được ít tiền duy trì nhé.\nCảm ơn mọi người.', 1, 50, 1, '2022-03-12 01:27:41', '2022-02-26 08:36:15', 1, 'https://traderclass.vn/public/upload/images/course/thumb/10-tieu-chi-can-quan-tam-khi-chon-mua-man-hinh-may-tinh-pc-8-1jpg-1629865462.jpg', 'NZj6LI5a9vc'),
+(4, 'Khóa học Forex', NULL, 3, 50, 1, '2022-03-08 09:42:48', '2022-03-04 02:38:43', 4, 'https://traderclass.vn/public/upload/images/course/thumb/forex-là-gì.jpg', 'BVDyncLJ-6o'),
+(5, 'Khóa học chứng khoáng', NULL, 4, 50, 1, '2022-03-08 09:42:53', '2022-03-04 02:44:29', 5, 'https://traderclass.vn/public/upload/images/course/thumb/Hay-tim-hieu-ve-Thi-truong-chung-khoan.jpg', 'TaiZS8-i6L0'),
+(6, 'Khóa học Crypto', NULL, 5, 50, 1, '2022-03-08 09:42:57', '2022-03-04 02:46:02', 6, 'https://traderclass.vn/public/upload/images/course/thumb/crypto-la-gi-1.jpg', 'ge-ZBklOHjw');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_course_category`
+-- Table structure for table `la_course_category`
 --
 
 DROP TABLE IF EXISTS `la_course_category`;
@@ -1109,7 +1110,7 @@ CREATE TABLE IF NOT EXISTS `la_course_category` (
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_course_category`
+-- Dumping data for table `la_course_category`
 --
 
 INSERT INTO `la_course_category` (`id`, `title`, `created_at`, `updated_at`, `status`) VALUES
@@ -1122,7 +1123,7 @@ INSERT INTO `la_course_category` (`id`, `title`, `created_at`, `updated_at`, `st
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_crypto`
+-- Table structure for table `la_crypto`
 --
 
 DROP TABLE IF EXISTS `la_crypto`;
@@ -1139,7 +1140,7 @@ CREATE TABLE IF NOT EXISTS `la_crypto` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `la_crypto`
+-- Dumping data for table `la_crypto`
 --
 
 INSERT INTO `la_crypto` (`id`, `name`, `address`, `image`, `symbol`, `status`, `created_at`, `updated_at`) VALUES
@@ -1150,7 +1151,7 @@ INSERT INTO `la_crypto` (`id`, `name`, `address`, `image`, `symbol`, `status`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_faq`
+-- Table structure for table `la_faq`
 --
 
 DROP TABLE IF EXISTS `la_faq`;
@@ -1166,7 +1167,7 @@ CREATE TABLE IF NOT EXISTS `la_faq` (
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_faq`
+-- Dumping data for table `la_faq`
 --
 
 INSERT INTO `la_faq` (`id`, `title`, `content`, `type`, `status`, `created_at`, `updated_at`) VALUES
@@ -1178,7 +1179,7 @@ INSERT INTO `la_faq` (`id`, `title`, `content`, `type`, `status`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_migrations`
+-- Table structure for table `la_migrations`
 --
 
 DROP TABLE IF EXISTS `la_migrations`;
@@ -1192,7 +1193,7 @@ CREATE TABLE IF NOT EXISTS `la_migrations` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_orders`
+-- Table structure for table `la_orders`
 --
 
 DROP TABLE IF EXISTS `la_orders`;
@@ -1210,7 +1211,7 @@ CREATE TABLE IF NOT EXISTS `la_orders` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_orders_customer`
+-- Table structure for table `la_orders_customer`
 --
 
 DROP TABLE IF EXISTS `la_orders_customer`;
@@ -1234,7 +1235,7 @@ CREATE TABLE IF NOT EXISTS `la_orders_customer` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_orders_product`
+-- Table structure for table `la_orders_product`
 --
 
 DROP TABLE IF EXISTS `la_orders_product`;
@@ -1258,7 +1259,7 @@ CREATE TABLE IF NOT EXISTS `la_orders_product` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_payment_crypto`
+-- Table structure for table `la_payment_crypto`
 --
 
 DROP TABLE IF EXISTS `la_payment_crypto`;
@@ -1281,7 +1282,7 @@ CREATE TABLE IF NOT EXISTS `la_payment_crypto` (
 ) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `la_payment_crypto`
+-- Dumping data for table `la_payment_crypto`
 --
 
 INSERT INTO `la_payment_crypto` (`id`, `id_crypto`, `email`, `image_crypto`, `cryptocurrency_name`, `address`, `currency`, `amount`, `image_qr`, `symbol`, `link`, `status`, `created_at`, `updated_at`) VALUES
@@ -1316,7 +1317,7 @@ INSERT INTO `la_payment_crypto` (`id`, `id_crypto`, `email`, `image_crypto`, `cr
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_permission`
+-- Table structure for table `la_permission`
 --
 
 DROP TABLE IF EXISTS `la_permission`;
@@ -1328,7 +1329,7 @@ CREATE TABLE IF NOT EXISTS `la_permission` (
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='Resources - được phép làm gì( tương tác ui)';
 
 --
--- Đang đổ dữ liệu cho bảng `la_permission`
+-- Dumping data for table `la_permission`
 --
 
 INSERT INTO `la_permission` (`id`, `name`, `note`) VALUES
@@ -1353,7 +1354,29 @@ INSERT INTO `la_permission` (`id`, `name`, `note`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_policy`
+-- Table structure for table `la_personal_access_tokens`
+--
+
+DROP TABLE IF EXISTS `la_personal_access_tokens`;
+CREATE TABLE IF NOT EXISTS `la_personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(138) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(138) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `la_personal_access_tokens_token_unique` (`token`),
+  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `la_policy`
 --
 
 DROP TABLE IF EXISTS `la_policy`;
@@ -1368,7 +1391,7 @@ CREATE TABLE IF NOT EXISTS `la_policy` (
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_policy`
+-- Dumping data for table `la_policy`
 --
 
 INSERT INTO `la_policy` (`id`, `title`, `content`, `status`, `created_at`, `updated_at`) VALUES
@@ -1381,7 +1404,7 @@ INSERT INTO `la_policy` (`id`, `title`, `content`, `status`, `created_at`, `upda
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_product`
+-- Table structure for table `la_product`
 --
 
 DROP TABLE IF EXISTS `la_product`;
@@ -1406,7 +1429,7 @@ CREATE TABLE IF NOT EXISTS `la_product` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_product`
+-- Dumping data for table `la_product`
 --
 
 INSERT INTO `la_product` (`id`, `product_category_id`, `title`, `alias`, `excerpt`, `content`, `photo`, `sku`, `price`, `price_sale`, `meta_title`, `meta_keyword`, `meta_description`, `status`, `created_at`, `updated_at`) VALUES
@@ -1424,7 +1447,7 @@ INSERT INTO `la_product` (`id`, `product_category_id`, `title`, `alias`, `excerp
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_product_category`
+-- Table structure for table `la_product_category`
 --
 
 DROP TABLE IF EXISTS `la_product_category`;
@@ -1446,7 +1469,7 @@ CREATE TABLE IF NOT EXISTS `la_product_category` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_product_category`
+-- Dumping data for table `la_product_category`
 --
 
 INSERT INTO `la_product_category` (`id`, `title`, `alias`, `parent_id`, `photo`, `icon`, `content`, `meta_title`, `meta_keyword`, `meta_description`, `status`, `created_at`, `updated_at`) VALUES
@@ -1460,7 +1483,7 @@ INSERT INTO `la_product_category` (`id`, `title`, `alias`, `parent_id`, `photo`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_product_image`
+-- Table structure for table `la_product_image`
 --
 
 DROP TABLE IF EXISTS `la_product_image`;
@@ -1477,7 +1500,7 @@ CREATE TABLE IF NOT EXISTS `la_product_image` (
 ) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_product_image`
+-- Dumping data for table `la_product_image`
 --
 
 INSERT INTO `la_product_image` (`id`, `product_id`, `photo`, `title`, `sort`, `status`, `created_at`, `updated_at`) VALUES
@@ -1529,7 +1552,7 @@ INSERT INTO `la_product_image` (`id`, `product_id`, `photo`, `title`, `sort`, `s
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_project`
+-- Table structure for table `la_project`
 --
 
 DROP TABLE IF EXISTS `la_project`;
@@ -1551,7 +1574,7 @@ CREATE TABLE IF NOT EXISTS `la_project` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_project`
+-- Dumping data for table `la_project`
 --
 
 INSERT INTO `la_project` (`id`, `title`, `alias`, `photo`, `excerpt`, `content`, `sort`, `updated_at`, `created_at`, `status`, `meta_title`, `meta_keyword`, `meta_description`) VALUES
@@ -1560,7 +1583,7 @@ INSERT INTO `la_project` (`id`, `title`, `alias`, `photo`, `excerpt`, `content`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_region`
+-- Table structure for table `la_region`
 --
 
 DROP TABLE IF EXISTS `la_region`;
@@ -1571,7 +1594,7 @@ CREATE TABLE IF NOT EXISTS `la_region` (
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tỉnh/Thành phố' ROW_FORMAT=COMPACT;
 
 --
--- Đang đổ dữ liệu cho bảng `la_region`
+-- Dumping data for table `la_region`
 --
 
 INSERT INTO `la_region` (`id`, `title`) VALUES
@@ -1642,7 +1665,7 @@ INSERT INTO `la_region` (`id`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_role`
+-- Table structure for table `la_role`
 --
 
 DROP TABLE IF EXISTS `la_role`;
@@ -1654,7 +1677,7 @@ CREATE TABLE IF NOT EXISTS `la_role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `la_role`
+-- Dumping data for table `la_role`
 --
 
 INSERT INTO `la_role` (`id`, `name`, `Note`) VALUES
@@ -1665,7 +1688,7 @@ INSERT INTO `la_role` (`id`, `name`, `Note`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_role_permission`
+-- Table structure for table `la_role_permission`
 --
 
 DROP TABLE IF EXISTS `la_role_permission`;
@@ -1682,7 +1705,7 @@ CREATE TABLE IF NOT EXISTS `la_role_permission` (
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `la_role_permission`
+-- Dumping data for table `la_role_permission`
 --
 
 INSERT INTO `la_role_permission` (`id`, `role_id`, `permission_id`, `ClassName`, `views`, `adds`, `deletes`, `edits`) VALUES
@@ -1713,7 +1736,7 @@ INSERT INTO `la_role_permission` (`id`, `role_id`, `permission_id`, `ClassName`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_rules`
+-- Table structure for table `la_rules`
 --
 
 DROP TABLE IF EXISTS `la_rules`;
@@ -1730,7 +1753,7 @@ CREATE TABLE IF NOT EXISTS `la_rules` (
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_rules`
+-- Dumping data for table `la_rules`
 --
 
 INSERT INTO `la_rules` (`id`, `title`, `class`, `note`, `sort`, `type`, `updated_at`, `created_at`) VALUES
@@ -1754,7 +1777,7 @@ INSERT INTO `la_rules` (`id`, `title`, `class`, `note`, `sort`, `type`, `updated
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_rules_users`
+-- Table structure for table `la_rules_users`
 --
 
 DROP TABLE IF EXISTS `la_rules_users`;
@@ -1769,7 +1792,7 @@ CREATE TABLE IF NOT EXISTS `la_rules_users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_rules_users`
+-- Dumping data for table `la_rules_users`
 --
 
 INSERT INTO `la_rules_users` (`id`, `users_id`, `rules_id`, `status`, `created_at`, `updated_at`) VALUES
@@ -1812,7 +1835,7 @@ INSERT INTO `la_rules_users` (`id`, `users_id`, `rules_id`, `status`, `created_a
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_service`
+-- Table structure for table `la_service`
 --
 
 DROP TABLE IF EXISTS `la_service`;
@@ -1833,7 +1856,7 @@ CREATE TABLE IF NOT EXISTS `la_service` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_service`
+-- Dumping data for table `la_service`
 --
 
 INSERT INTO `la_service` (`id`, `title`, `alias`, `photo`, `excerpt`, `content`, `updated_at`, `created_at`, `status`, `meta_title`, `meta_keyword`, `meta_description`) VALUES
@@ -1842,7 +1865,7 @@ INSERT INTO `la_service` (`id`, `title`, `alias`, `photo`, `excerpt`, `content`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_slide`
+-- Table structure for table `la_slide`
 --
 
 DROP TABLE IF EXISTS `la_slide`;
@@ -1860,7 +1883,7 @@ CREATE TABLE IF NOT EXISTS `la_slide` (
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_slide`
+-- Dumping data for table `la_slide`
 --
 
 INSERT INTO `la_slide` (`id`, `title`, `alias`, `photo`, `content`, `sort`, `status`, `created_at`, `updated_at`) VALUES
@@ -1885,7 +1908,7 @@ INSERT INTO `la_slide` (`id`, `title`, `alias`, `photo`, `content`, `sort`, `sta
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_subcribe`
+-- Table structure for table `la_subcribe`
 --
 
 DROP TABLE IF EXISTS `la_subcribe`;
@@ -1896,10 +1919,10 @@ CREATE TABLE IF NOT EXISTS `la_subcribe` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_subcribe`
+-- Dumping data for table `la_subcribe`
 --
 
 INSERT INTO `la_subcribe` (`id`, `email`, `course_category_id`, `created_at`, `updated_at`) VALUES
@@ -1941,12 +1964,13 @@ INSERT INTO `la_subcribe` (`id`, `email`, `course_category_id`, `created_at`, `u
 (50, 'raymond.lv84@gmail.com', '4', '2021-09-27 00:43:02', '2021-09-27 00:43:02'),
 (51, 'mm@gmail.com', '4,2', '2022-02-18 15:14:03', '2022-02-18 15:14:03'),
 (52, 'liem@gmail.com', '1', '2022-03-03 02:53:24', '2022-03-03 02:53:24'),
-(53, 'dragking005@gmail.com', '1', '2022-03-05 01:29:24', '2022-03-05 01:29:24');
+(53, 'dragking005@gmail.com', '1', '2022-03-05 01:29:24', '2022-03-05 01:29:24'),
+(54, 'hophantennhan@gmai.com', '5', '2022-03-09 09:06:28', '2022-03-09 09:06:28');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_teachers`
+-- Table structure for table `la_teachers`
 --
 
 DROP TABLE IF EXISTS `la_teachers`;
@@ -1963,7 +1987,7 @@ CREATE TABLE IF NOT EXISTS `la_teachers` (
 ) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_teachers`
+-- Dumping data for table `la_teachers`
 --
 
 INSERT INTO `la_teachers` (`id`, `fullname`, `photo`, `position`, `created_at`, `updated_at`, `status`, `type`) VALUES
@@ -1977,7 +2001,7 @@ INSERT INTO `la_teachers` (`id`, `fullname`, `photo`, `position`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_testimonials`
+-- Table structure for table `la_testimonials`
 --
 
 DROP TABLE IF EXISTS `la_testimonials`;
@@ -1992,7 +2016,7 @@ CREATE TABLE IF NOT EXISTS `la_testimonials` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_testimonials`
+-- Dumping data for table `la_testimonials`
 --
 
 INSERT INTO `la_testimonials` (`id`, `photo`, `description`, `status`, `created_at`, `updated_at`) VALUES
@@ -2002,7 +2026,7 @@ INSERT INTO `la_testimonials` (`id`, `photo`, `description`, `status`, `created_
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_users`
+-- Table structure for table `la_users`
 --
 
 DROP TABLE IF EXISTS `la_users`;
@@ -2015,43 +2039,48 @@ CREATE TABLE IF NOT EXISTS `la_users` (
   `phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` text COLLATE utf8_unicode_ci,
+  `auth_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` text COLLATE utf8_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL COMMENT '0 - nomal, 1 - dev',
-  `score` int(11) NOT NULL,
+  `score` int(11) DEFAULT NULL,
   `forgotpassword_token` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `la_users`
+-- Dumping data for table `la_users`
 --
 
-INSERT INTO `la_users` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, `address`, `password`, `remember_token`, `status`, `type`, `score`, `forgotpassword_token`, `created_at`, `updated_at`) VALUES
-(1, 'ngodinhluan1@gmail.com', 'Luan ngo', 'https://traderclass.vn/public/upload/images/users/thumb/game-overpng-1568086123png-1577114756.png', 1, '231231231231', 'đây là địa chỉ', '$2y$10$ZVpjHv0eBpaWIiYwmDqoNOHIYZ59mVqOl1.Np3fBc8bhYvHg9ukpa', '33BUN3mia5aioHfiL9fUhR2gRJ7qjH8MxI3KNngQhoTy3tNNM0CYOKtiMoyM', 1, 0, 0, NULL, '2019-09-09 01:27:04', '2021-08-11 12:29:17'),
-(2, 'ngoluancreative@gmail.com', 'Tài khoản thường', NULL, 1, NULL, NULL, '$2y$10$wXT/40M79D7pb6ZYFZ7KhurhlTtZPVv8UpTe1z1zo.bwbFADG1pxm', 'RQrrpPrtoqZAJ8ionf7rCTsE5j4lYKl9oHZZyUJcVdZCv5LfUcOkGWHmOTeH', 2, 0, 0, NULL, '2019-12-21 02:52:45', '2021-07-28 16:23:55'),
-(3, 'admin@ngoluan.com', 'Admin', 'https://traderclass.vn/public/upload/images/users/thumb/5dcec893e1d54png-1577807796.png', 1, NULL, NULL, '$2y$10$Vfnjt4U3ltqwRcpFwopZNOY.P5Xo6RRGY7K.v0JD3ShKB.VF1Me8S', 'uFGV1zDXVjVQ44gXQnT9e9dr3FppXWUwj7qFtXQvuK13giDGbLs3uNu8LKXH', 2, 0, 0, NULL, '2019-12-31 22:56:36', '2021-07-30 09:28:57'),
-(31, 'traderclass1234@gmail.com', NULL, 'https://traderclass.vn/public/upload/images/users/thumb/girl-1629786073.png', 1, '+256364674092', NULL, '$2y$10$FvRLNAgFTBkt7XzbZDU4MOTjCTvjkanQVuzAu88SgZwCHGtfXfXOC', 'E13GSbzeDJE8Uj0IOJC6w6jMp0hW0yBlTBnqG4H2eT25ANDIorTQEppTolMh', 1, 0, 0, NULL, '2021-08-06 14:01:45', '2021-08-24 13:21:13'),
-(44, 'info@onicorn.vn', 'ONICORN CÔNG TY CỔ PHẦN TRUYỀN THÔNG', 'https://lh3.googleusercontent.com/a-/AOh14GiI6UAwcM3U9tt9GvdhVqnU2jnHd1LscaADyYDemOUbbDchqZH6wti1Piw87ROVK-D6mRZgnzR-hfP8ED1yTm1jg9TUJJ9DmWTzDBbSxVd3GqjPBonMcf7XASz8w5L6NUlYqGfO5RS3TFgmvUbs_ieafV0TtLvUUGE7y_gC_9xxlgA5gTTn6ywz98IfHeKWmejog0Mg6FhThRAARd-4PhlPmTSzx7SrCSotycHKC7FIyHMsaZlah53UHfQcRfGQCCP_GOFZlYWA0v6hw4y4Ly0jyntWBpyOx_6HC28Kfb4l7qeHAVPsxoRdxVoiufNw465CQVwg7hvn8X_x7H71KLQ0CiEB7NHjg1sOuR8LAn2sytyIas_zu9M6_p5kc4oARicolTuvj8CBxPX7AVVS0mbj58GPzlMMM9-GdIH54sVo_-aa1T1ju9QfK7QAdMzMOkXaNFlp_lqyHzQYJJTRbVoK2qsHn86iDSwr_hkDBIk97w3hzQZCKz6VLMdHLJw1UCHOXfSG7hjsEO5LwmZqLSNnDbpeXs2P8bjB2KD6Dtn1nxPvO9tW7YICkmYSBpVnYqYLGXocQZUmSXFGo7LfFa7tCS_8-Jn_9E87L5vOa0XyRsF_Mnqr4ACbbqAEcDjKv4X5UcwjIHU5ElDuELHUwMq-6n9H1bu83SyCBhMLmDbcqZ3jGKcJ3xokE7-seYj7H65i_Wr78JyjGzt-D4IOTUEmi4e8YxMlpkVne1WidiEoNXWFF6CrGQCQda1dzVKOZZEfHg=s96-c', NULL, NULL, NULL, NULL, 'QkC6PXaV4Jw0WpPhlTmsN9Vs3lVg6K8CN82OeegGYIFjCq7POoR9LKpMos0O', 1, 0, 0, NULL, '2021-08-20 21:41:30', '2021-08-20 21:41:30'),
-(37, '19211tt2861@mail.tdc.edu.vn', 'Trung Nguyễn Hiếu', 'https://lh3.googleusercontent.com/a/AATXAJwrPdGXWE2qLBKRQbY37XW-n_Hf3BVtZcULW0B9=s96-c', NULL, NULL, NULL, NULL, '6Ph73kRRkfXH1RBePQeP2DotIjWiiwwSYBjVGPlOlogzRkBEF4dS0mjXP16r', NULL, 0, 0, NULL, '2021-08-11 09:59:47', '2021-08-16 15:12:42'),
-(39, 'quanghuy9955@gmail.com', 'Quang Huy', 'https://lh3.googleusercontent.com/a-/AOh14GiBTJhxivCzXLkdLQY6VXlCCj9mEml7S3yjdYcCsdc=s96-c', NULL, NULL, NULL, NULL, 'H2DZrU8ZstsGKMzf3H9WFmWu5N9AHIQtIBeSrLMZ1APexufzV8L9iPjdgmxP', NULL, NULL, 0, NULL, '2021-08-11 10:32:59', '2021-08-11 10:32:59'),
-(40, 'tech.onicorn@gmail.com', 'BUI QUANG HUY', 'https://traderclass.vn/public/upload/images/users/thumb/3-1630166121.jpg', 1, '0977393349', 'Điện Biên Phủ', NULL, 'VUvP7duGkd6VCRThBejz8v6Vn5jMbbNoXEWlZN2LUzzRoiNi5405cwkyRm3K', NULL, NULL, 0, NULL, '2021-08-13 14:30:02', '2021-08-28 22:55:22'),
-(41, 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$lAHjejFrJ0ocdQ2.rE32ju2D4xMLJB4kfxKzB2ajheG9HGfHBK44q', 'U9pELaj7bftTHpHldt50maYUEVUTr32sjaPUV0MwZ9sowxqXIQyq1SYHwZEz', 2, 0, 100, NULL, '2021-08-16 09:46:54', '2021-08-26 16:54:15'),
-(42, 'hi@quanghuy.info', 'Huy Quang', 'https://lh3.googleusercontent.com/a-/AOh14GiqdXZQ1xk0yFJg8jQuzhQJHVs5JRwhXbTvchF76dA8Klutjfoou3AmlUsBNSFIJV_aIL1a5sMeKqi8r0qP-293Wo6IzXgfCACwQLcAzwKZw8sSvoXWJdz9Uq2ABHciIBdM1dFieUHsf2FwaniHIiO0g7_8ucxeHJRYiTv0jytxyPIghLB9e8fakOYI2vDN6Y_6uArZknVWp-wExhmkGF5tpyXt0R8kCNb5pfWEgcMOagRdlUYPC52NQHPhJXNVwNJb5roaIzJa_VX2J_VHt0A_Ne4-fgEbGXxz57OisGM2hnuu2nLoVEhKAtQJJO5m2HaCvulXNcqRimYl7hAV6GqJTD-S74nSv_fZG0qkEzrwU1nwXpSrCEIAdC4IB5xzjFdtbRBGvyxkmMZmuKzz9XtgG06M3J5GEE-Rf9GwlmspZZeZtXFDLWDbvfFjYqrxV1YplREIPs7pANxBQERhRdlN2Bm8jJx2h-Mx0z8yvwgcpYwWp0ngufDP6JeQJ9BAjDby8PJyaJub1X_Qwv46Zn9uMw8f_9NQPAVZL3-jC_FJpuJ9-HrS7p-2pRKGbzRAvAOc99LEZnWEeq80vYgmpAB-maKHGlr9YonEgxP3FIGL1qGJ0fs1SSLWUCXctGi0a0AMdRhGbSN0nSnQYNfQ3IFDDAq407HZyNPQYE_Rf8H-8wPbMCGDNh62TSC4bORhcRSMDrbwhS9-iHU1qG3NRngxvvS-Jq9SlLmAW1kVKFzYshrKepFkWNWnsoB_rovbC3384g=s96-c', NULL, NULL, NULL, NULL, 'KYrddM8sz6FFMzPXAzGg2OqpYxf2A7d2hUX4sfFJh065H7IZRSGNddAssNoX', NULL, 0, 0, NULL, '2021-08-16 09:47:09', '2021-08-17 09:23:05'),
-(43, 'meoem2712@gmail.com', 'Nghia Le', 'https://lh3.googleusercontent.com/a-/AOh14GgKCO2oA4Zqkfb7UIvuQPq23m7MV0nC8-T1TfnY=s96-c', NULL, NULL, NULL, NULL, 'ViNbyv6KRPoAu0yEPOoxlFmSQp02P3ewdstXc7y3xke4g092io28NonfApxN', 1, NULL, 0, NULL, '2021-08-17 14:06:09', '2021-08-17 14:35:29'),
-(45, 'nguyenhieutrung0412@gmail.com', 'Nguyễn Trung', 'https://lh3.googleusercontent.com/a/AATXAJz_F_sWCtkCPvpEtQwDBkBOcPY6djwqn-gLKy6c=s96-c', NULL, NULL, NULL, NULL, 'tQtBVHZykpXsiq8AGnRmQvh9LhGmB6ArQ1e1qdrncmGYcdugIFCUL2GZ873x', 1, 0, 0, NULL, '2021-08-26 20:10:57', '2021-08-26 20:10:57'),
-(46, 'ngouyen72@gmail.com', 'Uyên Ngô', 'https://lh3.googleusercontent.com/a/AATXAJyGtsyj4tIQAfk3lZzHSRM1y9HPrgTE-HFmRXTe=s96-c', NULL, NULL, NULL, NULL, 'cUsefVtVBPjn8PLQ2OOZO0IBIppfdIrF1uzbMrifEAlruBvaNi3N2oTFQ9lK', 1, 0, 0, NULL, '2021-08-28 11:00:32', '2021-08-28 11:00:32'),
-(47, 'raymond.lv84@gmail.com', 'Raymond Lam', 'https://lh3.googleusercontent.com/a-/AOh14GiI2ycFneGvFH6LWNESoesLgUmhF2u0Wf7XC721=s96-c', NULL, NULL, NULL, NULL, '6MKGRRyqQwjbTa0BZXr0FUSaTTUu6qdJQDlSUdUBxY0wtQu5jsTGoFZjNEtA', 1, 0, 0, NULL, '2021-09-14 10:00:05', '2021-09-14 10:00:05'),
-(48, 'levannghia.tdc2018@gmail.com', 'nghia le', NULL, NULL, NULL, NULL, '$2y$10$ZQrml.rMKQW0k3sA2L855u/8QV82Li8WabnI6xKnDu0.9ZEtJSnAS', 'iipUdqcrELj4cNfgQIxfzwD3MNP5kPRfZaYn5PcqvHyXbAzhlBwMeUsbiDET', 0, 0, 0, NULL, '2021-10-20 13:42:41', '2022-02-15 16:49:26'),
-(49, 'liemlt.69.student@fit.tdc.edu.vn', NULL, NULL, NULL, NULL, NULL, '$2y$10$BUK1ywXSTf/oRGgE0VITGOm8IpgVk.dsJEL4ZKlpD/gIxOivZ/ROS', NULL, 0, 0, 0, NULL, '2022-02-28 17:01:37', '2022-02-28 17:01:37'),
-(50, 'aaa@aaa', NULL, NULL, NULL, NULL, NULL, '$2y$10$dFEaMi1l6gHE5pg7HrXB.umZdhy2qC5Z9s6JRVzJLjJSc8oqafLWW', NULL, 0, 0, 0, NULL, '2022-02-28 17:05:11', '2022-02-28 17:05:11');
+INSERT INTO `la_users` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, `address`, `password`, `auth_type`, `remember_token`, `status`, `type`, `score`, `forgotpassword_token`, `created_at`, `updated_at`) VALUES
+(1, 'ngodinhluan1@gmail.com', 'Luan ngo', 'https://traderclass.vn/public/upload/images/users/thumb/game-overpng-1568086123png-1577114756.png', 1, '231231231231', 'đây là địa chỉ', '$2y$10$ZVpjHv0eBpaWIiYwmDqoNOHIYZ59mVqOl1.Np3fBc8bhYvHg9ukpa', 'email', '33BUN3mia5aioHfiL9fUhR2gRJ7qjH8MxI3KNngQhoTy3tNNM0CYOKtiMoyM', 1, 0, 0, NULL, '2019-09-09 01:27:04', '2021-08-11 12:29:17'),
+(2, 'ngoluancreative@gmail.com', 'Tài khoản thường', NULL, 1, NULL, NULL, '$2y$10$wXT/40M79D7pb6ZYFZ7KhurhlTtZPVv8UpTe1z1zo.bwbFADG1pxm', 'email', 'RQrrpPrtoqZAJ8ionf7rCTsE5j4lYKl9oHZZyUJcVdZCv5LfUcOkGWHmOTeH', 2, 0, 0, NULL, '2019-12-21 02:52:45', '2021-07-28 16:23:55'),
+(3, 'admin@ngoluan.com', 'Admin', 'https://traderclass.vn/public/upload/images/users/thumb/5dcec893e1d54png-1577807796.png', 1, NULL, NULL, '$2y$10$Vfnjt4U3ltqwRcpFwopZNOY.P5Xo6RRGY7K.v0JD3ShKB.VF1Me8S', 'email', 'uFGV1zDXVjVQ44gXQnT9e9dr3FppXWUwj7qFtXQvuK13giDGbLs3uNu8LKXH', 2, 0, 0, NULL, '2019-12-31 22:56:36', '2021-07-30 09:28:57'),
+(31, 'traderclass1234@gmail.com', NULL, 'https://traderclass.vn/public/upload/images/users/thumb/girl-1629786073.png', 1, '+256364674092', NULL, '$2y$10$FvRLNAgFTBkt7XzbZDU4MOTjCTvjkanQVuzAu88SgZwCHGtfXfXOC', 'email', 'E13GSbzeDJE8Uj0IOJC6w6jMp0hW0yBlTBnqG4H2eT25ANDIorTQEppTolMh', 1, 0, 0, NULL, '2021-08-06 14:01:45', '2021-08-24 13:21:13'),
+(44, 'info@onicorn.vn', 'ONICORN CÔNG TY CỔ PHẦN TRUYỀN THÔNG', 'https://lh3.googleusercontent.com/a-/AOh14GiI6UAwcM3U9tt9GvdhVqnU2jnHd1LscaADyYDemOUbbDchqZH6wti1Piw87ROVK-D6mRZgnzR-hfP8ED1yTm1jg9TUJJ9DmWTzDBbSxVd3GqjPBonMcf7XASz8w5L6NUlYqGfO5RS3TFgmvUbs_ieafV0TtLvUUGE7y_gC_9xxlgA5gTTn6ywz98IfHeKWmejog0Mg6FhThRAARd-4PhlPmTSzx7SrCSotycHKC7FIyHMsaZlah53UHfQcRfGQCCP_GOFZlYWA0v6hw4y4Ly0jyntWBpyOx_6HC28Kfb4l7qeHAVPsxoRdxVoiufNw465CQVwg7hvn8X_x7H71KLQ0CiEB7NHjg1sOuR8LAn2sytyIas_zu9M6_p5kc4oARicolTuvj8CBxPX7AVVS0mbj58GPzlMMM9-GdIH54sVo_-aa1T1ju9QfK7QAdMzMOkXaNFlp_lqyHzQYJJTRbVoK2qsHn86iDSwr_hkDBIk97w3hzQZCKz6VLMdHLJw1UCHOXfSG7hjsEO5LwmZqLSNnDbpeXs2P8bjB2KD6Dtn1nxPvO9tW7YICkmYSBpVnYqYLGXocQZUmSXFGo7LfFa7tCS_8-Jn_9E87L5vOa0XyRsF_Mnqr4ACbbqAEcDjKv4X5UcwjIHU5ElDuELHUwMq-6n9H1bu83SyCBhMLmDbcqZ3jGKcJ3xokE7-seYj7H65i_Wr78JyjGzt-D4IOTUEmi4e8YxMlpkVne1WidiEoNXWFF6CrGQCQda1dzVKOZZEfHg=s96-c', NULL, NULL, NULL, NULL, 'email', 'QkC6PXaV4Jw0WpPhlTmsN9Vs3lVg6K8CN82OeegGYIFjCq7POoR9LKpMos0O', 1, 0, 0, NULL, '2021-08-20 21:41:30', '2021-08-20 21:41:30'),
+(37, '19211tt2861@mail.tdc.edu.vn', 'Trung Nguyễn Hiếu', 'https://lh3.googleusercontent.com/a/AATXAJwrPdGXWE2qLBKRQbY37XW-n_Hf3BVtZcULW0B9=s96-c', NULL, NULL, NULL, NULL, 'email', '6Ph73kRRkfXH1RBePQeP2DotIjWiiwwSYBjVGPlOlogzRkBEF4dS0mjXP16r', NULL, 0, 0, NULL, '2021-08-11 09:59:47', '2021-08-16 15:12:42'),
+(39, 'quanghuy9955@gmail.com', 'Quang Huy', 'https://lh3.googleusercontent.com/a-/AOh14GiBTJhxivCzXLkdLQY6VXlCCj9mEml7S3yjdYcCsdc=s96-c', NULL, NULL, NULL, NULL, 'email', 'H2DZrU8ZstsGKMzf3H9WFmWu5N9AHIQtIBeSrLMZ1APexufzV8L9iPjdgmxP', NULL, NULL, 0, NULL, '2021-08-11 10:32:59', '2021-08-11 10:32:59'),
+(40, 'tech.onicorn@gmail.com', 'BUI QUANG HUY', 'https://traderclass.vn/public/upload/images/users/thumb/3-1630166121.jpg', 1, '0977393349', 'Điện Biên Phủ', NULL, 'email', 'VUvP7duGkd6VCRThBejz8v6Vn5jMbbNoXEWlZN2LUzzRoiNi5405cwkyRm3K', NULL, NULL, 0, NULL, '2021-08-13 14:30:02', '2021-08-28 22:55:22'),
+(41, 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$lAHjejFrJ0ocdQ2.rE32ju2D4xMLJB4kfxKzB2ajheG9HGfHBK44q', '', 'h4cxO8myhybn4H1WKTRmLBU8xl8q8pszGsBrobvyHuuuOG9N0fAOsBMbwfjC', 2, 0, 100, NULL, '2021-08-16 09:46:54', '2021-08-26 16:54:15'),
+(42, 'hi@quanghuy.info', 'Huy Quang', 'https://lh3.googleusercontent.com/a-/AOh14GiqdXZQ1xk0yFJg8jQuzhQJHVs5JRwhXbTvchF76dA8Klutjfoou3AmlUsBNSFIJV_aIL1a5sMeKqi8r0qP-293Wo6IzXgfCACwQLcAzwKZw8sSvoXWJdz9Uq2ABHciIBdM1dFieUHsf2FwaniHIiO0g7_8ucxeHJRYiTv0jytxyPIghLB9e8fakOYI2vDN6Y_6uArZknVWp-wExhmkGF5tpyXt0R8kCNb5pfWEgcMOagRdlUYPC52NQHPhJXNVwNJb5roaIzJa_VX2J_VHt0A_Ne4-fgEbGXxz57OisGM2hnuu2nLoVEhKAtQJJO5m2HaCvulXNcqRimYl7hAV6GqJTD-S74nSv_fZG0qkEzrwU1nwXpSrCEIAdC4IB5xzjFdtbRBGvyxkmMZmuKzz9XtgG06M3J5GEE-Rf9GwlmspZZeZtXFDLWDbvfFjYqrxV1YplREIPs7pANxBQERhRdlN2Bm8jJx2h-Mx0z8yvwgcpYwWp0ngufDP6JeQJ9BAjDby8PJyaJub1X_Qwv46Zn9uMw8f_9NQPAVZL3-jC_FJpuJ9-HrS7p-2pRKGbzRAvAOc99LEZnWEeq80vYgmpAB-maKHGlr9YonEgxP3FIGL1qGJ0fs1SSLWUCXctGi0a0AMdRhGbSN0nSnQYNfQ3IFDDAq407HZyNPQYE_Rf8H-8wPbMCGDNh62TSC4bORhcRSMDrbwhS9-iHU1qG3NRngxvvS-Jq9SlLmAW1kVKFzYshrKepFkWNWnsoB_rovbC3384g=s96-c', NULL, NULL, NULL, NULL, 'email', 'KYrddM8sz6FFMzPXAzGg2OqpYxf2A7d2hUX4sfFJh065H7IZRSGNddAssNoX', NULL, 0, 0, NULL, '2021-08-16 09:47:09', '2021-08-17 09:23:05'),
+(43, 'meoem2712@gmail.com', 'Nghia Le', 'https://lh3.googleusercontent.com/a-/AOh14GgKCO2oA4Zqkfb7UIvuQPq23m7MV0nC8-T1TfnY=s96-c', NULL, NULL, NULL, NULL, 'email', 'ViNbyv6KRPoAu0yEPOoxlFmSQp02P3ewdstXc7y3xke4g092io28NonfApxN', 1, NULL, 0, NULL, '2021-08-17 14:06:09', '2021-08-17 14:35:29'),
+(45, 'nguyenhieutrung0412@gmail.com', 'Nguyễn Trung', 'https://lh3.googleusercontent.com/a/AATXAJz_F_sWCtkCPvpEtQwDBkBOcPY6djwqn-gLKy6c=s96-c', NULL, NULL, NULL, NULL, 'email', 'tQtBVHZykpXsiq8AGnRmQvh9LhGmB6ArQ1e1qdrncmGYcdugIFCUL2GZ873x', 1, 0, 0, NULL, '2021-08-26 20:10:57', '2021-08-26 20:10:57'),
+(46, 'ngouyen72@gmail.com', 'Uyên Ngô', 'https://lh3.googleusercontent.com/a/AATXAJyGtsyj4tIQAfk3lZzHSRM1y9HPrgTE-HFmRXTe=s96-c', NULL, NULL, NULL, NULL, 'email', 'cUsefVtVBPjn8PLQ2OOZO0IBIppfdIrF1uzbMrifEAlruBvaNi3N2oTFQ9lK', 1, 0, 0, NULL, '2021-08-28 11:00:32', '2021-08-28 11:00:32'),
+(47, 'raymond.lv84@gmail.com', 'Raymond Lam', 'https://lh3.googleusercontent.com/a-/AOh14GiI2ycFneGvFH6LWNESoesLgUmhF2u0Wf7XC721=s96-c', NULL, NULL, NULL, NULL, 'email', '6MKGRRyqQwjbTa0BZXr0FUSaTTUu6qdJQDlSUdUBxY0wtQu5jsTGoFZjNEtA', 1, 0, 0, NULL, '2021-09-14 10:00:05', '2021-09-14 10:00:05'),
+(48, 'levannghia.tdc2018@gmail.com', 'nghia le', NULL, NULL, NULL, NULL, '$2y$10$ZQrml.rMKQW0k3sA2L855u/8QV82Li8WabnI6xKnDu0.9ZEtJSnAS', 'email', 'iipUdqcrELj4cNfgQIxfzwD3MNP5kPRfZaYn5PcqvHyXbAzhlBwMeUsbiDET', 0, 0, 0, NULL, '2021-10-20 13:42:41', '2022-02-15 16:49:26'),
+(49, 'liemlt.69.student@fit.tdc.edu.vn', NULL, NULL, NULL, NULL, NULL, '$2y$10$BUK1ywXSTf/oRGgE0VITGOm8IpgVk.dsJEL4ZKlpD/gIxOivZ/ROS', 'email', NULL, 0, 0, 0, NULL, '2022-02-28 17:01:37', '2022-02-28 17:01:37'),
+(50, 'aaa@aaa', NULL, NULL, NULL, NULL, NULL, '$2y$10$dFEaMi1l6gHE5pg7HrXB.umZdhy2qC5Z9s6JRVzJLjJSc8oqafLWW', 'email', NULL, 0, 0, 0, NULL, '2022-02-28 17:05:11', '2022-02-28 17:05:11'),
+(51, 'leliem@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$5dmre4MRley6HiogizPXgOEdmyUmm7DrCUbP9VF//GzGaqi2Yfdlu', 'email', NULL, NULL, NULL, NULL, NULL, '2022-03-11 14:33:30', '2022-03-11 14:33:30'),
+(52, 'liemlt.69.student@fit.tdc.edu.vn', 'Liêm Lê Tuấn', 'https://lh3.googleusercontent.com/a-/AOh14GjMHH1ruVoYwkeICdlegOl_WKR_0quf_WOdS2-v=s96-c', NULL, NULL, NULL, '$2y$10$rkUmy8Nb0o3wfpJ4/3OLzuXr0g7xYLPSypTw9wYkpoIidydWOK8li', 'google', 'EC6K051mwgCcsXd53O78hF2EGDtciWBWKQVd5EtQcd1WeVjnTiRm1plMqlMa', 1, 0, NULL, NULL, '2022-03-17 08:48:18', '2022-03-17 08:48:18'),
+(53, 'dragking005@gmail.com', 'Lê Liêm', 'https://graph.facebook.com/v3.3/1074807049733991/picture?type=normal', NULL, NULL, NULL, '$2y$10$z243t6G8ULrTiu4M0UMQf.GmbAVQwOfgtSXaqTx6lg1q.6wOCc9lO', 'facebook', 'fQYzpFv9WIhP0oPE0DxSwMudoCju7r66jjOuicQRbgcimpQVgQucfmdLeSsL', 1, 0, NULL, NULL, '2022-03-17 08:54:17', '2022-03-17 08:54:17'),
+(54, '19211tt1869@mail.tdc.edu.vn', 'Lê Tuấn Liêm', 'https://lh3.googleusercontent.com/a-/AOh14GgMtDBAUkMMNoo5xp5YjPqHIaTl8GoLJagW4Ksd=s96-c', NULL, NULL, NULL, '$2y$10$LbwCaBvB7dGEy4aSDzxI3.4TKF8Mf9m6LL3qI1J3eK5pUCWCwG/x2', 'google', 'sIUqri6AoT2E5ErOFNPjnhYMqlpeiqQNO5WXQG16OVGbFJHJhdNG9hXjWiGJ', 1, 0, NULL, NULL, '2022-03-17 08:59:48', '2022-03-17 08:59:48');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_user_course`
+-- Table structure for table `la_user_course`
 --
 
 DROP TABLE IF EXISTS `la_user_course`;
@@ -2066,7 +2095,7 @@ CREATE TABLE IF NOT EXISTS `la_user_course` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `la_user_course`
+-- Dumping data for table `la_user_course`
 --
 
 INSERT INTO `la_user_course` (`id`, `course_id`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
@@ -2079,7 +2108,7 @@ INSERT INTO `la_user_course` (`id`, `course_id`, `user_id`, `status`, `created_a
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_video_course`
+-- Table structure for table `la_video_course`
 --
 
 DROP TABLE IF EXISTS `la_video_course`;
@@ -2087,6 +2116,7 @@ CREATE TABLE IF NOT EXISTS `la_video_course` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_course` int(11) NOT NULL,
   `name` text NOT NULL,
+  `description` text,
   `id_video` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -2095,65 +2125,65 @@ CREATE TABLE IF NOT EXISTS `la_video_course` (
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `la_video_course`
+-- Dumping data for table `la_video_course`
 --
 
-INSERT INTO `la_video_course` (`id`, `id_course`, `name`, `id_video`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Bài 1: Cài đặt môi trường Python', 'jf-q_dG8WzI', 1, '2022-02-26 08:37:54', '2022-02-26 08:37:54'),
-(2, 1, 'Bài 2: Chạy file Python', 'QFxqY8qv42E', 1, '2022-02-26 08:39:40', '2022-02-26 08:39:40'),
-(3, 1, 'Bài 3: Comment trong Python', 't3dERE9T5yg', 1, '2022-02-26 08:40:48', '2022-02-26 08:40:48'),
-(4, 1, 'Bài 4: Biến(Variable) trong Python', 'nclE18Yl-kA', 1, '2022-02-26 08:40:48', '2022-02-26 08:40:48'),
-(5, 1, 'Bài 5: Kiểu số trong Python', 'IAVvgqDBiv0', 1, '2022-02-26 08:42:48', '2022-02-26 08:42:48'),
-(6, 1, 'Bài 6: Kiểu chuỗi trong Python', 'Vb6XWSLPQfg', 1, '2022-02-26 08:42:48', '2022-02-26 08:42:48'),
-(7, 2, 'Cài đặt môi trường', 'efI98nT8Ffo', 1, '2022-02-26 09:35:45', '2022-02-26 09:35:45'),
-(8, 2, 'Sử dụng JS trong file HTML', 'W0vEUmyvthQ', 1, '2022-02-26 09:36:34', '2022-02-26 09:36:34'),
-(9, 2, 'Khai báo biến', 'CLbx37dqYEI', 1, '2022-02-26 09:43:35', '2022-02-26 09:43:35'),
-(10, 2, 'Comments', 'xRpXBEq6TOY', 1, '2022-02-26 09:44:49', '2022-02-26 09:44:49'),
-(11, 2, 'Một số hàm built-in', 'rSV33HGotgE', 1, '2022-02-26 09:45:15', '2022-02-26 09:45:15'),
-(12, 3, 'Giới thiệu kỹ thuật điện - Điện trở, định luật Ohm', 'zh3d93SW1Gc', 1, '2022-02-28 07:20:28', '2022-02-28 07:20:28'),
-(13, 3, 'Open circuit and short circuit', 'pWBohyjImVU', 1, '2022-02-28 07:27:50', '2022-02-28 07:27:50'),
-(14, 3, 'Khái niệm cơ bản về điện - Điện thế', 'Ap2Lbwe7c_c', 1, '2022-02-28 07:29:03', '2022-02-28 07:29:03'),
-(15, 3, 'Mạch phân áp', '7uX1FJepXgU', 1, '2022-02-28 07:29:42', '2022-02-28 07:29:42'),
-(16, 3, 'Định luật Kirchhoff 1 và Kirchhoff 2', '15DsdCppOsU', 1, '2022-02-28 07:30:36', '2022-02-28 07:30:36'),
-(17, 3, 'Circuit analysis methods based on KCL and KVL', 'AfICx98uU00', 1, '2022-02-28 07:31:32', '2022-02-28 07:31:32'),
-(18, 3, 'Thévenin and Norton theorem', 'tJRyuPamVM8', 1, '2022-02-28 07:32:11', '2022-02-28 07:32:11'),
-(19, 3, 'Star Delta transformation', '7kDLW-fYAIw', 1, '2022-02-28 07:32:44', '2022-02-28 07:32:44'),
-(20, 4, 'Bí Mật Forex #77 | 6 Bước Hướng Dẫn Người Mới Tham Gia Forex - mForex', 'BVDyncLJ-6o', 1, '2022-03-04 09:50:37', '2022-03-04 09:50:37'),
-(21, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )', 'TaiZS8-i6L0', 1, '2022-03-04 09:54:00', '2022-03-04 09:54:00'),
-(22, 6, 'CHIA SẺ KINH NGHIỆM ĐẦU TƯ CRYPTO CHO NGƯỜI MỚI BẮT ĐẦU - HOÀNG MINH THIỆN', 'ge-ZBklOHjw', 1, '2022-03-04 09:55:07', '2022-03-04 09:55:07'),
-(23, 4, 'Tâm sự Trader | Mình Đã Sai Khi Bỏ Việc Làm Trader - mForex\r\n', 'FlG3yAYHXX0', 1, '2022-03-04 09:58:59', '2022-03-04 09:58:59'),
-(24, 4, 'Tâm sự Trader | Trader Việt Là Những Kẻ Ích Kỷ & Keo Kiệt - mForex\r\n', 'K9AJ7OwHzXQ', 1, '2022-03-04 10:02:43', '2022-03-04 10:02:43'),
-(25, 4, 'Tâm sự Trader | Để Không Cháy Tài Khoản, Hãy Nhớ 4 Điều Này - mForex\r\n', 'YnxGcVnQlfI', 1, '2022-03-04 10:03:54', '2022-03-04 10:03:54'),
-(26, 4, 'Tâm sự Trader | Kiếm Được Nhiều Tiền Hay Trở Thành Trader Thực Thụ - mForex\r\n', 'yb8k5nlR6s0', 1, '2022-03-04 10:05:08', '2022-03-04 10:05:08'),
-(27, 4, 'Tâm sự Trader | Giao Dịch Thế Nào Với Tài Khoản Nhỏ? - mForex\r\n', 'Zxt2CLPYAuI', 1, '2022-03-04 10:06:12', '2022-03-04 10:06:12'),
-(28, 4, 'Tâm sự Trader | Chơi Forex Có Nhanh Giàu? - mForex\r\n', 'U03K2qBIKKM', 1, '2022-03-04 10:07:26', '2022-03-04 10:07:26'),
-(29, 4, '5 Điều \"TỐI KỴ\" Trader Phải Biết Trước Khi Tham Gia Forex - Tâm sự Trader\r\n', 'gcvWaoSTwz0', 1, '2022-03-04 10:08:22', '2022-03-04 10:08:22'),
-(30, 4, '4 Sai Lầm \"NGHIÊM TRỌNG\" Của Trader. Lời Tri Ân Từ mForex - Tâm Sự Trader\r\n', 'VsnFMKx3QjA', 1, '2022-03-04 10:09:28', '2022-03-04 10:09:28'),
-(31, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )\r\n', 'TaiZS8-i6L0', 1, '2022-03-04 10:10:43', '2022-03-04 10:10:43'),
-(32, 5, 'P2: Các khái niệm | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'qyLOuaCveK0', 1, '2022-03-04 10:11:31', '2022-03-04 10:11:31'),
-(33, 5, 'P3: Chỉ số tài chính cơ bản | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'gD0r43wbjnE', 1, '2022-03-04 10:12:27', '2022-03-04 10:12:27'),
-(34, 5, 'P4: Các loại cổ phiếu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'qiRNtNvWPY4', 1, '2022-03-04 10:13:19', '2022-03-04 10:13:19'),
-(35, 5, 'P5: 5 LỢI THẾ CẠNH TRANH | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'nFD3tXtRpVA', 1, '2022-03-04 10:14:21', '2022-03-04 10:14:21'),
-(36, 5, 'P6 : CHỨNG KHOÁN A BỜ CỜ: ĐƯỜNG CONG LỢI SUẤT ĐẢO NGƯỢC LÀ GÌ? KHỦNG HOẢNG KINH TẾ HAY KHÔNG?\r\n', 'NKm6UtxWWUc', 1, '2022-03-04 10:15:02', '2022-03-04 10:15:02'),
-(37, 5, 'P7: TẠI SAO FED – CỤC DỰ TRỮ LIÊN BANG – LẠI LÀ “NHÀ CÁI” SỐ 1 THẾ GIỚI? | HƯỚNG DẪN ĐẦU TƯ A-BỜ-CỜ\r\n', 'IVhlYPO0ae4', 1, '2022-03-04 10:15:45', '2022-03-04 10:15:45'),
-(38, 5, 'P8: THỰC HÀNH CỔ PHIẾU 4M & CANSLIM | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'b4BJgT9o_tc', 1, '2022-03-04 10:16:32', '2022-03-04 10:16:32'),
-(39, 5, 'P9: NHẬN DIỆN CÁC CÔNG TY LỪA ĐẢO | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 't19lmKjvir0', 1, '2022-03-04 10:17:08', '2022-03-04 10:17:08'),
-(40, 5, 'P10: 6 LOẠI HÌNH DOANH NGHIỆP ĐẦU TƯ | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', 'F9jnuEGA7V4', 1, '2022-03-04 10:17:59', '2022-03-04 10:17:59'),
-(41, 6, '1- Giới Thiệu Về Thị Trường Cryptocurrency', 'nD3-NsRz86g', 1, '2022-03-04 10:30:29', '2022-03-04 10:30:29'),
-(42, 6, '2- Công Nghệ Blockchain, Tiền Thuật Toán Bitcoin là gì?\r\n', '5hlE5HNwNz0', 1, '2022-03-04 10:34:47', '2022-03-04 10:34:47'),
-(43, 6, '3- Có Nên Đầu Tư Vào Tiền CryptoCurrency Hay Không?\r\n', 'G_a0Ao591QI', 1, '2022-03-04 10:35:47', '2022-03-04 10:35:47'),
-(44, 6, '4- Bước Đầu Tiên Khi Tham Gia Vào Thị Trường, Tạo Tài Khoản…\r\n', 'kqVTIT4_Itc', 1, '2022-03-04 10:36:16', '2022-03-04 10:36:16'),
-(45, 6, '5- Các Kiểu Đầu Tư Ở Việt Nam\r\n', 'B_yMMGlh-D8', 1, '2022-03-04 10:36:57', '2022-03-04 10:36:57'),
-(46, 6, '6- Các Lối Chơi Thường Thấy, Bạn Nên Chơi Theo Lối Chơi Nào?\r\n', 'JsQyxece55E', 1, '2022-03-04 10:38:07', '2022-03-04 10:38:07'),
-(47, 6, '7- Cách Để Lựa Chọn Một Đồng Coin Để Đầu Tư Sinh Lãi\r\n', 'hIXimbnos88', 1, '2022-03-04 10:38:58', '2022-03-04 10:38:58'),
-(48, 6, '8- Tìm Thông Tin và Phân Tích Thông Tin Của Coin\r\n', 'SEdUlw4SmTI', 1, '2022-03-04 10:39:34', '2022-03-04 10:39:34'),
-(49, 6, '9- Phân Tích Kỹ Thuật Có Nên Học và Khó Dùng Không\r\n', '80EpEU_4HG8', 1, '2022-03-04 10:40:10', '2022-03-04 10:40:10'),
-(50, 6, '10- Các Lỗi Sai Thường Gặp Khi Tham Gia Đầu Tư\r\n', 'Ems-73Q-ON0', 1, '2022-03-04 10:40:47', '2022-03-04 10:40:47');
+INSERT INTO `la_video_course` (`id`, `id_course`, `name`, `description`, `id_video`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Bài 1: Cài đặt môi trường Python', NULL, 'jf-q_dG8WzI', 1, '2022-02-26 08:37:54', '2022-02-26 08:37:54'),
+(2, 1, 'Bài 2: Chạy file Python', NULL, 'QFxqY8qv42E', 1, '2022-02-26 08:39:40', '2022-02-26 08:39:40'),
+(3, 1, 'Bài 3: Comment trong Python', NULL, 't3dERE9T5yg', 1, '2022-02-26 08:40:48', '2022-02-26 08:40:48'),
+(4, 1, 'Bài 4: Biến(Variable) trong Python', NULL, 'nclE18Yl-kA', 1, '2022-02-26 08:40:48', '2022-02-26 08:40:48'),
+(5, 1, 'Bài 5: Kiểu số trong Python', NULL, 'IAVvgqDBiv0', 1, '2022-02-26 08:42:48', '2022-02-26 08:42:48'),
+(6, 1, 'Bài 6: Kiểu chuỗi trong Python', NULL, 'Vb6XWSLPQfg', 1, '2022-02-26 08:42:48', '2022-02-26 08:42:48'),
+(7, 2, 'Cài đặt môi trường', NULL, 'efI98nT8Ffo', 1, '2022-02-26 09:35:45', '2022-02-26 09:35:45'),
+(8, 2, 'Sử dụng JS trong file HTML', NULL, 'W0vEUmyvthQ', 1, '2022-02-26 09:36:34', '2022-02-26 09:36:34'),
+(9, 2, 'Khai báo biến', NULL, 'CLbx37dqYEI', 1, '2022-02-26 09:43:35', '2022-02-26 09:43:35'),
+(10, 2, 'Comments', NULL, 'xRpXBEq6TOY', 1, '2022-02-26 09:44:49', '2022-02-26 09:44:49'),
+(11, 2, 'Một số hàm built-in', NULL, 'rSV33HGotgE', 1, '2022-02-26 09:45:15', '2022-02-26 09:45:15'),
+(12, 3, 'Giới thiệu kỹ thuật điện - Điện trở, định luật Ohm', NULL, 'zh3d93SW1Gc', 1, '2022-02-28 07:20:28', '2022-02-28 07:20:28'),
+(13, 3, 'Open circuit and short circuit', NULL, 'pWBohyjImVU', 1, '2022-02-28 07:27:50', '2022-02-28 07:27:50'),
+(14, 3, 'Khái niệm cơ bản về điện - Điện thế', NULL, 'Ap2Lbwe7c_c', 1, '2022-02-28 07:29:03', '2022-02-28 07:29:03'),
+(15, 3, 'Mạch phân áp', NULL, '7uX1FJepXgU', 1, '2022-02-28 07:29:42', '2022-02-28 07:29:42'),
+(16, 3, 'Định luật Kirchhoff 1 và Kirchhoff 2', NULL, '15DsdCppOsU', 1, '2022-02-28 07:30:36', '2022-02-28 07:30:36'),
+(17, 3, 'Circuit analysis methods based on KCL and KVL', NULL, 'AfICx98uU00', 1, '2022-02-28 07:31:32', '2022-02-28 07:31:32'),
+(18, 3, 'Thévenin and Norton theorem', NULL, 'tJRyuPamVM8', 1, '2022-02-28 07:32:11', '2022-02-28 07:32:11'),
+(19, 3, 'Star Delta transformation', NULL, '7kDLW-fYAIw', 1, '2022-02-28 07:32:44', '2022-02-28 07:32:44'),
+(20, 4, 'Bí Mật Forex #77 | 6 Bước Hướng Dẫn Người Mới Tham Gia Forex - mForex', NULL, 'BVDyncLJ-6o', 1, '2022-03-04 09:50:37', '2022-03-04 09:50:37'),
+(21, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )', NULL, 'TaiZS8-i6L0', 1, '2022-03-04 09:54:00', '2022-03-04 09:54:00'),
+(22, 6, 'CHIA SẺ KINH NGHIỆM ĐẦU TƯ CRYPTO CHO NGƯỜI MỚI BẮT ĐẦU - HOÀNG MINH THIỆN', NULL, 'ge-ZBklOHjw', 1, '2022-03-04 09:55:07', '2022-03-04 09:55:07'),
+(23, 4, 'Tâm sự Trader | Mình Đã Sai Khi Bỏ Việc Làm Trader - mForex\r\n', NULL, 'FlG3yAYHXX0', 1, '2022-03-04 09:58:59', '2022-03-04 09:58:59'),
+(24, 4, 'Tâm sự Trader | Trader Việt Là Những Kẻ Ích Kỷ & Keo Kiệt - mForex\r\n', NULL, 'K9AJ7OwHzXQ', 1, '2022-03-04 10:02:43', '2022-03-04 10:02:43'),
+(25, 4, 'Tâm sự Trader | Để Không Cháy Tài Khoản, Hãy Nhớ 4 Điều Này - mForex\r\n', NULL, 'YnxGcVnQlfI', 1, '2022-03-04 10:03:54', '2022-03-04 10:03:54'),
+(26, 4, 'Tâm sự Trader | Kiếm Được Nhiều Tiền Hay Trở Thành Trader Thực Thụ - mForex\r\n', NULL, 'yb8k5nlR6s0', 1, '2022-03-04 10:05:08', '2022-03-04 10:05:08'),
+(27, 4, 'Tâm sự Trader | Giao Dịch Thế Nào Với Tài Khoản Nhỏ? - mForex\r\n', NULL, 'Zxt2CLPYAuI', 1, '2022-03-04 10:06:12', '2022-03-04 10:06:12'),
+(28, 4, 'Tâm sự Trader | Chơi Forex Có Nhanh Giàu? - mForex\r\n', NULL, 'U03K2qBIKKM', 1, '2022-03-04 10:07:26', '2022-03-04 10:07:26'),
+(29, 4, '5 Điều \"TỐI KỴ\" Trader Phải Biết Trước Khi Tham Gia Forex - Tâm sự Trader\r\n', NULL, 'gcvWaoSTwz0', 1, '2022-03-04 10:08:22', '2022-03-04 10:08:22'),
+(30, 4, '4 Sai Lầm \"NGHIÊM TRỌNG\" Của Trader. Lời Tri Ân Từ mForex - Tâm Sự Trader\r\n', NULL, 'VsnFMKx3QjA', 1, '2022-03-04 10:09:28', '2022-03-04 10:09:28'),
+(31, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )\r\n', NULL, 'TaiZS8-i6L0', 1, '2022-03-04 10:10:43', '2022-03-04 10:10:43'),
+(32, 5, 'P2: Các khái niệm | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'qyLOuaCveK0', 1, '2022-03-04 10:11:31', '2022-03-04 10:11:31'),
+(33, 5, 'P3: Chỉ số tài chính cơ bản | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'gD0r43wbjnE', 1, '2022-03-04 10:12:27', '2022-03-04 10:12:27'),
+(34, 5, 'P4: Các loại cổ phiếu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'qiRNtNvWPY4', 1, '2022-03-04 10:13:19', '2022-03-04 10:13:19'),
+(35, 5, 'P5: 5 LỢI THẾ CẠNH TRANH | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'nFD3tXtRpVA', 1, '2022-03-04 10:14:21', '2022-03-04 10:14:21'),
+(36, 5, 'P6 : CHỨNG KHOÁN A BỜ CỜ: ĐƯỜNG CONG LỢI SUẤT ĐẢO NGƯỢC LÀ GÌ? KHỦNG HOẢNG KINH TẾ HAY KHÔNG?\r\n', NULL, 'NKm6UtxWWUc', 1, '2022-03-04 10:15:02', '2022-03-04 10:15:02'),
+(37, 5, 'P7: TẠI SAO FED – CỤC DỰ TRỮ LIÊN BANG – LẠI LÀ “NHÀ CÁI” SỐ 1 THẾ GIỚI? | HƯỚNG DẪN ĐẦU TƯ A-BỜ-CỜ\r\n', NULL, 'IVhlYPO0ae4', 1, '2022-03-04 10:15:45', '2022-03-04 10:15:45'),
+(38, 5, 'P8: THỰC HÀNH CỔ PHIẾU 4M & CANSLIM | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'b4BJgT9o_tc', 1, '2022-03-04 10:16:32', '2022-03-04 10:16:32'),
+(39, 5, 'P9: NHẬN DIỆN CÁC CÔNG TY LỪA ĐẢO | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 't19lmKjvir0', 1, '2022-03-04 10:17:08', '2022-03-04 10:17:08'),
+(40, 5, 'P10: 6 LOẠI HÌNH DOANH NGHIỆP ĐẦU TƯ | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'F9jnuEGA7V4', 1, '2022-03-04 10:17:59', '2022-03-04 10:17:59'),
+(41, 6, '1- Giới Thiệu Về Thị Trường Cryptocurrency', NULL, 'nD3-NsRz86g', 1, '2022-03-04 10:30:29', '2022-03-04 10:30:29'),
+(42, 6, '2- Công Nghệ Blockchain, Tiền Thuật Toán Bitcoin là gì?\r\n', NULL, '5hlE5HNwNz0', 1, '2022-03-04 10:34:47', '2022-03-04 10:34:47'),
+(43, 6, '3- Có Nên Đầu Tư Vào Tiền CryptoCurrency Hay Không?\r\n', NULL, 'G_a0Ao591QI', 1, '2022-03-04 10:35:47', '2022-03-04 10:35:47'),
+(44, 6, '4- Bước Đầu Tiên Khi Tham Gia Vào Thị Trường, Tạo Tài Khoản…\r\n', NULL, 'kqVTIT4_Itc', 1, '2022-03-04 10:36:16', '2022-03-04 10:36:16'),
+(45, 6, '5- Các Kiểu Đầu Tư Ở Việt Nam\r\n', NULL, 'B_yMMGlh-D8', 1, '2022-03-04 10:36:57', '2022-03-04 10:36:57'),
+(46, 6, '6- Các Lối Chơi Thường Thấy, Bạn Nên Chơi Theo Lối Chơi Nào?\r\n', NULL, 'JsQyxece55E', 1, '2022-03-04 10:38:07', '2022-03-04 10:38:07'),
+(47, 6, '7- Cách Để Lựa Chọn Một Đồng Coin Để Đầu Tư Sinh Lãi\r\n', NULL, 'hIXimbnos88', 1, '2022-03-04 10:38:58', '2022-03-04 10:38:58'),
+(48, 6, '8- Tìm Thông Tin và Phân Tích Thông Tin Của Coin\r\n', NULL, 'SEdUlw4SmTI', 1, '2022-03-04 10:39:34', '2022-03-04 10:39:34'),
+(49, 6, '9- Phân Tích Kỹ Thuật Có Nên Học và Khó Dùng Không\r\n', NULL, '80EpEU_4HG8', 1, '2022-03-04 10:40:10', '2022-03-04 10:40:10'),
+(50, 6, '10- Các Lỗi Sai Thường Gặp Khi Tham Gia Đầu Tư\r\n', NULL, 'Ems-73Q-ON0', 1, '2022-03-04 10:40:47', '2022-03-04 10:40:47');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `la_ward`
+-- Table structure for table `la_ward`
 --
 
 DROP TABLE IF EXISTS `la_ward`;
@@ -2167,7 +2197,7 @@ CREATE TABLE IF NOT EXISTS `la_ward` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Phường/xã';
 
 --
--- Đang đổ dữ liệu cho bảng `la_ward`
+-- Dumping data for table `la_ward`
 --
 
 INSERT INTO `la_ward` (`id`, `city_id`, `title`, `updated_at`, `created_at`) VALUES
@@ -2185,7 +2215,7 @@ INSERT INTO `la_ward` (`id`, `city_id`, `title`, `updated_at`, `created_at`) VAL
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sessions`
+-- Table structure for table `sessions`
 --
 
 DROP TABLE IF EXISTS `sessions`;
@@ -2202,7 +2232,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_commentmeta`
+-- Table structure for table `wp_commentmeta`
 --
 
 DROP TABLE IF EXISTS `wp_commentmeta`;
@@ -2219,7 +2249,7 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_comments`
+-- Table structure for table `wp_comments`
 --
 
 DROP TABLE IF EXISTS `wp_comments`;
@@ -2248,7 +2278,7 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_comments`
+-- Dumping data for table `wp_comments`
 --
 
 INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`) VALUES
@@ -2257,7 +2287,7 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_links`
+-- Table structure for table `wp_links`
 --
 
 DROP TABLE IF EXISTS `wp_links`;
@@ -2282,7 +2312,7 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_options`
+-- Table structure for table `wp_options`
 --
 
 DROP TABLE IF EXISTS `wp_options`;
@@ -2297,7 +2327,7 @@ CREATE TABLE IF NOT EXISTS `wp_options` (
 ) ENGINE=MyISAM AUTO_INCREMENT=163 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_options`
+-- Dumping data for table `wp_options`
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -2464,7 +2494,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_postmeta`
+-- Table structure for table `wp_postmeta`
 --
 
 DROP TABLE IF EXISTS `wp_postmeta`;
@@ -2479,7 +2509,7 @@ CREATE TABLE IF NOT EXISTS `wp_postmeta` (
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_postmeta`
+-- Dumping data for table `wp_postmeta`
 --
 
 INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
@@ -2495,7 +2525,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_posts`
+-- Table structure for table `wp_posts`
 --
 
 DROP TABLE IF EXISTS `wp_posts`;
@@ -2531,7 +2561,7 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_posts`
+-- Dumping data for table `wp_posts`
 --
 
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
@@ -2546,7 +2576,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_termmeta`
+-- Table structure for table `wp_termmeta`
 --
 
 DROP TABLE IF EXISTS `wp_termmeta`;
@@ -2563,7 +2593,7 @@ CREATE TABLE IF NOT EXISTS `wp_termmeta` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_terms`
+-- Table structure for table `wp_terms`
 --
 
 DROP TABLE IF EXISTS `wp_terms`;
@@ -2578,7 +2608,7 @@ CREATE TABLE IF NOT EXISTS `wp_terms` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_terms`
+-- Dumping data for table `wp_terms`
 --
 
 INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
@@ -2587,7 +2617,7 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_term_relationships`
+-- Table structure for table `wp_term_relationships`
 --
 
 DROP TABLE IF EXISTS `wp_term_relationships`;
@@ -2600,7 +2630,7 @@ CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_term_relationships`
+-- Dumping data for table `wp_term_relationships`
 --
 
 INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
@@ -2609,7 +2639,7 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_term_taxonomy`
+-- Table structure for table `wp_term_taxonomy`
 --
 
 DROP TABLE IF EXISTS `wp_term_taxonomy`;
@@ -2626,7 +2656,7 @@ CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_term_taxonomy`
+-- Dumping data for table `wp_term_taxonomy`
 --
 
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
@@ -2635,7 +2665,7 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_usermeta`
+-- Table structure for table `wp_usermeta`
 --
 
 DROP TABLE IF EXISTS `wp_usermeta`;
@@ -2650,7 +2680,7 @@ CREATE TABLE IF NOT EXISTS `wp_usermeta` (
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_usermeta`
+-- Dumping data for table `wp_usermeta`
 --
 
 INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
@@ -2677,7 +2707,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_users`
+-- Table structure for table `wp_users`
 --
 
 DROP TABLE IF EXISTS `wp_users`;
@@ -2699,7 +2729,7 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_users`
+-- Dumping data for table `wp_users`
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES

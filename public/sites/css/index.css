@@ -1604,6 +1604,8 @@ video {
     .container,
     .container-sm {
         max-width: 694px;
+    
+        
     }
     header .header_bottom .main .menu {
         display: none;
@@ -2230,8 +2232,16 @@ video {
         height: 237px;
     }
 }
+@media screen and (max-width: 376px){
 
-@media screen and (max-width: 375px) {
+}
+/* @media screen and (max-width: 375px) {
+    .container,
+    .footer{
+        max-width: 200px;
+    
+        
+    }
     video {
         width: 100%;
         height: auto;
@@ -2259,7 +2269,7 @@ video {
     .classes .list_category .right_content .tivi_show::before {
         left: 0%;
     }
-}
+} */
 
 
 /*Iphone(480 x 640)*/

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Modules\Sites\Models\Users_Model;
 use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class Users extends Controller
 {
@@ -39,6 +40,7 @@ class Users extends Controller
         $auth = array(
             'email' => $request->email,
             'password' => $request->password,
+            'auth_type' => 'email',
         );
 
 
@@ -70,16 +72,21 @@ class Users extends Controller
             return redirect()->route("sites.home.index")->with(["type" => "danger", "flash_message" => "Email hoặc mật khẩu không đúng"]);
         }
     }
-    public function GoogleLogin(Request $request)
-    {
 
-        $checkUser = Users_Model::where('email', $request->_email)->first();
+    // Google Login
+    public function googleRedirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleCallback()
+    {
+        $dataUser = Socialite::driver('google')->user();
+
+        $checkUser = Users_Model::where('email', $dataUser->email)->where('auth_type', 'google')->first();
         if ($checkUser) {
 
-            $checkUser->email = $request->_email;
-            $checkUser->fullname = $request->displayName;
-            $checkUser->save();
-            Auth::loginUsingId($checkUser->id, true);
+            Auth::login($checkUser);
             response()->json([
                 "status" => "success"
             ]);
@@ -90,9 +97,59 @@ class Users extends Controller
             }
         } else {
             $user = new Users_Model;
-            $user->email = $request->_email;
-            $user->fullname = $request->displayName;
-            $user->photo = $request->photo;
+            $uuid = Str::uuid()->toString();
+            $user->email = $dataUser->email;
+            $user->fullname = $dataUser->name;
+            $user->password = Hash::make($uuid);
+            $user->photo = $dataUser->avatar;
+            $user->auth_type = 'google';
+
+            $user->type = 0;
+            $user->status = 1;
+            $user->save();
+            Auth::login($user);
+            response()->json([
+                "status" => "success"
+            ]);
+            if ("status" == "success") {
+                return redirect()->route("sites.home.index");
+            } else {
+                return redirect()->route("sites.home.index");
+            }
+        }
+    }
+
+    // Facebook Login
+    public function facebookRedirect()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function facebookCallback()
+    {
+        $dataUser = Socialite::driver('facebook')->user();
+
+        $checkUser = Users_Model::where('email', $dataUser->email)->where('auth_type', 'facebook')->first();
+        if ($checkUser) {
+
+            Auth::login($checkUser, true);
+            response()->json([
+                "status" => "success"
+            ]);
+            if ("status" == "success") {
+                return redirect()->route("sites.home.index");
+            } else {
+                return redirect()->route("sites.home.index");
+            }
+        } else {
+            $user = new Users_Model;
+            $uuid = Str::uuid()->toString();
+            $user->email = $dataUser->email;
+            $user->fullname = $dataUser->name;
+            $user->password = Hash::make($uuid);
+            $user->photo = $dataUser->avatar;
+            $user->auth_type = 'facebook';
+
             $user->type = 0;
             $user->status = 1;
             $user->save();

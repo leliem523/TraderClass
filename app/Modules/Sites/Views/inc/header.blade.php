@@ -1,10 +1,18 @@
 <?php
-use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\DB;
 
- $categories = DB::table('course_category')
-                ->get();
+$categories = DB::table('course_category')
+               ->where('course_category.status', 1)
+               ->get();
 
-?>
+               
+$teachers = DB::table('teachers')
+            ->select('teachers.id', 'course.name', 'teachers.fullname')
+            ->join('course', 'teachers.id', 'course.teacher_id')
+            ->where('course.status', 1)
+            ->get();
+?> 
+
 
 @if (Auth::check())
 <div class="header">
@@ -19,19 +27,23 @@ use Illuminate\Support\Facades\DB;
                 <div class="menu header-menu">
                     <ul>
                         <li class="drop-header">
-                            <a style="padding-top: 0px;" class="nav-link header-dropdown" href="#"><i class="fas fa-chalkboard-teacher"></i>&nbsp; All Category
+                        <a style="padding-top: 0px; color:white;" class="nav-link header-dropdown"
+                                href="#"><i
+                                class="fas fa-chalkboard-teacher"></i>&nbsp; All Categories 
                             </a>
                             <div class="parent-drop">
-                                @foreach ($categories as $cate)
-                                    <div><a class="#" href="/all-class/{{ Str::slug($cate->title.'-'.$cate->id) }}">{{ $cate->title }}</a></div>
+                                @foreach ( $categories as $cate )
+                                <div><a class="#" href="/all-class/{{Str::Slug($cate->title.'-'.$cate->id)}}">{{ $cate->title }}</a></a></div>
                                 @endforeach
                             </div>
                         </li>
                         <li>
-                            <a style="padding-top: 0px;" class="nav-link" href="/all-teacher"><i class="fas fa-chalkboard-teacher"></i>&nbsp; All Teacher</a>
+                            <a style="padding-top: 0px;" class="nav-link" href="/all-teacher"><i
+                                    class="fas fa-chalkboard-teacher"></i>&nbsp; All Teacher</a>
                         </li>
                         <li>
-                            <a style="padding-top: 0px;" class="nav-link" href="/all-class"><i class="fas fa-users-class"></i>&nbsp; All Class</a>
+                            <a style="padding-top: 0px;" class="nav-link" href="/all-class"><i
+                                    class="fas fa-users-class"></i>&nbsp; All Class</a>
                         </li>
                     </ul>
                 </div>
@@ -39,12 +51,11 @@ use Illuminate\Support\Facades\DB;
 
                     <input list="brows" type="text" name="search" placeholder="Search.." id="fsearchh">
                     <datalist id="brows">
-                        {{-- <option value="Jarratt Davis">Teacher Forex Trader</option>
-                            <option value="Jarratt Davis">Teacher Forex Trader</option>
-                            <option value="Jarratt Davis">Teacher Forex Trader</option>
-                            <option value="Jarratt Davis">Teacher Forex Trader</option> --}}
+                        @foreach ($teachers as $teacher)
+                        <option value="{{$teacher->name}}">{{ $teacher->fullname }}</option>
+                        @endforeach
                     </datalist>
-                    <button>
+                    <button class="btn-search">
                         <i class="bi bi-search"></i>
                     </button>
                     <div id="countryList"></div>
@@ -53,13 +64,15 @@ use Illuminate\Support\Facades\DB;
                         <a href="#"><i class="fas fa-shopping-cart"></i></a>
                     </div> --}}
                 <div class="right_nav">
-                    <a class="nav-link" style="padding-top: 0px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                    <a class="nav-link" style="padding-top: 0px;" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown">
                         <img src="/public/sites/svg/avt.svg" alt="">
                     </a>
                     <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
                         <a style="color: black;" class="dropdown-item" href="/account">Account information</a>
                         <a style="color: black;" class="dropdown-item" href="/my-course">My Course</a>
-                        <a style="color: black;" class="dropdown-item" href="{{ route('sites.account.logout') }}">Log out</a>
+                        <a style="color: black;" class="dropdown-item" href="{{ route('sites.account.logout') }}">Log
+                            out</a>
                     </div>
                     <!-- <div class="dropdown">
                         <a style="padding-top: 0px;" class="dropbtn" href="#"><img src="./svg/avt.svg" alt=""></a>
@@ -71,7 +84,8 @@ use Illuminate\Support\Facades\DB;
                 </div>
                 <a class="toggle" id="btn-toggle-sidebar">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+                        <path fill="currentColor"
+                            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
                         </path>
                     </svg>
                 </a>
@@ -94,19 +108,23 @@ use Illuminate\Support\Facades\DB;
                 <div class="menu header-menu">
                     <ul>
                         <li class="drop-header">
-                            <a style="padding-top: 0px;" class="nav-link header-dropdown" href="#"><i class="fas fa-chalkboard-teacher"></i>&nbsp; All Category
+                            <a style="padding-top: 0px; color:white;" class="nav-link header-dropdown"
+                                href="#">&nbsp; All Categories <i
+                                class="fas fa-chalkboard-teacher"></i>
                             </a>
                             <div class="parent-drop">
-                                @foreach ($categories as $cate)
-                                    <div><a class="#" href="/all-class/{{ Str::slug($cate->title.'-'.$cate->id) }}">{{ $cate->title }}</a></div>           
+                                @foreach ( $categories as $cate )
+                                <div><a class="#" href="/all-class/{{Str::Slug($cate->title.'-'.$cate->id)}}">{{ $cate->title }}</a></a></div>
                                 @endforeach
                             </div>
                         </li>
                         <li>
-                            <a style="padding-top: 0px;" class="nav-link" href="/all-teacher"><i class="fas fa-chalkboard-teacher"></i>&nbsp; All Teacher</a>
+                            <a style="padding-top: 0px;" class="nav-link" href="/all-teacher"><i
+                                    class="fas fa-chalkboard-teacher"></i>&nbsp; All Teacher</a>
                         </li>
                         <li>
-                            <a style="padding-top: 0px;" class="nav-link" href="/all-class"><i class="fas fa-users-class"></i>&nbsp;
+                            <a style="padding-top: 0px;" class="nav-link" href="/all-class"><i
+                                    class="fas fa-users-class"></i>&nbsp;
                                 All Class</a>
                         </li>
                     </ul>
@@ -114,12 +132,11 @@ use Illuminate\Support\Facades\DB;
                 <div class="fsearch">
                     <input list="brows" type="text" name="search" placeholder="Search.." id="fsearchh">
                     <datalist id="brows">
-                        {{-- <option value="Jarratt Davis">Teacher Forex Trader</option>
-                            <option value="Jarratt Davis">Teacher Forex Trader</option>
-                            <option value="Jarratt Davis">Teacher Forex Trader</option>
-                            <option value="Jarratt Davis">Teacher Forex Trader</option> --}}
+                        @foreach ($teachers as $teacher)
+                        <option value="{{$teacher->name.' '.$teacher->id}}">{{ $teacher->fullname }}</option>
+                        @endforeach
                     </datalist>
-                    <button>
+                    <button class="btn-search">
                         <i class="bi bi-search"></i>
                         </button>
                 </div>
@@ -135,7 +152,8 @@ use Illuminate\Support\Facades\DB;
                 </div>
                 <a class="toggle" id="btn-toggle-sidebar">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+                        <path fill="currentColor"
+                            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
                         </path>
                     </svg>
                 </a>
@@ -148,32 +166,104 @@ use Illuminate\Support\Facades\DB;
 @endif
 
 <script>
-    // search
-    $(document).ready(function() {
 
-        $('#fsearchh').keyup(function() {
-            var query = $(this).val();
-            console.log("ngon");
-            if (query != '') {
-                var _token = $('meta[name="csrf-token"]').attr('content');
-                $.ajax({
-                    url: "{{ route('sites.search') }}",
-                    method: "POST",
-                    data: {
-                        query: query,
-                        _token: _token
-                    },
-                    success: function(data) {
-                        $('#brows').fadeIn();
-                        $('#brows').html(data);
-                    }
-                });
-            }
-        });
+const inputSearch = document.querySelector('#fsearchh');
+const btnSearch = document.querySelector('.btn-search');
 
-        $(document).on('click', 'option', function() {
-            $('#fsearchh').val($(this).text());
-            $('#brows').fadeOut();
-        });
-    });
+btnSearch.addEventListener('click', () => {
+    if(inputSearch.value) {
+        window.location = '/all-class/' + ChangeToSlug(inputSearch.value);
+    }
+});
+
+function ChangeToSlug(title)
+{
+
+    //Đổi chữ hoa thành chữ thường
+    var slug = title.toLowerCase();
+ 
+    //Đổi ký tự có dấu thành không dấu
+    slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+    slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+    slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+    slug = slug.replace(/đ/gi, 'd');
+    //Xóa các ký tự đặt biệt
+    slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+    //Đổi khoảng trắng thành ký tự gạch ngang
+    slug = slug.replace(/ /gi, " - ");
+    //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+    //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+    slug = slug.replace(/\-\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-/gi, '-');
+    //Xóa các ký tự gạch ngang ở đầu và cuối
+    slug = '@' + slug + '@';
+    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+    //In slug ra textbox có id “slug”
+    return slug;
+}
+
+// search
+function ChangeToSlug(title)
+{
+    //Đổi chữ hoa thành chữ thường
+    var slug = title.toLowerCase();
+ 
+    //Đổi ký tự có dấu thành không dấu
+    slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+    slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+    slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+    slug = slug.replace(/đ/gi, 'd');
+    //Xóa các ký tự đặt biệt
+    slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+    //Đổi khoảng trắng thành ký tự gạch ngang
+    slug = slug.replace(/ /gi, "-");
+    //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+    //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+    slug = slug.replace(/\-\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-/gi, '-');
+    //Xóa các ký tự gạch ngang ở đầu và cuối
+    slug = '@' + slug + '@';
+    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+    //In slug ra textbox có id “slug”
+    return slug;
+}
+
+
+// $(document).ready(function() {
+
+//     $('#fsearchh').keyup(function() {
+//         var query = $(this).val();
+//         console.log("ngon");
+//         if (query != '') {
+//             var _token = $('meta[name="csrf-token"]').attr('content');
+//             $.ajax({
+//                 url: "{{ route('sites.search') }}",
+//                 method: "POST",
+//                 data: {
+//                     query: query,
+//                     _token: _token
+//                 },
+//                 success: function(data) {
+//                     $('#brows').fadeIn();
+//                     $('#brows').html(data);
+//                 }
+//             });
+//         }
+//     });
+
+//     $(document).on('click', 'option', function() {
+//         $('#fsearchh').val($(this).text());
+//         $('#brows').fadeOut();
+//     });
+// });
 </script>

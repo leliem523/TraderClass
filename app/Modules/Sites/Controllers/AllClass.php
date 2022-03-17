@@ -12,6 +12,7 @@ use Validator;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Response;
 
 use function PHPUnit\Framework\isNull;
 
@@ -171,13 +172,14 @@ class AllClass extends Controller
         $user = auth::user();
 
         $teacher_id = explode('-', $teacher_id)[count(explode('-', $teacher_id)) - 1];
+    
         if(Auth::check()) {
             if(isset($request['teacher'])) {
                 $request['teacher'] = explode('-', $request['teacher'])[count(explode('-', $request['teacher'])) - 1];
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-                ->join('course_category','course_category.id','=','course.course_category_id')
-                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->join('course_category','course_category.id', 'course.course_category_id')
+                ->join('teachers', 'teachers.id', 'course.teacher_id')
                 ->where('course.teacher_id', $request['teacher'])
                 ->whereNotExists(function ($query)
                 {
@@ -193,8 +195,8 @@ class AllClass extends Controller
                 $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
                 $data = DB::table('course')
                         ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-                        ->join('course_category','course_category.id','=','course.course_category_id')
-                        ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                        ->join('course_category','course_category.id','course.course_category_id')
+                        ->join('teachers', 'teachers.id', 'course.teacher_id')
                         ->where('course.teacher_id', $teacher_id)
                         ->where('course.course_category_id', $request['topic'])
                         ->whereNotExists(function ($query)
@@ -234,7 +236,7 @@ class AllClass extends Controller
             else {
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('course_category','course_category.id', 'course.course_category_id')
                 ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
                 ->where('course.teacher_id', $teacher_id)
                 ->whereNotExists(function ($query)
@@ -253,8 +255,8 @@ class AllClass extends Controller
                 $request['teacher'] = explode('-', $request['teacher'])[count(explode('-', $request['teacher'])) - 1];
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-                ->join('course_category','course_category.id','=','course.course_category_id')
-                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->join('course_category','course_category.id','course.course_category_id')
+                ->join('teachers', 'teachers.id', 'course.teacher_id')
                 ->where('course.teacher_id', $request['teacher'])
                 ->orderBy('course.id', 'asc')->paginate(12);
             }
@@ -262,8 +264,8 @@ class AllClass extends Controller
                 $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-                ->join('course_category','course_category.id','=','course.course_category_id')
-                ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
+                ->join('course_category','course_category.id','course.course_category_id')
+                ->join('teachers', 'teachers.id', 'course.teacher_id')
                 ->where('course.teacher_id', $teacher_id)
                 ->where('course.course_category_id', $request['topic'])
                 ->orderBy('course.id', 'asc')
@@ -294,7 +296,7 @@ class AllClass extends Controller
             else {
                 $data = DB::table('course')
                 ->select('teachers.fullname','course.id','course.name','title','course.status','course.created_at','course.updated_at','course.photo', 'teachers.id as id_teacher')
-                ->join('course_category','course_category.id','=','course.course_category_id')
+                ->join('course_category','course_category.id',  'course.course_category_id')
                 ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
                 ->orderBy('course.id', 'asc')
                 ->where('course.teacher_id', $teacher_id)

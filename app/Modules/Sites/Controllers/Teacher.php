@@ -26,7 +26,7 @@ class Teacher extends Controller
         ->get();
         
         $course = DB::table('course')
-                ->select('teachers.fullname', 'teachers.position','teachers.id', 'course.photo','course.course_category_id','course.video_id','course.created_at','course.updated_at','course.name')
+                ->select('teachers.fullname', 'teachers.position','teachers.id', 'course.photo','course.course_category_id','course.video_id','course.created_at','course.updated_at','course.name', 'course.description')
                 ->join('teachers','teachers.id','=','course.teacher_id')
                 ->where('teachers.id', $id)
                 ->whereNotExists(function ($query)
@@ -37,7 +37,6 @@ class Teacher extends Controller
                     ->where('user_course.user_id', Auth::id());
                 })
                 ->first();
-
         if(!isset($course)) {
             return back();
         }

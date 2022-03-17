@@ -13,52 +13,67 @@ class Teacher extends Controller
     // Get all teachers
     public function getTeachers()
     {
-        $data = DB::table('teachers')
-                ->select('teachers.id', 'teachers.fullname', 'teachers.photo', 'teachers.position')
-                ->orderBy('teachers.id', 'asc')
-                ->where('teachers.status', 1)
-                ->paginate(10);
+       try {
+            $data = DB::table('teachers')
+            ->select('teachers.id', 'teachers.fullname', 'teachers.photo', 'teachers.position')
+            ->orderBy('teachers.id', 'asc')
+            ->where('teachers.status', 1)
+            ->paginate(10);
 
-        $arr_data = array();
+            $arr_data = array();
 
-        foreach ($data as $value) {
-            array_push($arr_data, $value);
-        }
+            foreach ($data as $value) {
+                array_push($arr_data, $value);
+            }
 
-        return response()->json([
-            'status' => true,
-            'msg' => 'get data teachers successfully !!',
-            'data' => $arr_data
-        ]);
+            return response()->json([
+                'status' => true,
+                'msg' => 'Get data teachers successfully !!',
+                'data' => $arr_data
+            ]);
+       } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'Get data teachers false !!',
+            ]);
+       }
     }
 
     // Get a teacher
     public function getTeacher($id)
     {
-        $data = DB::table('teachers')
-                ->select('teachers.id', 'teachers.fullname', 'teachers.photo', 'teachers.position')
-                ->orderBy('teachers.id', 'asc')
-                ->where([
-                    ['teachers.status', 1],
-                    ['teachers.id', $id]
-                ])
-                ->first();
-        return response()->json([
-            'status' => true,
-            'msg' => 'get data teacher successfully !!',
-            'data' => $data
-        ]);
+       try {
+            $data = DB::table('teachers')
+            ->select('teachers.id', 'teachers.fullname', 'teachers.photo', 'teachers.position')
+            ->orderBy('teachers.id', 'asc')
+            ->where([
+                ['teachers.status', 1],
+                ['teachers.id', $id]
+            ])
+            ->first();
+            return response()->json([
+                'status' => true,
+                'msg' => 'Get data teacher successfully !!',
+                'data' => $data
+            ]);
+       } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'Get data teacher false !!',
+            ]);
+       }
     }
 
     // Get top teachers
     public function getTopTeachers()    
     {
-        $get_ids = DB::table('user_course')
-                    ->selectRaw('count(*) as count_course_user, la_user_course.course_id')
-                    ->join('course', 'course.id', 'user_course.course_id')
-                    ->groupBy('user_course.course_id')
-                    ->orderBy('count_course_user', 'desc')
-                    ->paginate();
+     try {
+            $get_ids = DB::table('user_course')
+            ->selectRaw('count(*) as count_course_user, la_user_course.course_id')
+            ->join('course', 'course.id', 'user_course.course_id')
+            ->groupBy('user_course.course_id')
+            ->orderBy('count_course_user', 'desc')
+            ->paginate();
 
             $data = array();
             foreach ($get_ids as $get_id) {
@@ -72,11 +87,17 @@ class Teacher extends Controller
                 ->first();
                 array_push($data, $dataOfQuery);
             }
-        return response()->json([
+            return response()->json([
             'status' => true,
             'msg' => 'get data top teacher successfully !!',
             'data' => $data
-        ]);
+            ]);
+     } catch (\Throwable $th) {
+        return response()->json([
+            'status' => false,
+            'msg' => 'get data top teacher false !!',
+            ]);
+     }
     }
 
 }

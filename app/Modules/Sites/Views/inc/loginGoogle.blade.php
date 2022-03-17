@@ -29,7 +29,7 @@
 
             var googleProvider = new firebase.auth.GoogleAuthProvider();
 
-            var googleCallbackLink = 'login/google/callback';
+            var googleCallbackLink = 'login/google/redirect';
 
 
 

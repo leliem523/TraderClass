@@ -1,6 +1,8 @@
 <?php
 //Sites routes
 
+use App\Models\User;
+use App\Modules\Sites\Controllers\Users;
 use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -99,7 +101,14 @@ Route::group(['module' => 'sites', 'middleware' => 'web', 'namespace' => "App\Mo
 
     //Route::get("/login", ["as" => "users.login", "uses" => "Users@login"]);
     Route::post("/login", ["as" => "users.login_request", "uses" => "Users@login_request"]);
-    Route::post('login/google/callback',["as" => "users.logingoogle", "uses" => "Users@GoogleLogin"]);
+
+    // Google Login
+    Route::get('login/google/redirect',[Users::class, 'googleRedirect'])->name('googlelogin');
+    Route::get('login/google/callback',[Users::class, 'googleCallback']);
+
+      // Facebook Login
+    Route::get('login/facebook/redirect',[Users::class, 'facebookRedirect'])->name('facebooklogin');
+    Route::get('login/facebook/callback',[Users::class, 'facebookCallback']);
     
     //register
     Route::post("/register_request", ["as" => "users.create_request", "uses" => "Users@create_request"]);

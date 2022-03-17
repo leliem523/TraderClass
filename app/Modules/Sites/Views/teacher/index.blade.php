@@ -79,9 +79,7 @@
                         </div>
                       @endif
                     </div>
-                    <p style="font-size: 13px; color: white;">From litigator to ultramarathoner to bestselling author to head instructor and VP at Peloton, Robin Arzón keeps proving it’s never too late to level up in your life. Now, she’s ready to teach you how building your mental strength can
-                        help you see what’s possible for yourself—and see it through. Learn how to identify your dreams and apply the principles of endurance, power, and strength to help you reach your goals.
-                    </p>
+                    <p style="font-size: 13px; color: white;">{{ $course->description }}</p>
                 </div>
                 
                 <div class="col-md-4">
@@ -213,7 +211,7 @@
                 @foreach ($list_course as $value)
                     <div class="col-md-2">
                         <a href="/teacher/{{$value->id}}">
-                            <img src="/public/upload/images/teachers/thumb/{{$value->photo}}" alt="">
+                            <img src="{{$value->photo}}" alt="">
                             <p id="name">{{$value->fullname}}</p>
                             <p id="namee">{{$value->position}}</p>
                         </a>

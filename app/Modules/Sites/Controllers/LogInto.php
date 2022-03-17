@@ -49,7 +49,7 @@ class LogInto extends Controller
         ]));
 
         $course = DB::table('course')
-                    ->join('teachers', 'course.teacher_id', '=', 'teachers.id')
+                    ->join('teachers', 'course.teacher_id', 'teachers.id')
                     ->where('course.id', $id)
                     ->whereNotExists(function($query)
                     {

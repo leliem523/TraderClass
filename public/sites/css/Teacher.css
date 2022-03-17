@@ -182,7 +182,7 @@
     }
     
     .im p {
-        text-align: center;
+        text-align: left;
         margin-left: 15px;
         margin-top: 15px;
         color: white;
@@ -207,6 +207,7 @@
     
     .pla {
         padding: 10px;
+        line-height: 35px;
     }
     
     .all a {
@@ -930,7 +931,7 @@
             font-weight: 500;
         }
         .im p {
-            text-align: center;
+            text-align: left;
             margin-left: 10px;
             margin-top: 15px;
             color: white;
