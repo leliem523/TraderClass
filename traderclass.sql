@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Mar 17, 2022 at 02:04 AM
--- Server version: 5.7.36
--- PHP Version: 8.0.13
+-- Host: localhost
+-- Generation Time: Mar 19, 2022 at 01:11 AM
+-- Server version: 10.1.48-MariaDB-0ubuntu0.18.04.1
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,9 +27,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `la_admins`
 --
 
-DROP TABLE IF EXISTS `la_admins`;
-CREATE TABLE IF NOT EXISTS `la_admins` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_admins` (
+  `id` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `fullname` text COLLATE utf8_unicode_ci NOT NULL,
   `photo` text COLLATE utf8_unicode_ci,
@@ -41,10 +40,8 @@ CREATE TABLE IF NOT EXISTS `la_admins` (
   `status` int(11) NOT NULL,
   `type` int(11) NOT NULL COMMENT '0 - nomal, 1 - dev',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `admin_email` (`email`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_admins`
@@ -60,13 +57,11 @@ INSERT INTO `la_admins` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, 
 -- Table structure for table `la_admins_role`
 --
 
-DROP TABLE IF EXISTS `la_admins_role`;
-CREATE TABLE IF NOT EXISTS `la_admins_role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_admins_role` (
+  `id` int(11) NOT NULL,
   `admins_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `role_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `la_admins_role`
@@ -82,15 +77,13 @@ INSERT INTO `la_admins_role` (`id`, `admins_id`, `role_id`) VALUES
 -- Table structure for table `la_advertisement`
 --
 
-DROP TABLE IF EXISTS `la_advertisement`;
-CREATE TABLE IF NOT EXISTS `la_advertisement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_advertisement` (
+  `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `photo` text NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -99,9 +92,8 @@ CREATE TABLE IF NOT EXISTS `la_advertisement` (
 -- Table structure for table `la_blog`
 --
 
-DROP TABLE IF EXISTS `la_blog`;
-CREATE TABLE IF NOT EXISTS `la_blog` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_blog` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `alias` text COLLATE utf8_unicode_ci NOT NULL,
   `blog_category_id` int(11) NOT NULL,
@@ -113,9 +105,8 @@ CREATE TABLE IF NOT EXISTS `la_blog` (
   `status` int(11) NOT NULL COMMENT '0: disable, 1 active, 2 trash',
   `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `meta_keyword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `meta_description` text COLLATE utf8_unicode_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_blog`
@@ -137,9 +128,8 @@ INSERT INTO `la_blog` (`id`, `title`, `alias`, `blog_category_id`, `photo`, `exc
 -- Table structure for table `la_blog_category`
 --
 
-DROP TABLE IF EXISTS `la_blog_category`;
-CREATE TABLE IF NOT EXISTS `la_blog_category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_blog_category` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `alias` text COLLATE utf8_unicode_ci NOT NULL,
   `parent_id` int(11) NOT NULL,
@@ -151,9 +141,8 @@ CREATE TABLE IF NOT EXISTS `la_blog_category` (
   `meta_description` text COLLATE utf8_unicode_ci,
   `status` int(11) NOT NULL COMMENT '0: disable, 1 active, 2 trash	',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_blog_category`
@@ -185,9 +174,8 @@ INSERT INTO `la_blog_category` (`id`, `title`, `alias`, `parent_id`, `photo`, `i
 -- Table structure for table `la_brand`
 --
 
-DROP TABLE IF EXISTS `la_brand`;
-CREATE TABLE IF NOT EXISTS `la_brand` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_brand` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `alias` text COLLATE utf8_unicode_ci NOT NULL,
   `excerpt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -199,9 +187,8 @@ CREATE TABLE IF NOT EXISTS `la_brand` (
   `status` int(11) NOT NULL COMMENT '0: disable, 1 active, 2 trash',
   `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `meta_keyword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `meta_description` text COLLATE utf8_unicode_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_brand`
@@ -216,15 +203,13 @@ INSERT INTO `la_brand` (`id`, `title`, `alias`, `excerpt`, `photo`, `content`, `
 -- Table structure for table `la_city`
 --
 
-DROP TABLE IF EXISTS `la_city`;
-CREATE TABLE IF NOT EXISTS `la_city` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_city` (
+  `id` int(11) NOT NULL,
   `region_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `updated_at` datetime NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=714 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Thành phố/quận/huyện' ROW_FORMAT=COMPACT;
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Thành phố/quận/huyện' ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `la_city`
@@ -952,14 +937,12 @@ INSERT INTO `la_city` (`id`, `region_id`, `title`, `updated_at`, `created_at`) V
 -- Table structure for table `la_config`
 --
 
-DROP TABLE IF EXISTS `la_config`;
-CREATE TABLE IF NOT EXISTS `la_config` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_config` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `value` text COLLATE utf8_unicode_ci,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `la_config`
@@ -1036,9 +1019,8 @@ INSERT INTO `la_config` (`id`, `name`, `value`, `updated_at`) VALUES
 -- Table structure for table `la_contact`
 --
 
-DROP TABLE IF EXISTS `la_contact`;
-CREATE TABLE IF NOT EXISTS `la_contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_contact` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -1048,9 +1030,8 @@ CREATE TABLE IF NOT EXISTS `la_contact` (
   `updated_at` datetime NOT NULL,
   `created_at` datetime NOT NULL,
   `founding_date` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `enterprise_code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `enterprise_code` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_contact`
@@ -1065,9 +1046,8 @@ INSERT INTO `la_contact` (`id`, `name`, `phone`, `email`, `address`, `message`, 
 -- Table structure for table `la_course`
 --
 
-DROP TABLE IF EXISTS `la_course`;
-CREATE TABLE IF NOT EXISTS `la_course` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_course` (
+  `id` int(11) NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
   `course_category_id` int(11) NOT NULL,
@@ -1077,9 +1057,8 @@ CREATE TABLE IF NOT EXISTS `la_course` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `teacher_id` int(11) NOT NULL,
   `photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `video_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `video_id` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `la_course`
@@ -1087,11 +1066,15 @@ CREATE TABLE IF NOT EXISTS `la_course` (
 
 INSERT INTO `la_course` (`id`, `name`, `description`, `course_category_id`, `score`, `status`, `created_at`, `updated_at`, `teacher_id`, `photo`, `video_id`) VALUES
 (3, 'Khóa học kĩ thuật điện - điện tử', NULL, 2, 50, 1, '2022-03-08 09:42:29', '2022-02-28 07:16:00', 3, 'https://traderclass.vn/public/upload/images/course/thumb/1-1630502009.png', 'zh3d93SW1Gc'),
-(2, 'Khóa học lập trình Javascript căn bản', NULL, 1, 50, 1, '2022-03-08 09:42:35', '2022-02-26 09:31:42', 2, 'https://traderclass.vn/public/upload/images/course/thumb/sddefault-6-1630549571.jpg', '0SJE9dYdpps'),
-(1, 'Khóa học lập trình Python cơ bản', '[Khóa học lập trình Python cơ bản] - Bài 1: Giới thiệu ngôn ngữ lập trình Python | HowKteam\n\nNếu các bạn thấy hay thì hãy đăng ký theo dõi kênh, like, share cho mọi người cùng tham gia nhé.\n\nMuốn ủng hộ mình các bạn có thể nhấn vào quảng cáo hiện lên và load xong để mình được ít tiền duy trì nhé.\nCảm ơn mọi người.', 1, 50, 1, '2022-03-12 01:27:41', '2022-02-26 08:36:15', 1, 'https://traderclass.vn/public/upload/images/course/thumb/10-tieu-chi-can-quan-tam-khi-chon-mua-man-hinh-may-tinh-pc-8-1jpg-1629865462.jpg', 'NZj6LI5a9vc'),
+(2, 'Khóa học lập trình Javascript căn bản', 'Tham gia các khóa học MIỄN PHÍ tại F8 tại đây nhé (đã quyết định theo thì hãy cố gắng đến cùng):\n1. Kiến thức & cái nhìn tổng quan về ngành: https://fullstack.edu.vn/courses/less...\n2. Code giao diện trang web với HTML, CSS: https://fullstack.edu.vn/courses/html...\n3. Xử lý hiển thị tốt giao diện trên nhiều thiết bị khác nhau (responsive): https://fullstack.edu.vn/courses/resp...', 1, 50, 1, '2022-03-18 09:33:06', '2022-02-26 09:31:42', 2, 'https://traderclass.vn/public/upload/images/course/thumb/sddefault-6-1630549571.jpg', '0SJE9dYdpps'),
+(1, 'Khóa học lập trình Python cơ bản', NULL, 1, 50, 1, '2022-03-08 09:42:42', '2022-02-26 08:36:15', 1, 'https://traderclass.vn/public/upload/images/course/thumb/10-tieu-chi-can-quan-tam-khi-chon-mua-man-hinh-may-tinh-pc-8-1jpg-1629865462.jpg', 'NZj6LI5a9vc'),
 (4, 'Khóa học Forex', NULL, 3, 50, 1, '2022-03-08 09:42:48', '2022-03-04 02:38:43', 4, 'https://traderclass.vn/public/upload/images/course/thumb/forex-là-gì.jpg', 'BVDyncLJ-6o'),
 (5, 'Khóa học chứng khoáng', NULL, 4, 50, 1, '2022-03-08 09:42:53', '2022-03-04 02:44:29', 5, 'https://traderclass.vn/public/upload/images/course/thumb/Hay-tim-hieu-ve-Thi-truong-chung-khoan.jpg', 'TaiZS8-i6L0'),
-(6, 'Khóa học Crypto', NULL, 5, 50, 1, '2022-03-08 09:42:57', '2022-03-04 02:46:02', 6, 'https://traderclass.vn/public/upload/images/course/thumb/crypto-la-gi-1.jpg', 'ge-ZBklOHjw');
+(6, 'Khóa học Crypto', NULL, 5, 50, 1, '2022-03-08 09:42:57', '2022-03-04 02:46:02', 6, 'https://traderclass.vn/public/upload/images/course/thumb/crypto-la-gi-1.jpg', 'ge-ZBklOHjw'),
+(7, 'Khóa học JavaScript', NULL, 6, 50, 1, '2022-03-18 04:25:23', '2022-03-18 02:16:27', 7, 'https://traderclass.vn/public/upload/images/course/thumb/cafedevn-javascript.jpg', '-sMbAvgg7mY'),
+(8, 'Khóa học Flutter', NULL, 7, 50, 7, '2022-03-18 04:25:27', '2022-03-18 02:59:16', 8, 'https://traderclass.vn/public/upload/images/course/thumb/70760bf1e88b184bb1bc.png', 'WL3g5DHJ4pA'),
+(9, 'Khóa học ReactJS căn bản', NULL, 8, 50, 1, '2022-03-18 04:25:31', '2022-03-18 03:11:11', 8, 'https://traderclass.vn/public/upload/images/course/thumb/1_h5UGPzaL1E4dIy_JWDrsAw.png', 'vok14zYNs7o'),
+(10, 'Lập trình Zend Framework', NULL, 9, 50, 1, '2022-03-18 04:25:34', '2022-03-18 04:04:14', 9, 'https://traderclass.vn/public/upload/images/course/thumb/images.png', 'O1DALyxarYs');
 
 -- --------------------------------------------------------
 
@@ -1099,15 +1082,13 @@ INSERT INTO `la_course` (`id`, `name`, `description`, `course_category_id`, `sco
 -- Table structure for table `la_course_category`
 --
 
-DROP TABLE IF EXISTS `la_course_category`;
-CREATE TABLE IF NOT EXISTS `la_course_category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_course_category` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `la_course_category`
@@ -1118,7 +1099,73 @@ INSERT INTO `la_course_category` (`id`, `title`, `created_at`, `updated_at`, `st
 (1, 'IT', '2022-02-26 08:54:04', '2022-02-26 08:35:07', 1),
 (3, 'Forex', '2022-03-04 02:06:36', '2022-03-04 02:06:02', 1),
 (4, 'Chứng khoáng', '2022-03-04 02:10:44', '2022-03-04 02:09:48', 1),
-(5, 'Crypto', '2022-03-04 02:11:43', '2022-03-04 02:11:27', 1);
+(5, 'Crypto', '2022-03-04 02:11:43', '2022-03-04 02:11:27', 1),
+(6, 'JavaScript', '2022-03-18 02:08:37', '2022-03-18 02:08:37', 1),
+(7, 'Flutter', '2022-03-18 02:57:45', '2022-03-18 02:57:45', 1),
+(8, 'ReactJS', '2022-03-18 03:08:35', '2022-03-18 03:08:35', 1),
+(9, 'Zend Framework', '2022-03-18 04:02:57', '2022-03-18 04:02:57', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `la_course_comment`
+--
+
+CREATE TABLE `la_course_comment` (
+  `id` int(11) NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rating` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `la_course_comment`
+--
+
+INSERT INTO `la_course_comment` (`id`, `comment`, `rating`, `user_id`, `course_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Khóa học rất hay !!', 5, 52, 2, 1, '2022-03-18 08:00:02', '2022-03-18 08:00:02'),
+(2, 'Khóa học rất ý nghĩa !!', 4, 51, 2, 1, '2022-03-18 08:00:02', '2022-03-18 08:00:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `la_course_comment_root`
+--
+
+CREATE TABLE `la_course_comment_root` (
+  `id` int(11) NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cmt_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `la_course_price`
+--
+
+CREATE TABLE `la_course_price` (
+  `id` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `special_price` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `la_course_price`
+--
+
+INSERT INTO `la_course_price` (`id`, `price`, `special_price`, `status`, `created_at`, `updated_at`) VALUES
+(1, 590000, 990000, 1, '2022-03-18 07:24:31', '2022-03-18 07:24:31');
 
 -- --------------------------------------------------------
 
@@ -1126,18 +1173,16 @@ INSERT INTO `la_course_category` (`id`, `title`, `created_at`, `updated_at`, `st
 -- Table structure for table `la_crypto`
 --
 
-DROP TABLE IF EXISTS `la_crypto`;
-CREATE TABLE IF NOT EXISTS `la_crypto` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_crypto` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `image` text NOT NULL,
   `symbol` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `la_crypto`
@@ -1154,17 +1199,15 @@ INSERT INTO `la_crypto` (`id`, `name`, `address`, `image`, `symbol`, `status`, `
 -- Table structure for table `la_faq`
 --
 
-DROP TABLE IF EXISTS `la_faq`;
-CREATE TABLE IF NOT EXISTS `la_faq` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_faq` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` int(11) NOT NULL COMMENT '0 general, 1 Pricing & Payment',
   `status` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `la_faq`
@@ -1182,12 +1225,10 @@ INSERT INTO `la_faq` (`id`, `title`, `content`, `type`, `status`, `created_at`, 
 -- Table structure for table `la_migrations`
 --
 
-DROP TABLE IF EXISTS `la_migrations`;
-CREATE TABLE IF NOT EXISTS `la_migrations` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `batch` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1196,16 +1237,14 @@ CREATE TABLE IF NOT EXISTS `la_migrations` (
 -- Table structure for table `la_orders`
 --
 
-DROP TABLE IF EXISTS `la_orders`;
-CREATE TABLE IF NOT EXISTS `la_orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_orders` (
+  `id` int(11) NOT NULL,
   `code` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `total` int(11) NOT NULL,
   `note` text COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1214,9 +1253,8 @@ CREATE TABLE IF NOT EXISTS `la_orders` (
 -- Table structure for table `la_orders_customer`
 --
 
-DROP TABLE IF EXISTS `la_orders_customer`;
-CREATE TABLE IF NOT EXISTS `la_orders_customer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_orders_customer` (
+  `id` int(11) NOT NULL,
   `orders_id` int(11) NOT NULL,
   `firstname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `lastname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -1228,8 +1266,7 @@ CREATE TABLE IF NOT EXISTS `la_orders_customer` (
   `city_id` int(11) NOT NULL COMMENT 'Quận huyện',
   `region_id` int(11) NOT NULL COMMENT 'Tỉnh thành',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1238,9 +1275,8 @@ CREATE TABLE IF NOT EXISTS `la_orders_customer` (
 -- Table structure for table `la_orders_product`
 --
 
-DROP TABLE IF EXISTS `la_orders_product`;
-CREATE TABLE IF NOT EXISTS `la_orders_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_orders_product` (
+  `id` int(11) NOT NULL,
   `orders_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1252,8 +1288,7 @@ CREATE TABLE IF NOT EXISTS `la_orders_product` (
   `note` text COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1262,9 +1297,8 @@ CREATE TABLE IF NOT EXISTS `la_orders_product` (
 -- Table structure for table `la_payment_crypto`
 --
 
-DROP TABLE IF EXISTS `la_payment_crypto`;
-CREATE TABLE IF NOT EXISTS `la_payment_crypto` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_payment_crypto` (
+  `id` int(11) NOT NULL,
   `id_crypto` int(11) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `image_crypto` text NOT NULL,
@@ -1277,9 +1311,8 @@ CREATE TABLE IF NOT EXISTS `la_payment_crypto` (
   `link` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT '0:chưa thanh toán, 1 đã thanh toán\r\n',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `la_payment_crypto`
@@ -1320,13 +1353,11 @@ INSERT INTO `la_payment_crypto` (`id`, `id_crypto`, `email`, `image_crypto`, `cr
 -- Table structure for table `la_permission`
 --
 
-DROP TABLE IF EXISTS `la_permission`;
-CREATE TABLE IF NOT EXISTS `la_permission` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_permission` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `note` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='Resources - được phép làm gì( tương tác ui)';
+  `note` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Resources - được phép làm gì( tương tác ui)';
 
 --
 -- Dumping data for table `la_permission`
@@ -1354,41 +1385,17 @@ INSERT INTO `la_permission` (`id`, `name`, `note`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `la_personal_access_tokens`
---
-
-DROP TABLE IF EXISTS `la_personal_access_tokens`;
-CREATE TABLE IF NOT EXISTS `la_personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(138) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(138) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `la_personal_access_tokens_token_unique` (`token`),
-  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `la_policy`
 --
 
-DROP TABLE IF EXISTS `la_policy`;
-CREATE TABLE IF NOT EXISTS `la_policy` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_policy` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `la_policy`
@@ -1407,9 +1414,8 @@ INSERT INTO `la_policy` (`id`, `title`, `content`, `status`, `created_at`, `upda
 -- Table structure for table `la_product`
 --
 
-DROP TABLE IF EXISTS `la_product`;
-CREATE TABLE IF NOT EXISTS `la_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_product` (
+  `id` int(11) NOT NULL,
   `product_category_id` int(11) NOT NULL DEFAULT '0',
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `alias` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1424,9 +1430,8 @@ CREATE TABLE IF NOT EXISTS `la_product` (
   `meta_description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT '0 no active, 1 active, 2 trash',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_product`
@@ -1450,9 +1455,8 @@ INSERT INTO `la_product` (`id`, `product_category_id`, `title`, `alias`, `excerp
 -- Table structure for table `la_product_category`
 --
 
-DROP TABLE IF EXISTS `la_product_category`;
-CREATE TABLE IF NOT EXISTS `la_product_category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_product_category` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `alias` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `parent_id` int(11) NOT NULL,
@@ -1464,9 +1468,8 @@ CREATE TABLE IF NOT EXISTS `la_product_category` (
   `meta_description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_product_category`
@@ -1486,18 +1489,16 @@ INSERT INTO `la_product_category` (`id`, `title`, `alias`, `parent_id`, `photo`,
 -- Table structure for table `la_product_image`
 --
 
-DROP TABLE IF EXISTS `la_product_image`;
-CREATE TABLE IF NOT EXISTS `la_product_image` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_product_image` (
+  `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sort` int(11) NOT NULL,
   `status` int(11) NOT NULL COMMENT '0 not active , 1 active',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_product_image`
@@ -1555,9 +1556,8 @@ INSERT INTO `la_product_image` (`id`, `product_id`, `photo`, `title`, `sort`, `s
 -- Table structure for table `la_project`
 --
 
-DROP TABLE IF EXISTS `la_project`;
-CREATE TABLE IF NOT EXISTS `la_project` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_project` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `alias` text COLLATE utf8_unicode_ci NOT NULL,
   `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1569,9 +1569,8 @@ CREATE TABLE IF NOT EXISTS `la_project` (
   `status` int(11) NOT NULL COMMENT '0: disable, 1 active, 2 trash',
   `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `meta_keyword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `meta_description` text COLLATE utf8_unicode_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_project`
@@ -1586,12 +1585,10 @@ INSERT INTO `la_project` (`id`, `title`, `alias`, `photo`, `excerpt`, `content`,
 -- Table structure for table `la_region`
 --
 
-DROP TABLE IF EXISTS `la_region`;
-CREATE TABLE IF NOT EXISTS `la_region` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tỉnh/Thành phố' ROW_FORMAT=COMPACT;
+CREATE TABLE `la_region` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tỉnh/Thành phố' ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `la_region`
@@ -1668,13 +1665,11 @@ INSERT INTO `la_region` (`id`, `title`) VALUES
 -- Table structure for table `la_role`
 --
 
-DROP TABLE IF EXISTS `la_role`;
-CREATE TABLE IF NOT EXISTS `la_role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_role` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `Note` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `Note` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `la_role`
@@ -1691,18 +1686,16 @@ INSERT INTO `la_role` (`id`, `name`, `Note`) VALUES
 -- Table structure for table `la_role_permission`
 --
 
-DROP TABLE IF EXISTS `la_role_permission`;
-CREATE TABLE IF NOT EXISTS `la_role_permission` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_role_permission` (
+  `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
   `ClassName` varchar(255) NOT NULL,
   `views` int(11) NOT NULL,
   `adds` int(11) NOT NULL,
   `deletes` int(11) NOT NULL,
-  `edits` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+  `edits` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `la_role_permission`
@@ -1739,18 +1732,16 @@ INSERT INTO `la_role_permission` (`id`, `role_id`, `permission_id`, `ClassName`,
 -- Table structure for table `la_rules`
 --
 
-DROP TABLE IF EXISTS `la_rules`;
-CREATE TABLE IF NOT EXISTS `la_rules` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_rules` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `class` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `note` text COLLATE utf8_unicode_ci,
   `sort` int(11) NOT NULL,
   `type` int(11) NOT NULL COMMENT '0 normal, 1 dev',
   `updated_at` datetime NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_rules`
@@ -1780,16 +1771,14 @@ INSERT INTO `la_rules` (`id`, `title`, `class`, `note`, `sort`, `type`, `updated
 -- Table structure for table `la_rules_users`
 --
 
-DROP TABLE IF EXISTS `la_rules_users`;
-CREATE TABLE IF NOT EXISTS `la_rules_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_rules_users` (
+  `id` int(11) NOT NULL,
   `users_id` int(11) NOT NULL,
   `rules_id` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_rules_users`
@@ -1838,9 +1827,8 @@ INSERT INTO `la_rules_users` (`id`, `users_id`, `rules_id`, `status`, `created_a
 -- Table structure for table `la_service`
 --
 
-DROP TABLE IF EXISTS `la_service`;
-CREATE TABLE IF NOT EXISTS `la_service` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_service` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `alias` text COLLATE utf8_unicode_ci NOT NULL,
   `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1851,9 +1839,8 @@ CREATE TABLE IF NOT EXISTS `la_service` (
   `status` int(11) NOT NULL COMMENT '0: disable, 1 active, 2 trash',
   `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `meta_keyword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `meta_description` text COLLATE utf8_unicode_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_service`
@@ -1868,9 +1855,8 @@ INSERT INTO `la_service` (`id`, `title`, `alias`, `photo`, `excerpt`, `content`,
 -- Table structure for table `la_slide`
 --
 
-DROP TABLE IF EXISTS `la_slide`;
-CREATE TABLE IF NOT EXISTS `la_slide` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_slide` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `alias` text COLLATE utf8_unicode_ci NOT NULL,
   `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -1878,9 +1864,8 @@ CREATE TABLE IF NOT EXISTS `la_slide` (
   `sort` int(11) NOT NULL,
   `status` int(11) NOT NULL COMMENT '0 disable, 1 active',
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_slide`
@@ -1911,15 +1896,13 @@ INSERT INTO `la_slide` (`id`, `title`, `alias`, `photo`, `content`, `sort`, `sta
 -- Table structure for table `la_subcribe`
 --
 
-DROP TABLE IF EXISTS `la_subcribe`;
-CREATE TABLE IF NOT EXISTS `la_subcribe` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_subcribe` (
+  `id` int(11) NOT NULL,
   `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `course_category_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `la_subcribe`
@@ -1964,8 +1947,7 @@ INSERT INTO `la_subcribe` (`id`, `email`, `course_category_id`, `created_at`, `u
 (50, 'raymond.lv84@gmail.com', '4', '2021-09-27 00:43:02', '2021-09-27 00:43:02'),
 (51, 'mm@gmail.com', '4,2', '2022-02-18 15:14:03', '2022-02-18 15:14:03'),
 (52, 'liem@gmail.com', '1', '2022-03-03 02:53:24', '2022-03-03 02:53:24'),
-(53, 'dragking005@gmail.com', '1', '2022-03-05 01:29:24', '2022-03-05 01:29:24'),
-(54, 'hophantennhan@gmai.com', '5', '2022-03-09 09:06:28', '2022-03-09 09:06:28');
+(53, 'dragking005@gmail.com', '1', '2022-03-05 01:29:24', '2022-03-05 01:29:24');
 
 -- --------------------------------------------------------
 
@@ -1973,18 +1955,16 @@ INSERT INTO `la_subcribe` (`id`, `email`, `course_category_id`, `created_at`, `u
 -- Table structure for table `la_teachers`
 --
 
-DROP TABLE IF EXISTS `la_teachers`;
-CREATE TABLE IF NOT EXISTS `la_teachers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_teachers` (
+  `id` int(11) NOT NULL,
   `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` int(11) NOT NULL,
-  `type` int(11) NOT NULL COMMENT '1: New, 2:""',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `type` int(11) NOT NULL COMMENT '1: New, 2:""'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `la_teachers`
@@ -1996,7 +1976,10 @@ INSERT INTO `la_teachers` (`id`, `fullname`, `photo`, `position`, `created_at`, 
 (1, 'Ngô Thành Vinh', 'https://traderclass.vn/public/upload/images/teachers/thumb/all_class1cd5a932684f124ff9b53ad8bc6bb56f-1628568038.jpg', 'Giáo viên', '2022-03-08 09:46:31', '2022-02-26 08:48:06', 1, 1),
 (4, 'mForex', 'https://traderclass.vn/public/upload/images/teachers/thumb/118197480_190437035805007_5460491669922895029_n (2).jpg', 'Giảng viên', '2022-03-08 09:46:34', '2022-03-04 02:21:45', 1, 1),
 (5, 'Thái Phạm', 'https://traderclass.vn/public/upload/images/teachers/thumb/2034381-1616657886257-03c93f580bcd5 .jpg', 'Giảng viên', '2022-03-08 09:46:36', '2022-03-04 02:23:13', 1, 1),
-(6, 'Hoàng Minh Thiện', 'https://traderclass.vn/public/upload/images/teachers/thumb/ceo-hoang-minh-thien-chia-se-bi-quyet-vuot-kho-mua-dich-a2cf874d (1).jpg', 'Giảng viên', '2022-03-08 09:46:38', '2022-03-04 02:37:19', 1, 1);
+(6, 'Hoàng Minh Thiện', 'https://traderclass.vn/public/upload/images/teachers/thumb/ceo-hoang-minh-thien-chia-se-bi-quyet-vuot-kho-mua-dich-a2cf874d (1).jpg', 'Giảng viên', '2022-03-08 09:46:38', '2022-03-04 02:37:19', 1, 1),
+(7, 'ZendVN', 'https://traderclass.vn/public/upload/images/teachers/thumb/zendVN.jpg', 'Giảng Viên', '2022-03-18 06:15:28', '2022-03-18 02:05:10', 1, 1),
+(8, 'Bạch Ngọc Toàn', 'https://traderclass.vn/public/upload/images/teachers/thumb/avatars-000292736443-kzdh3d-t500x500.jpg', 'Giảng viên', '2022-03-18 06:15:33', '2022-03-18 02:56:27', 1, 1),
+(9, 'Khoa Phạm', 'https://traderclass.vn/public/upload/images/teachers/thumb/khoa.jpg', 'Giảng viên', '2022-03-18 06:15:35', '2022-03-18 04:01:21', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2004,16 +1987,14 @@ INSERT INTO `la_teachers` (`id`, `fullname`, `photo`, `position`, `created_at`, 
 -- Table structure for table `la_testimonials`
 --
 
-DROP TABLE IF EXISTS `la_testimonials`;
-CREATE TABLE IF NOT EXISTS `la_testimonials` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_testimonials` (
+  `id` int(11) NOT NULL,
   `photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `la_testimonials`
@@ -2029,9 +2010,8 @@ INSERT INTO `la_testimonials` (`id`, `photo`, `description`, `status`, `created_
 -- Table structure for table `la_users`
 --
 
-DROP TABLE IF EXISTS `la_users`;
-CREATE TABLE IF NOT EXISTS `la_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_users` (
+  `id` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `fullname` text COLLATE utf8_unicode_ci,
   `photo` text COLLATE utf8_unicode_ci,
@@ -2039,16 +2019,15 @@ CREATE TABLE IF NOT EXISTS `la_users` (
   `phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` text COLLATE utf8_unicode_ci,
-  `auth_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `auth_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `remember_token` text COLLATE utf8_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL COMMENT '0 - nomal, 1 - dev',
-  `score` int(11) DEFAULT NULL,
+  `score` int(11) NOT NULL DEFAULT '0',
   `forgotpassword_token` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `la_users`
@@ -2063,7 +2042,7 @@ INSERT INTO `la_users` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, `
 (37, '19211tt2861@mail.tdc.edu.vn', 'Trung Nguyễn Hiếu', 'https://lh3.googleusercontent.com/a/AATXAJwrPdGXWE2qLBKRQbY37XW-n_Hf3BVtZcULW0B9=s96-c', NULL, NULL, NULL, NULL, 'email', '6Ph73kRRkfXH1RBePQeP2DotIjWiiwwSYBjVGPlOlogzRkBEF4dS0mjXP16r', NULL, 0, 0, NULL, '2021-08-11 09:59:47', '2021-08-16 15:12:42'),
 (39, 'quanghuy9955@gmail.com', 'Quang Huy', 'https://lh3.googleusercontent.com/a-/AOh14GiBTJhxivCzXLkdLQY6VXlCCj9mEml7S3yjdYcCsdc=s96-c', NULL, NULL, NULL, NULL, 'email', 'H2DZrU8ZstsGKMzf3H9WFmWu5N9AHIQtIBeSrLMZ1APexufzV8L9iPjdgmxP', NULL, NULL, 0, NULL, '2021-08-11 10:32:59', '2021-08-11 10:32:59'),
 (40, 'tech.onicorn@gmail.com', 'BUI QUANG HUY', 'https://traderclass.vn/public/upload/images/users/thumb/3-1630166121.jpg', 1, '0977393349', 'Điện Biên Phủ', NULL, 'email', 'VUvP7duGkd6VCRThBejz8v6Vn5jMbbNoXEWlZN2LUzzRoiNi5405cwkyRm3K', NULL, NULL, 0, NULL, '2021-08-13 14:30:02', '2021-08-28 22:55:22'),
-(41, 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$lAHjejFrJ0ocdQ2.rE32ju2D4xMLJB4kfxKzB2ajheG9HGfHBK44q', '', 'h4cxO8myhybn4H1WKTRmLBU8xl8q8pszGsBrobvyHuuuOG9N0fAOsBMbwfjC', 2, 0, 100, NULL, '2021-08-16 09:46:54', '2021-08-26 16:54:15'),
+(41, 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$lAHjejFrJ0ocdQ2.rE32ju2D4xMLJB4kfxKzB2ajheG9HGfHBK44q', 'email', 'OQZ4jibDE3IlwKjWt7ik7qXsPK2jXTus2XvVxRKz3XBrgIFpDQSLMOgahboQ', 2, 0, 100, NULL, '2021-08-16 09:46:54', '2021-08-26 16:54:15'),
 (42, 'hi@quanghuy.info', 'Huy Quang', 'https://lh3.googleusercontent.com/a-/AOh14GiqdXZQ1xk0yFJg8jQuzhQJHVs5JRwhXbTvchF76dA8Klutjfoou3AmlUsBNSFIJV_aIL1a5sMeKqi8r0qP-293Wo6IzXgfCACwQLcAzwKZw8sSvoXWJdz9Uq2ABHciIBdM1dFieUHsf2FwaniHIiO0g7_8ucxeHJRYiTv0jytxyPIghLB9e8fakOYI2vDN6Y_6uArZknVWp-wExhmkGF5tpyXt0R8kCNb5pfWEgcMOagRdlUYPC52NQHPhJXNVwNJb5roaIzJa_VX2J_VHt0A_Ne4-fgEbGXxz57OisGM2hnuu2nLoVEhKAtQJJO5m2HaCvulXNcqRimYl7hAV6GqJTD-S74nSv_fZG0qkEzrwU1nwXpSrCEIAdC4IB5xzjFdtbRBGvyxkmMZmuKzz9XtgG06M3J5GEE-Rf9GwlmspZZeZtXFDLWDbvfFjYqrxV1YplREIPs7pANxBQERhRdlN2Bm8jJx2h-Mx0z8yvwgcpYwWp0ngufDP6JeQJ9BAjDby8PJyaJub1X_Qwv46Zn9uMw8f_9NQPAVZL3-jC_FJpuJ9-HrS7p-2pRKGbzRAvAOc99LEZnWEeq80vYgmpAB-maKHGlr9YonEgxP3FIGL1qGJ0fs1SSLWUCXctGi0a0AMdRhGbSN0nSnQYNfQ3IFDDAq407HZyNPQYE_Rf8H-8wPbMCGDNh62TSC4bORhcRSMDrbwhS9-iHU1qG3NRngxvvS-Jq9SlLmAW1kVKFzYshrKepFkWNWnsoB_rovbC3384g=s96-c', NULL, NULL, NULL, NULL, 'email', 'KYrddM8sz6FFMzPXAzGg2OqpYxf2A7d2hUX4sfFJh065H7IZRSGNddAssNoX', NULL, 0, 0, NULL, '2021-08-16 09:47:09', '2021-08-17 09:23:05'),
 (43, 'meoem2712@gmail.com', 'Nghia Le', 'https://lh3.googleusercontent.com/a-/AOh14GgKCO2oA4Zqkfb7UIvuQPq23m7MV0nC8-T1TfnY=s96-c', NULL, NULL, NULL, NULL, 'email', 'ViNbyv6KRPoAu0yEPOoxlFmSQp02P3ewdstXc7y3xke4g092io28NonfApxN', 1, NULL, 0, NULL, '2021-08-17 14:06:09', '2021-08-17 14:35:29'),
 (45, 'nguyenhieutrung0412@gmail.com', 'Nguyễn Trung', 'https://lh3.googleusercontent.com/a/AATXAJz_F_sWCtkCPvpEtQwDBkBOcPY6djwqn-gLKy6c=s96-c', NULL, NULL, NULL, NULL, 'email', 'tQtBVHZykpXsiq8AGnRmQvh9LhGmB6ArQ1e1qdrncmGYcdugIFCUL2GZ873x', 1, 0, 0, NULL, '2021-08-26 20:10:57', '2021-08-26 20:10:57'),
@@ -2072,10 +2051,8 @@ INSERT INTO `la_users` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, `
 (48, 'levannghia.tdc2018@gmail.com', 'nghia le', NULL, NULL, NULL, NULL, '$2y$10$ZQrml.rMKQW0k3sA2L855u/8QV82Li8WabnI6xKnDu0.9ZEtJSnAS', 'email', 'iipUdqcrELj4cNfgQIxfzwD3MNP5kPRfZaYn5PcqvHyXbAzhlBwMeUsbiDET', 0, 0, 0, NULL, '2021-10-20 13:42:41', '2022-02-15 16:49:26'),
 (49, 'liemlt.69.student@fit.tdc.edu.vn', NULL, NULL, NULL, NULL, NULL, '$2y$10$BUK1ywXSTf/oRGgE0VITGOm8IpgVk.dsJEL4ZKlpD/gIxOivZ/ROS', 'email', NULL, 0, 0, 0, NULL, '2022-02-28 17:01:37', '2022-02-28 17:01:37'),
 (50, 'aaa@aaa', NULL, NULL, NULL, NULL, NULL, '$2y$10$dFEaMi1l6gHE5pg7HrXB.umZdhy2qC5Z9s6JRVzJLjJSc8oqafLWW', 'email', NULL, 0, 0, 0, NULL, '2022-02-28 17:05:11', '2022-02-28 17:05:11'),
-(51, 'leliem@gmail.com', NULL, NULL, NULL, NULL, NULL, '$2y$10$5dmre4MRley6HiogizPXgOEdmyUmm7DrCUbP9VF//GzGaqi2Yfdlu', 'email', NULL, NULL, NULL, NULL, NULL, '2022-03-11 14:33:30', '2022-03-11 14:33:30'),
-(52, 'liemlt.69.student@fit.tdc.edu.vn', 'Liêm Lê Tuấn', 'https://lh3.googleusercontent.com/a-/AOh14GjMHH1ruVoYwkeICdlegOl_WKR_0quf_WOdS2-v=s96-c', NULL, NULL, NULL, '$2y$10$rkUmy8Nb0o3wfpJ4/3OLzuXr0g7xYLPSypTw9wYkpoIidydWOK8li', 'google', 'EC6K051mwgCcsXd53O78hF2EGDtciWBWKQVd5EtQcd1WeVjnTiRm1plMqlMa', 1, 0, NULL, NULL, '2022-03-17 08:48:18', '2022-03-17 08:48:18'),
-(53, 'dragking005@gmail.com', 'Lê Liêm', 'https://graph.facebook.com/v3.3/1074807049733991/picture?type=normal', NULL, NULL, NULL, '$2y$10$z243t6G8ULrTiu4M0UMQf.GmbAVQwOfgtSXaqTx6lg1q.6wOCc9lO', 'facebook', 'fQYzpFv9WIhP0oPE0DxSwMudoCju7r66jjOuicQRbgcimpQVgQucfmdLeSsL', 1, 0, NULL, NULL, '2022-03-17 08:54:17', '2022-03-17 08:54:17'),
-(54, '19211tt1869@mail.tdc.edu.vn', 'Lê Tuấn Liêm', 'https://lh3.googleusercontent.com/a-/AOh14GgMtDBAUkMMNoo5xp5YjPqHIaTl8GoLJagW4Ksd=s96-c', NULL, NULL, NULL, '$2y$10$LbwCaBvB7dGEy4aSDzxI3.4TKF8Mf9m6LL3qI1J3eK5pUCWCwG/x2', 'google', 'sIUqri6AoT2E5ErOFNPjnhYMqlpeiqQNO5WXQG16OVGbFJHJhdNG9hXjWiGJ', 1, 0, NULL, NULL, '2022-03-17 08:59:48', '2022-03-17 08:59:48');
+(51, 'dragking005@gmail.com', 'Liêm Lê', 'https://lh3.googleusercontent.com/a/AATXAJxCqFQqOysZ7D6Yy0lbsxgHQaO3CuUYdBBvwAQK=s96-c', NULL, NULL, NULL, '$2y$10$lhsRKuwU91fGfaQ18bObb.91/cywuzYclU.bLcScmod0wI4d6pXiO', 'google', NULL, 1, 0, 0, NULL, '2022-03-18 13:30:40', '2022-03-18 13:30:40'),
+(52, 'dragking005@gmail.com', 'Lê Liêm', 'https://graph.facebook.com/v3.3/1074870946394268/picture?type=normal', NULL, NULL, NULL, '$2y$10$iEbdenfiZ37j6F1GOJ2gb.QpP2Lkaky9U8vUrflAUwSUxSqdrM0gS', 'facebook', 'uZTDssDqKffE9TNrlucxF1StSZdkw4wKFd6xdET0zofz5HoLKXdgpvxpXJdI', 1, 0, 0, NULL, '2022-03-18 13:32:08', '2022-03-18 13:32:08');
 
 -- --------------------------------------------------------
 
@@ -2083,27 +2060,25 @@ INSERT INTO `la_users` (`id`, `email`, `fullname`, `photo`, `gender`, `phone`, `
 -- Table structure for table `la_user_course`
 --
 
-DROP TABLE IF EXISTS `la_user_course`;
-CREATE TABLE IF NOT EXISTS `la_user_course` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_user_course` (
+  `id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `la_user_course`
 --
 
 INSERT INTO `la_user_course` (`id`, `course_id`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2022-02-26 09:28:33', '2022-02-26 09:28:33'),
-(2, 2, 2, 1, '2022-03-02 17:28:17', '2022-03-02 17:28:17'),
+(1, 1, 52, 1, '2022-02-26 09:28:33', '2022-02-26 09:28:33'),
+(2, 2, 51, 1, '2022-03-02 17:28:17', '2022-03-02 17:28:17'),
 (3, 3, 41, 1, '2022-02-28 07:59:09', '2022-02-28 07:59:09'),
 (4, 4, 41, 1, '2022-03-04 15:42:53', '2022-03-04 15:42:53'),
-(5, 2, 3, 1, '2022-03-04 16:40:00', '2022-03-04 16:40:00');
+(5, 2, 52, 1, '2022-03-04 16:40:00', '2022-03-04 16:40:00');
 
 -- --------------------------------------------------------
 
@@ -2111,74 +2086,142 @@ INSERT INTO `la_user_course` (`id`, `course_id`, `user_id`, `status`, `created_a
 -- Table structure for table `la_video_course`
 --
 
-DROP TABLE IF EXISTS `la_video_course`;
-CREATE TABLE IF NOT EXISTS `la_video_course` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_video_course` (
+  `id` int(11) NOT NULL,
   `id_course` int(11) NOT NULL,
   `name` text NOT NULL,
   `description` text,
   `id_video` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `la_video_course`
 --
 
 INSERT INTO `la_video_course` (`id`, `id_course`, `name`, `description`, `id_video`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Bài 1: Cài đặt môi trường Python', NULL, 'jf-q_dG8WzI', 1, '2022-02-26 08:37:54', '2022-02-26 08:37:54'),
-(2, 1, 'Bài 2: Chạy file Python', NULL, 'QFxqY8qv42E', 1, '2022-02-26 08:39:40', '2022-02-26 08:39:40'),
-(3, 1, 'Bài 3: Comment trong Python', NULL, 't3dERE9T5yg', 1, '2022-02-26 08:40:48', '2022-02-26 08:40:48'),
-(4, 1, 'Bài 4: Biến(Variable) trong Python', NULL, 'nclE18Yl-kA', 1, '2022-02-26 08:40:48', '2022-02-26 08:40:48'),
-(5, 1, 'Bài 5: Kiểu số trong Python', NULL, 'IAVvgqDBiv0', 1, '2022-02-26 08:42:48', '2022-02-26 08:42:48'),
-(6, 1, 'Bài 6: Kiểu chuỗi trong Python', NULL, 'Vb6XWSLPQfg', 1, '2022-02-26 08:42:48', '2022-02-26 08:42:48'),
-(7, 2, 'Cài đặt môi trường', NULL, 'efI98nT8Ffo', 1, '2022-02-26 09:35:45', '2022-02-26 09:35:45'),
-(8, 2, 'Sử dụng JS trong file HTML', NULL, 'W0vEUmyvthQ', 1, '2022-02-26 09:36:34', '2022-02-26 09:36:34'),
-(9, 2, 'Khai báo biến', NULL, 'CLbx37dqYEI', 1, '2022-02-26 09:43:35', '2022-02-26 09:43:35'),
-(10, 2, 'Comments', NULL, 'xRpXBEq6TOY', 1, '2022-02-26 09:44:49', '2022-02-26 09:44:49'),
-(11, 2, 'Một số hàm built-in', NULL, 'rSV33HGotgE', 1, '2022-02-26 09:45:15', '2022-02-26 09:45:15'),
-(12, 3, 'Giới thiệu kỹ thuật điện - Điện trở, định luật Ohm', NULL, 'zh3d93SW1Gc', 1, '2022-02-28 07:20:28', '2022-02-28 07:20:28'),
-(13, 3, 'Open circuit and short circuit', NULL, 'pWBohyjImVU', 1, '2022-02-28 07:27:50', '2022-02-28 07:27:50'),
-(14, 3, 'Khái niệm cơ bản về điện - Điện thế', NULL, 'Ap2Lbwe7c_c', 1, '2022-02-28 07:29:03', '2022-02-28 07:29:03'),
-(15, 3, 'Mạch phân áp', NULL, '7uX1FJepXgU', 1, '2022-02-28 07:29:42', '2022-02-28 07:29:42'),
-(16, 3, 'Định luật Kirchhoff 1 và Kirchhoff 2', NULL, '15DsdCppOsU', 1, '2022-02-28 07:30:36', '2022-02-28 07:30:36'),
-(17, 3, 'Circuit analysis methods based on KCL and KVL', NULL, 'AfICx98uU00', 1, '2022-02-28 07:31:32', '2022-02-28 07:31:32'),
-(18, 3, 'Thévenin and Norton theorem', NULL, 'tJRyuPamVM8', 1, '2022-02-28 07:32:11', '2022-02-28 07:32:11'),
-(19, 3, 'Star Delta transformation', NULL, '7kDLW-fYAIw', 1, '2022-02-28 07:32:44', '2022-02-28 07:32:44'),
-(20, 4, 'Bí Mật Forex #77 | 6 Bước Hướng Dẫn Người Mới Tham Gia Forex - mForex', NULL, 'BVDyncLJ-6o', 1, '2022-03-04 09:50:37', '2022-03-04 09:50:37'),
-(21, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )', NULL, 'TaiZS8-i6L0', 1, '2022-03-04 09:54:00', '2022-03-04 09:54:00'),
-(22, 6, 'CHIA SẺ KINH NGHIỆM ĐẦU TƯ CRYPTO CHO NGƯỜI MỚI BẮT ĐẦU - HOÀNG MINH THIỆN', NULL, 'ge-ZBklOHjw', 1, '2022-03-04 09:55:07', '2022-03-04 09:55:07'),
-(23, 4, 'Tâm sự Trader | Mình Đã Sai Khi Bỏ Việc Làm Trader - mForex\r\n', NULL, 'FlG3yAYHXX0', 1, '2022-03-04 09:58:59', '2022-03-04 09:58:59'),
-(24, 4, 'Tâm sự Trader | Trader Việt Là Những Kẻ Ích Kỷ & Keo Kiệt - mForex\r\n', NULL, 'K9AJ7OwHzXQ', 1, '2022-03-04 10:02:43', '2022-03-04 10:02:43'),
-(25, 4, 'Tâm sự Trader | Để Không Cháy Tài Khoản, Hãy Nhớ 4 Điều Này - mForex\r\n', NULL, 'YnxGcVnQlfI', 1, '2022-03-04 10:03:54', '2022-03-04 10:03:54'),
-(26, 4, 'Tâm sự Trader | Kiếm Được Nhiều Tiền Hay Trở Thành Trader Thực Thụ - mForex\r\n', NULL, 'yb8k5nlR6s0', 1, '2022-03-04 10:05:08', '2022-03-04 10:05:08'),
-(27, 4, 'Tâm sự Trader | Giao Dịch Thế Nào Với Tài Khoản Nhỏ? - mForex\r\n', NULL, 'Zxt2CLPYAuI', 1, '2022-03-04 10:06:12', '2022-03-04 10:06:12'),
-(28, 4, 'Tâm sự Trader | Chơi Forex Có Nhanh Giàu? - mForex\r\n', NULL, 'U03K2qBIKKM', 1, '2022-03-04 10:07:26', '2022-03-04 10:07:26'),
-(29, 4, '5 Điều \"TỐI KỴ\" Trader Phải Biết Trước Khi Tham Gia Forex - Tâm sự Trader\r\n', NULL, 'gcvWaoSTwz0', 1, '2022-03-04 10:08:22', '2022-03-04 10:08:22'),
-(30, 4, '4 Sai Lầm \"NGHIÊM TRỌNG\" Của Trader. Lời Tri Ân Từ mForex - Tâm Sự Trader\r\n', NULL, 'VsnFMKx3QjA', 1, '2022-03-04 10:09:28', '2022-03-04 10:09:28'),
-(31, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )\r\n', NULL, 'TaiZS8-i6L0', 1, '2022-03-04 10:10:43', '2022-03-04 10:10:43'),
-(32, 5, 'P2: Các khái niệm | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'qyLOuaCveK0', 1, '2022-03-04 10:11:31', '2022-03-04 10:11:31'),
-(33, 5, 'P3: Chỉ số tài chính cơ bản | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'gD0r43wbjnE', 1, '2022-03-04 10:12:27', '2022-03-04 10:12:27'),
-(34, 5, 'P4: Các loại cổ phiếu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'qiRNtNvWPY4', 1, '2022-03-04 10:13:19', '2022-03-04 10:13:19'),
-(35, 5, 'P5: 5 LỢI THẾ CẠNH TRANH | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'nFD3tXtRpVA', 1, '2022-03-04 10:14:21', '2022-03-04 10:14:21'),
-(36, 5, 'P6 : CHỨNG KHOÁN A BỜ CỜ: ĐƯỜNG CONG LỢI SUẤT ĐẢO NGƯỢC LÀ GÌ? KHỦNG HOẢNG KINH TẾ HAY KHÔNG?\r\n', NULL, 'NKm6UtxWWUc', 1, '2022-03-04 10:15:02', '2022-03-04 10:15:02'),
-(37, 5, 'P7: TẠI SAO FED – CỤC DỰ TRỮ LIÊN BANG – LẠI LÀ “NHÀ CÁI” SỐ 1 THẾ GIỚI? | HƯỚNG DẪN ĐẦU TƯ A-BỜ-CỜ\r\n', NULL, 'IVhlYPO0ae4', 1, '2022-03-04 10:15:45', '2022-03-04 10:15:45'),
-(38, 5, 'P8: THỰC HÀNH CỔ PHIẾU 4M & CANSLIM | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'b4BJgT9o_tc', 1, '2022-03-04 10:16:32', '2022-03-04 10:16:32'),
-(39, 5, 'P9: NHẬN DIỆN CÁC CÔNG TY LỪA ĐẢO | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 't19lmKjvir0', 1, '2022-03-04 10:17:08', '2022-03-04 10:17:08'),
-(40, 5, 'P10: 6 LOẠI HÌNH DOANH NGHIỆP ĐẦU TƯ | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', NULL, 'F9jnuEGA7V4', 1, '2022-03-04 10:17:59', '2022-03-04 10:17:59'),
-(41, 6, '1- Giới Thiệu Về Thị Trường Cryptocurrency', NULL, 'nD3-NsRz86g', 1, '2022-03-04 10:30:29', '2022-03-04 10:30:29'),
-(42, 6, '2- Công Nghệ Blockchain, Tiền Thuật Toán Bitcoin là gì?\r\n', NULL, '5hlE5HNwNz0', 1, '2022-03-04 10:34:47', '2022-03-04 10:34:47'),
-(43, 6, '3- Có Nên Đầu Tư Vào Tiền CryptoCurrency Hay Không?\r\n', NULL, 'G_a0Ao591QI', 1, '2022-03-04 10:35:47', '2022-03-04 10:35:47'),
-(44, 6, '4- Bước Đầu Tiên Khi Tham Gia Vào Thị Trường, Tạo Tài Khoản…\r\n', NULL, 'kqVTIT4_Itc', 1, '2022-03-04 10:36:16', '2022-03-04 10:36:16'),
-(45, 6, '5- Các Kiểu Đầu Tư Ở Việt Nam\r\n', NULL, 'B_yMMGlh-D8', 1, '2022-03-04 10:36:57', '2022-03-04 10:36:57'),
-(46, 6, '6- Các Lối Chơi Thường Thấy, Bạn Nên Chơi Theo Lối Chơi Nào?\r\n', NULL, 'JsQyxece55E', 1, '2022-03-04 10:38:07', '2022-03-04 10:38:07'),
-(47, 6, '7- Cách Để Lựa Chọn Một Đồng Coin Để Đầu Tư Sinh Lãi\r\n', NULL, 'hIXimbnos88', 1, '2022-03-04 10:38:58', '2022-03-04 10:38:58'),
-(48, 6, '8- Tìm Thông Tin và Phân Tích Thông Tin Của Coin\r\n', NULL, 'SEdUlw4SmTI', 1, '2022-03-04 10:39:34', '2022-03-04 10:39:34'),
-(49, 6, '9- Phân Tích Kỹ Thuật Có Nên Học và Khó Dùng Không\r\n', NULL, '80EpEU_4HG8', 1, '2022-03-04 10:40:10', '2022-03-04 10:40:10'),
-(50, 6, '10- Các Lỗi Sai Thường Gặp Khi Tham Gia Đầu Tư\r\n', NULL, 'Ems-73Q-ON0', 1, '2022-03-04 10:40:47', '2022-03-04 10:40:47');
+(1, 1, 'Bài 1: Cài đặt môi trường Python', '', 'jf-q_dG8WzI', 1, '2022-02-26 08:37:54', '2022-02-26 08:37:54'),
+(2, 1, 'Bài 2: Chạy file Python', '', 'QFxqY8qv42E', 1, '2022-02-26 08:39:40', '2022-02-26 08:39:40'),
+(3, 1, 'Bài 3: Comment trong Python', '', 't3dERE9T5yg', 1, '2022-02-26 08:40:48', '2022-02-26 08:40:48'),
+(4, 1, 'Bài 4: Biến(Variable) trong Python', '', 'nclE18Yl-kA', 1, '2022-02-26 08:40:48', '2022-02-26 08:40:48'),
+(5, 1, 'Bài 5: Kiểu số trong Python', '', 'IAVvgqDBiv0', 1, '2022-02-26 08:42:48', '2022-02-26 08:42:48'),
+(6, 1, 'Bài 6: Kiểu chuỗi trong Python', '', 'Vb6XWSLPQfg', 1, '2022-02-26 08:42:48', '2022-02-26 08:42:48'),
+(7, 2, 'Cài đặt môi trường', '', 'efI98nT8Ffo', 1, '2022-02-26 09:35:45', '2022-02-26 09:35:45'),
+(8, 2, 'Sử dụng JS trong file HTML', '', 'W0vEUmyvthQ', 1, '2022-02-26 09:36:34', '2022-02-26 09:36:34'),
+(9, 2, 'Khai báo biến', '', 'CLbx37dqYEI', 1, '2022-02-26 09:43:35', '2022-02-26 09:43:35'),
+(10, 2, 'Comments', '', 'xRpXBEq6TOY', 1, '2022-02-26 09:44:49', '2022-02-26 09:44:49'),
+(11, 2, 'Một số hàm built-in', '', 'rSV33HGotgE', 1, '2022-02-26 09:45:15', '2022-02-26 09:45:15'),
+(12, 3, 'Giới thiệu kỹ thuật điện - Điện trở, định luật Ohm', '', 'zh3d93SW1Gc', 1, '2022-02-28 07:20:28', '2022-02-28 07:20:28'),
+(13, 3, 'Open circuit and short circuit', '', 'pWBohyjImVU', 1, '2022-02-28 07:27:50', '2022-02-28 07:27:50'),
+(14, 3, 'Khái niệm cơ bản về điện - Điện thế', '', 'Ap2Lbwe7c_c', 1, '2022-02-28 07:29:03', '2022-02-28 07:29:03'),
+(15, 3, 'Mạch phân áp', '', '7uX1FJepXgU', 1, '2022-02-28 07:29:42', '2022-02-28 07:29:42'),
+(16, 3, 'Định luật Kirchhoff 1 và Kirchhoff 2', '', '15DsdCppOsU', 1, '2022-02-28 07:30:36', '2022-02-28 07:30:36'),
+(17, 3, 'Circuit analysis methods based on KCL and KVL', '', 'AfICx98uU00', 1, '2022-02-28 07:31:32', '2022-02-28 07:31:32'),
+(18, 3, 'Thévenin and Norton theorem', '', 'tJRyuPamVM8', 1, '2022-02-28 07:32:11', '2022-02-28 07:32:11'),
+(19, 3, 'Star Delta transformation', '', '7kDLW-fYAIw', 1, '2022-02-28 07:32:44', '2022-02-28 07:32:44'),
+(20, 4, 'Bí Mật Forex #77 | 6 Bước Hướng Dẫn Người Mới Tham Gia Forex - mForex', '', 'BVDyncLJ-6o', 1, '2022-03-04 09:50:37', '2022-03-04 09:50:37'),
+(21, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )', '', 'TaiZS8-i6L0', 1, '2022-03-04 09:54:00', '2022-03-04 09:54:00'),
+(22, 6, 'CHIA SẺ KINH NGHIỆM ĐẦU TƯ CRYPTO CHO NGƯỜI MỚI BẮT ĐẦU - HOÀNG MINH THIỆN', '', 'ge-ZBklOHjw', 1, '2022-03-04 09:55:07', '2022-03-04 09:55:07'),
+(23, 4, 'Tâm sự Trader | Mình Đã Sai Khi Bỏ Việc Làm Trader - mForex\r\n', '', 'FlG3yAYHXX0', 1, '2022-03-04 09:58:59', '2022-03-04 09:58:59'),
+(24, 4, 'Tâm sự Trader | Trader Việt Là Những Kẻ Ích Kỷ & Keo Kiệt - mForex\r\n', '', 'K9AJ7OwHzXQ', 1, '2022-03-04 10:02:43', '2022-03-04 10:02:43'),
+(25, 4, 'Tâm sự Trader | Để Không Cháy Tài Khoản, Hãy Nhớ 4 Điều Này - mForex\r\n', '', 'YnxGcVnQlfI', 1, '2022-03-04 10:03:54', '2022-03-04 10:03:54'),
+(26, 4, 'Tâm sự Trader | Kiếm Được Nhiều Tiền Hay Trở Thành Trader Thực Thụ - mForex\r\n', '', 'yb8k5nlR6s0', 1, '2022-03-04 10:05:08', '2022-03-04 10:05:08'),
+(27, 4, 'Tâm sự Trader | Giao Dịch Thế Nào Với Tài Khoản Nhỏ? - mForex\r\n', '', 'Zxt2CLPYAuI', 1, '2022-03-04 10:06:12', '2022-03-04 10:06:12'),
+(28, 4, 'Tâm sự Trader | Chơi Forex Có Nhanh Giàu? - mForex\r\n', '', 'U03K2qBIKKM', 1, '2022-03-04 10:07:26', '2022-03-04 10:07:26'),
+(29, 4, '5 Điều \"TỐI KỴ\" Trader Phải Biết Trước Khi Tham Gia Forex - Tâm sự Trader\r\n', '', 'gcvWaoSTwz0', 1, '2022-03-04 10:08:22', '2022-03-04 10:08:22'),
+(30, 4, '4 Sai Lầm \"NGHIÊM TRỌNG\" Của Trader. Lời Tri Ân Từ mForex - Tâm Sự Trader\r\n', '', 'VsnFMKx3QjA', 1, '2022-03-04 10:09:28', '2022-03-04 10:09:28'),
+(31, 5, 'P1: Bắt đầu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ ( TỪ A-Z )\r\n', '', 'TaiZS8-i6L0', 1, '2022-03-04 10:10:43', '2022-03-04 10:10:43'),
+(32, 5, 'P2: Các khái niệm | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', '', 'qyLOuaCveK0', 1, '2022-03-04 10:11:31', '2022-03-04 10:11:31'),
+(33, 5, 'P3: Chỉ số tài chính cơ bản | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', '', 'gD0r43wbjnE', 1, '2022-03-04 10:12:27', '2022-03-04 10:12:27'),
+(34, 5, 'P4: Các loại cổ phiếu | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', '', 'qiRNtNvWPY4', 1, '2022-03-04 10:13:19', '2022-03-04 10:13:19'),
+(35, 5, 'P5: 5 LỢI THẾ CẠNH TRANH | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', '', 'nFD3tXtRpVA', 1, '2022-03-04 10:14:21', '2022-03-04 10:14:21'),
+(36, 5, 'P6 : CHỨNG KHOÁN A BỜ CỜ: ĐƯỜNG CONG LỢI SUẤT ĐẢO NGƯỢC LÀ GÌ? KHỦNG HOẢNG KINH TẾ HAY KHÔNG?\r\n', '', 'NKm6UtxWWUc', 1, '2022-03-04 10:15:02', '2022-03-04 10:15:02'),
+(37, 5, 'P7: TẠI SAO FED – CỤC DỰ TRỮ LIÊN BANG – LẠI LÀ “NHÀ CÁI” SỐ 1 THẾ GIỚI? | HƯỚNG DẪN ĐẦU TƯ A-BỜ-CỜ\r\n', '', 'IVhlYPO0ae4', 1, '2022-03-04 10:15:45', '2022-03-04 10:15:45'),
+(38, 5, 'P8: THỰC HÀNH CỔ PHIẾU 4M & CANSLIM | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', '', 'b4BJgT9o_tc', 1, '2022-03-04 10:16:32', '2022-03-04 10:16:32'),
+(39, 5, 'P9: NHẬN DIỆN CÁC CÔNG TY LỪA ĐẢO | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', '', 't19lmKjvir0', 1, '2022-03-04 10:17:08', '2022-03-04 10:17:08'),
+(40, 5, 'P10: 6 LOẠI HÌNH DOANH NGHIỆP ĐẦU TƯ | HƯỚNG DẪN ĐẦU TƯ CHỨNG KHOÁN CƠ BẢN, A-BỜ-CỜ (TỪ A-Z)\r\n', '', 'F9jnuEGA7V4', 1, '2022-03-04 10:17:59', '2022-03-04 10:17:59'),
+(41, 6, '1- Giới Thiệu Về Thị Trường Cryptocurrency', '', 'nD3-NsRz86g', 1, '2022-03-04 10:30:29', '2022-03-04 10:30:29'),
+(42, 6, '2- Công Nghệ Blockchain, Tiền Thuật Toán Bitcoin là gì?\r\n', '', '5hlE5HNwNz0', 1, '2022-03-04 10:34:47', '2022-03-04 10:34:47'),
+(43, 6, '3- Có Nên Đầu Tư Vào Tiền CryptoCurrency Hay Không?\r\n', '', 'G_a0Ao591QI', 1, '2022-03-04 10:35:47', '2022-03-04 10:35:47'),
+(44, 6, '4- Bước Đầu Tiên Khi Tham Gia Vào Thị Trường, Tạo Tài Khoản…\r\n', '', 'kqVTIT4_Itc', 1, '2022-03-04 10:36:16', '2022-03-04 10:36:16'),
+(45, 6, '5- Các Kiểu Đầu Tư Ở Việt Nam\r\n', '', 'B_yMMGlh-D8', 1, '2022-03-04 10:36:57', '2022-03-04 10:36:57'),
+(46, 6, '6- Các Lối Chơi Thường Thấy, Bạn Nên Chơi Theo Lối Chơi Nào?\r\n', '', 'JsQyxece55E', 1, '2022-03-04 10:38:07', '2022-03-04 10:38:07'),
+(47, 6, '7- Cách Để Lựa Chọn Một Đồng Coin Để Đầu Tư Sinh Lãi\r\n', '', 'hIXimbnos88', 1, '2022-03-04 10:38:58', '2022-03-04 10:38:58'),
+(48, 6, '8- Tìm Thông Tin và Phân Tích Thông Tin Của Coin\r\n', '', 'SEdUlw4SmTI', 1, '2022-03-04 10:39:34', '2022-03-04 10:39:34'),
+(49, 6, '9- Phân Tích Kỹ Thuật Có Nên Học và Khó Dùng Không\r\n', '', '80EpEU_4HG8', 1, '2022-03-04 10:40:10', '2022-03-04 10:40:10'),
+(50, 6, '10- Các Lỗi Sai Thường Gặp Khi Tham Gia Đầu Tư\r\n', '', 'Ems-73Q-ON0', 1, '2022-03-04 10:40:47', '2022-03-04 10:40:47'),
+(51, 7, 'Tự học JavaScript - Bài 01 Làm quen với Javascript\r\n', '', '-sMbAvgg7mY', 1, '2022-03-18 09:27:42', '2022-03-18 03:27:41'),
+(52, 7, 'Tự học JavaScript - Bài 02 Sử dụng Biến\r\n', '', 'FjPNtRRyd2E', 1, '2022-03-18 09:28:16', '2022-03-18 09:28:16'),
+(53, 7, 'Tự học JavaScript - Bài 03 Kiểu dữ liệu\r\n', '', 'SrqmsJLIc7g', 1, '2022-03-18 09:29:46', '2022-03-18 09:29:46'),
+(54, 7, 'Tự học JavaScript - Bài 04 Hàm trong Javascript\r\n', '', 'Ccspp-lV9Iw', 1, '2022-03-18 09:30:25', '2022-03-18 09:30:25'),
+(55, 7, 'Tự học JavaScript - Bài 05 Toán tử trong Javascript - Phần 1\r\n', '', 'o5QMg94hovU', 1, '2022-03-18 09:31:11', '2022-03-18 09:31:11'),
+(56, 7, 'Tự học JavaScript - Bài 06 Toán tử trong Javascript - Phần 2\r\n', '', 'ax-XMkzagw2w', 1, '2022-03-18 03:31:59', '2022-03-18 03:31:59'),
+(57, 7, 'Tự học JavaScript - Bài 07 Phát biểu điều kiện\r\n', '', 'Ai7p996YaAA', 1, '2022-03-18 09:32:32', '2022-03-18 09:32:32'),
+(58, 7, 'Tự học JavaScript - Bài 08 Xác định kiểu dữ liệu\r\n', '', '5_ALsxmhKME', 1, '2022-03-18 09:33:17', '2022-03-18 09:33:17'),
+(59, 7, 'Tự học JavaScript - Bài 09 Vòng lặp For\r\n', '', 'TQ3L_yBbDdk', 1, '2022-03-18 09:34:09', '2022-03-18 09:34:09'),
+(60, 7, 'Tự học JavaScript - Bài 10 Vòng lặp While\r\n', '', 'EL29sqE8pII', 1, '2022-03-18 09:35:21', '2022-03-18 09:35:21'),
+(61, 7, 'Tự học JavaScript - Bài 11 Vòng lặp Do - While, break và continue\r\n', '', 'o3a8vyGR3es', 1, '2022-03-18 09:35:59', '2022-03-18 09:35:59'),
+(62, 7, 'Tự học JavaScript - Bài 12 Vòng lặp - Bài tập tổng hợp\r\n', '', 'hHmO53Chy9w', 1, '2022-03-18 09:36:24', '2022-03-18 09:36:24'),
+(63, 7, 'Tự học JavaScript - Bài 13 JS Error\r\n', '', 'lSOieF5lDAY', 1, '2022-03-18 09:36:58', '2022-03-18 09:36:58'),
+(64, 7, 'Tự học JavaScript - Bài 14 JS Number - Introduce\r\n', '', 'UTx2A0NgCEU', 1, '2022-03-18 09:38:08', '2022-03-18 09:38:08'),
+(65, 7, 'Tự học JavaScript - Bài 15 JS Number - Properties', '', 'hfNp0z5wLdc', 1, '2022-03-18 09:38:49', '2022-03-18 09:38:49'),
+(66, 7, 'Tự học JavaScript - Bài 16 JS Number - Methods\r\n', '', 'JCbfznuosJQ', 1, '2022-03-18 09:39:25', '2022-03-18 09:39:25'),
+(67, 7, 'Tự học JavaScript - Bài 17 JS Number - Bài tập\r\n', '', 'Nyf6Gn6j9GY', 1, '2022-03-18 09:39:48', '2022-03-18 09:39:48'),
+(68, 7, 'Tự học JavaScript - Bài 18 JS Array - Properties\r\n', '', 'x2PhZc4qVfI', 1, '2022-03-18 09:40:32', '2022-03-18 09:40:32'),
+(69, 7, 'Tự học JavaScript - Bài 19 JS Array - Methods - Phần 1\r\n', '', 'PVsLwoEcW_Y', 1, '2022-03-18 09:40:56', '2022-03-18 09:40:56'),
+(70, 7, 'Tự học JavaScript - Bài 20 JS Array - Methods - Phần 2\r\n', '', '4_mxZzl7HF4', 1, '2022-03-18 09:43:53', '2022-03-18 09:43:53'),
+(71, 7, 'Tự học JavaScript - Bài 21 JS Array - Methods - Phần 3\r\n', '', 'LfFDFXspvL4', 1, '2022-03-18 09:44:31', '2022-03-18 09:44:31'),
+(72, 7, 'Tự học JavaScript - Bài 22 JS Array - Exercises\r\n', '', 'cCmA-MUsIlM', 1, '2022-03-18 09:45:10', '2022-03-18 09:45:10'),
+(73, 7, 'Tự học JavaScript - Bài 23 JS String - Properties', '', 'ESMfYv0-gew', 1, '2022-03-18 09:45:37', '2022-03-18 09:45:37'),
+(74, 7, 'Tự học JavaScript - Bài 24 JS String - Methods - Phần 1\r\n', '', 'CuZ3AcanLLc', 1, '2022-03-18 09:46:38', '2022-03-18 09:46:38'),
+(75, 7, 'Tự học JavaScript - Bài 25 JS String - Methods - Phần 2\r\n', '', 'L6WxDZBJ6rw', 1, '2022-03-18 09:47:17', '2022-03-18 09:47:17'),
+(76, 7, 'Tự học JavaScript - Bài 26 JS String - Methods - Phần 3\r\n', '', '_vGv1KppXhk', 1, '2022-03-18 09:47:46', '2022-03-18 09:47:46'),
+(77, 7, 'Tự học JavaScript - Bài 27 JS String - HTML Wrapper\r\n', '', 'NRRDcyntcVM', 1, '2022-03-18 09:48:23', '2022-03-18 09:48:23'),
+(78, 7, 'Tự học JavaScript - Bài 28 JS String - Excercise\r\n', '', 'Im_dLD28a1g', 1, '2022-03-18 09:48:53', '2022-03-18 09:48:53'),
+(79, 7, 'Tự học JavaScript - Bài 29 JS Math - Properties & Methods\r\n', '', '3WseyBJvAp4', 1, '2022-03-18 09:49:59', '2022-03-18 09:49:59'),
+(80, 7, 'Tự học JavaScript - Bài 30 JS Math - Exercise\r\n', '', 'FSQHAgjdvOQ', 1, '2022-03-18 09:50:30', '2022-03-18 09:50:30'),
+(81, 8, 'Flutter căn bản - Bài 1: Giới thiệu tổng quan khóa học', '', 'WL3g5DHJ4pA', 1, '2022-03-18 10:01:35', '2022-03-18 10:01:35'),
+(82, 8, 'Flutter căn bản - Bài 2: Kiến thức chung về ứng dụng Mobile\r\n', '', 'dKQ0PQnMMpI', 1, '2022-03-18 10:02:09', '2022-03-18 10:02:09'),
+(83, 8, 'Flutter căn bản - Bài 3: Cài đặt môi trường phát triển\r\n', '', 'gNjZBdhYvlI', 1, '2022-03-18 10:02:41', '2022-03-18 10:02:41'),
+(84, 8, 'Flutter căn bản - Bài 4: Giới thiệu ngôn ngữ Dart', '', 'iWtGEndDm58', 1, '2022-03-18 10:03:14', '2022-03-18 10:03:14'),
+(85, 8, 'Flutter căn bản - Bài 5: Giới thiệu về Flutter', '', 'upI-j8xXpAk', 1, '2022-03-18 10:03:54', '2022-03-18 10:03:54'),
+(86, 8, 'Flutter căn bản - Bài 6: Viết ứng dụng đầu tiên', '', 'GaEBpkkQUSg', 1, '2022-03-18 10:04:37', '2022-03-18 10:04:37'),
+(87, 8, 'Flutter căn bản - Bài 7: Giới thiệu về Widget\r\n', '', '-uaI5a8QYEo', 1, '2022-03-18 10:04:59', '2022-03-18 10:04:59'),
+(88, 8, 'Flutter căn bản - Bài 8: Stateless và stateful widget\r\n', '', '4UGyp7c3J4Y', 1, '2022-03-18 10:05:42', '2022-03-18 10:05:42'),
+(89, 8, 'Flutter căn bản - Bài 9: Cách kết hợp các Stateless widget\r\n', '', 'IeDOfoa85Eg', 1, '2022-03-18 10:06:23', '2022-03-18 10:06:23'),
+(90, 8, 'Flutter căn bản - Bài 10: Dựng layout với Material Design', '', '2JUmLbBJMt4', 1, '2022-03-18 10:06:48', '2022-03-18 10:06:48'),
+(91, 9, 'Bài 1: Giới thiệu khóa học ReactJS Căn bản', '', 'vok14zYNs7o', 1, '2022-02-02 10:39:01', '2022-03-18 10:39:01'),
+(92, 9, 'Bài 2: Thử viết ứng dụng đầu tiên trên Editor online\r\n', '', 'LNaTkz_hFV4', 1, '2022-02-02 10:40:59', '2022-03-18 10:40:59'),
+(93, 9, 'Bài 3: ES6 - Từ khóa let và const', '', '2bGnjCu8fUI', 1, '2022-02-16 10:46:05', '2022-03-18 10:46:05'),
+(94, 9, 'Bài 4: ES6 - Arrow function', '', 'K6GrkpNeP7U', 1, '2022-03-10 10:47:10', '2022-03-18 10:47:10'),
+(95, 9, 'Bài 5: ES6 - Import và export modules', '', 'ESRzngRw0Z4', 1, '2022-03-05 10:47:50', '2022-03-18 10:47:50'),
+(96, 9, 'Bài 6: ES6 - Tìm hiểu về Class', '', 'XSCd9is9Gc8', 1, '2022-03-12 10:49:00', '2022-03-18 10:49:00'),
+(97, 9, 'Bài 7: ES6 - Tìm hiểu khai báo Class, Methods và Properties', '', '05R5IxUcnP0', 1, '2022-03-01 10:50:11', '2022-03-18 10:50:11'),
+(98, 9, 'Bài 8: ES6 - Toán tử Spread và Rest', '', 'oEKH-zSi9AA', 1, '2022-01-08 10:51:00', '2022-03-12 10:51:00'),
+(99, 9, 'Bài 9: ES6 - Kỹ thuật desctructuring\r\n', '', 'fGTciOUy8_Q', 1, '2022-02-01 10:51:41', '2022-03-12 10:51:41'),
+(100, 9, 'Bài 10: ES6 - Primitive types và reference types', '', 'nD9PfRC4N3o', 1, '2022-02-01 10:55:03', '2022-03-18 10:55:03'),
+(101, 10, 'Bài 1 - Hướng dẫn cài đặt Zend skeleton application', '', 'O1DALyxarYs', 1, '2022-03-16 11:06:16', '2022-03-18 11:06:16'),
+(102, 10, 'Bài 2 - Giới thiệu cấu trúc Zend Skeleton Application', '', '0OzGB-lexbQ', 1, '2022-03-03 11:07:25', '2022-03-18 11:07:25'),
+(103, 10, 'Bài 3 - Getting Started with Zend Framework - Tìm hiểu cấu trúc Module Application', '', '3R6V0H0wOOw', 1, '2022-03-08 11:08:26', '2022-03-18 11:08:26'),
+(104, 10, 'Bài 4 - Getting Started with Zend Framework - Xây dựng module đầu tiên - Module Started', '', '8EXqQQgaqwg', 1, '2022-03-15 11:08:56', '2022-03-18 11:08:56'),
+(105, 10, 'Bài 5 - Router trong Zend Framework - Literal Route', '', '1xXXKsZlTSc', 1, '2022-03-01 11:09:22', '2022-03-18 11:09:22'),
+(106, 10, 'Bài 6 - Router trong Zend Framework - Segment Route', '', 'MMyuDNHm1rg', 1, '2022-02-01 11:09:57', '2022-03-18 11:09:57'),
+(107, 10, 'Bài 7 - Router trong Zend Framework - Tìm hiểu khái niệm child route', '', 'sgsaXGLYYuA', 1, '2022-01-15 11:10:47', '2022-03-18 11:10:47'),
+(108, 10, 'Bài 8 - Router trong Zend Framework - Tìm hiểu khái niệm child route', '', 'CCAlZBKA5q8', 1, '2022-03-10 11:11:26', '2022-03-18 11:11:26'),
+(109, 10, 'Bài 9 - Controller: Retrieving - GET and POST Variables', '', '2nDqxWMSLw4', 1, '2022-03-04 11:12:05', '2022-03-18 11:12:05'),
+(110, 10, 'Bài 10 - Controller: Retrieving - GET and POST Variables', '', 'mOCv8tVUNQQ', 1, '2022-01-26 11:14:53', '2022-03-18 11:14:53'),
+(111, 10, 'Bài 11 - Controller - Gửi data từ Controller sang View và Expressing Error Conditions', '', '0zvEHyVGdtk', 1, '2022-03-16 11:15:28', '2022-03-18 11:15:28'),
+(112, 10, 'Bài 12 - Controller - Đăng kí Controller với module.config.php\r\n', '', 'NjNrsrY5L7c', 1, '2022-03-01 11:16:14', '2022-03-18 11:16:14'),
+(113, 10, 'Bài 13 - View', '', 'PRw9GPGDbas', 1, '2022-03-04 11:16:44', '2022-03-18 05:16:44'),
+(114, 10, 'Bài 14 - Model\r\n', '', 'ka7EThwE3kc', 1, '2022-03-07 11:17:13', '2022-03-12 11:17:13'),
+(115, 10, 'Bài 15 - Cài đặt Zend Form, Xây dựng cấu trúc và khai báo module Form', '', 'NYZ5vGjE6cE', 1, '2022-03-02 11:18:07', '2022-03-18 11:18:07'),
+(116, 10, 'Bài 16 - FormElement: Textbox', '', '8LOQN5rsuPs', 1, '2022-03-04 11:19:24', '2022-03-18 11:19:24'),
+(117, 10, 'Bài 17 - FormElement: Textbox - Hiển thị Element ra view', '', '-kXJynOF9Eo', 1, '2022-03-01 11:19:53', '2022-03-18 11:19:53'),
+(118, 10, 'Bài 18 - FormElement: Hidden -- Number - Email\r\n', '', 'c4nBTiyP59U', 1, '2022-03-07 11:20:28', '2022-03-17 11:20:28'),
+(119, 10, 'Bài 19 - FormElement: Password - Radio', '', 'q_PY5ErjZMU', 1, '2022-03-10 11:21:09', '2022-03-18 05:21:09'),
+(120, 10, 'Bài 20 - FormElement: Textarea - Select\r\n', '', 'PEcKO0wnstE', 1, '2022-03-10 11:21:43', '2022-03-18 11:21:43');
 
 -- --------------------------------------------------------
 
@@ -2186,15 +2229,13 @@ INSERT INTO `la_video_course` (`id`, `id_course`, `name`, `description`, `id_vid
 -- Table structure for table `la_ward`
 --
 
-DROP TABLE IF EXISTS `la_ward`;
-CREATE TABLE IF NOT EXISTS `la_ward` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `la_ward` (
+  `id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `updated_at` datetime NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Phường/xã';
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Phường/xã';
 
 --
 -- Dumping data for table `la_ward`
@@ -2218,15 +2259,13 @@ INSERT INTO `la_ward` (`id`, `city_id`, `title`, `updated_at`, `created_at`) VAL
 -- Table structure for table `sessions`
 --
 
-DROP TABLE IF EXISTS `sessions`;
-CREATE TABLE IF NOT EXISTS `sessions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sessions` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `ip_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_agent` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `last_activity` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2235,15 +2274,11 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 -- Table structure for table `wp_commentmeta`
 --
 
-DROP TABLE IF EXISTS `wp_commentmeta`;
-CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_commentmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
   `comment_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `comment_id` (`comment_id`),
-  KEY `meta_key` (`meta_key`(191))
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -2252,9 +2287,8 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
 -- Table structure for table `wp_comments`
 --
 
-DROP TABLE IF EXISTS `wp_comments`;
-CREATE TABLE IF NOT EXISTS `wp_comments` (
-  `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_comments` (
+  `comment_ID` bigint(20) UNSIGNED NOT NULL,
   `comment_post_ID` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `comment_author` tinytext COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `comment_author_email` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -2268,14 +2302,8 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_agent` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `comment_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'comment',
   `comment_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  PRIMARY KEY (`comment_ID`),
-  KEY `comment_post_ID` (`comment_post_ID`),
-  KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
-  KEY `comment_date_gmt` (`comment_date_gmt`),
-  KEY `comment_parent` (`comment_parent`),
-  KEY `comment_author_email` (`comment_author_email`(10))
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_comments`
@@ -2290,9 +2318,8 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- Table structure for table `wp_links`
 --
 
-DROP TABLE IF EXISTS `wp_links`;
-CREATE TABLE IF NOT EXISTS `wp_links` (
-  `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_links` (
+  `link_id` bigint(20) UNSIGNED NOT NULL,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_image` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -2304,9 +2331,7 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
   `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `link_rel` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_notes` mediumtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `link_rss` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`link_id`),
-  KEY `link_visible` (`link_visible`)
+  `link_rss` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -2315,16 +2340,12 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 -- Table structure for table `wp_options`
 --
 
-DROP TABLE IF EXISTS `wp_options`;
-CREATE TABLE IF NOT EXISTS `wp_options` (
-  `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_options` (
+  `option_id` bigint(20) UNSIGNED NOT NULL,
   `option_name` varchar(191) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `option_value` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `autoload` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'yes',
-  PRIMARY KEY (`option_id`),
-  UNIQUE KEY `option_name` (`option_name`),
-  KEY `autoload` (`autoload`)
-) ENGINE=MyISAM AUTO_INCREMENT=163 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `autoload` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'yes'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_options`
@@ -2497,16 +2518,12 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- Table structure for table `wp_postmeta`
 --
 
-DROP TABLE IF EXISTS `wp_postmeta`;
-CREATE TABLE IF NOT EXISTS `wp_postmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_postmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
   `post_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `post_id` (`post_id`),
-  KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_postmeta`
@@ -2528,9 +2545,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- Table structure for table `wp_posts`
 --
 
-DROP TABLE IF EXISTS `wp_posts`;
-CREATE TABLE IF NOT EXISTS `wp_posts` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_posts` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
   `post_author` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -2552,13 +2568,8 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   `menu_order` int(11) NOT NULL DEFAULT '0',
   `post_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'post',
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_count` bigint(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`),
-  KEY `post_name` (`post_name`(191)),
-  KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
-  KEY `post_parent` (`post_parent`),
-  KEY `post_author` (`post_author`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `comment_count` bigint(20) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_posts`
@@ -2579,15 +2590,11 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- Table structure for table `wp_termmeta`
 --
 
-DROP TABLE IF EXISTS `wp_termmeta`;
-CREATE TABLE IF NOT EXISTS `wp_termmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_termmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
   `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `term_id` (`term_id`),
-  KEY `meta_key` (`meta_key`(191))
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -2596,16 +2603,12 @@ CREATE TABLE IF NOT EXISTS `wp_termmeta` (
 -- Table structure for table `wp_terms`
 --
 
-DROP TABLE IF EXISTS `wp_terms`;
-CREATE TABLE IF NOT EXISTS `wp_terms` (
-  `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_terms` (
+  `term_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `slug` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `term_group` bigint(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`term_id`),
-  KEY `slug` (`slug`(191)),
-  KEY `name` (`name`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `term_group` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_terms`
@@ -2620,13 +2623,10 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- Table structure for table `wp_term_relationships`
 --
 
-DROP TABLE IF EXISTS `wp_term_relationships`;
-CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
+CREATE TABLE `wp_term_relationships` (
   `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `term_order` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`object_id`,`term_taxonomy_id`),
-  KEY `term_taxonomy_id` (`term_taxonomy_id`)
+  `term_order` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -2642,18 +2642,14 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- Table structure for table `wp_term_taxonomy`
 --
 
-DROP TABLE IF EXISTS `wp_term_taxonomy`;
-CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
-  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_term_taxonomy` (
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL,
   `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `taxonomy` varchar(32) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `description` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `count` bigint(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`term_taxonomy_id`),
-  UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
-  KEY `taxonomy` (`taxonomy`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `count` bigint(20) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_term_taxonomy`
@@ -2668,16 +2664,12 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- Table structure for table `wp_usermeta`
 --
 
-DROP TABLE IF EXISTS `wp_usermeta`;
-CREATE TABLE IF NOT EXISTS `wp_usermeta` (
-  `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_usermeta` (
+  `umeta_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`umeta_id`),
-  KEY `user_id` (`user_id`),
-  KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -2710,9 +2702,8 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- Table structure for table `wp_users`
 --
 
-DROP TABLE IF EXISTS `wp_users`;
-CREATE TABLE IF NOT EXISTS `wp_users` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_users` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_pass` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_nicename` varchar(50) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -2721,12 +2712,8 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
   `user_registered` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `user_activation_key` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_status` int(11) NOT NULL DEFAULT '0',
-  `display_name` varchar(250) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`ID`),
-  KEY `user_login_key` (`user_login`),
-  KEY `user_nicename` (`user_nicename`),
-  KEY `user_email` (`user_email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `display_name` varchar(250) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_users`
@@ -2734,6 +2721,685 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
 (1, 'admin', '$P$B7pHFessHFbv7HnPR4iaFDz7JXjpV91', 'admin', 'levannghia.tdc2018@gmail.com', 'http://localhost/wordpress', '2021-07-26 01:34:17', '', 0, 'admin');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `la_admins`
+--
+ALTER TABLE `la_admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admin_email` (`email`) USING BTREE;
+
+--
+-- Indexes for table `la_admins_role`
+--
+ALTER TABLE `la_admins_role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_advertisement`
+--
+ALTER TABLE `la_advertisement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_blog`
+--
+ALTER TABLE `la_blog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_blog_category`
+--
+ALTER TABLE `la_blog_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_brand`
+--
+ALTER TABLE `la_brand`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_city`
+--
+ALTER TABLE `la_city`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_config`
+--
+ALTER TABLE `la_config`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_contact`
+--
+ALTER TABLE `la_contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_course`
+--
+ALTER TABLE `la_course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_course_category`
+--
+ALTER TABLE `la_course_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_course_comment`
+--
+ALTER TABLE `la_course_comment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_course_comment_root`
+--
+ALTER TABLE `la_course_comment_root`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_course_price`
+--
+ALTER TABLE `la_course_price`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_crypto`
+--
+ALTER TABLE `la_crypto`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_faq`
+--
+ALTER TABLE `la_faq`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_migrations`
+--
+ALTER TABLE `la_migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_orders`
+--
+ALTER TABLE `la_orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_orders_customer`
+--
+ALTER TABLE `la_orders_customer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_orders_product`
+--
+ALTER TABLE `la_orders_product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_payment_crypto`
+--
+ALTER TABLE `la_payment_crypto`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_permission`
+--
+ALTER TABLE `la_permission`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_policy`
+--
+ALTER TABLE `la_policy`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_product`
+--
+ALTER TABLE `la_product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_product_category`
+--
+ALTER TABLE `la_product_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_product_image`
+--
+ALTER TABLE `la_product_image`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_project`
+--
+ALTER TABLE `la_project`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_region`
+--
+ALTER TABLE `la_region`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_role`
+--
+ALTER TABLE `la_role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_role_permission`
+--
+ALTER TABLE `la_role_permission`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_rules`
+--
+ALTER TABLE `la_rules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_rules_users`
+--
+ALTER TABLE `la_rules_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_service`
+--
+ALTER TABLE `la_service`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_slide`
+--
+ALTER TABLE `la_slide`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_subcribe`
+--
+ALTER TABLE `la_subcribe`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_teachers`
+--
+ALTER TABLE `la_teachers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_testimonials`
+--
+ALTER TABLE `la_testimonials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_users`
+--
+ALTER TABLE `la_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_user_course`
+--
+ALTER TABLE `la_user_course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_video_course`
+--
+ALTER TABLE `la_video_course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `la_ward`
+--
+ALTER TABLE `la_ward`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wp_commentmeta`
+--
+ALTER TABLE `wp_commentmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `comment_id` (`comment_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_comments`
+--
+ALTER TABLE `wp_comments`
+  ADD PRIMARY KEY (`comment_ID`),
+  ADD KEY `comment_post_ID` (`comment_post_ID`),
+  ADD KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
+  ADD KEY `comment_date_gmt` (`comment_date_gmt`),
+  ADD KEY `comment_parent` (`comment_parent`),
+  ADD KEY `comment_author_email` (`comment_author_email`(10));
+
+--
+-- Indexes for table `wp_links`
+--
+ALTER TABLE `wp_links`
+  ADD PRIMARY KEY (`link_id`),
+  ADD KEY `link_visible` (`link_visible`);
+
+--
+-- Indexes for table `wp_options`
+--
+ALTER TABLE `wp_options`
+  ADD PRIMARY KEY (`option_id`),
+  ADD UNIQUE KEY `option_name` (`option_name`),
+  ADD KEY `autoload` (`autoload`);
+
+--
+-- Indexes for table `wp_postmeta`
+--
+ALTER TABLE `wp_postmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_posts`
+--
+ALTER TABLE `wp_posts`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `post_name` (`post_name`(191)),
+  ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
+  ADD KEY `post_parent` (`post_parent`),
+  ADD KEY `post_author` (`post_author`);
+
+--
+-- Indexes for table `wp_termmeta`
+--
+ALTER TABLE `wp_termmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `term_id` (`term_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_terms`
+--
+ALTER TABLE `wp_terms`
+  ADD PRIMARY KEY (`term_id`),
+  ADD KEY `slug` (`slug`(191)),
+  ADD KEY `name` (`name`(191));
+
+--
+-- Indexes for table `wp_term_relationships`
+--
+ALTER TABLE `wp_term_relationships`
+  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
+  ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
+
+--
+-- Indexes for table `wp_term_taxonomy`
+--
+ALTER TABLE `wp_term_taxonomy`
+  ADD PRIMARY KEY (`term_taxonomy_id`),
+  ADD UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
+  ADD KEY `taxonomy` (`taxonomy`);
+
+--
+-- Indexes for table `wp_usermeta`
+--
+ALTER TABLE `wp_usermeta`
+  ADD PRIMARY KEY (`umeta_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_users`
+--
+ALTER TABLE `wp_users`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `user_login_key` (`user_login`),
+  ADD KEY `user_nicename` (`user_nicename`),
+  ADD KEY `user_email` (`user_email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `la_admins`
+--
+ALTER TABLE `la_admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `la_admins_role`
+--
+ALTER TABLE `la_admins_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `la_advertisement`
+--
+ALTER TABLE `la_advertisement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `la_blog`
+--
+ALTER TABLE `la_blog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `la_blog_category`
+--
+ALTER TABLE `la_blog_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `la_brand`
+--
+ALTER TABLE `la_brand`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `la_city`
+--
+ALTER TABLE `la_city`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=714;
+
+--
+-- AUTO_INCREMENT for table `la_config`
+--
+ALTER TABLE `la_config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
+--
+-- AUTO_INCREMENT for table `la_contact`
+--
+ALTER TABLE `la_contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `la_course`
+--
+ALTER TABLE `la_course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+
+--
+-- AUTO_INCREMENT for table `la_course_category`
+--
+ALTER TABLE `la_course_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `la_course_comment`
+--
+ALTER TABLE `la_course_comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `la_course_comment_root`
+--
+ALTER TABLE `la_course_comment_root`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `la_course_price`
+--
+ALTER TABLE `la_course_price`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `la_crypto`
+--
+ALTER TABLE `la_crypto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `la_faq`
+--
+ALTER TABLE `la_faq`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `la_migrations`
+--
+ALTER TABLE `la_migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `la_orders`
+--
+ALTER TABLE `la_orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `la_orders_customer`
+--
+ALTER TABLE `la_orders_customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `la_orders_product`
+--
+ALTER TABLE `la_orders_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `la_payment_crypto`
+--
+ALTER TABLE `la_payment_crypto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+
+--
+-- AUTO_INCREMENT for table `la_permission`
+--
+ALTER TABLE `la_permission`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `la_policy`
+--
+ALTER TABLE `la_policy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `la_product`
+--
+ALTER TABLE `la_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `la_product_category`
+--
+ALTER TABLE `la_product_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `la_product_image`
+--
+ALTER TABLE `la_product_image`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
+-- AUTO_INCREMENT for table `la_project`
+--
+ALTER TABLE `la_project`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `la_region`
+--
+ALTER TABLE `la_region`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `la_role`
+--
+ALTER TABLE `la_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `la_role_permission`
+--
+ALTER TABLE `la_role_permission`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `la_rules`
+--
+ALTER TABLE `la_rules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `la_rules_users`
+--
+ALTER TABLE `la_rules_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+
+--
+-- AUTO_INCREMENT for table `la_service`
+--
+ALTER TABLE `la_service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `la_slide`
+--
+ALTER TABLE `la_slide`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `la_subcribe`
+--
+ALTER TABLE `la_subcribe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `la_teachers`
+--
+ALTER TABLE `la_teachers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `la_testimonials`
+--
+ALTER TABLE `la_testimonials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `la_users`
+--
+ALTER TABLE `la_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `la_user_course`
+--
+ALTER TABLE `la_user_course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `la_video_course`
+--
+ALTER TABLE `la_video_course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109111;
+
+--
+-- AUTO_INCREMENT for table `la_ward`
+--
+ALTER TABLE `la_ward`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `sessions`
+--
+ALTER TABLE `sessions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wp_commentmeta`
+--
+ALTER TABLE `wp_commentmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wp_comments`
+--
+ALTER TABLE `wp_comments`
+  MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wp_links`
+--
+ALTER TABLE `wp_links`
+  MODIFY `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wp_options`
+--
+ALTER TABLE `wp_options`
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+
+--
+-- AUTO_INCREMENT for table `wp_postmeta`
+--
+ALTER TABLE `wp_postmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `wp_posts`
+--
+ALTER TABLE `wp_posts`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `wp_termmeta`
+--
+ALTER TABLE `wp_termmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wp_terms`
+--
+ALTER TABLE `wp_terms`
+  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wp_term_taxonomy`
+--
+ALTER TABLE `wp_term_taxonomy`
+  MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wp_usermeta`
+--
+ALTER TABLE `wp_usermeta`
+  MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `wp_users`
+--
+ALTER TABLE `wp_users`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
