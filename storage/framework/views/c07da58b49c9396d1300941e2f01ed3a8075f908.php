@@ -44,7 +44,7 @@
             <div class="row">
                 <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-md-4">
-                    <a href="/teacher/<?php echo e(Str::slug($value->fullname.'-'.$value->id)); ?>">
+                    <a href="/teacher/<?php echo e(Str::slug($value->name.'-'.$value->id)); ?>">
                         <div class="img">
                             <img src="<?php echo e($value->photo); ?>" alt="">
                         </div>
@@ -57,7 +57,10 @@
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            
+            <?php if(!isset($_GET['mostPopular'])): ?>
+            <?php echo e($data->onEachSide(1)->links("pagination::bootstrap-4")); ?>
+
+            <?php endif; ?>
             
         </div>
     </div>

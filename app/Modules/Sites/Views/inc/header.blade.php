@@ -52,7 +52,7 @@ $teachers = DB::table('teachers')
                     <input list="brows" type="text" name="search" placeholder="Search.." id="fsearchh">
                     <datalist id="brows">
                         @foreach ($teachers as $teacher)
-                        <option value="{{$teacher->name}}">{{ $teacher->fullname }}</option>
+                        <option value="{{$teacher->name.' '.$teacher->id}}">{{ $teacher->fullname }}</option>
                         @endforeach
                     </datalist>
                     <button class="btn-search">

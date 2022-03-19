@@ -38,7 +38,7 @@ class AllClass extends Controller
                      ->where('user_course.user_id', Auth::id());
                 })
                 ->orderBy('course.id', 'asc')
-                ->paginate(12);
+                ->paginate(6);
             }
             else if(isset($request['topic'])) {
                 $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
@@ -55,7 +55,7 @@ class AllClass extends Controller
                      ->where('user_course.user_id', Auth::id());
                 })
                 ->orderBy('course.id', 'asc')
-                ->paginate(12);
+                ->paginate(6);
             }
             else if(isset($request['mostPopular'])) {
                 $course_ids = DB::table('user_course')
@@ -99,7 +99,7 @@ class AllClass extends Controller
                      ->where('user_course.user_id', Auth::id());
                 })
                 ->orderBy('course.id', 'asc')
-                ->paginate(12);
+                ->paginate(6);
             }
        }
        else {
@@ -111,7 +111,7 @@ class AllClass extends Controller
                 ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
                 ->where('course.teacher_id', $request['teacher'])
                 ->orderBy('course.id', 'asc')
-                ->paginate(12);
+                ->paginate(6);
             }
             else if(isset($request['topic'])) {
                 $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
@@ -121,7 +121,7 @@ class AllClass extends Controller
                         ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
                         ->where('course.course_category_id', $request['topic'])
                         ->orderBy('course.id', 'asc')
-                        ->paginate(12);
+                        ->paginate(6);
             }
             else if(isset($request['mostPopular'])) {
                 $course_ids = DB::table('user_course')
@@ -151,7 +151,7 @@ class AllClass extends Controller
                         ->join('course_category','course_category.id','=','course.course_category_id')
                         ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
                         ->orderBy('course.id', 'asc')
-                        ->paginate(12);
+                        ->paginate(6);
             }
        }
         $topics = DB::table('course_category')
@@ -189,7 +189,7 @@ class AllClass extends Controller
                      ->where('user_course.user_id', Auth::id());
                 })
                 ->orderBy('course.id', 'asc')
-                ->paginate(12);
+                ->paginate(6);
             }
             else if(isset($request['topic'])) {
                 $request['topic'] = explode('-', $request['topic'])[count(explode('-', $request['topic'])) - 1];
@@ -207,7 +207,7 @@ class AllClass extends Controller
                             ->where('user_course.user_id', Auth::id());
                         })
                         ->orderBy('course.id', 'asc')
-                        ->paginate(12);
+                        ->paginate(6);
             }
             else if(isset($request['mostPopular'])) {
                 $course_ids = DB::table('user_course')
@@ -247,7 +247,7 @@ class AllClass extends Controller
                      ->where('user_course.user_id', Auth::id());
                 })
                 ->orderBy('course.id', 'asc')
-                ->paginate(12);
+                ->paginate(6);
             }
        }
        else {
@@ -269,7 +269,7 @@ class AllClass extends Controller
                 ->where('course.teacher_id', $teacher_id)
                 ->where('course.course_category_id', $request['topic'])
                 ->orderBy('course.id', 'asc')
-                ->paginate(12);
+                ->paginate(6);
             }
             else if(isset($request['mostPopular'])) {
                 $course_ids = DB::table('user_course')
@@ -300,7 +300,7 @@ class AllClass extends Controller
                 ->join('teachers', 'teachers.id', '=', 'course.teacher_id')
                 ->orderBy('course.id', 'asc')
                 ->where('course.teacher_id', $teacher_id)
-                ->paginate(12);
+                ->paginate(6);
             }
        }
 

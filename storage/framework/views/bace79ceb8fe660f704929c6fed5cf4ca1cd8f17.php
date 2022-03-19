@@ -63,7 +63,18 @@
                     <div class="col-md-9">
                         <p id="title"><?php echo e(isset($course->name) ? $course->name : ''); ?></p>
                         <p style="font-size: 20px; color: white; font-weight: 100;"><?php echo e(isset($course->fullname) ? $course->fullname : ''); ?></p>
-                        <p><span style="font-size: 14px; color: #EF8D21;"> 4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>&ensp;<span style="font-size: 14px; color: white;">(940 Đánh giá) - 0 Học viên</span></p>
+                        <p><span style="font-size: 14px; color: #EF8D21;"> 
+                            <?php echo e((double) $count_avg->avg_rating); ?> 
+                            <?php for($i = 1; $i <= 5; $i++): ?>
+                                <?php if($i <= (int) $count_avg->avg_rating ): ?>
+                                    <i class="fas fa-star"></i>
+                                <?php elseif($i == (int) $count_avg->avg_rating + 1): ?>
+                                    <i class="fas fa-star-half-alt"></i>
+                                <?php else: ?>
+                                <i class="far fa-star"></i>
+                                <?php endif; ?>
+                            <?php endfor; ?>
+                           </span>&ensp;<span style="font-size: 14px; color: white;">(<?php echo e($course_comment_count->count); ?> Đánh giá) - <?php echo e($sum_user_of_course->count); ?> Học viên</span></p>
                     </div>
                     
                     <script>
@@ -101,84 +112,37 @@
                     </script>
 
                 </div>
-                <p style="font-size: 13px; color: white;">From litigator to ultramarathoner to bestselling author to head instructor and VP at Peloton, Robin Arzón keeps proving it’s never too late to level up in your life. Now, she’s ready to teach you how building your mental strength can
-                    help you see what’s possible for yourself—and see it through. Learn how to identify your dreams and apply the principles of endurance, power, and strength to help you reach your goals.
-                </p>
+              <?php if(isset($course_video)): ?>
+                <p style="font-size: 13px; color: white;"><?php echo e($course_video->description); ?></p>
+              <?php else: ?>
+                <p style="font-size: 13px; color: white;"><?php echo e($course->description); ?></p>
+              <?php endif; ?>
                 <p id="title" style="padding-top: 30px;">Rate and comment</p>
                 <div class="commet">
                     <div class="imt">
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
+                        <?php $__currentLoopData = $course_comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cmt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="com">
+                                    <div class="date">
+                                        <div id="google">
+                                           <img class="img-fluid" src="<?php echo e($cmt->photo); ?>" alt="">
+                                        </div>
+                                        <p id="date"><span><?php echo e($cmt->fullname); ?></span> </p>
+                                    </div>
+                                    <div class="str">
+                                        <p style="color: #EF8D21; padding-left: 7%;">
+                                        <?php for($i = 1; $i <= 5; $i++): ?>
+                                            <?php if($i <= $cmt->rating): ?>
+                                                <i class="fas fa-star"></i>
+                                            <?php else: ?>
+                                            <i class="far fa-star"></i>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                        </p>
+                                        <p id="commet" style="color: white;"><?php echo e($cmt->comment); ?></p>
+                                    </div>
                                 </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                     </div>
                 </div>
             </div>

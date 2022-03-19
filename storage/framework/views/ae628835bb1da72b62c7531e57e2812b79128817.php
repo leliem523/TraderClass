@@ -52,7 +52,7 @@ $teachers = DB::table('teachers')
                     <input list="brows" type="text" name="search" placeholder="Search.." id="fsearchh">
                     <datalist id="brows">
                         <?php $__currentLoopData = $teachers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teacher): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($teacher->name); ?>"><?php echo e($teacher->fullname); ?></option>
+                        <option value="<?php echo e($teacher->name.' '.$teacher->id); ?>"><?php echo e($teacher->fullname); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </datalist>
                     <button class="btn-search">

@@ -73,7 +73,8 @@ class Teacher extends Controller
             ->join('course', 'course.id', 'user_course.course_id')
             ->groupBy('user_course.course_id')
             ->orderBy('count_course_user', 'desc')
-            ->paginate();
+            ->limit(10)
+            ->get();
 
             $data = array();
             foreach ($get_ids as $get_id) {

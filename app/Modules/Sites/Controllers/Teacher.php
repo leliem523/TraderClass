@@ -21,14 +21,14 @@ class Teacher extends Controller
         ->select('teachers.fullname', 'teachers.position','course.id', 'teachers.photo','course.course_category_id','course.name', 'course.video_id')
         ->join('teachers','teachers.id','=','course.teacher_id')
         ->whereIn('course.status',[0,1])
-        ->where('teachers.id', $id)
+        ->where('course.id', $id)
         ->limit(6)
         ->get();
         
         $course = DB::table('course')
                 ->select('teachers.fullname', 'teachers.position','teachers.id', 'course.photo','course.course_category_id','course.video_id','course.created_at','course.updated_at','course.name', 'course.description')
                 ->join('teachers','teachers.id','=','course.teacher_id')
-                ->where('teachers.id', $id)
+                ->where('course.id', $id)
                 ->whereNotExists(function ($query)
                 {
                     $query->select(DB::raw(1))

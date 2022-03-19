@@ -18,7 +18,7 @@
                                     </div>
                                 </div>
                                 <div class="buy">
-                                    <p id="price">599.000 đ</p>
+                                    <p id="price">{{ number_format($course_price->price) }} đ</p>
                                     <p id="pricee"><strike id="pre" style="color: #A7A9AC;">2.000.000 ₫</strike><br><span
                                             id="sav">Savings: 70%</span>
 
@@ -69,7 +69,7 @@
                                     <p>TOTAL</p>
                                 </div>
                                 <div id="se">
-                                    <p>599.000 đ</p>
+                                    <p>{{ number_format($course_price->price) }} đ</p>
                                 </div>
                             </div>
                         </div>

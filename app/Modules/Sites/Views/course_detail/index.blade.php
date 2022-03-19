@@ -69,7 +69,18 @@
                     <div class="col-md-9">
                         <p id="title">{{ isset($course->name) ? $course->name : '' }}</p>
                         <p style="font-size: 20px; color: white; font-weight: 100;">{{ isset($course->fullname) ? $course->fullname : '' }}</p>
-                        <p><span style="font-size: 14px; color: #EF8D21;"> 4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>&ensp;<span style="font-size: 14px; color: white;">(940 Đánh giá) - 0 Học viên</span></p>
+                        <p><span style="font-size: 14px; color: #EF8D21;"> 
+                            {{ (double) $count_avg->avg_rating }} 
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= (int) $count_avg->avg_rating )
+                                    <i class="fas fa-star"></i>
+                                @elseif ($i == (int) $count_avg->avg_rating + 1)
+                                    <i class="fas fa-star-half-alt"></i>
+                                @else
+                                <i class="far fa-star"></i>
+                                @endif
+                            @endfor
+                           </span>&ensp;<span style="font-size: 14px; color: white;">({{ $course_comment_count->count }} Đánh giá) - {{ $sum_user_of_course->count }} Học viên</span></p>
                     </div>
                     {{-- <div class="col-md-3" id="col-md-3">
                         <button onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button>
@@ -110,84 +121,37 @@
                     </script>
 
                 </div>
-                <p style="font-size: 13px; color: white;">From litigator to ultramarathoner to bestselling author to head instructor and VP at Peloton, Robin Arzón keeps proving it’s never too late to level up in your life. Now, she’s ready to teach you how building your mental strength can
-                    help you see what’s possible for yourself—and see it through. Learn how to identify your dreams and apply the principles of endurance, power, and strength to help you reach your goals.
-                </p>
+              @if (isset($course_video))
+                <p style="font-size: 13px; color: white;">{{ $course_video->description }}</p>
+              @else
+                <p style="font-size: 13px; color: white;">{{ $course->description }}</p>
+              @endif
                 <p id="title" style="padding-top: 30px;">Rate and comment</p>
                 <div class="commet">
                     <div class="imt">
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
+                        @foreach ($course_comment as $cmt)
+                                <div class="com">
+                                    <div class="date">
+                                        <div id="google">
+                                           <img class="img-fluid" src="{{ $cmt->photo }}" alt="">
+                                        </div>
+                                        <p id="date"><span>{{ $cmt->fullname }}</span> </p>
+                                    </div>
+                                    <div class="str">
+                                        <p style="color: #EF8D21; padding-left: 7%;">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $cmt->rating)
+                                                <i class="fas fa-star"></i>
+                                            @else
+                                            <i class="far fa-star"></i>
+                                            @endif
+                                        @endfor
+                                        </p>
+                                        <p id="commet" style="color: white;">{{$cmt->comment}}</p>
+                                    </div>
                                 </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
-                        <div class="com">
-                            <div class="date">
-                                <div id="google">
-                                    <p>M</p>
-                                </div>
-                                <p id="date"><span>Jarratt Davis</span> </p>
-                            </div>
-                            <div class="str">
-                                <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                            </div>
-                        </div>
+                        @endforeach
+
                     </div>
                 </div>
             </div>

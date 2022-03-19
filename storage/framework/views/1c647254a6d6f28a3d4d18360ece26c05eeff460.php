@@ -11,14 +11,26 @@
     <div class="classify">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-7">
                     <div class="sort">
                         <p style="color: white;">Sorted by:</p>
                         <button onclick="window.location='?mostPopular'">Most Popular</button>
                         <button onclick="window.location='?justAdded'">Just Added</button>
+                        <div class="position">
+                            <button id="navbarDropdown" role="button" data-toggle="dropdown"> Position &nbsp; <i class="bi bi-caret-down-fill"></i></button>
+                            <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
+                                
+                                <?php $__currentLoopData = $position_all_teachers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <p onclick="window.location='?position=<?php echo e($pos->position); ?>'" class="dropdown-item"><?php echo e($pos->position); ?></p>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md"></div>
+                <div class="col-md">
+
+                </div>
             </div>
         </div>
     </div>

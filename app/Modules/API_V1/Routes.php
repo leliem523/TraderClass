@@ -29,6 +29,7 @@ Route::group(['module' => 'api', 'middleware' => 'api', 'namespace' => "App\Modu
             Route::get('/course/{id}', [Course::class, 'getCourse']);
             Route::get('/top-course', [Course::class, 'getTopCourses']);
             Route::get('/search-course', [Course::class, 'searchCourse']);
+            Route::get('/latest-course', [Course::class, 'latestCourse']);
 
             // Teacher api
             Route::get('/teacher', [Teacher::class, 'getTeachers']);

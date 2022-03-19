@@ -44,7 +44,7 @@
             <div class="row">
                 @foreach ($data as $value)
                 <div class="col-md-4">
-                    <a href="/teacher/{{Str::slug($value->fullname.'-'.$value->id)}}">
+                    <a href="/teacher/{{Str::slug($value->name.'-'.$value->id)}}">
                         <div class="img">
                             <img src="{{$value->photo}}" alt="">
                         </div>
@@ -57,7 +57,9 @@
                 </div>
                 @endforeach
             </div>
-            {{-- {{ $data->onEachSide(1)->links("pagination::bootstrap-4") }} --}}
+            @if (!isset($_GET['mostPopular']))
+            {{ $data->onEachSide(1)->links("pagination::bootstrap-4") }}
+            @endif
             {{-- <div class="pagination">
                 <a class="active" href="#">1</a>
                 <a href="#">2</a>

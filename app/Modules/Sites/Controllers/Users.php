@@ -40,7 +40,6 @@ class Users extends Controller
         $auth = array(
             'email' => $request->email,
             'password' => $request->password,
-            'auth_type' => 'email',
         );
 
 
@@ -202,6 +201,7 @@ class Users extends Controller
             $user->password =  Hash::make($request->password);
             $user->type =  0;
             $user->status = 0;
+            $user->auth_type = 'email';
             $user->save();
             $check = Users_Model::find($user->id);
             //send mail
@@ -211,12 +211,12 @@ class Users extends Controller
 
             $data = array("fullname" => $check->fullname, "linkreset" => $link_register, 'email' => $check->email);
 
-            Mail::send("Sites::Mail.registerpassword_mail", ['data' => $data], function ($message) use ($titlename, $data) {
+            // Mail::send("Sites::Mail.registerpassword_mail", ['data' => $data], function ($message) use ($titlename, $data) {
 
-                $message->to($data['email']);
-                $message->subject($titlename);
-                $message->from($data['email'], $titlename);
-            });
+            //     $message->to($data['email']);
+            //     $message->subject($titlename);
+            //     $message->from($data['email'], $titlename);
+            // });
             session()->flash('message', 'Bạn cần xác nhận email để đăng ký thành công');
             return redirect()->route("sites.home.index");
         }

@@ -11,14 +11,28 @@
     <div class="classify">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-7">
                     <div class="sort">
                         <p style="color: white;">Sorted by:</p>
                         <button onclick="window.location='?mostPopular'">Most Popular</button>
                         <button onclick="window.location='?justAdded'">Just Added</button>
+                        <div class="position">
+                            <button id="navbarDropdown" role="button" data-toggle="dropdown"> Position &nbsp; <i class="bi bi-caret-down-fill"></i></button>
+                            <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
+                                {{-- @foreach ($topics as $value)
+                                <p onclick="window.location='?topic={{ Str::slug($value->title.'-'.$value->id) }}'" class="dropdown-item">{{ $value->title }}</p>
+                                @endforeach --}}
+                                @foreach ($position_all_teachers as $pos)
+                                <p onclick="window.location='?position={{ $pos->position }}'" class="dropdown-item">{{ $pos->position }}</p>
+                                @endforeach
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md"></div>
+                <div class="col-md">
+
+                </div>
             </div>
         </div>
     </div>

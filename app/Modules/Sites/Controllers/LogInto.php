@@ -17,6 +17,11 @@ class LogInto extends Controller
     public function index($id)
     {
         $id = explode('-', $id)[count(explode('-', $id)) - 1];
+
+        $course_price = DB::table('course_price')
+                        ->select('course_price.id', 'course_price.price', 'course_price.special_price')
+                        ->first();
+
         $crypto = Crypto_Model::whereIn('status',[0,1])->orderBy('id', 'desc')->get();
         $course = DB::table('course')
                     ->join('teachers', 'course.teacher_id', '=', 'teachers.id')
@@ -38,7 +43,7 @@ class LogInto extends Controller
         $row = json_decode(json_encode([
             "title" => "Log Into",
         ]));
-        return view('Sites::log_into.index', compact('row', 'crypto', 'course'));
+        return view('Sites::log_into.index', compact('row', 'crypto', 'course', 'course_price'));
     }
 
     public function course_selection($id)
@@ -47,6 +52,10 @@ class LogInto extends Controller
         $row = json_decode(json_encode([
             "title" => "Course Selection",
         ]));
+
+        $course_price = DB::table('course_price')
+                        ->select('course_price.id', 'course_price.price', 'course_price.special_price')
+                        ->first();
 
         $course = DB::table('course')
                     ->join('teachers', 'course.teacher_id', 'teachers.id')
@@ -64,7 +73,7 @@ class LogInto extends Controller
         if(!isset($course)) {
             return back();
         }
-        return view('Sites::course_selection.index', compact('row','course'));
+        return view('Sites::course_selection.index', compact('row','course', 'course_price'));
     }
     public function payment_bank()
     {

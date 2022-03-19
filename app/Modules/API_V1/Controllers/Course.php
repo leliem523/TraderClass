@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Date;
+use Monolog\Handler\IFTTTHandler;
 use PhpParser\Node\Stmt\TryCatch;
 
 class Course extends Controller
@@ -78,7 +80,8 @@ class Course extends Controller
         ->join('course', 'course.id', 'user_course.course_id')
         ->groupBy('user_course.course_id')
         ->orderBy('count_course_user', 'desc')
-        ->paginate(10);
+        ->limit(10)
+        ->get();
 
         $data = array();
 
@@ -143,6 +146,7 @@ class Course extends Controller
        }
     }
 
+    // Get course by user
     public function courseByIdUser()
     {
         try {
@@ -168,4 +172,35 @@ class Course extends Controller
             ]);
         }
     }
+
+    // Get new course
+    public function latestCourse()
+    {
+        $monthNow = date('m');
+        $yearNow = date('Y');
+
+        $course = DB::table('course')
+            ->select('course.id', 'course.name', 'course.photo', 'course.video_id', 'course.score', 'teachers.fullname')
+            ->join('teachers', 'teachers.id', 'course.teacher_id')
+            ->where('course.status', 1)
+            ->whereMonth('course.created_at', $monthNow)
+            ->whereYear('course.created_at', $yearNow)
+            ->orderBy('course.created_at', 'desc')
+            ->limit(10)
+            ->get();
+        if($course) {
+            return response()->json([
+                'status' => true,
+                'msg' => 'Get latest selling course successfully !!',
+                'data' => $course,
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => false,
+                'msg' => 'No latest selling course right now !!',
+            ]);
+        }
+    }
+
 }
