@@ -20,7 +20,9 @@
                 </div> --}}
                 <div class="youtube wrappe" onclick="playvideo()">
                     {{-- <video src="" class="video"> --}}
-                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/{{ isset($course_video) ? $course_video->id_video : $course->video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/{{ isset($course_video) ? $course_video->id_video : $course->video_id }}?modestbranding=1&showinfo=0&controls=0&autohide=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    
                     {{-- </video> --}}
                     {{-- <div class="playpause"><img src="/public/sites/images/media_play_pause_resume.png" alt=""></div> --}}
                 </div>
