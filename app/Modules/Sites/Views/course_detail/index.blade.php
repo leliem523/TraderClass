@@ -72,7 +72,7 @@
                         <p><span style="font-size: 14px; color: #EF8D21;"> 
                             {{ (double) $count_avg->avg_rating }} 
                             @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= (int) $count_avg->avg_rating )
+                                @if (ceil($count_avg->avg_rating) > $count_avg->avg_rating && $i <= (int) $count_avg->avg_rating )
                                     <i class="fas fa-star"></i>
                                 @elseif ($i == (int) $count_avg->avg_rating + 1)
                                     <i class="fas fa-star-half-alt"></i>

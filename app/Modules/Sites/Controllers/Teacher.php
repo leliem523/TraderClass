@@ -37,9 +37,38 @@ class Teacher extends Controller
                     ->where('user_course.user_id', Auth::id());
                 })
                 ->first();
+                
         if(!isset($course)) {
             return back();
         }
+
+        // Total student of course
+        $sum_user_of_course = DB::table('user_course')
+                                ->selectRaw('count(*) as count')
+                                ->where('user_course.course_id', $id)
+                                ->first();
+
+        // Comment course by user
+        $course_comment = DB::table('course_comment')
+                        ->select('course_comment.id', 'course_comment.comment', 'course_comment.rating', 'users.fullname', 'users.photo')
+                        ->join('users', 'users.id', 'course_comment.user_id')
+                        ->where('course_comment.course_id', $id)
+                        ->whereIn('course_comment.status', [0, 1])
+                        ->get();
+
+        // Count comment course
+        $course_comment_count = DB::table('course_comment')
+                                ->selectRaw('count(*) count')
+                                ->join('users', 'users.id', 'course_comment.user_id')
+                                ->where('course_comment.course_id', $id)
+                                ->whereIn('course_comment.status', [0, 1])
+                                ->first();
+                        
+        // Rating average
+        $count_avg = DB::table('course_comment')
+            ->selectRaw('AVG(la_course_comment.rating) as avg_rating')
+            ->where('course_comment.course_id', $id)
+            ->first();
 
         $faq = Faq_Model::orderBy('id', 'desc')->get();
         $teacher_id = $id;
@@ -47,7 +76,7 @@ class Teacher extends Controller
         $row = json_decode(json_encode([
             "title" => $course->fullname,
         ]));
-        return view('Sites::teacher.index',compact('row', 'list_course','faq','course','list_video', 'teacher_id'));
+        return view('Sites::teacher.index',compact('row', 'list_course','faq','course','list_video', 'sum_user_of_course', 'teacher_id', 'course_comment', 'course_comment_count', 'count_avg'));
     }
 
     public function postSubcribe(Request $request)

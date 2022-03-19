@@ -66,7 +66,19 @@
                         <div class="col-md-9">
                             <p id="title">{{ $course->name }}</p>
                             <p style="font-size: 20px; color: white; font-weight: 100;">{{ $course->fullname }}</p>
-                            <p><span style="font-size: 14px; color: #EF8D21;"> 4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>&ensp;<span style="font-size: 14px; color: white;">(940 Đánh giá) - 0 Học viên</span></p>
+                            <p>
+                                <span style="font-size: 14px; color: #EF8D21;">
+                                    {{ (double) $count_avg->avg_rating }} 
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= (int) $count_avg->avg_rating )
+                                            <i class="fas fa-star"></i>
+                                        @elseif (ceil($count_avg->avg_rating) > $count_avg->avg_rating && $i == (int) $count_avg->avg_rating + 1)
+                                            <i class="fas fa-star-half-alt"></i>
+                                        @else
+                                        <i class="far fa-star"></i>
+                                        @endif
+                                    @endfor
+                                    </span>&ensp;<span style="font-size: 14px; color: white;">({{ $course_comment_count->count }} Đánh giá) - {{ $sum_user_of_course->count }} Học viên</span></p>
                         </div>
                       @if (Auth::check())
                         <div class="col-md-3" id="col-md-3">
@@ -129,78 +141,28 @@
                     <p id="title" style="padding-top: 30px;">Rate and comment</p>
                     <div class="commet">
                         <div class="imt">
+                            @foreach ($course_comment as $cmt)
                             <div class="com">
                                 <div class="date">
                                     <div id="google">
-                                        <p>M</p>
+                                       <img class="img-fluid" src="{{ $cmt->photo }}" alt="">
                                     </div>
-                                    <p id="date"><span>Jarratt Davis</span> </p>
+                                    <p id="date"><span>{{ $cmt->fullname }}</span> </p>
                                 </div>
                                 <div class="str">
-                                    <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                    <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
+                                    <p style="color: #EF8D21; padding-left: 7%;">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $cmt->rating)
+                                            <i class="fas fa-star"></i>
+                                        @else
+                                        <i class="far fa-star"></i>
+                                        @endif
+                                    @endfor
+                                    </p>
+                                    <p id="commet" style="color: white;">{{$cmt->comment}}</p>
                                 </div>
                             </div>
-                            <div class="com">
-                                <div class="date">
-                                    <div id="google">
-                                        <p>M</p>
-                                    </div>
-                                    <p id="date"><span>Jarratt Davis</span> </p>
-                                </div>
-                                <div class="str">
-                                    <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                    <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                                </div>
-                            </div>
-                            <div class="com">
-                                <div class="date">
-                                    <div id="google">
-                                        <p>M</p>
-                                    </div>
-                                    <p id="date"><span>Jarratt Davis</span> </p>
-                                </div>
-                                <div class="str">
-                                    <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                    <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                                </div>
-                            </div>
-                            <div class="com">
-                                <div class="date">
-                                    <div id="google">
-                                        <p>M</p>
-                                    </div>
-                                    <p id="date"><span>Jarratt Davis</span> </p>
-                                </div>
-                                <div class="str">
-                                    <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                    <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                                </div>
-                            </div>
-                            <div class="com">
-                                <div class="date">
-                                    <div id="google">
-                                        <p>M</p>
-                                    </div>
-                                    <p id="date"><span>Jarratt Davis</span> </p>
-                                </div>
-                                <div class="str">
-                                    <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                    <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                                </div>
-                            </div>
-                            <div class="com">
-                                <div class="date">
-                                    <div id="google">
-                                        <p>M</p>
-                                    </div>
-                                    <p id="date"><span>Jarratt Davis</span> </p>
-                                </div>
-                                <div class="str">
-                                    <p style="color: #EF8D21; padding-left: 7%;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-                                    <p id="commet" style="color: white;">Thank you for sharing your knowledge and experience</p>
-                                </div>
-                            </div>
+                    @endforeach
                         </div>
                     </div>
                 </div>

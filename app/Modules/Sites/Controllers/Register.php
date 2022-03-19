@@ -23,6 +23,8 @@ class Register extends Controller
         $course = DB::table('course')
                     ->where('course.id', $id)
                     ->first();
+
+
         $row = json_decode(json_encode([
             "title" => "Register",
         ]));
