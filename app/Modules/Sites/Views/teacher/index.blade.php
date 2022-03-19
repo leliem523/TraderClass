@@ -9,12 +9,12 @@
                 <div style="display: grid;"><span id="a">{{ $course->fullname }}</span> <span id="b">-</span> <span id="c">{{ $course->position }}</span></div>
                 <div class="info">
                     <div class="share">
-                        <a href="#" onclick="lightbox_open('https://www.youtube.com/embed/{{ $course->video_id}}');">
+                        <a href="#" onclick="lightbox_open('https://www.youtube.com/embed/{{ $course->video_id}}?modestbranding=1&showinfo=0&controls=0&autohide=1&rel=0');">
                             <img src="/public/sites/images/tra.png" alt="">
                             <p>TRAILER</p>
                         </a>
                        @if (Auth::check())
-                            <a href="#" onclick="lightbox_open('https://www.youtube.com/embed/{{ $list_video[0]->id_video}}');">
+                            <a href="#" onclick="lightbox_open('https://www.youtube.com/embed/{{ $list_video[0]->id_video}}?modestbranding=1&showinfo=0&controls=0&autohide=1&rel=0');">
                                 <img src="/public/sites/images/sam.png" alt="">
                                 <p>SAMPLE</p>
                             </a>
@@ -97,12 +97,12 @@
                 <div class="col-md-4">
                     <div class="all">
                         <div>
-                            <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/{{ $course->video_id}}')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">{{ $course->name }}</div>
+                            <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/{{ $course->video_id}}?modestbranding=1&showinfo=0&controls=0&autohide=1&rel=0')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">{{ $course->name }}</div>
 
                         </div>
                         @if (Auth::check())
                             <div>
-                                <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/{{ $list_video[0]->id_video}}')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">{{ $list_video[0]->name }}</div>
+                                <div class="pla" style="cursor: pointer" onclick="nvideo('https://www.youtube.com/embed/{{ $list_video[0]->id_video}}?modestbranding=1&showinfo=0&controls=0&autohide=1&rel=0')"><img style="margin-right: 5px;" src="/public/sites/images/play.png" alt="">{{ $list_video[0]->name }}</div>
                             </div>
                         @else
                             <div>
@@ -317,7 +317,7 @@
     </div>
     <div id="light">
         <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-        <iframe id="VisaChipCardVideo" src="https://www.youtube.com/embed/{{ $course->video_id }}" frameborder="0" allowfullscreen></iframe>
+        <iframe id="VisaChipCardVideo" src="https://www.youtube.com/embed/{{ $course->video_id }}?modestbranding=1&showinfo=0&controls=0&autohide=1&rel=0" frameborder="0" allowfullscreen></iframe>
         {{-- <video id="VisaChipCardVideo" controls>
             <source src="/public/sites/mp4/Teacher1.mp4" type="video/mp4">
           </video> --}}
