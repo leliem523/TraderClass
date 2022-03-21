@@ -124,6 +124,7 @@ class Course extends Controller
                         ['course.name', 'like', $key],
                         ['course.status', 1]
                     ])
+                    ->orWhere('teachers.fullname', 'like', $key)
                     ->orderBy('course.id', 'asc')
                     ->paginate(10);
 

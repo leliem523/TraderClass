@@ -5,12 +5,6 @@ $categories = DB::table('course_category')
                ->where('course_category.status', 1)
                ->get();
 
-               
-$teachers = DB::table('teachers')
-            ->select('teachers.id', 'course.name', 'teachers.fullname')
-            ->join('course', 'teachers.id', 'course.teacher_id')
-            ->where('course.status', 1)
-            ->get();
 ?> 
 
 
@@ -47,18 +41,14 @@ $teachers = DB::table('teachers')
                         </li>
                     </ul>
                 </div>
-                <div class="fsearch">
+                <div class="fsearch" style="position: relative">
 
-                    <input list="brows" type="text" name="search" placeholder="Search.." id="fsearchh">
-                    <datalist id="brows">
-                        @foreach ($teachers as $teacher)
-                        <option value="{{$teacher->name.' '.$teacher->id}}">{{ $teacher->fullname }}</option>
-                        @endforeach
-                    </datalist>
+                    <input type="text" placeholder="Search.." id="fsearchh">
+                    <div class="list-group" id="search-result" style="position: absolute; z-index: 100; top: 50px">
+                    </div>
                     <button class="btn-search">
                         <i class="bi bi-search"></i>
                     </button>
-                    <div id="countryList"></div>
                 </div>
                 {{-- <div class="cart">
                         <a href="#"><i class="fas fa-shopping-cart"></i></a>
@@ -129,16 +119,14 @@ $teachers = DB::table('teachers')
                         </li>
                     </ul>
                 </div>
-                <div class="fsearch">
-                    <input list="brows" type="text" name="search" placeholder="Search.." id="fsearchh">
-                    <datalist id="brows">
-                        @foreach ($teachers as $teacher)
-                        <option value="{{$teacher->name.' '.$teacher->id}}">{{ $teacher->fullname }}</option>
-                        @endforeach
-                    </datalist>
+                <div class="fsearch" style="position: relative">
+
+                    <input type="text" placeholder="Search.." id="fsearchh">
+                    <div class="list-group" id="search-result" style="position: absolute; z-index: 100; top: 50px">
+                    </div>
                     <button class="btn-search">
                         <i class="bi bi-search"></i>
-                        </button>
+                    </button>
                 </div>
                 <div class="right_nav">
                     <ul>
@@ -167,45 +155,6 @@ $teachers = DB::table('teachers')
 
 <script>
 
-const inputSearch = document.querySelector('#fsearchh');
-const btnSearch = document.querySelector('.btn-search');
-
-btnSearch.addEventListener('click', () => {
-    if(inputSearch.value) {
-        window.location = '/all-class/' + ChangeToSlug(inputSearch.value);
-    }
-});
-
-function ChangeToSlug(title)
-{
-
-    //Đổi chữ hoa thành chữ thường
-    var slug = title.toLowerCase();
- 
-    //Đổi ký tự có dấu thành không dấu
-    slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
-    slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
-    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
-    slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
-    slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
-    slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
-    slug = slug.replace(/đ/gi, 'd');
-    //Xóa các ký tự đặt biệt
-    slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
-    //Đổi khoảng trắng thành ký tự gạch ngang
-    slug = slug.replace(/ /gi, " - ");
-    //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
-    //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
-    slug = slug.replace(/\-\-\-\-\-/gi, '-');
-    slug = slug.replace(/\-\-\-\-/gi, '-');
-    slug = slug.replace(/\-\-\-/gi, '-');
-    slug = slug.replace(/\-\-/gi, '-');
-    //Xóa các ký tự gạch ngang ở đầu và cuối
-    slug = '@' + slug + '@';
-    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-    //In slug ra textbox có id “slug”
-    return slug;
-}
 
 // search
 function ChangeToSlug(title)
@@ -238,32 +187,38 @@ function ChangeToSlug(title)
     return slug;
 }
 
+const fsearchh = document.querySelector('#fsearchh');
+const divResult = document.querySelector('#search-result');
 
-// $(document).ready(function() {
+fsearchh.addEventListener('keyup', () => {
+    if(fsearchh.value) {
 
-//     $('#fsearchh').keyup(function() {
-//         var query = $(this).val();
-//         console.log("ngon");
-//         if (query != '') {
-//             var _token = $('meta[name="csrf-token"]').attr('content');
-//             $.ajax({
-//                 url: "{{ route('sites.search') }}",
-//                 method: "POST",
-//                 data: {
-//                     query: query,
-//                     _token: _token
-//                 },
-//                 success: function(data) {
-//                     $('#brows').fadeIn();
-//                     $('#brows').html(data);
-//                 }
-//             });
-//         }
-//     });
+        const url = `https://traderclass.vn/api/search-course?key=${fsearchh.value}`;
+            $.ajax({
+            url: url,
+            cache: false,
+            type: 'get',
+            success: ({data}) => {
+                divResult.innerHTML = "";
+                data.forEach(item => {
+                    divResult.innerHTML += `
+                    <div class="list-group-item list-group-item-action border-1">
+                        <div class="row">
+                            <div class="col-3">
+                                <img class="img-fluid" src="${item.photo}">
+                            </div>
+                            <div class="col-9">
+                                <a href="/teacher/a-${ChangeToSlug(item.name + ' ' + item.id)}">${item.name}</a>
+                                <p>${item.fullname}</p>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+        }
+        })
+    } else {
+        divResult.innerHTML = "";
+    }
 
-//     $(document).on('click', 'option', function() {
-//         $('#fsearchh').val($(this).text());
-//         $('#brows').fadeOut();
-//     });
-// });
+});
 </script>

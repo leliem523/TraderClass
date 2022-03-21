@@ -156,6 +156,24 @@ class CourseDetail extends Controller
                 compact('row', 'list_video', 'list_teacher', 'course', 'course_video', 'course_id', 'sum_user_of_course', 'course_comment', 'course_comment_count', 'count_avg'));
     }
 
+    public function coursePost(Request $request, $course_id)
+    {
+        $course_id = explode('-', $course_id)[count(explode('-', $course_id)) - 1];
+        $comment = $request->validate([
+            'courseComment' => 'required',
+            'ratingCourse' => 'required|numeric',
+        ]);
+        $result = DB::table('course_comment')
+        ->insert([
+           'comment' => $comment['courseComment'],
+            'user_id' => Auth::id(),
+            'course_id' => $course_id,
+            'rating' => $comment['ratingCourse'],
+            'status' => 1,
+        ]);
+        return back();
+    }
+
     // public function intruduction($id)
     // {
     //     $list_course = DB::table('course')->select('teachers.fullname','teachers.photo','teachers.position','course.id','course.id','course.video_id','course.teacher_id')->join('teachers', 'teachers.id', '=', 'course.teacher_id')->where('course.teacher_id',$id)->whereIn('course.status', [0, 1])->get();

@@ -72,11 +72,11 @@
                         <p id="title">{{ isset($course->name) ? $course->name : '' }}</p>
                         <p style="font-size: 20px; color: white; font-weight: 100;">{{ isset($course->fullname) ? $course->fullname : '' }}</p>
                         <p><span style="font-size: 14px; color: #EF8D21;"> 
-                            {{ (double) $count_avg->avg_rating }} 
+                            {{ round((double) $count_avg->avg_rating, 1) }} 
                             @for ($i = 1; $i <= 5; $i++)
-                                @if (ceil($count_avg->avg_rating) > $count_avg->avg_rating && $i <= (int) $count_avg->avg_rating )
+                                @if ($i <= (int) $count_avg->avg_rating )
                                     <i class="fas fa-star"></i>
-                                @elseif ($i == (int) $count_avg->avg_rating + 1)
+                                @elseif (ceil($count_avg->avg_rating) > $count_avg->avg_rating && $i == (int) $count_avg->avg_rating + 1)
                                     <i class="fas fa-star-half-alt"></i>
                                 @else
                                 <i class="far fa-star"></i>
@@ -158,6 +158,41 @@
                 </div>
             </div>
         </div>
+        <form action="/course/{{ Str::slug($course->name.'-'.$course_id) }}" method="POST">
+            @csrf
+            <div class="form-floating">
+                <label for="courseComment" class="form-label" style="color: white; font-size: 2em;">Comment and rating</label>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="courseComment"></textarea>
+                <label for="floatingTextarea2">Comments</label>
+              </div>
+              <select class="form-select" aria-label="Default select example" name="ratingCourse">
+                <option value="0" selected>
+                    Rating
+                </option>
+                <option value="1">
+                    1 sao
+                </option>
+                <option value="2">
+                    2 sao
+                </option>
+                <option value="3">
+                    3 sao
+                </option>     
+                <option value="4">
+                    4 sao
+                </option>
+                <option value="5">
+                    5 sao
+                </option>
+              </select>
+              @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div style="color: red">{{$error}}</div>
+                @endforeach
+             @endif
+                <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        
     </div>
 </div>
 
