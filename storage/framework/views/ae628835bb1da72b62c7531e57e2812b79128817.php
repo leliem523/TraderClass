@@ -189,9 +189,9 @@ const fsearchh = document.querySelector('#fsearchh');
 const divResult = document.querySelector('#search-result');
 
 fsearchh.addEventListener('keyup', () => {
-    if(fsearchh.value) {
-
-        const url = `https://traderclass.vn/api/search-course?key=${fsearchh.value}`;
+    const key = fsearchh.value.trim();
+    if(key) {
+        const url = `https://traderclass.vn/api/search-course?key=${key}`;
             $.ajax({
             url: url,
             cache: false,
