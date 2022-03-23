@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "App\Modules\Dashboard\Controllers"], function () {
 
-    Route::get("error/login.html", ["as" => "login", "uses" => "Errorcode@index"]);
+    // Route::get("error/login.html", ["as" => "login", "uses" => "Errorcode@index"]);
 
     Route::group(["prefix" => "dashboard"], function () {
         //login
@@ -432,6 +432,10 @@ Route::group(['module' => 'dashboard', 'middleware' => 'web', 'namespace' => "Ap
                 Route::post("seo", ["as" => "admin.setting.postSeo", "uses" => "Configuration@postSeo"]);
                 Route::get("social", ["as" => "admin.setting.social", "uses" => "Configuration@social"]);
                 Route::post("social", ["as" => "admin.setting.postSocial", "uses" => "Configuration@postSocial"]);
+            });
+
+            Route::group(["prefix" => "sevenue"], function() {
+                Route::get("/", 'Sevenue@index');
             });
         });
     });

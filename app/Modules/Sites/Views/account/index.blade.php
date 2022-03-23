@@ -14,13 +14,13 @@
                     <div class="avatar">
                        @if(isset($user->photo))
                             @if (@getimagesize($user->photo))
-                                <img src="{{ $user->photo }}" class="rounded-circle" alt="">
+                                <img class="img-fluid" src="{{ $user->photo }}" class="rounded-circle" alt="">
                             @elseif ($user->photo == NULL)
                             @else
-                                <img src="{{ $user->photo }}" class="rounded-circle" alt="">
+                                <img class="img-fluid" src="{{ $user->photo }}" class="rounded-circle"  style="border-radius: 20%" alt="">
                             @endif
                        @else
-                             <img src="public/upload/images/users/thumb/hidden-human.png" class="rounded-circle" alt="" style="width: 100px; height: 100px;"> 
+                             <img class="img-fluid" src="public/upload/images/users/thumb/hidden-human.png" class="rounded-circle" alt="" style="width: 100px; height: 100px;"> 
                        @endif
                     </div>
                     <form action="">

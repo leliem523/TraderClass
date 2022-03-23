@@ -15,13 +15,13 @@
                     <div class="avatar">
                        <?php if(isset($user->photo)): ?>
                             <?php if(@getimagesize($user->photo)): ?>
-                                <img src="<?php echo e($user->photo); ?>" class="rounded-circle" alt="">
+                                <img class="img-fluid" src="<?php echo e($user->photo); ?>" class="rounded-circle" alt="">
                             <?php elseif($user->photo == NULL): ?>
                             <?php else: ?>
-                                <img src="<?php echo e($user->photo); ?>" class="rounded-circle" alt="">
+                                <img class="img-fluid" src="<?php echo e($user->photo); ?>" class="rounded-circle"  style="border-radius: 20%" alt="">
                             <?php endif; ?>
                        <?php else: ?>
-                             <img src="public/upload/images/users/thumb/hidden-human.png" class="rounded-circle" alt="" style="width: 100px; height: 100px;"> 
+                             <img class="img-fluid" src="public/upload/images/users/thumb/hidden-human.png" class="rounded-circle" alt="" style="width: 100px; height: 100px;"> 
                        <?php endif; ?>
                     </div>
                     <form action="">

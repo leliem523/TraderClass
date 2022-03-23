@@ -9,9 +9,7 @@
             <div class="col-md-3">
                 <div class="avta">
                     <div class="avt">
-                        <div class="ava">
-                            <p>{{ isset($user->fullname) ? $user->fullname : '?' }}</p>
-                        </div>
+                        <img class="img-fluid" src="{{ $user->photo }}" alt="" style="border-radius: 20%">
                     </div>
                     <p>{{ isset($user->fullname) ? $user->fullname : 'No name' }}</p>
                 </div>
@@ -28,7 +26,7 @@
                         <div class="items" 
                              onclick="return window.location = 'course/{{ Str::slug($value->name.'-'.$value->id) }}'"
                              style="cursor: pointer">
-                            @if (isset($value->photo))
+                            @if ($value->photo)
                                 <img src="{{ $value->photo }}" alt="">
                             @else
                                 <img src="/public/upload/images/course/thumb/hidden-human.png" alt="">

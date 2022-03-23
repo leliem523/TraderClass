@@ -3,6 +3,7 @@
 
 use App\Modules\API_V1\Controllers\Authenticate;
 use App\Modules\API_V1\Controllers\Course;
+use App\Modules\API_V1\Controllers\CourseCategory;
 use App\Modules\API_V1\Controllers\Teacher;
 use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
@@ -30,12 +31,15 @@ Route::group(['module' => 'api', 'middleware' => 'api', 'namespace' => "App\Modu
             Route::get('/top-course', [Course::class, 'getTopCourses']);
             Route::get('/search-course', [Course::class, 'searchCourse']);
             Route::get('/latest-course', [Course::class, 'latestCourse']);
+            Route::get('/course-by-category/{cate_id}', [Course::class, 'getCourseByCate']);
 
             // Teacher api
             Route::get('/teacher', [Teacher::class, 'getTeachers']);
             Route::get('/teacher/{id}', [Teacher::class, 'getTeacher']);
             Route::get('/top-teacher', [Teacher::class, 'getTopTeachers']);
         
+            // Course category api
+            Route::get('course-category', [CourseCategory::class, 'getCourseCategory']);
        
     });
 

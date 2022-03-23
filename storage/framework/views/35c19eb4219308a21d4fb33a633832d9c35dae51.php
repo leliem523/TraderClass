@@ -9,9 +9,7 @@
             <div class="col-md-3">
                 <div class="avta">
                     <div class="avt">
-                        <div class="ava">
-                            <p><?php echo e(isset($user->fullname) ? $user->fullname : '?'); ?></p>
-                        </div>
+                        <img class="img-fluid" src="<?php echo e($user->photo); ?>" alt="" style="border-radius: 20%">
                     </div>
                     <p><?php echo e(isset($user->fullname) ? $user->fullname : 'No name'); ?></p>
                 </div>
@@ -28,7 +26,7 @@
                         <div class="items" 
                              onclick="return window.location = 'course/<?php echo e(Str::slug($value->name.'-'.$value->id)); ?>'"
                              style="cursor: pointer">
-                            <?php if(isset($value->photo)): ?>
+                            <?php if($value->photo): ?>
                                 <img src="<?php echo e($value->photo); ?>" alt="">
                             <?php else: ?>
                                 <img src="/public/upload/images/course/thumb/hidden-human.png" alt="">
