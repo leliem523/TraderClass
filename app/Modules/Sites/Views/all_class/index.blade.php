@@ -41,10 +41,10 @@
     </div>
     <div class="teacher">
         <div class="container">
-            <div class="row">
+            <div class="row gy-4">
                 @foreach ($data as $value)
                 <div class="col-md-4">
-                    <a href="/teacher/{{Str::slug($value->name.'-'.$value->id)}}">
+                    <a class="teacher-all-class" href="/teacher/{{Str::slug($value->name.'-'.$value->id)}}">
                         <div class="img">
                             <img src="{{$value->photo}}" alt="">
                         </div>
@@ -71,8 +71,22 @@
     </div>
 </div>
 <script>
+    
+    (function ChangeHeightImage() {
+        const eleHasClassImg = document.querySelectorAll('.teacher .teacher-all-class .img');
+
+        const width = eleHasClassImg[0].clientWidth;
+        eleHasClassImg.forEach(element => {
+            element.style.height = `${width/2}px`;
+        });
+    })();
+
+    console.log([eleHasClassImg])
+
     function handleClickListener() {
         alert('aaa');
     }
+
+
 </script>
 @endsection

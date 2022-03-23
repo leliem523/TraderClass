@@ -1,4 +1,4 @@
-@if (Auth::check())
+<?php if(Auth::check()): ?>
 <div id="sidebar">
     <nav id="mobile-nav">
         <ul>
@@ -29,13 +29,13 @@
                 <div class="dropdown-container" style="display: none;">
                     <a href="/account">Account information</a>
                     <a href="/my-course">My Course</a>
-                    <a href="{{ route('sites.account.logout') }}">Log out</a>
+                    <a href="<?php echo e(route('sites.account.logout')); ?>">Log out</a>
                 </div>
             </li>
         </ul>
     </nav>
 </div>
-@else
+<?php else: ?>
 <div id="sidebar">
     <nav id="mobile-nav">
         <ul>
@@ -69,4 +69,4 @@
         </ul>
     </nav>
 </div>
-@endif
+<?php endif; ?><?php /**PATH E:\2022\project-cty\new\TraderClass\app\Modules/Sites/Views/inc/sidebar.blade.php ENDPATH**/ ?>

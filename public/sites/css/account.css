@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 /* mains */
 
@@ -11,10 +11,14 @@
 .mains .avatar {
     width: 100px;
     height: 100px;
-    background: #C4C4C4;
+    background: #c4c4c4;
     border-radius: 50px;
     margin: auto;
     margin-top: 52px;
+}
+
+.mains .avatar img.rounded-circle {
+    width: 100%;
 }
 
 .mains span {
@@ -41,27 +45,26 @@
 .mains #google {
     font-weight: bold;
     font-size: 12px;
-    color: #FFFFFF;
+    color: #ffffff;
     border-color: unset;
     margin-bottom: 10px;
     width: 345px;
     height: 48px;
-    background: #4285F4;
+    background: #4285f4;
     border-radius: 5px;
 }
 
 .mains #facebook {
     font-weight: bold;
     font-size: 12px;
-    color: #FFFFFF;
+    color: #ffffff;
     border-color: unset;
     margin-bottom: 48px;
     width: 345px;
     height: 48px;
-    background: #3C5A99;
+    background: #3c5a99;
     border-radius: 5px;
 }
-
 
 /* member */
 
@@ -71,7 +74,7 @@
 }
 
 .mains .member {
-    background: #FFFFFF;
+    background: #ffffff;
     margin-bottom: 30px;
 }
 
@@ -105,7 +108,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
-    color: #A7A9AC;
+    color: #a7a9ac;
 }
 
 .lbo {
@@ -113,7 +116,6 @@
     margin: 0 -15px;
     padding: 0 25px;
 }
-
 
 /* tabs item */
 
@@ -134,7 +136,7 @@
 
 .actives,
 .dott:hover {
-    background-color: #EF8D21;
+    background-color: #ef8d21;
 }
 
 .tab-item {
@@ -150,7 +152,7 @@
     opacity: 0.6;
     cursor: pointer;
     transition: all 0.5s ease;
-    border-bottom: 1px solid #C4C4C4;
+    border-bottom: 1px solid #c4c4c4;
     width: 160px;
 }
 
@@ -181,35 +183,34 @@
     margin-left: 40%;
     margin-top: 5%;
     font-size: 700%;
-    color: #C4C4C4;
+    color: #c4c4c4;
 }
 
 .tab-pane h5 {
-    border-bottom: 1px solid #C4C4C4;
+    border-bottom: 1px solid #c4c4c4;
     width: 100%;
 }
 
 .tab-pane .fal {
     margin-left: 40%;
     font-size: 700%;
-    color: #EF8D21;
+    color: #ef8d21;
 }
 
 .tab-pane h6 {
-    background: #EF8D21;
+    background: #ef8d21;
     width: 250px;
     height: 35px;
     text-align: center;
     padding: 8px 0;
     margin-left: 31%;
     border-radius: 5px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .tab-pane .buy {
     margin-top: 15%;
 }
-
 
 /* footer */
 
@@ -219,7 +220,7 @@ footer {
 }
 
 footer a {
-    color: #FFFFFF;
+    color: #ffffff;
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
@@ -228,7 +229,7 @@ footer a {
 }
 
 footer h6 {
-    color: #FFFFFF;
+    color: #ffffff;
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
@@ -240,7 +241,7 @@ footer a:hover {
 }
 
 footer span i {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 20px;
     border: 1px solid darkgray;
     border-radius: 31px;
@@ -320,7 +321,7 @@ footer .language {
 }
 
 footer .copy {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .line .dot {
@@ -337,7 +338,6 @@ footer .copy {
     font-size: 13px;
 }
 
-
 /* 3 buttons yellow */
 
 .btn-account {
@@ -346,12 +346,12 @@ footer .copy {
 }
 
 .btn-account input[type="button"] {
-    background: #EF8D21;
+    background: #ef8d21;
     width: 100%;
     margin-top: 0px;
     margin-bottom: 10px;
     padding: 0.5rem 3rem;
-    color: #FFFFFF;
+    color: #ffffff;
     font-weight: 700;
     size: 14px;
     cursor: pointer;
@@ -361,7 +361,6 @@ footer .copy {
     border: none;
     border-radius: 5px;
 }
-
 
 /* Popup-account */
 
@@ -393,7 +392,7 @@ footer .copy {
     height: 100%;
     top: 0;
     display: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .popup-account.actives {
@@ -424,8 +423,8 @@ footer .copy {
     font-size: 15px;
     font-style: normal;
     font-weight: bold;
-    margin-bottom: 0!important;
-    line-height: 1.5!important;
+    margin-bottom: 0 !important;
+    line-height: 1.5 !important;
     color: #000000;
 }
 
@@ -437,7 +436,7 @@ footer .copy {
 .square {
     width: 100px;
     height: 100px;
-    background: #C4C4C4;
+    background: #c4c4c4;
     text-align: center;
     justify-content: center;
     font-size: 14px;
@@ -458,14 +457,14 @@ footer .copy {
 }
 
 .text button {
-    background: #EF8D21;
+    background: #ef8d21;
     border-radius: 3px;
     font-size: 9px;
     font-weight: 400;
     width: 65%;
     border: 0;
     outline: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .list-input {
@@ -474,12 +473,12 @@ footer .copy {
 
 .list-input label {
     margin-bottom: 5px;
-    font-size: 13px!important;
+    font-size: 13px !important;
 }
 
 .input-group input[type="text"] {
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
     border-radius: 3px;
     padding: 0.3rem 0rem;
 }
@@ -492,7 +491,7 @@ footer .copy {
     padding-top: 6px;
     padding-bottom: 6px;
     margin-top: 30px;
-    background: #EF8D21;
+    background: #ef8d21;
     border-radius: 3px;
     font-size: 13px;
     font-weight: 400;
@@ -505,7 +504,6 @@ footer .copy {
     display: flex;
     justify-content: flex-end;
 }
-
 
 /* Update Account */
 
@@ -535,8 +533,8 @@ footer .copy {
     font-size: 15px;
     font-style: normal;
     font-weight: bold;
-    margin-bottom: 0!important;
-    line-height: 1.5!important;
+    margin-bottom: 0 !important;
+    line-height: 1.5 !important;
     color: #000000;
 }
 
@@ -551,7 +549,6 @@ footer .copy {
 .update-email .input-group {
     margin-bottom: 15px;
 }
-
 
 /* Change Password */
 
@@ -581,8 +578,8 @@ footer .copy {
     font-size: 15px;
     font-style: normal;
     font-weight: bold;
-    margin-bottom: 0!important;
-    line-height: 1.5!important;
+    margin-bottom: 0 !important;
+    line-height: 1.5 !important;
     color: #000000;
 }
 
@@ -598,20 +595,18 @@ footer .copy {
     margin-bottom: 15px;
 }
 
-
 /* responsive */
-
 
 /*Ipad ngang(1024 x 768)*/
 
 @media screen and (max-width: 1024px) {
     #email,
     #password {
-        width: 288px!important;
+        width: 288px !important;
     }
     #google,
     #facebook {
-        width: 288px!important;
+        width: 288px !important;
     }
     .span.member {
         left: -2%;
@@ -638,7 +633,6 @@ footer .copy {
         width: 95%;
     }
 }
-
 
 /*Ipad dọc(768 x 1024)*/
 
@@ -678,10 +672,9 @@ footer .copy {
     }
     /* 3 buttons yellow */
     .btn-account input[type="button"] {
-        width: 288px!important;
+        width: 288px !important;
     }
 }
-
 
 /*Tablet nhỏ(480 x 640)*/
 
@@ -741,20 +734,19 @@ footer .copy {
     /* Popup-account */
     .list-input {
         flex-direction: column;
-        text-align: left!important;
+        text-align: left !important;
         justify-content: left;
     }
     .input-group {
         flex-direction: column;
     }
     .input-group.right {
-        margin-left: 0!important;
+        margin-left: 0 !important;
     }
     .input-group.address input[type="text"] {
-        margin-top: -30px!important;
+        margin-top: -30px !important;
     }
 }
-
 
 /* iPhone X max-width 375px */
 
@@ -765,7 +757,7 @@ footer .copy {
     #password,
     #google,
     #facebook {
-        margin-left: -3px!important;
+        margin-left: -3px !important;
     }
     .member {
         max-width: 300px;
@@ -790,7 +782,6 @@ footer .copy {
     }
 }
 
-
 /*Iphone(480 x 640)*/
 
 @media screen and (max-width: 320px) {
@@ -803,7 +794,7 @@ footer .copy {
         top: 10px; */
     }
     .mains span {
-        margin-left: -52px!important;
+        margin-left: -52px !important;
     }
     form a {
         left: 85%;
@@ -813,7 +804,7 @@ footer .copy {
     }
     #email,
     #password {
-        margin-left: -55px!important;
+        margin-left: -55px !important;
     }
     #google,
     #facebook {
@@ -840,19 +831,18 @@ footer .copy {
     }
     /* 3 buttons yellow */
     .btn-account input[type="button"] {
-        width: 190px!important;
+        width: 190px !important;
     }
     .bg-light form {
         margin-left: 20%;
     }
 }
 
-
 /*Smart phone nhỏ*/
 
 @media screen and (max-width: 240px) {
     .mains span {
-        margin-left: -46px!important;
+        margin-left: -46px !important;
     }
     form a {
         padding-right: 6%;
@@ -860,8 +850,8 @@ footer .copy {
     }
     #email,
     #password {
-        margin-left: -48px!important;
-        width: 218px!important;
+        margin-left: -48px !important;
+        width: 218px !important;
     }
     #edit1 {
         margin-top: -7%;
@@ -869,7 +859,7 @@ footer .copy {
     #google,
     #facebook {
         width: 170px !important;
-        margin-left: -22px!important;
+        margin-left: -22px !important;
     }
     .mains .col-md-7 {
         min-width: 240px;
@@ -898,7 +888,7 @@ footer .copy {
     }
     /* 3 buttons yellow */
     .btn-account input[type="button"] {
-        width: 170px!important;
+        width: 170px !important;
         margin-left: -22px;
     }
     .text p {

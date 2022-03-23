@@ -84,7 +84,6 @@ html {
     width: 92%;
 }
 
-
 /* .dropdown:hover .dropdown-content {
     display: block;
 } */
@@ -103,12 +102,12 @@ p a {
 }
 
 .dropdown-item:hover {
-    color: #EF8D21 !important;
+    color: #ef8d21 !important;
     background-color: rgba(255, 255, 255, 0.226);
 }
 
 .black p {
-    color: #EF8D21;
+    color: #ef8d21;
     text-align: center;
     margin-bottom: 0;
     padding: 15px;
@@ -201,7 +200,7 @@ ul {
 }
 
 .padd li {
-    color: #6C757D;
+    color: #6c757d;
 }
 
 .white {
@@ -245,7 +244,7 @@ a:link {
 }
 
 #title {
-    color: #EF8D21;
+    color: #ef8d21;
     font-weight: 700;
     font-size: 26px;
 }
@@ -334,7 +333,6 @@ a:link {
     width: 100%;
     max-width: 35%;
     justify-content: flex-end;
-    
 }
 
 .header .header_bottom .mai .menu ul {
@@ -382,10 +380,10 @@ a:link {
 
 .header .header_bottom .mai .right_nav ul li .btn_signup {
     font-size: 12.5px;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 100px;
     height: 30px;
-    border: 0.5px solid #FFFFFF;
+    border: 0.5px solid #ffffff;
     border-radius: 8px;
 }
 
@@ -441,7 +439,6 @@ a:link {
     color: white;
 }
 
-
 /* .fsearch input:focus {
     width: 100%;
 } */
@@ -472,14 +469,17 @@ a:link {
     }
 }
 
-@media screen and (max-width: 1920px) {}
+@media screen and (max-width: 1920px) {
+}
 
-@media screen and (max-width: 1536px) {}
+@media screen and (max-width: 1536px) {
+}
 
 @media screen and (max-width: 1440px) {
 }
 
-@media screen and (max-width: 1366px) {}
+@media screen and (max-width: 1366px) {
+}
 
 @media screen and (min-width: 1024px) {
     .col {
@@ -493,7 +493,6 @@ a:link {
         max-width: 45%;
     }
 }
-
 
 /*Ipad ngang(1024 x 768)*/
 
@@ -520,19 +519,18 @@ a:link {
     }
 }
 
-
 /*Ipad dọc(768 x 1024)*/
 
 @media screen and (max-width: 768px) {
-    .footer{
+    .footer {
         text-align: center;
     }
 
-    .IconConnec{
+    .IconConnec {
         justify-content: center;
     }
 
-    .app-btn{
+    .app-btn {
         margin: 20px auto;
     }
 
@@ -562,7 +560,7 @@ a:link {
         display: none;
     }
     .header .header_bottom .mai .logo {
-        max-width: 100%
+        max-width: 100%;
     }
     .fsearch {
         display: none;
@@ -571,7 +569,6 @@ a:link {
         display: none;
     }
 }
-
 
 /*Tablet nhỏ(480 x 640)*/
 
@@ -608,17 +605,14 @@ a:link {
 }
 
 @media screen and (max-width: 375px) {
-    
     .lang {
         width: 47%;
         margin-left: 0px;
     }
 }
 
-@media screen and (max-width: 376px){
-   
+@media screen and (max-width: 376px) {
 }
-
 
 /*Iphone(480 x 640)*/
 
@@ -645,7 +639,6 @@ a:link {
         margin-top: 10px;
     }
 }
-
 
 /*Smart phone nhỏ*/
 
@@ -675,46 +668,42 @@ header .header_bottom .main .menu ul li a ul li {
     position: absolute;
     display: block;
 } */
-.header-menu ul li:first-child{
+.header-menu ul li:first-child {
     position: relative;
 }
-.header-menu .parent-drop{
+.header-menu .parent-drop {
+    display: none;
     opacity: 0;
     position: absolute;
-    display: block;
     width: 100%;
     min-width: 250px;
     border-radius: 16px;
     border: 1px solid rgb(32, 32, 32);
-    
 }
 
-.header-menu .parent-drop div
-{
+.header-menu .parent-drop div {
     display: block;
     width: 100%;
     padding: 5px 0;
     border-bottom: 1px solid rgb(109, 109, 109);
 }
 
-.header-menu .parent-drop div:last-child{
+.header-menu .parent-drop div:last-child {
     border-bottom: none;
 }
 
-.header-menu .parent-drop div a
-{
+.header-menu .parent-drop div a {
     display: block;
     width: 100%;
-    transition: transform .2s linear;
-    
+    transition: transform 0.2s linear;
 }
 
-.header-menu .parent-drop div a:hover
-{
+.header-menu .parent-drop div a:hover {
     transform: translateX(7%);
 }
 
-.header-menu .drop-header:hover .parent-drop{
+.header-menu .drop-header:hover .parent-drop {
+    display: block;
     opacity: 1;
     z-index: 1;
     padding: 10px;
@@ -723,10 +712,10 @@ header .header_bottom .main .menu ul li a ul li {
     transform: translate(50%);
     right: 50%;
 }
-.header-menu .drop-header{
+.header-menu .drop-header {
     position: absolute;
 }
-.header-menu .drop-header li{
+.header-menu .drop-header li {
     width: 100%;
     border-top: 1px;
 }

@@ -8,7 +8,7 @@ $categories = DB::table('course_category')
 ?> 
 
 
-@if (Auth::check())
+<?php if(Auth::check()): ?>
 <div class="header">
     <div class="header_bottom">
         <div class="container">
@@ -26,9 +26,9 @@ $categories = DB::table('course_category')
                                 class="fas fa-chalkboard-teacher"></i>&nbsp; All Categories 
                             </a>
                             <div class="parent-drop">
-                                @foreach ( $categories as $cate )
-                                <div><a class="#" href="/all-class/{{Str::Slug($cate->title.'-'.$cate->id)}}">{{ $cate->title }}</a></a></div>
-                                @endforeach
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div><a class="#" href="/all-class/<?php echo e(Str::Slug($cate->title.'-'.$cate->id)); ?>"><?php echo e($cate->title); ?></a></a></div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                         </li>
                         <li>
@@ -50,9 +50,7 @@ $categories = DB::table('course_category')
                         <i class="bi bi-search"></i>
                     </button> -->
                 </div>
-                {{-- <div class="cart">
-                        <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                    </div> --}}
+                
                 <div class="right_nav">
                     <a class="nav-link" style="padding-top: 0px;" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown">
@@ -61,7 +59,7 @@ $categories = DB::table('course_category')
                     <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
                         <a style="color: black;" class="dropdown-item" href="/account">Account information</a>
                         <a style="color: black;" class="dropdown-item" href="/my-course">My Course</a>
-                        <a style="color: black;" class="dropdown-item" href="{{ route('sites.account.logout') }}">Log
+                        <a style="color: black;" class="dropdown-item" href="<?php echo e(route('sites.account.logout')); ?>">Log
                             out</a>
                     </div>
                     <!-- <div class="dropdown">
@@ -85,7 +83,7 @@ $categories = DB::table('course_category')
 
 </div>
 
-@else
+<?php else: ?>
 <header>
     <div class="header_bottom">
         <div class="container">
@@ -103,9 +101,9 @@ $categories = DB::table('course_category')
                                 class="fas fa-chalkboard-teacher"></i>
                             </a>
                             <div class="parent-drop">
-                                @foreach ( $categories as $cate )
-                                <div><a class="#" href="/all-class/{{Str::Slug($cate->title.'-'.$cate->id)}}">{{ $cate->title }}</a></a></div>
-                                @endforeach
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div><a class="#" href="/all-class/<?php echo e(Str::Slug($cate->title.'-'.$cate->id)); ?>"><?php echo e($cate->title); ?></a></a></div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                         </li>
                         <li>
@@ -151,7 +149,7 @@ $categories = DB::table('course_category')
 
 </header>
 
-@endif
+<?php endif; ?>
 
 <script>
 
@@ -221,4 +219,4 @@ fsearchh.addEventListener('keyup', () => {
     }
 
 });
-</script>
+</script><?php /**PATH E:\2022\project-cty\new\TraderClass\app\Modules/Sites/Views/inc/header.blade.php ENDPATH**/ ?>

@@ -25,7 +25,7 @@
 }
 
 .inputs {
-    background-color: #5A5A5A;
+    background-color: #5a5a5a;
     border: 1px;
     width: 70%;
     height: 40px;
@@ -66,14 +66,16 @@
 }
 
 .lin p {
+    display: flex;
+    align-items: center;
     padding-left: 10px;
     margin-bottom: 0px;
     padding-top: 5px;
 }
 
 .mail button {
-    background-color: #EF8D21;
-    border: 7px solid #EF8D21;
+    background-color: #ef8d21;
+    border: 7px solid #ef8d21;
     border-radius: 5px;
     height: 38px;
     margin-left: 10px;
@@ -81,7 +83,6 @@
     font-weight: 11px;
     font-weight: 600;
 }
-
 
 /*Ipad ngang(1024 x 768)*/
 
@@ -99,7 +100,6 @@
         padding-top: 45px;
     }
 }
-
 
 /*Ipad dọc(768 x 1024)*/
 
@@ -128,7 +128,6 @@
         width: 70%;
     }
 }
-
 
 /*Tablet nhỏ(480 x 640)*/
 
@@ -187,7 +186,6 @@
     }
 }
 
-
 /*Iphone(480 x 640)*/
 
 @media screen and (max-width: 320px) {
@@ -206,7 +204,6 @@
         font-size: 13px;
     }
 }
-
 
 /*Smart phone nhỏ*/
 

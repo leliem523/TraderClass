@@ -1,7 +1,7 @@
-@extends('Sites::courseIntroduction')
-@section('title', $row->title)
-@section('content')
-@include('Sites::inc.maketting')
+
+<?php $__env->startSection('title', $row->title); ?>
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('Sites::inc.maketting', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <style>
     .select select {
@@ -57,23 +57,17 @@
             Detailed course
         </p>
         <!-- <p style="color: white;">View offers and select courses of interest.</p> -->
-        @if (isset($course->video_id))
+        <?php if(isset($course->video_id)): ?>
         <div class="row" id="row">
             <div class="col-md-8">
-                {{-- <div class="wrappe">
-                    <video class="video" id="video" controls>
-                    <source src="https://www.youtube.com/embed/{{ $course->video_id}}" type="video/mp4">
-                  </video>
-                    <div class="playpause" id="playpause" onclick="on()"><img src="/public/sites/images/media_play_pause_resume.png" alt=""></div>
-                    <div class="offvideo" id="offvideo" onclick="off()"></div>
-                </div> --}}
+                
                 <div class="youtube wrappe" onclick="playvideo()">
-                    {{-- <video src="" class="video"> --}}
-                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/{{ isset($course_video) ? $course_video->id_video : $course->video_id }}?modestbranding=1&showinfo=0&controls=0&autohide=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+                    <iframe class="video" width="730" height="400" src="https://www.youtube.com/embed/<?php echo e(isset($course_video) ? $course_video->id_video : $course->video_id); ?>?modestbranding=1&showinfo=0&controls=0&autohide=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                     
-                    {{-- </video> --}}
-                    {{-- <div class="playpause"><img src="/public/sites/images/media_play_pause_resume.png" alt=""></div> --}}
+                    
+                    
                 </div>
             </div>
             <div class="col-md-4">
@@ -95,17 +89,17 @@
                     </div>
                 </div>
                 <div class="im">
-                    @foreach ($list_video as $value)
+                    <?php $__currentLoopData = $list_video; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="video_fields">
-                      <a href="/course/{{ Str::slug($course->name.'-'.$course->id) }}/{{ Str::slug($value->name.'-'.        $value->id) }}">
-                        <p>{{ $value->name }}</p>
+                      <a href="/course/<?php echo e(Str::slug($course->name.'-'.$course->id)); ?>/<?php echo e(Str::slug($value->name.'-'.        $value->id)); ?>">
+                        <p><?php echo e($value->name); ?></p>
                       </a>
                     </div> 
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>
-        @else
+        <?php else: ?>
            <div class="row">
                <div class="col-md-8">
                 <h1 class="" style="color: white; padding: 5em 0; text-align: center">
@@ -113,30 +107,27 @@
                 </h1>
                </div>
            </div>
-        @endif
+        <?php endif; ?>
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-9">
-                        <p id="title">{{ isset($course->name) ? $course->name : '' }}</p>
-                        <p style="font-size: 20px; color: white; font-weight: 100;">{{ isset($course->fullname) ? $course->fullname : '' }}</p>
+                        <p id="title"><?php echo e(isset($course->name) ? $course->name : ''); ?></p>
+                        <p style="font-size: 20px; color: white; font-weight: 100;"><?php echo e(isset($course->fullname) ? $course->fullname : ''); ?></p>
                         <p><span style="font-size: 14px; color: #EF8D21;"> 
-                            {{ round((double) $count_avg->avg_rating, 1) }} 
-                            @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= (int) $count_avg->avg_rating )
+                            <?php echo e(round((double) $count_avg->avg_rating, 1)); ?> 
+                            <?php for($i = 1; $i <= 5; $i++): ?>
+                                <?php if($i <= (int) $count_avg->avg_rating ): ?>
                                     <i class="fas fa-star"></i>
-                                @elseif (ceil($count_avg->avg_rating) > $count_avg->avg_rating && $i == (int) $count_avg->avg_rating + 1)
+                                <?php elseif(ceil($count_avg->avg_rating) > $count_avg->avg_rating && $i == (int) $count_avg->avg_rating + 1): ?>
                                     <i class="fas fa-star-half-alt"></i>
-                                @else
+                                <?php else: ?>
                                 <i class="far fa-star"></i>
-                                @endif
-                            @endfor
-                           </span>&ensp;<span style="font-size: 14px; color: white;">({{ $course_comment_count->count }} Đánh giá) - {{ $sum_user_of_course->count }} Học viên</span></p>
+                                <?php endif; ?>
+                            <?php endfor; ?>
+                           </span>&ensp;<span style="font-size: 14px; color: white;">(<?php echo e($course_comment_count->count); ?> Đánh giá) - <?php echo e($sum_user_of_course->count); ?> Học viên</span></p>
                     </div>
-                    {{-- <div class="col-md-3" id="col-md-3">
-                        <button onclick="nextv()"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button>
-                        <!-- <button id="but" onclick="nextvideo('/public/sites/mp4/Teacher2.mp4')"><p><img width="12px" style="margin-bottom: 3px;"  src="/public/sites/images/nextvideo.png" alt="">&ensp; Next video</p></button> -->
-                    </div> --}}
+                    
                     <script>
                                 var vids = [
                                     "/public/sites/mp4/Teacher1.mp4",
@@ -172,43 +163,43 @@
                     </script>
 
                 </div>
-              @if (isset($course_video))
-                <p style="font-size: 13px; color: white;">{{ $course_video->description }}</p>
-              @else
-                <p style="font-size: 13px; color: white;">{{ $course->description }}</p>
-              @endif
+              <?php if(isset($course_video)): ?>
+                <p style="font-size: 13px; color: white;"><?php echo e($course_video->description); ?></p>
+              <?php else: ?>
+                <p style="font-size: 13px; color: white;"><?php echo e($course->description); ?></p>
+              <?php endif; ?>
                 <p id="title" style="padding-top: 30px;">Rate and comment</p>
                 <div class="commet">
                     <div class="imt">
-                        @foreach ($course_comment as $cmt)
+                        <?php $__currentLoopData = $course_comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cmt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="com">
                                     <div class="date">
                                         <div id="google">
-                                           <img class="img-fluid" src="{{ $cmt->photo }}" alt="">
+                                           <img class="img-fluid" src="<?php echo e($cmt->photo); ?>" alt="">
                                         </div>
-                                        <p id="date"><span>{{ $cmt->fullname }}</span> </p>
+                                        <p id="date"><span><?php echo e($cmt->fullname); ?></span> </p>
                                     </div>
                                     <div class="str">
                                         <p style="color: #EF8D21; padding-left: 7%;">
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            @if ($i <= $cmt->rating)
+                                        <?php for($i = 1; $i <= 5; $i++): ?>
+                                            <?php if($i <= $cmt->rating): ?>
                                                 <i class="fas fa-star"></i>
-                                            @else
+                                            <?php else: ?>
                                             <i class="far fa-star"></i>
-                                            @endif
-                                        @endfor
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
                                         </p>
-                                        <p id="commet" style="color: white;">{{$cmt->comment}}</p>
+                                        <p id="commet" style="color: white;"><?php echo e($cmt->comment); ?></p>
                                     </div>
                                 </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </div>
                 </div>
             </div>
         </div>
-        <form action="/course/{{ Str::slug($course->name.'-'.$course_id) }}" method="POST">
-            @csrf
+        <form action="/course/<?php echo e(Str::slug($course->name.'-'.$course_id)); ?>" method="POST">
+            <?php echo csrf_field(); ?>
             <div class="form-floating">
                 <label for="courseComment" class="form-label" style="color: white; font-size: 2em;">Comment and rating</label>
                 <div class="row">
@@ -242,11 +233,11 @@
                     </select>
                 </div>
                     
-                @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div style="color: red">{{$error}}</div>
-                @endforeach
-                @endif
+                <?php if($errors->any()): ?>
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div style="color: red"><?php echo e($error); ?></div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
               
@@ -255,4 +246,6 @@
     </div>
 </div>
 
- @endsection
+ <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('Sites::courseIntroduction', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\2022\project-cty\new\TraderClass\app\Modules/Sites/Views/course_detail/index.blade.php ENDPATH**/ ?>

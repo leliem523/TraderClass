@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 a:hover {
     color: #f08e21;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
     background-color: #171921;
 }
 
-body.active~.create-account.active {
+body.active ~ .create-account.active {
     opacity: 0;
 }
 
@@ -102,10 +102,10 @@ header .header_bottom .main .right_nav ul li {
 
 header .header_bottom .main .right_nav ul li .btn_signup {
     font-size: 12.5px;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 100px;
     height: 30px;
-    border: 0.5px solid #FFFFFF;
+    border: 0.5px solid #ffffff;
     border-radius: 8px;
 }
 
@@ -127,7 +127,6 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
     border-color: #f08e21;
     color: #fff;
 }
-
 
 /*banner home*/
 
@@ -166,13 +165,13 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 }
 
 .banner_home .main_item .item-left .title span {
-    color: #EF8D21;
+    color: #ef8d21;
     font-weight: bold;
 }
 
 .banner_home .main_item .item-left .desc {
     font-size: 18px;
-    color: #7B8197;
+    color: #7b8197;
 }
 
 .banner_home .main_item .item-left .form_search {
@@ -182,28 +181,34 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 .banner_home .main_item .item-left .form_search input.search_input {
     background: none;
     background: #171921;
-    border: 0.5px solid #7B8197;
+    border: 0.5px solid #7b8197;
     border-radius: 3px;
     padding: 11px 20px;
-    color: #7B8197;
+    color: #7b8197;
     width: 100%;
     margin-bottom: 12px;
 }
 
 .banner_home .main_item .item-left .form_search .sign_up {
-    background-color: #EF8D21;
+    background-color: #ef8d21;
     width: 100%;
     font-weight: bold;
     font-size: 14px;
     line-height: 21px;
-    color: #FFFFFF;
+    color: #ffffff;
     padding: 13px 20px;
+}
+
+.device .info .left_conent .btn_continute:hover,
+.banner_home .main_item .item-left .form_search .sign_up:hover {
+    background-color: #fff;
+    color: #ef8d21;
 }
 
 .banner_home .main_item .item-left .form_search label {
     display: flex;
     margin-top: 20px;
-    color: #C4C4C4;
+    color: #c4c4c4;
     font-size: 12px;
 }
 
@@ -218,7 +223,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 
 .banner_home .main_item .item-left .form_search .pricing {
     margin-top: 15px;
-    color: #C4C4C4;
+    color: #c4c4c4;
     font-weight: bold;
     font-size: 14px;
     line-height: 21px;
@@ -227,7 +232,6 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 .banner_home .main_item .item-right {
     max-width: 1280px;
 }
-
 
 /*Teacher*/
 
@@ -248,7 +252,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
     position: absolute;
     width: 48px;
     height: 48px;
-    background: #191C21;
+    background: #191c21;
     border-radius: 50%;
 }
 
@@ -257,7 +261,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
     right: -30px;
     width: 48px;
     height: 48px;
-    background: #191C21;
+    background: #191c21;
     position: absolute;
     border-radius: 50%;
 }
@@ -266,7 +270,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 .trader_teacher .owl-carousel .owl-nav .owl-next:hover,
 .client_say .slide .owl-carousel .owl-nav .owl-prev:hover,
 .client_say .slide .owl-carousel .owl-nav .owl-next:hover {
-    background-color: #EF8D21;
+    background-color: #ef8d21;
 }
 
 .trader_teacher .owl-carousel .owl-nav .owl-prev:hover svg path,
@@ -279,6 +283,14 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 .trader_teacher .owl-carousel .item {
     position: relative;
     overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+}
+
+.trader_teacher .owl-carousel .item img {
+    height: 100%;
+    object-fit: cover;
 }
 
 .trader_teacher .owl-carousel .item:hover .info {
@@ -286,14 +298,14 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 }
 
 .trader_teacher .owl-carousel .item::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     display: inline-block;
-    background-image: linear-gradient(to top, #171921 1%, transparent 60%, transparent)
+    background-image: linear-gradient(to top, #171921 1%, transparent 60%, transparent);
 }
 
 .trader_teacher .owl-carousel .item .mark {
@@ -342,7 +354,6 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
     margin: 15px auto 0;
 }
 
-
 /*class*/
 
 .classes .list_category {
@@ -366,7 +377,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 }
 
 .classes .list_category .left_content ul li {
-    color: #7B8197;
+    color: #7b8197;
     font-size: 15px;
     margin-bottom: 20px;
 }
@@ -408,6 +419,8 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
     width: 100%;
     bottom: 0;
     z-index: -1;
+    height: 100%;
+    object-fit: cover;
 }
 
 .device .info {
@@ -422,12 +435,12 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 .device .info .left_conent .title {
     font-weight: bold;
     font-size: 30px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .device .info .left_conent .desc {
     font-size: 15px;
-    color: #7B8197;
+    color: #7b8197;
 }
 
 .device .info .right_content {
@@ -437,7 +450,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 }
 
 .device .info .left_conent .btn_continute {
-    background: #EF8D21;
+    background: #ef8d21;
     border-radius: 5px;
     color: #fff;
     font-weight: bold;
@@ -456,7 +469,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 
 .client_say .item .desc {
     max-width: 490px;
-    background-color: #EF8D21;
+    background-color: #ef8d21;
     border-radius: 3px;
     padding: 40px;
     color: #fff;
@@ -485,7 +498,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 .try_lession .item_block .title {
     font-weight: bold;
     font-size: 30px;
-    color: #EF8D21;
+    color: #ef8d21;
 }
 
 .try_lession .item_block .title {
@@ -505,7 +518,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 
 .try_lession .list_option .item {
     border-radius: 3px;
-    border: 1px solid #7B8197;
+    border: 1px solid #7b8197;
     padding: 15px;
 }
 
@@ -528,6 +541,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 .try_lession .list_option {
     max-width: 970px;
     margin: 0 auto;
+    row-gap: 24px;
 }
 
 .try_lession .subcribe .title {
@@ -543,11 +557,11 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 .try_lession .subcribe .box_subcribe div input {
     background: none;
     border-radius: 10px;
-    border: 1px solid #7B8197;
+    border: 1px solid #7b8197;
     padding: 12px 18px;
     width: 100%;
     margin-right: 10px;
-    color: #C4C4C4;
+    color: #c4c4c4;
 }
 
 .try_lession .subcribe .box_subcribe {
@@ -563,7 +577,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 
 .try_lession .subcribe .box_subcribe label {
     display: flex;
-    color: #7B8197;
+    color: #7b8197;
     align-items: center;
     margin-top: 10px;
 }
@@ -578,21 +592,21 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 
 .try_lession .subcribe .sub_title_2 {
     margin: 0;
-    color: #C4C4C4;
+    color: #c4c4c4;
 }
 
 .try_lession .subcribe .btn_subcribe {
     font-weight: bold;
     font-size: 14px;
-    color: #C4C4C4;
-    border: 1px solid #7B8197;
+    color: #c4c4c4;
+    border: 1px solid #7b8197;
     box-sizing: border-box;
     border-radius: 10px;
     padding: 13px 60px;
 }
 
 .try_lession .subcribe .btn_subcribe:hover {
-    background-color: #EF8D21;
+    background-color: #ef8d21;
 }
 
 .faq .list_faq {
@@ -602,7 +616,7 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 }
 
 .faq .list_faq .question .item .title_faq {
-    border: 0.5px solid #464A58;
+    border: 0.5px solid #464a58;
     border-radius: 3px;
     width: 100%;
     text-decoration: none;
@@ -616,13 +630,12 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
     width: 100%;
 }
 
-
 /* .faq .list_faq .question .item .title_faq svg {} */
 
 .faq .list_faq .question .item .collapse {
-    color: #C4C4C4;
+    color: #c4c4c4;
     padding: 20px;
-    border: 0.5px solid #464A58;
+    border: 0.5px solid #464a58;
     background: #111319;
     border-top: 0;
 }
@@ -649,7 +662,7 @@ footer ul {
 
 footer ul li a {
     text-decoration: none;
-    color: #C4C4C4;
+    color: #c4c4c4;
     font-size: 13px;
 }
 
@@ -658,11 +671,11 @@ footer ul li {
 }
 
 footer .footer_bottom {
-    color: #C4C4C4;
+    color: #c4c4c4;
 }
 
 footer p {
-    color: #C4C4C4;
+    color: #c4c4c4;
 }
 
 footer .footer_right a {
@@ -682,13 +695,12 @@ footer ul li a svg {
     fill: #f08e21;
 }
 
-
 /*Common css*/
 
 .title_main {
     font-size: 30px;
     line-height: 45px;
-    color: #EF8D21;
+    color: #ef8d21;
     margin-bottom: 0;
     font-weight: bold;
 }
@@ -708,7 +720,6 @@ footer ul li a svg {
 .pb-100 {
     padding-bottom: 100px;
 }
-
 
 /* --------------create account------------- */
 
@@ -752,7 +763,7 @@ footer ul li a svg {
     font-weight: bold;
     width: 304px;
     height: 49px;
-    background: #4285F4;
+    background: #4285f4;
     border-radius: 10px;
     border: 0;
 }
@@ -771,7 +782,7 @@ footer ul li a svg {
     text-decoration: none;
     width: 304px;
     height: 49px;
-    background: #3C5A99;
+    background: #3c5a99;
     border-radius: 10px;
     border: 0;
 }
@@ -814,7 +825,7 @@ footer ul li a svg {
 }
 
 .signup-input {
-    border: 0.5px solid #A7A9AC;
+    border: 0.5px solid #a7a9ac;
     border-radius: 20px;
     width: 304px;
     height: 48px;
@@ -826,7 +837,7 @@ footer ul li a svg {
 .create-account .btn-create {
     width: 304px;
     height: 48px;
-    background: #EF8D21;
+    background: #ef8d21;
     border-radius: 10px;
     border: 0;
     font-weight: bold;
@@ -842,8 +853,8 @@ footer ul li a svg {
 }
 
 .sign-in p {
-    margin-top: -15px!important;
-    margin-bottom: 0px!important;
+    margin-top: -15px !important;
+    margin-bottom: 0px !important;
 }
 
 .text {
@@ -851,12 +862,12 @@ footer ul li a svg {
     font-style: normal;
     font-weight: normal;
     font-size: 11px;
-    color: #A7A9AC;
+    color: #a7a9ac;
 }
 
 .text p {
-    margin-top: -15px!important;
-    margin-bottom: 0px!important;
+    margin-top: -15px !important;
+    margin-bottom: 0px !important;
 }
 
 .create-account input[type="checkbox"] {
@@ -871,7 +882,7 @@ footer ul li a svg {
 }
 
 .checkmark {
-    top: 377px!important;
+    top: 377px !important;
     border: 0.5px solid #323741;
     position: absolute;
     height: 25px;
@@ -879,8 +890,8 @@ footer ul li a svg {
     background-color: #eee;
 }
 
-.create-account input:checked~.checkmark {
-    background-color: #191C21;
+.create-account input:checked ~ .checkmark {
+    background-color: #191c21;
 }
 
 .checkmark:after {
@@ -889,7 +900,7 @@ footer ul li a svg {
     display: none;
 }
 
-.create-account input:checked~.checkmark:after {
+.create-account input:checked ~ .checkmark:after {
     display: block;
 }
 
@@ -904,7 +915,6 @@ footer ul li a svg {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-
 
 /* --------------log in------------- */
 
@@ -941,7 +951,7 @@ footer ul li a svg {
     font-weight: bold;
     width: 304px;
     height: 49px;
-    background: #4285F4;
+    background: #4285f4;
     border-radius: 10px;
     border: 0;
 }
@@ -960,7 +970,7 @@ footer ul li a svg {
     text-decoration: none;
     width: 304px;
     height: 49px;
-    background: #3C5A99;
+    background: #3c5a99;
     border-radius: 10px;
     border: 0;
 }
@@ -1003,7 +1013,7 @@ footer ul li a svg {
 }
 
 .signup-input {
-    border: 0.5px solid #A7A9AC;
+    border: 0.5px solid #a7a9ac;
     border-radius: 20px;
     width: 304px;
     height: 48px;
@@ -1014,7 +1024,7 @@ footer ul li a svg {
 .btn-create {
     width: 304px;
     height: 48px;
-    background: #EF8D21;
+    background: #ef8d21;
     border-radius: 10px;
     border: 0;
     font-weight: bold;
@@ -1034,7 +1044,7 @@ footer ul li a svg {
     font-style: normal;
     font-weight: normal;
     font-size: 11px;
-    color: #A7A9AC;
+    color: #a7a9ac;
 }
 
 .create-account input[type="checkbox"] {
@@ -1056,8 +1066,8 @@ footer ul li a svg {
     background-color: #eee;
 }
 
-.create-account input:checked~.checkmark {
-    background-color: #191C21;
+.create-account input:checked ~ .checkmark {
+    background-color: #191c21;
 }
 
 .checkmark:after {
@@ -1066,7 +1076,7 @@ footer ul li a svg {
     display: none;
 }
 
-.create-account input:checked~.checkmark:after {
+.create-account input:checked ~ .checkmark:after {
     display: block;
 }
 
@@ -1081,7 +1091,6 @@ footer ul li a svg {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-
 
 /* ----------login with google------------ */
 
@@ -1100,7 +1109,7 @@ footer ul li a svg {
 }
 
 .login-with-google.active {
-    display: block!important;
+    display: block !important;
     opacity: 1;
     z-index: 9;
 }
@@ -1111,8 +1120,8 @@ footer ul li a svg {
     top: 22px;
     width: 633px;
     height: 606px;
-    background: #FFFFFF;
-    border: 1px solid #C5C0C0;
+    background: #ffffff;
+    border: 1px solid #c5c0c0;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -1123,7 +1132,7 @@ footer ul li a svg {
     height: 0px;
     left: 0px;
     top: 76px;
-    border: 1px solid #C5C0C0;
+    border: 1px solid #c5c0c0;
 }
 
 .choose {
@@ -1149,7 +1158,7 @@ footer ul li a svg {
 .btn-continued {
     width: 514px;
     height: 42px;
-    background: #4285F4;
+    background: #4285f4;
     border-radius: 5px;
     outline: 0;
     border: 0;
@@ -1165,7 +1174,7 @@ footer ul li a svg {
 .btn-cancel {
     width: 514px;
     height: 42px;
-    background: #D0D0D0;
+    background: #d0d0d0;
     border-radius: 5px;
     outline: 0;
     border: 0;
@@ -1187,7 +1196,6 @@ footer ul li a svg {
     top: -80px;
 }
 
-
 /* ----------login with facebook------------ */
 
 .login-with-facebook {
@@ -1205,7 +1213,7 @@ footer ul li a svg {
 }
 
 .login-with-facebook.active {
-    display: block!important;
+    display: block !important;
     opacity: 1;
     z-index: 9;
 }
@@ -1216,8 +1224,8 @@ footer ul li a svg {
     top: 27px;
     width: 633px;
     height: 636px;
-    background: #FFFFFF;
-    border: 1px solid #C5C0C0;
+    background: #ffffff;
+    border: 1px solid #c5c0c0;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -1228,13 +1236,13 @@ footer ul li a svg {
     height: 0px;
     left: 0px;
     top: 76px;
-    border: 1px solid #C5C0C0;
+    border: 1px solid #c5c0c0;
 }
 
 .btn-continued {
     width: 514px;
     height: 42px;
-    background: #4285F4;
+    background: #4285f4;
     border-radius: 5px;
     outline: 0;
     border: 0;
@@ -1250,7 +1258,7 @@ footer ul li a svg {
 .btn-cancel {
     width: 514px;
     height: 42px;
-    background: #D0D0D0;
+    background: #d0d0d0;
     border-radius: 5px;
     outline: 0;
     border: 0;
@@ -1266,7 +1274,6 @@ footer ul li a svg {
 .login-with-facebook .text1 {
     color: #4285f4;
 }
-
 
 /* ------------reset password----------- */
 
@@ -1307,7 +1314,7 @@ footer ul li a svg {
     text-decoration: none;
     width: 304px;
     height: 49px;
-    background: #4285F4;
+    background: #4285f4;
     border-radius: 10px;
     border: 0;
 }
@@ -1321,7 +1328,7 @@ footer ul li a svg {
     text-decoration: none;
     width: 304px;
     height: 49px;
-    background: #3C5A99;
+    background: #3c5a99;
     border-radius: 10px;
     border: 0;
 }
@@ -1360,7 +1367,7 @@ footer ul li a svg {
 }
 
 .signup-input {
-    border: 0.5px solid #A7A9AC;
+    border: 0.5px solid #a7a9ac;
     border-radius: 20px;
     width: 304px;
     height: 48px;
@@ -1371,7 +1378,7 @@ footer ul li a svg {
 .btn-create {
     width: 304px;
     height: 48px;
-    background: #EF8D21;
+    background: #ef8d21;
     border-radius: 10px;
     border: 0;
     font-weight: bold;
@@ -1392,7 +1399,7 @@ footer ul li a svg {
     font-style: normal;
     font-weight: normal;
     font-size: 11px;
-    color: #A7A9AC;
+    color: #a7a9ac;
 }
 
 .dropdown-item {
@@ -1412,7 +1419,7 @@ footer ul li a svg {
 }
 
 .tile-image::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1454,6 +1461,16 @@ footer ul li a svg {
     background-color: white;
     border: 0px;
     border-radius: 7px;
+}
+
+.button button:hover,
+.info button:hover {
+    background-color: #ef8d21;
+}
+
+.button button:hover p,
+.info button:hover p {
+    color: #fff;
 }
 
 .button p {
@@ -1506,9 +1523,9 @@ video {
 
 .next button {
     width: 100%;
-    border: 1px solid #7B8197;
+    border: 1px solid #7b8197;
     /* border: solid; */
-    background-color: #7B8197;
+    background-color: #7b8197;
     border-radius: 16px;
     color: white;
     font-size: 20px;
@@ -1517,7 +1534,6 @@ video {
     padding: 11px;
     margin-top: 26px;
 }
-
 
 /*Responsive*/
 
@@ -1604,8 +1620,6 @@ video {
     .container,
     .container-sm {
         max-width: 694px;
-    
-        
     }
     header .header_bottom .main .menu {
         display: none;
@@ -1662,6 +1676,9 @@ video {
     }
     .try_lession .subcribe .box_subcribe {
         margin-top: 30px;
+    }
+    .try_lession .list_option {
+        row-gap: unset;
     }
     .try_lession .list_option .item {
         margin-bottom: 30px;
@@ -1836,9 +1853,10 @@ video {
     }
 }
 
-@media (min-width: 1400px) {}
+@media (min-width: 1400px) {
+}
 
-@media screen and (max-width:560px) {
+@media screen and (max-width: 560px) {
     /* ---------create account--------- */
     .create-account {
         position: fixed;
@@ -1948,7 +1966,7 @@ video {
         height: 628px;
     }
     .login-with-google .text {
-        top: 526px!important;
+        top: 526px !important;
     }
     .login-with-google .left {
         position: absolute;
@@ -1981,11 +1999,10 @@ video {
         height: 628px;
     }
     .policy {
-        top: 573px!important;
-        left: 190px!important;
+        top: 573px !important;
+        left: 190px !important;
     }
 }
-
 
 /*Tablet nhỏ(480 x 640)*/
 
@@ -2091,16 +2108,16 @@ video {
         margin-top: 40px;
     }
     .continue {
-        position: initial!important;
+        position: initial !important;
     }
     .link {
-        position: initial!important;
+        position: initial !important;
     }
     .login-with-google span {
-        width: 350px!important;
+        width: 350px !important;
     }
     .login-with-google .text {
-        width: 340px!important;
+        width: 340px !important;
     }
     .login-with-google .left {
         top: -201px;
@@ -2114,19 +2131,19 @@ video {
     /* <!-- ------------login with facebook---------------- --> */
     .btn-continued {
         width: 435px;
-        top: 323px!important;
-        left: 102px!important;
+        top: 323px !important;
+        left: 102px !important;
     }
     .btn-cancel {
-        left: 102px!important;
+        left: 102px !important;
         width: 435px;
     }
     .warning {
-        width: 436px!important;
-        left: 105px!important;
+        width: 436px !important;
+        left: 105px !important;
     }
     .policy {
-        top: 595px!important;
+        top: 595px !important;
     }
     video {
         width: 100%;
@@ -2232,8 +2249,7 @@ video {
         height: 237px;
     }
 }
-@media screen and (max-width: 376px){
-
+@media screen and (max-width: 376px) {
 }
 /* @media screen and (max-width: 375px) {
     .container,
@@ -2270,7 +2286,6 @@ video {
         left: 0%;
     }
 } */
-
 
 /*Iphone(480 x 640)*/
 
@@ -2375,12 +2390,12 @@ video {
         width: 147px;
     }
     .login-with-google .text {
-        top: 459px!important;
-        left: 62px!important;
-        width: 297px!important;
+        top: 459px !important;
+        left: 62px !important;
+        width: 297px !important;
     }
     .login-with-google form {
-        height: 620px!important;
+        height: 620px !important;
     }
     .login-with-google .left {
         margin-left: 179px;
@@ -2395,16 +2410,16 @@ video {
         height: 672px;
     }
     .login-with-facebook .title {
-        position: initial!important;
+        position: initial !important;
         top: 141px;
         left: 109px;
         font-size: 24px;
         font-weight: 500;
         width: 278px;
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
     .login-with-facebook .title1 {
-        position: initial!important;
+        position: initial !important;
         top: 133px;
         left: 109px;
         font-size: 24px;
@@ -2413,26 +2428,26 @@ video {
         margin-top: 117px;
     }
     .fa-pencil-alt {
-        position: initial!important;
+        position: initial !important;
     }
     .login-with-facebook .btn-continued {
         width: 290px;
-        top: 323px!important;
-        left: 171px!important;
+        top: 323px !important;
+        left: 171px !important;
         height: 51px;
     }
     .login-with-facebook .btn-cancel {
         width: 290px;
-        top: 375px!important;
-        left: 171px!important;
+        top: 375px !important;
+        left: 171px !important;
     }
     .warning {
-        position: initial!important;
-        width: 307px!important;
+        position: initial !important;
+        width: 307px !important;
         margin-top: 64px;
     }
     .policy {
-        top: 638px!important;
+        top: 638px !important;
     }
     video {
         width: 100%;
@@ -2489,7 +2504,6 @@ video {
     }
 }
 
-
 /*Smart phone nhỏ*/
 
 @media screen and (max-width: 250px) {
@@ -2500,16 +2514,16 @@ video {
         height: 885px;
     }
     .login-with-facebook img {
-        position: initial!important;
+        position: initial !important;
     }
     .login-with-facebook .title {
-        position: initial!important;
+        position: initial !important;
         top: 141px;
         left: 109px;
         font-size: 24px;
         font-weight: 500;
         width: 196px;
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
     .login-with-facebook .title1 {
         margin-top: 0px;
@@ -2518,36 +2532,36 @@ video {
         margin-bottom: 50px;
     }
     .fa-pencil-alt {
-        position: initial!important;
+        position: initial !important;
     }
     .login-with-facebook .btn-continued {
-        width: 219px!important;
-        height: 54px!important;
-        top: 347px!important;
-        left: 0px!important;
+        width: 219px !important;
+        height: 54px !important;
+        top: 347px !important;
+        left: 0px !important;
     }
     .login-with-facebook .btn-cancel {
-        left: 0px!important;
-        width: 219px!important;
+        left: 0px !important;
+        width: 219px !important;
     }
     .warning {
-        position: initial!important;
-        width: 197px!important;
+        position: initial !important;
+        width: 197px !important;
     }
     .policy {
-        position: initial!important;
+        position: initial !important;
         margin-top: 265px;
     }
     /* <!-- ------------login with google---------------- --> */
     .login-with-google .user {
-        margin-left: 47px!important;
+        margin-left: 47px !important;
     }
     .login-with-google .text {
-        left: 98px!important;
-        width: 220px!important;
+        left: 98px !important;
+        width: 220px !important;
     }
     .login-with-google form {
-        height: 660px!important;
+        height: 660px !important;
     }
     .login-with-google .left {
         margin-left: 206px;
@@ -2558,7 +2572,7 @@ video {
         top: -56px;
     }
     .login-with-google .terms {
-        left: 598px!important;
+        left: 598px !important;
     }
     /* ---------create account------------ */
     .create-account {
@@ -2571,10 +2585,10 @@ video {
         width: 214px;
     }
     .btn-create {
-        width: 214px!important;
+        width: 214px !important;
     }
     .create-account label {
-        margin-left: 60px!important;
+        margin-left: 60px !important;
     }
     .signup-input {
         width: 214px;
@@ -2596,7 +2610,7 @@ video {
         width: 214px;
     }
     .log-in label {
-        margin-left: 60px!important;
+        margin-left: 60px !important;
     }
     .signup-input {
         width: 214px;
