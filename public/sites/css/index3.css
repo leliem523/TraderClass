@@ -1505,6 +1505,7 @@ footer ul li a svg {
     border: 0px;
     width: 70%;
     border-radius: 7px;
+    margin: auto;
 }
 
 .info button p {
@@ -1725,7 +1726,7 @@ video {
         font-size: 11px;
     }
     .trader_teacher .owl-carousel .item {
-        height: auto;
+        height: 670px;
     }
     .trader_teacher .owl-carousel .item .info .name {
         font-size: 45px;
@@ -1740,10 +1741,10 @@ video {
         width: 45%;
     }
     .trader_teacher .owl-carousel .item .info {
-        top: 88% !important;
+        top: 80% !important;
     }
     .trader_teacher .owl-carousel .item:hover .info {
-        top: 75% !important;
+        top: 70% !important;
     }
     .try_lession .list_option .item label span {
         font-weight: 600;
@@ -2225,6 +2226,17 @@ video {
     .trader_teacher {
         padding-top: 56px;
     }
+    .trader_teacher .owl-carousel .item {
+        height: 425px;
+    }
+
+    .trader_teacher .owl-carousel .item .info {
+        top: 70% !important;
+    }
+
+    .trader_teacher .owl-carousel .item:hover .info {
+        top: 50% !important;
+    }
 }
 
 @media screen and (max-width: 414px) {
@@ -2251,12 +2263,15 @@ video {
         top: 10%;
         right: 0%;
     }
+
     .trader_teacher .owl-carousel .item .info {
-        top: 80% !important;
+        top: 70% !important;
     }
+
     .trader_teacher .owl-carousel .item:hover .info {
-        top: 60% !important;
+        top: 52% !important;
     }
+
     .classes .list_category .right_content .tivi_show {
         height: 237px;
     }

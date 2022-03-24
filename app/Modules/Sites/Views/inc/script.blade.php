@@ -1,4 +1,6 @@
 <script type="text/javascript">
+    
+
     $(function() {
         $(".btn_subcribe").click(function() {
             var _token = $('meta[name="csrf-token"]').attr('content');
@@ -342,6 +344,7 @@ function close_popup(){
         dotts[slideIndex - 1].className += " actives";
     }
 
+    
     
     
 </script>

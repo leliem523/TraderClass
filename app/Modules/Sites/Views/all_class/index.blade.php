@@ -74,14 +74,12 @@
     
     (function ChangeHeightImage() {
         const eleHasClassImg = document.querySelectorAll('.teacher .teacher-all-class .img');
-
+        
         const width = eleHasClassImg[0].clientWidth;
         eleHasClassImg.forEach(element => {
             element.style.height = `${width/2}px`;
         });
     })();
-
-    console.log([eleHasClassImg])
 
     function handleClickListener() {
         alert('aaa');

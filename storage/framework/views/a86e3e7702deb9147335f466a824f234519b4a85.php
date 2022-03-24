@@ -64,7 +64,7 @@ use Illuminate\Support\Facades\DB;
             <h2 class="title_main mb-5 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0s">Trending</h2>
             <div class="owl-carousel owl-theme">
                 <?php $__currentLoopData = $teachers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="item">
+                <div class="item trader_teacher-item">
                     <?php if($value->type): ?>
                     <p class="mark">New</p>
                     <?php endif; ?>
