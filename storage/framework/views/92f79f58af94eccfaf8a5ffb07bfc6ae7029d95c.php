@@ -82,12 +82,12 @@
                         </div>
                       <?php if(Auth::check()): ?>
                         <div class="col-md-3" id="col-md-3">
-                            <button><p> <a href="/register/<?php echo e(Str::slug($course->name.'-'.$course->id)); ?>"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
+                            <button><p><i class="bi bi-plus-lg"></i> &ensp;Register the course</p></button>
                             
                         </div>
                       <?php else: ?>
                         <div class="col-md-3" id="col-md-3">
-                            <button><p> <a href="#" onclick="sign_in()"><i class="bi bi-plus-lg"></i> &ensp;Register the course</a></p></button>
+                            <button onclick="sign_in()"><p><i class="bi bi-plus-lg"></i> &ensp;Register the course</p></button>
                         </div>
                       <?php endif; ?>
                     </div>

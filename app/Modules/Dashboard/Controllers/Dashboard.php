@@ -12,15 +12,12 @@ class Dashboard extends Controller
 {
     public function __construct()
     {
-        $className = explode("\\", get_class())[4];
+       
         //echo $className;
     }
     public function index()
     {
-        //check Permission
-        if (!Gate::allows('view', explode("\\", get_class())[4])) {
-            abort(403);
-        }
+    
         $row = json_decode(json_encode([
             "title" => "Quản trị viên",
         ]));

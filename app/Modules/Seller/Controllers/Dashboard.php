@@ -15,7 +15,7 @@ class Dashboard extends Controller{
 
     public function index()
     {
-       return view('Seller::dashboard.index');
+        return view('Seller::dashboard.index');
     }
    
     public function analyst()
