@@ -27,15 +27,18 @@
                         <h1 class="">Sign In</h1>
                         <p class="">Log in to your account to continue.</p>
                         
-                        <form class="text-left">
+                        <form class="text-left" action="{{ route('seller.auth.postLogin') }}" method="POST">
+                            @csrf
                             <div class="form">
 
                                 <div id="username-field" class="field-wrapper input">
                                     <label for="username">USERNAME</label>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                    <input id="username" name="username" type="text" class="form-control" placeholder="e.g John_Doe">
+                                    <input id="email" name="email" type="email" class="form-control" placeholder="e.g John_Doe">
                                 </div>
-
+                                @error('email')
+                                    <div class="error">{{ $message }}</div>
+                                @enderror
                                 <div id="password-field" class="field-wrapper input mb-2">
                                     <div class="d-flex justify-content-between">
                                         <label for="password">PASSWORD</label>
@@ -45,6 +48,9 @@
                                     <input id="password" name="password" type="password" class="form-control" placeholder="Password">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="toggle-password" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                                 </div>
+                                @error('password')
+                                    <div class="error">{{ $message }}</div>
+                                @enderror
                                 <div class="d-sm-flex justify-content-between">
                                     <div class="field-wrapper">
                                         <button type="submit" class="btn btn-primary" value="">Log In</button>
@@ -66,7 +72,7 @@
                                     </a>
                                 </div>
 
-                                <p class="signup-link">Not registered ? <a href="auth_register_boxed.html">Create an account</a></p>
+                                <p class="signup-link">Not registered ? <a href="/seller/register">Create an account</a></p>
 
                             </div>
                         </form>

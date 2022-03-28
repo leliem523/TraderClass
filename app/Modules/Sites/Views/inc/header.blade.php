@@ -193,7 +193,7 @@ const divResult = document.querySelector('#search-result');
 fsearchh.addEventListener('keyup', () => {
     const key = fsearchh.value.trim();
     if(key) {
-        const url = `http://test.local/api/search-course?key=${key}`;
+        const url = `https://traderclass.vn/api/search-course?key=${key}`;
             $.ajax({
             url: url,
             cache: false,
@@ -209,7 +209,7 @@ fsearchh.addEventListener('keyup', () => {
                             </div>
                             <div class="col-9">
                                 <a href="/teacher/${ChangeToSlug(item.name + ' ' + item.id)}">${item.name}</a>
-                                <p>${item.fullname}</p>
+                                <p>${item.teacherName}</p>
                             </div>
                         </div>
                     </div>`;

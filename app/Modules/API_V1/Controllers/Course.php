@@ -117,17 +117,38 @@ class Course extends Controller
     {
         if(!isset($request['key'])) return back();
         $key = "%$request[key]%";
-        $data = DB::table('course')
-                ->selectRaw('la_course.id, la_course.name, la_course.description, la_course.photo, la_course.video_id, la_course_category.title, la_teachers.fullname as teacherName, la_teachers.photo as teacherPhoto')
-                ->join('course_category', 'course_category.id', 'course.course_category_id')
-                ->join('teachers', 'teachers.id', 'course.teacher_id')
-                ->where([
-                    ['course.name', 'like', $key],
-                    ['course.status', 1]
-                ])
-                ->orWhere('teachers.fullname', 'like', $key)
-                ->orderBy('course.id', 'asc')
-                ->paginate(10);
+        if(Auth::check()) {
+            $data = DB::table('course')
+            ->selectRaw('la_course.id, la_course.name, la_course.description, la_course.photo, la_course.video_id, la_course_category.title, la_teachers.fullname as teacherName, la_teachers.photo as teacherPhoto')
+            ->join('course_category', 'course_category.id', 'course.course_category_id')
+            ->join('teachers', 'teachers.id', 'course.teacher_id')
+            ->whereNotExists(function ($query)
+            {
+                $query->select(DB::raw(1))
+                 ->from('user_course')
+                 ->whereColumn('user_course.course_id', 'course.id')
+                 ->where('user_course.user_id', Auth::id());
+            })
+            ->where([
+                ['course.name', 'like', $key],
+                ['course.status', 1],
+            ])
+            ->orWhere('teachers.fullname', 'like', $key)
+            ->orderBy('course.id', 'asc')
+            ->paginate(10);
+        } else {
+            $data = DB::table('course')
+            ->selectRaw('la_course.id, la_course.name, la_course.description, la_course.photo, la_course.video_id, la_course_category.title, la_teachers.fullname as teacherName, la_teachers.photo as teacherPhoto')
+            ->join('course_category', 'course_category.id', 'course.course_category_id')
+            ->join('teachers', 'teachers.id', 'course.teacher_id')
+            ->where([
+                ['course.name', 'like', $key],
+                ['course.status', 1],
+            ])
+            ->orWhere('teachers.fullname', 'like', $key)
+            ->orderBy('course.id', 'asc')
+            ->paginate(10);
+        }
 
         if(!$data) {
             return Response()->json([
@@ -182,24 +203,45 @@ class Course extends Controller
 
     public function getCourseByCate($cate_id)
     {
-        $course = DB::table('course')
-                ->selectRaw('la_course.id, la_course.name, la_course.description, la_course.photo, la_course.video_id, la_course_category.title, la_teachers.fullname as teacherName, la_teachers.photo as teacherPhoto')
-                ->join('course_category', 'course_category.id', 'course.course_category_id')
-                ->join('teachers', 'teachers.id', 'course.teacher_id')
-                ->where('course_category.id', $cate_id)
-                ->whereIn('course.status', [0, 1])
-                ->orderBy('course.id', 'asc')
-                ->paginate(10);
-        if(!$course) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'Data is empty !!',
-            ]);
-        }
-        $data_filter_course = array();
-        foreach ($course as $courseData) {
+       if($cate_id == 0) {
+            $course = DB::table('course')
+            ->selectRaw('la_course.id, la_course.name, la_course.description, la_course.photo, la_course.video_id, la_course_category.title, la_teachers.fullname as teacherName, la_teachers.photo as teacherPhoto')
+            ->join('course_category', 'course_category.id', 'course.course_category_id')
+            ->join('teachers', 'teachers.id', 'course.teacher_id')
+            ->whereIn('course.status', [0, 1])
+            ->orderBy('course.id', 'asc')
+            ->paginate(10);
+            if(!$course) {
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'Data is empty !!',
+                ]);
+            }
+            $data_filter_course = array();
+            foreach ($course as $courseData) {
+                array_push($data_filter_course, $courseData);
+            }
+       }
+       else {
+            $course = DB::table('course')
+                    ->selectRaw('la_course.id, la_course.name, la_course.description, la_course.photo, la_course.video_id, la_course_category.title, la_teachers.fullname as teacherName, la_teachers.photo as teacherPhoto')
+                    ->join('course_category', 'course_category.id', 'course.course_category_id')
+                    ->join('teachers', 'teachers.id', 'course.teacher_id')
+                    ->where('course_category.id', $cate_id)
+                    ->whereIn('course.status', [0, 1])
+                    ->orderBy('course.id', 'asc')
+                    ->paginate(10);
+            if(!$course) {
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'Data is empty !!',
+                ]);
+            }
+                $data_filter_course = array();
+            foreach ($course as $courseData) {
             array_push($data_filter_course, $courseData);
-        }
+            }
+       }
         return response()->json([
             'status' => true,
             'data' => $data_filter_course,
@@ -215,13 +257,15 @@ class Course extends Controller
         $yearNow = date('Y');
 
         $course = DB::table('course')
-                ->selectRaw('la_course.id, la_course.name, la_course.description, la_course.photo, la_course.video_id, la_course_category.title, la_teachers.fullname as teacherName, la_teachers.photo as teacherPhoto')
+                ->selectRaw('la_course.id, la_course.name, la_course.description, la_course.photo, la_course.video_id, la_course_category.title, la_teachers.fullname as teacherName, la_teachers.photo as teacherPhoto, count(la_user_course.course_id) as count_user_course')
                 ->join('teachers', 'teachers.id', 'course.teacher_id')
                 ->join('course_category', 'course_category.id', 'course.course_category_id')
+                ->join('user_course', 'user_course.course_id', 'course.id')
                 ->where('course.status', 1)
                 ->whereMonth('course.created_at', $monthNow)
                 ->whereYear('course.created_at', $yearNow)
                 ->orderBy('course.created_at', 'desc')
+                ->groupBy('user_course.course_id')
                 ->limit(10)
                 ->get();
         if(!$course) {

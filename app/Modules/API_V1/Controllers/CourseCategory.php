@@ -24,7 +24,14 @@ class CourseCategory extends Controller
                 'msg' => 'Get data category of course failed !!',
             ]);
         } 
+        // Add field all
+        $cate_all = [
+            'id' => 0,
+            'title' => 'All',
+        ];
         $data_filter_course_category = array();
+        // Filter data
+        array_push($data_filter_course_category, $cate_all);
         foreach ($course_category as $cate) {
             array_push($data_filter_course_category, $cate);
         }
