@@ -11,7 +11,7 @@
     <div class="classify">
         <div class="container">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-12 col-xl-12">
                     <div class="sort">
                         <p style="color: white;">Sorted by:</p>
                         <button onclick="window.location='?mostPopular'">Most Popular</button>
@@ -29,9 +29,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md">
-
                 </div>
             </div>
         </div>

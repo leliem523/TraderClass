@@ -77,7 +77,7 @@
         
         const width = eleHasClassImg[0].clientWidth;
         eleHasClassImg.forEach(element => {
-            element.style.height = `${width/2}px`;
+            element.style.height = `${width}px`;
         });
     })();
 

@@ -2,6 +2,8 @@ body,
 html {
     width: 100%;
     min-height: 100%;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 14px;
 }
 
 .dropdown {
@@ -237,7 +239,7 @@ a:link {
     text-align: left;
     border-radius: 5px;
     text-decoration: none;
-    font-family: "Lucida Grande", sans-serif;
+    /* font-family: "Lucida Grande", sans-serif; */
     font-size: 8px;
     text-transform: uppercase;
     border: 1px solid;
@@ -326,7 +328,16 @@ a:link {
 
 .header .header_bottom .mai .logo {
     width: 60%;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.6rem;
+}
+
+.header .header_bottom .mai .logo a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header .header_bottom .mai .logo a:hover {
+    color: #ef8d21;
 }
 
 .header .header_bottom .mai .menu {
@@ -482,6 +493,11 @@ a:link {
 
 @media screen and (max-width: 1366px) {
 }
+@media screen and (max-width: 1199.98px) {
+    header.header .header_bottom .mai .logo {
+        width: auto;
+    }
+}
 
 @media screen and (min-width: 1024px) {
     .col {
@@ -512,8 +528,13 @@ a:link {
     .header .header_bottom .mai .right_nav {
         width: 7%;
     }
-    .header .header_bottom .mai .menu ul li a {
+    .header .header_bottom .mai .logo a,
+    .header .header_bottom .mai .menu ul li a,
+    .header .header_bottom .mai .right_nav ul li a {
         font-size: 13px;
+    }
+    header.header .header_bottom .mai .menu {
+        width: 110%;
     }
     .header .header_bottom .mai .logo {
         max-width: 100px;
@@ -526,11 +547,23 @@ a:link {
         margin-right: 15px;
         margin-left: 10px;
     }
+    #btn-toggle-sidebar {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .header_bottom .container {
+        max-width: 100%;
+    }
 }
 
 /*Ipad dọc(768 x 1024)*/
 
 @media screen and (max-width: 768px) {
+    .container {
+        max-width: unset;
+    }
     .footer {
         text-align: center;
     }
@@ -570,6 +603,9 @@ a:link {
     }
     .header .header_bottom .mai .logo {
         max-width: 100%;
+    }
+    .header .header_bottom .mai .logo a {
+        font-size: unset;
     }
     .fsearch {
         display: none;

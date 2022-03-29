@@ -124,6 +124,8 @@ button p i {
 .sort {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 1rem;
     margin: 15px 0 15px 0px;
 }
 
@@ -194,6 +196,11 @@ button p i {
         font-size: 16px;
         font-weight: 500;
     }
+    /* .sort {
+        justify-content: unset;
+        gap: 1rem;
+        flex-wrap: wrap;
+    } */
 }
 
 /*Ipad dọc(768 x 1024)*/

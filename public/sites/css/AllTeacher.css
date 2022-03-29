@@ -134,7 +134,8 @@ button p i {
 
 .sort {
     display: flex;
-    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
     margin: 15px 0 15px 0px;
 }
 
@@ -222,14 +223,21 @@ button p i {
         font-weight: 500;
     }
     .img {
-        height: auto;
+        height: 425px;
+        width: 100%;
     }
     .text-center {
-        top: 102%;
+        top: 101%;
     }
     .classify .col-md-4 {
         flex: 0 0 52.333333%;
         max-width: 52.333333%;
+    }
+    .sort {
+        gap: 1rem;
+    }
+    .sort p {
+        flex: 100%;
     }
 }
 
@@ -266,7 +274,7 @@ button p i {
         font-weight: 500;
     }
     .text-center {
-        top: 101%;
+        top: calc(100% + 5px);
     }
     .classify .col-md-4 {
         flex: 0 0 84.333333%;

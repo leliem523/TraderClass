@@ -56,7 +56,7 @@
             </li>
             <li class="nav-item">
                 <a href="#"><i class="fas fa-chalkboard-teacher"></i>&nbsp; All Category</a>
-                <a href="/All Teacher.html.html"><i class="fas fa-chalkboard-teacher"></i>&nbsp; All Teacher</a>
+                <a href="/all-teacher"><i class="fas fa-chalkboard-teacher"></i>&nbsp; All Teacher</a>
                 <a href="/all-class"><i class="fas fa-users-class"></i>&nbsp; All Class</a>
 
             </li>

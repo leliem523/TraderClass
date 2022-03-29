@@ -9,7 +9,7 @@ $categories = DB::table('course_category')
 
 
 @if (Auth::check())
-<div class="header">
+<header class="header">
     <div class="header_bottom">
         <div class="container">
             <div class="mai">
@@ -86,7 +86,7 @@ $categories = DB::table('course_category')
 </div>
 
 @else
-<header>
+<header class="header">
     <div class="header_bottom">
         <div class="container">
             <div class="main">
@@ -99,8 +99,7 @@ $categories = DB::table('course_category')
                     <ul>
                         <li class="drop-header">
                             <a style="padding-top: 0px; color:white;" class="nav-link header-dropdown"
-                                href="#">&nbsp; All Categories <i
-                                class="fas fa-chalkboard-teacher"></i>
+                                href="#"><i class="fas fa-chalkboard-teacher"></i> &nbsp; All Categories 
                             </a>
                             <div class="parent-drop">
                                 @foreach ( $categories as $cate )

@@ -4,7 +4,7 @@
 @include('Sites::inc.maketting')
     <div class="main">
         <div class="img">
-            <img src="{{$course->photo}}" width="100%" alt="">
+            <img src="{{$course->photo}}" onerror="this.onerror=null; this.src='https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500'" width="100%" alt="">
             <div class="text-center">
                 <div style="display: grid;"><span id="a">{{ $course->fullname }}</span> <span id="b">-</span> <span id="c">{{ $course->position }}</span></div>
                 <div class="info">
@@ -203,8 +203,6 @@
                                         <input type="checkbox" name="agree_chk">
                                         <span class="checkmarks"></span>
                                       </label>
-                                <!-- <input type="checkbox">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
                                 <p class="error_agree mt-1 mb-0" style="color:#EF8D21;display:none"></p>
                             </form>
                         </div>
@@ -341,3 +339,5 @@
     </div>
     <div id="fade" onClick="lightbox_close();"></div>
 @endsection
+<script>
+</script>

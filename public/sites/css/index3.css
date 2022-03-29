@@ -128,6 +128,10 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
     color: #fff;
 }
 
+#btn-toggle-sidebar {
+    display: none;
+}
+
 /*banner home*/
 
 .banner_home {
@@ -609,6 +613,8 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 
 .try_lession .subcribe .btn_subcribe:hover {
     background-color: #ef8d21;
+    border-color: transparent;
+    color: #fff;
 }
 
 .faq .list_faq {
@@ -1555,6 +1561,7 @@ video {
     }
     .classes .list_category .right_content .tivi_show {
         height: 485px;
+        z-index: 1;
     }
     header .header_bottom .main .right_nav {
         width: 31%;
@@ -1638,6 +1645,9 @@ video {
     }
     header .header_bottom .main .logo {
         max-width: 100%;
+    }
+    #btn-toggle-sidebar {
+        display: block;
     }
     .banner_home .main_item {
         flex-direction: column;
@@ -1763,9 +1773,6 @@ video {
 }
 
 @media (min-width: 992px) {
-    #btn-toggle-sidebar {
-        display: none;
-    }
 }
 
 @media (min-width: 768px) and (max-width: 1199.98px) {
@@ -1798,9 +1805,6 @@ video {
     }
     header .header_bottom .main .right_nav {
         margin-right: 30px;
-    }
-    #btn-toggle-sidebar {
-        display: none;
     }
     .classes .list_category .right_content .tivi_show {
         height: 228px;
@@ -2302,9 +2306,9 @@ video {
     .classes .list_category .right_content .tivi_show {
         height: 215px;
     }
-    .classes .list_category .right_content .tivi_show::before {
+    /* .classes .list_category .right_content .tivi_show::before {
         left: 0%;
-    }
+    } */
 }
 
 /*Iphone(480 x 640)*/

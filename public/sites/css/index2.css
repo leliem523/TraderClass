@@ -43,8 +43,10 @@ header .header_bottom .main {
 }
 
 header .header_bottom .main .logo {
-    max-width: 250px;
-    width: 100%;
+    /* max-width: 250px;
+    width: 100%; */
+    width: 60%;
+    padding-bottom: 0.6rem;
 }
 
 header .header_bottom .main .menu {
@@ -590,6 +592,8 @@ header .header_bottom .main .right_nav ul li .btn_signup:hover {
 
 .try_lession .subcribe .btn_subcribe:hover {
     background-color: #ef8d21;
+    border-color: transparent;
+    color: #fff;
 }
 
 .faq .list_faq {
@@ -1579,6 +1583,41 @@ video {
     }
     header .header_bottom .main .right_nav {
         width: 39%;
+    }
+}
+
+@media screen and (max-width: 1199.98px) {
+    header .header_bottom .main .logo {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .header .header_bottom .main .logo {
+        max-width: 100px;
+    }
+
+    .header .header_bottom .main .logo a,
+    .header .header_bottom .main .menu ul li a,
+    .header .header_bottom .main .right_nav ul li a {
+        font-size: 12px;
+    }
+
+    .header .header_bottom .main .menu {
+        max-width: unset;
+        justify-content: end;
+    }
+
+    header .header_bottom .main .right_nav ul li {
+        margin-left: 14px;
+    }
+
+    header .header_bottom .main .right_nav ul li {
+        margin-left: 1rem;
+    }
+
+    header.header .header_bottom .main .menu {
+        width: 110%;
     }
 }
 
